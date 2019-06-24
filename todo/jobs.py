@@ -11,7 +11,7 @@ import datetime
 
 def download_mf():
     print("Starting mf download")
-    days_gap = 5
+    days_gap = 30
     try:
 
         mfdownload = MFDownload.objects.filter(
