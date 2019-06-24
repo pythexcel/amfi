@@ -21,3 +21,5 @@ urlpatterns = [
 ]
 
 urlpatterns = urlpatterns + router.urls
+
+import todo.jobs 
