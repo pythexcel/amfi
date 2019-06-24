@@ -22,4 +22,6 @@ urlpatterns = [
 
 urlpatterns = urlpatterns + router.urls
 
-import todo.jobs 
+from todo.jobs import scheduler
+
+scheduler.start()
