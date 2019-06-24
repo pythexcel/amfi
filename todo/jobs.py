@@ -57,8 +57,7 @@ def download_mf():
     mf_nav_data = response.text.splitlines()
 
     colums = mf_nav_data[0].split(";")
-
-    if colums[0] == "Scheme Code":
+    if colums[0] != "Scheme Code":
         print("no more data")
         print(start)
         print(end)
@@ -162,13 +161,9 @@ def download_mf():
 
     print("Completed mf download")
 
-
 scheduler = BackgroundScheduler()
 
 job = scheduler.add_job(download_mf, 'interval', minutes=1)
-
-scheduler.start()
-
 
 logging.basicConfig()
 logging.getLogger('apscheduler').setLevel(logging.DEBUG)
