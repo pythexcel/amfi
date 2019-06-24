@@ -5,6 +5,7 @@ from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, Na
 from rest_framework import viewsets
 
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.contrib.auth import authenticate
@@ -21,15 +22,21 @@ import requests
 import datetime
 
 
-"""
-FULL CRUD OPERATION FOR TODO
-"""
+@api_view()
+def fetch_nav(request):
+    print(request.query_params["start_date"])
+    start_date = datetime.datetime.strptime(request.query_params["start_date"], '%d-%m-%Y')
+    end_date = datetime.datetime.strptime(request.query_params["end_date"], '%d-%m-%Y')
 
+    scheme = Scheme.objects.get(fund_code="120564")
+    navs = Nav.objects.filter(scheme=scheme).filter(
+        date__gt=start_date).exclude(date__lt=end_date).all()
+    
+    print(navs.query)
+    ser = NavSerializer(navs, many=True)
 
-# class TodoViewSet(viewsets.ModelViewSet):
-#     serializer_class = TodoSerializer
-#     queryset = Todo.objects.all()
-#     permission_classes = (DjangoModelPermissions,)
+    print(ser.data)
+    return Response(ser.data)
 
 
 class UserAuth(APIView):
@@ -56,10 +63,6 @@ class UserAuth(APIView):
         # return Response([])
 
         # amc_id = [1, 27]
-        
-
-        print(start)
-        print(end)
 
         return Response([])
 

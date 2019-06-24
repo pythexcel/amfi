@@ -145,7 +145,10 @@ def download_mf():
                     scheme_category = line[:x1].strip()
                     x1 = x1+1
                     scheme_type = line[x1:-1].split("-")[0].strip()
-                    scheme_sub_type = line[x1:-1].split("-")[1].strip()
+                    if len(line[x1:-1].split("-")) == 2:
+                        scheme_sub_type = line[x1:-1].split("-")[1].strip()
+                    else:
+                        scheme_sub_type = ""
 
                     scheme_category = scheme_category
                     scheme_type = scheme_type
