@@ -11,11 +11,21 @@ import datetime
 
 def download_mf():
     print("Starting mf download")
+    amc_id = 3
+    count = MFDownload.objects.filter(
+        amc_id=amc_id, has_data=False).count()
+
+    print(count)
+
+    if(count > 2):
+        print("data completed for amc %s", amc_id)
+        return
+
     days_gap = 30
     try:
 
         mfdownload = MFDownload.objects.filter(
-            amc_id=3).order_by('end_date').first()
+            amc_id=amc_id).order_by('end_date').first()
         ser = MFDownloadSerializer(mfdownload)
         print(ser.data)
         if ser.data["amc_id"] is None:
@@ -51,8 +61,9 @@ def download_mf():
             amc_id=3, start_date=start, end_date=end, start_time=datetime.datetime.now(), retry=0)
         mfdownload.save()
 
-    response = requests.get(
-        'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf=3&tp=1&frmdt='+end.strftime("%d-%b-%Y")+'&todt='+start.strftime("%d-%b-%Y"))
+    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf=3&tp=1&frmdt=' + \
+        end.strftime("%d-%b-%Y")+'&todt='+start.strftime("%d-%b-%Y")
+    response = requests.get(url)
 
     mf_nav_data = response.text.splitlines()
 
@@ -61,6 +72,9 @@ def download_mf():
         print("no more data")
         print(start)
         print(end)
+        print(url)
+        MFDownload.objects.filter(pk=mfdownload.id).update(
+            end_time=datetime.datetime.now(), has_data=False)
         return
 
     amc_name = ""
@@ -163,6 +177,7 @@ def download_mf():
         end_time=datetime.datetime.now())
 
     print("Completed mf download")
+
 
 scheduler = BackgroundScheduler()
 

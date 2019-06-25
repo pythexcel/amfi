@@ -22,20 +22,31 @@ import requests
 import datetime
 
 
-@api_view()
-def fetch_nav(request):
-    print(request.query_params["start_date"])
-    start_date = datetime.datetime.strptime(request.query_params["start_date"], '%d-%m-%Y')
-    end_date = datetime.datetime.strptime(request.query_params["end_date"], '%d-%m-%Y')
+# https://docs.djangoproject.com/en/2.0/topics/db/queries/#complex-lookups-with-q
 
-    scheme = Scheme.objects.get(fund_code="120564")
+
+@api_view()
+def fetch_nav(request, amfi):
+    print(request.query_params["start_date"])
+    start_date = datetime.datetime.strptime(
+        request.query_params["start_date"], '%d-%m-%Y')
+    end_date = datetime.datetime.strptime(
+        request.query_params["end_date"], '%d-%m-%Y')
+
+    scheme = Scheme.objects.get(fund_code=amfi)
     navs = Nav.objects.filter(scheme=scheme).filter(
-        date__gt=start_date).exclude(date__lt=end_date).all()
-    
+        date__gt=start_date).exclude(date__lt=end_date)
+
     print(navs.query)
     ser = NavSerializer(navs, many=True)
 
     print(ser.data)
+
+    df = pd.DataFrame(ser.data, columns=["nav", "date"])
+    pt = pd.pivot_table(df, values="nav", index="date")
+    print(pt)
+    # print(pt.rolling(7))
+
     return Response(ser.data)
 
 

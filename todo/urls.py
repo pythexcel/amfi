@@ -16,7 +16,7 @@ FULL CRUD OPERATION FOR TODO
 
 
 urlpatterns = [
-    path('nav', fetch_nav, name='nav'),
+    url(r'^nav/(?P<amfi>\d+)/$', fetch_nav, name='nav'),
     url(r'^login/$', UserAuth.as_view()),
     url(r'^register/$', UserRegister.as_view()),
 ]

@@ -13,6 +13,7 @@ class MFDownload(models.Model):
     start_time = models.DateTimeField(null=False)
     end_time = models.DateTimeField(null=True)
     retry = models.IntegerField(null=False, default=0)
+    has_data = models.BooleanField(null=False, default=True)
 
 
 class AMC(models.Model):
