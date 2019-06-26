@@ -15,10 +15,9 @@ class MFDownload(models.Model):
     retry = models.IntegerField(null=False, default=0)
     has_data = models.BooleanField(null=False, default=True)
 
-
+# https://medium.com/@MicroPyramid/django-model-managers-and-properties-564ef668a04c
 class AMC(models.Model):
     name = models.CharField(max_length=255, unique=True)
-
 
 class Scheme(models.Model):
     amc = models.ForeignKey(

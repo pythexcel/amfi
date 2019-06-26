@@ -26,10 +26,14 @@ def download_mf():
 
         mfdownload = MFDownload.objects.filter(
             amc_id=amc_id).order_by('end_date').first()
+
         ser = MFDownloadSerializer(mfdownload)
         print(ser.data)
         if ser.data["amc_id"] is None:
             raise MFDownload.DoesNotExist('Record does not exist.')
+
+        ser.data["start_date"] = "2019-03-27"
+        ser.data["end_date"] = "2019-02-25"
 
         if ser.data["end_time"] is None and False:
             # this means previous script didn't run properly. so parsing it again
@@ -61,8 +65,73 @@ def download_mf():
             amc_id=3, start_date=start, end_date=end, start_time=datetime.datetime.now(), retry=0)
         mfdownload.save()
 
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf=3&tp=1&frmdt=' + \
+    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+amc_id+'&tp=1&frmdt=' + \
         end.strftime("%d-%b-%Y")+'&todt='+start.strftime("%d-%b-%Y")
+
+    print(start)
+    print(end)
+
+    res = do_process_data(url)
+
+    if res is False:
+        MFDownload.objects.filter(pk=mfdownload.id).update(
+            end_time=datetime.datetime.now(), has_data=False)
+    else:
+        MFDownload.objects.filter(pk=mfdownload.id).update(
+            end_time=datetime.datetime.now())
+
+    print("Completed mf download")
+
+
+def download_mf_input(amc_id, start, end):
+    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+amc_id+'&tp=1&frmdt=' + \
+        end.strftime("%Y-%m-%d")+'&todt='+start.strftime("%Y-%m-%d")
+    do_process_data(url)
+
+
+amc_list = {}
+scheme_list = {}
+
+
+def fetch_or_save_amc(amc_name):
+    if amc_name in amc_list:
+        return amc_list[amc_name]
+    try:
+        amc = AMC.objects.get(name=amc_name)
+    except AMC.DoesNotExist:
+        amc = AMC(name=amc_name)
+        amc.save()
+
+    amc_list[amc_name] = amc
+    return amc
+
+
+def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type):
+    scheme_unique = fund_code + str(amc.id)
+    if scheme_unique in scheme_list:
+        return scheme_list[scheme_unique]
+    try:
+        scheme = Scheme.objects.get(
+            fund_code=fund_code, amc=amc)
+    except Scheme.DoesNotExist:
+        scheme = Scheme(
+            scheme_category=scheme_category,
+            scheme_type=scheme_type,
+            scheme_sub_type=scheme_sub_type,
+            fund_code=fund_code,
+            fund_name=fund_name,
+            fund_option=fund_option,
+            fund_type=fund_type,
+            amc=amc
+        )
+        scheme.save()
+
+    scheme_list[scheme_unique] = scheme
+    return scheme
+
+
+def do_process_data(url):
+    print(url)
     response = requests.get(url)
 
     mf_nav_data = response.text.splitlines()
@@ -70,21 +139,16 @@ def download_mf():
     colums = mf_nav_data[0].split(";")
     if colums[0] != "Scheme Code":
         print("no more data")
-        print(start)
-        print(end)
+
         print(url)
-        MFDownload.objects.filter(pk=mfdownload.id).update(
-            end_time=datetime.datetime.now(), has_data=False)
-        return
+
+        return False
 
     amc_name = ""
 
     scheme_category = ""
     scheme_type = ""
     scheme_sub_type = ""
-
-    print(start)
-    print(end)
 
     for line in mf_nav_data[1:]:
         if len(line) > 0:
@@ -107,30 +171,17 @@ def download_mf():
                         fund_type = ""
 
                 if fund_type == "Direct Plan" and fund_option == "Growth":
-                    try:
-                        amc = AMC.objects.get(name=amc_name)
-                    except AMC.DoesNotExist:
-                        amc = AMC(name=amc_name)
-                        amc.save()
+                    amc = fetch_or_save_amc(amc_name)
+
+
+                    # print(mf_data[0])
+                    
 
                     # ser = AMCSerializer(amc)
                     # print(ser.data)
+                    scheme = fetch_or_save_scheme(
+                        mf_data[0], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type)
 
-                    try:
-                        scheme = Scheme.objects.get(
-                            fund_code=mf_data[0], amc=amc)
-                    except Scheme.DoesNotExist:
-                        scheme = Scheme(
-                            scheme_category=scheme_category,
-                            scheme_type=scheme_type,
-                            scheme_sub_type=scheme_sub_type,
-                            fund_code=mf_data[0],
-                            fund_name=fund_name,
-                            fund_option=fund_option,
-                            fund_type=fund_type,
-                            amc=amc
-                        )
-                        scheme.save()
                     # ser = SchemeSerializer(scheme)
                     # print(ser.data)
 
@@ -138,6 +189,10 @@ def download_mf():
                     date_time_obj = datetime.datetime.strptime(
                         date_time_str, '%d-%b-%Y')
 
+                    if mf_data[0] == "120564":
+                        print(mf_data[4])
+                        print(date_time_obj)
+                        
                     try:
                         nav = Nav.objects.get(
                             date=date_time_obj, scheme=scheme)
@@ -173,10 +228,7 @@ def download_mf():
                     amc_name = line.strip()
                     pass
 
-    MFDownload.objects.filter(pk=mfdownload.id).update(
-        end_time=datetime.datetime.now())
-
-    print("Completed mf download")
+    return True
 
 
 scheduler = BackgroundScheduler()
