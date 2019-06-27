@@ -28,4 +28,4 @@ urlpatterns = urlpatterns + router.urls
 
 
 # download_mf()
-# scheduler.start()
+scheduler.start()
