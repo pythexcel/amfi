@@ -26,7 +26,12 @@ def download_mf():
             amc = AMC.objects.all().order_by("-amc_no").first()
             ser = AMCSerializer(amc)
             print(ser.data)
-            amc_no = int(ser.data["amc_no"])+1
+            if ser.data["next_amc_no"] == 0:
+                amc_no = int(ser.data["amc_no"])+1
+            else:
+                amc_no = int(ser.data["next_amc_no"])+1
+                
+            AMC.objects.filter(pk=amc.id).update(next_amc_no=amc_no)
             amc_id = -1
             if amc_no > amc_no_end:
                 print("all amcs completed")
