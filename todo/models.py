@@ -18,6 +18,8 @@ class MFDownload(models.Model):
 # https://medium.com/@MicroPyramid/django-model-managers-and-properties-564ef668a04c
 class AMC(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    amc_no = models.IntegerField(null=False, unique=True)
+    parsed = models.BooleanField(null=False, default=False)
 
 class Scheme(models.Model):
     amc = models.ForeignKey(

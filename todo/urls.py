@@ -1,4 +1,4 @@
-from todo.jobs import scheduler
+from todo.jobs import scheduler , download_mf
 from rest_framework.routers import DefaultRouter
 from todo.views import UserAuth, UserRegister, rolling_return, abs_return
 from django.urls import path, include, re_path as url
@@ -26,4 +26,6 @@ urlpatterns = [
 urlpatterns = urlpatterns + router.urls
 
 
+
+# download_mf()
 scheduler.start()

@@ -18,6 +18,7 @@ class Command(BaseCommand):
         print("starting mf downloading")
 
         print("maximum date diff should be 90days only")
+
         print("amc id ", options["amc"][0])
 
         start = datetime.datetime.strptime(

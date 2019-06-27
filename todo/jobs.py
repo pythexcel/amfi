@@ -8,17 +8,40 @@ from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, Na
 import requests
 import datetime
 
+amc_no_start = 1
+amc_no_end = 75
+
 
 def download_mf():
     print("Starting mf download")
-    amc_id = 3
+
+    if AMC.objects.all().count() > 0:
+        try:
+            amc = AMC.objects.get(parsed=False)
+            ser = AMCSerializer(amc)
+            print(ser)
+            amc_no = ser.data["amc_no"]
+            amc_id = amc.id
+        except AMC.DoesNotExist:
+            amc = AMC.objects.all().order_by("-amc_no").first()
+            ser = AMCSerializer(amc)
+            print(ser.data)
+            amc_no = int(ser.data["amc_no"])+1
+            amc_id = -1
+            if amc_no > amc_no_end:
+                print("all amcs completed")
+                return
+
+    else:
+        amc_no = amc_no_start
+
+    print("checking for amc id ", amc_no)
     count = MFDownload.objects.filter(
         amc_id=amc_id, has_data=False).count()
 
-    print(count)
-
     if(count > 2):
         print("data completed for amc %s", amc_id)
+        AMC.objects.filter(amc_no=amc_id).update(parsed=True)
         return
 
     days_gap = 30
@@ -28,7 +51,7 @@ def download_mf():
             amc_id=amc_id).order_by('end_date').first()
 
         ser = MFDownloadSerializer(mfdownload)
-        print(ser.data)
+
         if ser.data["amc_id"] is None:
             raise MFDownload.DoesNotExist('Record does not exist.')
 
@@ -54,7 +77,7 @@ def download_mf():
         #                   start_time=datetime.datetime.now(), end_time=None)
 
         mfdownload = MFDownload(
-            amc_id=3, start_date=start, end_date=end, start_time=datetime.datetime.now())
+            amc_id=amc_id, start_date=start, end_date=end, start_time=datetime.datetime.now())
         mfdownload.save()
 
     except MFDownload.DoesNotExist:
@@ -62,16 +85,16 @@ def download_mf():
         end = (start -
                datetime.timedelta(days=days_gap))
         mfdownload = MFDownload(
-            amc_id=3, start_date=start, end_date=end, start_time=datetime.datetime.now(), retry=0)
+            amc_id=amc_id, start_date=start, end_date=end, start_time=datetime.datetime.now(), retry=0)
         mfdownload.save()
 
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+amc_id+'&tp=1&frmdt=' + \
+    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+str(amc_no)+'&tp=1&frmdt=' + \
         end.strftime("%d-%b-%Y")+'&todt='+start.strftime("%d-%b-%Y")
 
     print(start)
     print(end)
 
-    res = do_process_data(url)
+    res = do_process_data(url, amc_no)
 
     if res is False:
         MFDownload.objects.filter(pk=mfdownload.id).update(
@@ -84,22 +107,22 @@ def download_mf():
 
 
 def download_mf_input(amc_id, start, end):
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+amc_id+'&tp=1&frmdt=' + \
+    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+str(amc_id)+'&tp=1&frmdt=' + \
         end.strftime("%Y-%m-%d")+'&todt='+start.strftime("%Y-%m-%d")
-    do_process_data(url)
+    do_process_data(url, amc_id)
 
 
 amc_list = {}
 scheme_list = {}
 
 
-def fetch_or_save_amc(amc_name):
+def fetch_or_save_amc(amc_name, amc_no):
     if amc_name in amc_list:
         return amc_list[amc_name]
     try:
         amc = AMC.objects.get(name=amc_name)
     except AMC.DoesNotExist:
-        amc = AMC(name=amc_name)
+        amc = AMC(name=amc_name, amc_no=amc_no)
         amc.save()
 
     amc_list[amc_name] = amc
@@ -130,7 +153,7 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
     return scheme
 
 
-def do_process_data(url):
+def do_process_data(url, amc_no):
     print(url)
     response = requests.get(url)
 
@@ -146,12 +169,15 @@ def do_process_data(url):
 
     amc_name = ""
 
+    print("valid data found", len(mf_nav_data))
+
     scheme_category = ""
     scheme_type = ""
     scheme_sub_type = ""
 
     for line in mf_nav_data[1:]:
         if len(line) > 0:
+            # print(line)
             if line.find(";") != -1:
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
@@ -170,12 +196,26 @@ def do_process_data(url):
                         fund_option = ""
                         fund_type = ""
 
-                if fund_type == "Direct Plan" and fund_option == "Growth":
-                    amc = fetch_or_save_amc(amc_name)
+                print(fund_type)
+                print(fund_option)
 
+                # print("Direct" in line)
+                # print("Growth" in line)
+
+                if "Direct" in line:
+                    fund_type = "Direct"
+                else:
+                    fund_type = "Regular"
+
+                if "Growth" in line:
+                    fund_option = "Growth"
+
+                if fund_type == "Direct" and fund_option == "Growth":
+
+                    print("saving to db ", line)
+                    amc = fetch_or_save_amc(amc_name, amc_no)
 
                     # print(mf_data[0])
-                    
 
                     # ser = AMCSerializer(amc)
                     # print(ser.data)
@@ -192,7 +232,7 @@ def do_process_data(url):
                     if mf_data[0] == "120564":
                         print(mf_data[4])
                         print(date_time_obj)
-                        
+
                     try:
                         nav = Nav.objects.get(
                             date=date_time_obj, scheme=scheme)
