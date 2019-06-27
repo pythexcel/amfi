@@ -20,7 +20,7 @@ class AMC(models.Model):
     name = models.CharField(max_length=255, unique=True)
     amc_no = models.IntegerField(null=False, unique=True)
     parsed = models.BooleanField(null=False, default=False)
-    next_amc_no = models.BooleanField(null=False, default=0)
+    next_amc_no = models.IntegerField(null=False, default=0)
 
 class Scheme(models.Model):
     amc = models.ForeignKey(
