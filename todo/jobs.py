@@ -41,7 +41,7 @@ def download_mf():
 
     if(count > 2):
         print("data completed for amc %s", amc_id)
-        AMC.objects.filter(amc_no=amc_id).update(parsed=True)
+        AMC.objects.filter(amc_no=amc_no).update(parsed=True)
         return
 
     days_gap = 30
