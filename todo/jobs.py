@@ -35,14 +35,16 @@ def download_mf():
     else:
         amc_no = amc_no_start
 
-    print("checking for amc id ", amc_no)
-    count = MFDownload.objects.filter(
-        amc_id=amc_id, has_data=False).count()
+    print("checking for amc no ", amc_no)
 
-    if(count > 2):
-        print("data completed for amc %s", amc_id)
-        AMC.objects.filter(amc_no=amc_no).update(parsed=True)
-        return
+    if amc_id != -1:
+        count = MFDownload.objects.filter(
+            amc_id=amc_id, has_data=False).count()
+
+        if(count > 2):
+            print("data completed for amc %s", amc_no)
+            AMC.objects.filter(amc_no=amc_no).update(parsed=True)
+            return
 
     days_gap = 30
     try:
