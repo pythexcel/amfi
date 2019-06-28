@@ -1,6 +1,6 @@
 
-from todo.models import AMC, Scheme, Nav, MFDownload
-from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, NavSerializer, MFDownloadSerializer
+from todo.models import AMC, Scheme, Nav, MFDownload, NavSerializer
+from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, MFDownloadSerializer
 
 from rest_framework import viewsets
 
@@ -23,8 +23,12 @@ import requests
 import datetime
 from django.db.models import Q
 
+from rest_framework import status
+
+from todo.util import get_date_index_data, fill_date_frame_data
 
 # https://docs.djangoproject.com/en/2.0/topics/db/queries/#complex-lookups-with-q
+
 
 @api_view()
 def abs_return(request, amfi):
@@ -48,46 +52,21 @@ def abs_return(request, amfi):
             end_date = datetime.date.today()
             start_date = end_date - datetime.timedelta(days=365)
 
-    if start_date:
-        try:
-            navs = Nav.objects.filter(scheme=scheme, date=start_date)
-            print(navs.query)
-            ser = NavSerializer(navs)
-        except Nav.DoesNotExist:
-            print(ser.data)
+    # try:
 
-        start_date_delta_end = start_date - datetime.timedelta(days=2)
-        start_date_delta_start = start_date + datetime.timedelta(days=2)
-        f = Q(date__gt=start_date_delta_end) & Q(
-            date__lt=start_date_delta_start)
-
-    return Response([])
-    
-    if end_date:
-        f &= Q(date__lt=end_date)
-
-    navs = Nav.objects.filter(f)
-    print(navs.query)
-    ser = NavSerializer(navs, many=True)
-
-    df = pd.DataFrame(ser.data, columns=["nav", "date"])
-
-    start_date = df.iloc[0]["date"]
-    end_date = df.iloc[len(df.index) - 1]["date"]
-
-    idx = pd.date_range(start_date, end_date)
-
-    df['Datetime'] = pd.to_datetime(df["date"])
-
-    # print(df)
-    df = df.set_index("Datetime")
-    df = df.reindex(idx, method='ffill')
-    # print(df)
-
-    df = df.drop(['date'], axis=1)
-
-    print(ser.data)
-    return Response([])
+        return Response({
+            "ytd": scheme.ytd_abs(),
+            "oneyear": scheme.previous_yr_abs_today(1, 2),
+            "threeyear": scheme.previous_yr_abs_today(3, 2, False),
+            "2018-2019": scheme.previous_yr_abs(1),
+            "2017-2018": scheme.previous_yr_abs(1, 1),
+            "2016-2017": scheme.previous_yr_abs(1, 2),
+            "2015-2016": scheme.previous_yr_abs(1, 3),
+            "2014-2015": scheme.previous_yr_abs(1, 4)
+        })
+    # except Exception as e:
+        # print '%s (%s)' % (e.message, type(e)):
+        # return Response([], status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view()
@@ -161,82 +140,3 @@ def rolling_return(request, amfi):
     # print(pt.rolling(7).pct_change())
 
     return Response(ser.data)
-
-
-class UserAuth(APIView):
-    """
-    Manager User Login and other things
-    """
-
-    permission_classes = (AllowAny,)
-
-    def get(self, request):
-
-        # quandl.ApiConfig.api_key = 'NNVGCuqZtoU22g-RBVU6'
-
-        # data = quandl.get('AMFI/140249', start_date='2018-01-01', end_date='2019-01-01')
-
-        # data = pd.DataFrame(data)
-
-        # print(data)
-
-        # data = data.loc[:,['Net Asset Value']]
-
-        # print(data.rolling(30))
-
-        # return Response([])
-
-        # amc_id = [1, 27]
-
-        return Response([])
-
-    permission_classes = (AllowAny,)
-
-    def post(self, request):
-        """
-        login
-        """
-        quandl.ApiConfig.api_key = 'NNVGCuqZtoU22g-RBVU6'
-
-        data = quandl.get(
-            'AMFI/140249', start_date='2019-01-01', end_date='2019-06-21')
-
-        x = pd.DataFrame(data)
-
-        print(x)
-
-        return Response([])
-
-        # user = authenticate(username=request.data.get(
-        #     "username"), password=request.data.get("password"))
-        # if user is not None:
-        #     # A backend authenticated the credentials
-        #     try:
-        #         token = Token.objects.get(user_id=user.id)
-        #     except Token.DoesNotExist:
-        #         token = Token.objects.create(user=user)
-        #     return Response(token.key)
-        # else:
-        #     # No backend authenticated the credentials
-        #     return Response([], status=status.HTTP_401_UNAUTHORIZED)
-
-
-class UserRegister(APIView):
-    """
-    Create user
-    """
-
-    def post(self, request):
-        user = User.objects.create_user(
-            username=request.data.get("username"),
-            email=request.data.get("email"),
-            password=request.data.get("password"))
-        user.save()
-
-        if user is not None:
-            token = Token.objects.create(user=user)
-            print(token.key)
-            print(user)
-            return Response(token.key)
-        else:
-            return Response([], status=status.HTTP_400_BAD_REQUEST)

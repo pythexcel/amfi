@@ -15,13 +15,6 @@ class SchemeSerializer(serializers.ModelSerializer):
         model = Scheme
         fields = '__all__'
 
-
-class NavSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Nav
-        fields = '__all__'
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
