@@ -5,6 +5,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from todo.models import AMC, Scheme, Nav, MFDownload, NavSerializer
 from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, MFDownloadSerializer
 
+from todo.nifty import process_nifty
+
 import requests
 import datetime
 
@@ -362,6 +364,8 @@ def do_process_data(url, amc_no):
 scheduler = BackgroundScheduler()
 
 job = scheduler.add_job(download_mf, 'interval', minutes=1)
+
+job = scheduler.add_job(process_nifty, 'interval', minutes=1)
 
 job = scheduler.add_job(schedule_daily_download_mf, 'interval', hours=12)
 

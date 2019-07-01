@@ -1,3 +1,4 @@
+from math import ceil, floor
 import pandas as pd
 
 # this function expects a json data from db or any other source.
@@ -18,6 +19,28 @@ def fill_date_frame_data(df, start_date, end_date, method='ffill'):
     df = df.reindex(idx, method=method)
     return df
 
-from math import ceil, floor
-def float_round(num, places = 0, direction = floor):
+
+def float_round(num, places=0, direction=floor):
     return direction(num * (10**places)) / float(10**places)
+
+
+def cagr(initial, final, years, months=None):
+    """
+    Compound Annual Growth Rate, given an initial and a final value for an investment,
+    as well as the time elapsed (in years or fractions of years)
+    """
+    initial = float(initial)
+    final = float(final)
+
+    if years is not None:
+        years = float(years)
+    else:
+        years = float(months) / 12.0
+
+    if initial == 0:
+        raise Exception('The initial value cannot be zero')
+
+    if years == 0:
+        raise Exception('The time period cannot be zero')
+
+    return (final / initial) ** (1.0 / years) - 1

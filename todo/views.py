@@ -33,7 +33,6 @@ from todo.util import get_date_index_data, fill_date_frame_data
 @api_view()
 def abs_return(request, amfi):
     scheme = Scheme.objects.get(fund_code=amfi)
-    f = Q(scheme=scheme)
 
     start_date = False
     end_date = False
@@ -57,7 +56,7 @@ def abs_return(request, amfi):
         return Response({
             "ytd": scheme.ytd_abs(),
             "oneyear": scheme.previous_yr_abs_today(1, 2),
-            "threeyear": scheme.previous_yr_abs_today(3, 2, False),
+            "threeyear": scheme.previous_yr_abs_today(3, 2),
             "2018-2019": scheme.previous_yr_abs(1),
             "2017-2018": scheme.previous_yr_abs(1, 1),
             "2016-2017": scheme.previous_yr_abs(1, 2),

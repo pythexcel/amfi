@@ -42,7 +42,7 @@ class Scheme(models.Model):
     fund_option = models.CharField(max_length=255, null=False)
     fund_type = models.CharField(max_length=255, null=False)
 
-    def previous_yr_abs(self, years=1, start_year=0, abs=True):
+    def previous_yr_abs(self, years=1, start_year=0):
         # years how many years to go back
         # start_year which year to start from
         # abs weather absolute return or annulized return
@@ -54,14 +54,15 @@ class Scheme(models.Model):
 
         start_date = end_date - datetime.timedelta(days=365*years)
 
-
         ret = self.abs_return(start_date, end_date)
-        if not abs:
-            ret["pct"] = todo.util.float_round(ret["pct"] / years, 2, ceil)
+        if years > 1:
+            cagr = todo.util.cagr(
+                ret["start_nav"], ret["end_nav"], years) * 100
+            ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
 
         return ret
 
-    def previous_yr_abs_today(self, years=1, offset_days=0, abs=True):
+    def previous_yr_abs_today(self, years=1, offset_days=0):
         # how many years to go back
         # offset in days, if start from today or few days back
         # abs weather absolute return or annulized return
@@ -72,8 +73,10 @@ class Scheme(models.Model):
 
         ret = self.abs_return(start_date, end_date)
 
-        if not abs:
-            ret["pct"] = todo.util.float_round(ret["pct"] / years, 2, ceil)
+        if years > 1:
+            cagr = todo.util.cagr(
+                ret["start_nav"], ret["end_nav"], years) * 100
+            ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
 
         return ret
 
@@ -151,3 +154,25 @@ class NavSerializer(serializers.ModelSerializer):
     class Meta:
         model = Nav
         fields = '__all__'
+
+
+class Index(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    start_date = models.DateField(null=False)
+    end_date = models.DateField(null=False)
+    parsed = models.BooleanField(default=False)
+
+
+class IndexData(models.Model):
+    index = models.ForeignKey(
+        'Index',
+        on_delete=models.CASCADE,
+    )
+    date = models.DateField(null=False)
+    open = models.FloatField(null=False)
+    close = models.FloatField(null=False)
+    high = models.FloatField(null=False)
+    low = models.FloatField(null=False)
+    pe = models.FloatField(null=True)
+    pb = models.FloatField(null=True)
+    div = models.FloatField(null=True)
