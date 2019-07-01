@@ -363,7 +363,7 @@ def do_process_data(url, amc_no):
 
 scheduler = BackgroundScheduler()
 
-job = scheduler.add_job(download_mf, 'interval', minutes=1)
+# job = scheduler.add_job(download_mf, 'interval', minutes=1)
 
 job = scheduler.add_job(process_nifty, 'interval', minutes=1)
 
