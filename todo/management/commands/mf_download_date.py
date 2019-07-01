@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from todo.jobs import download_mf_input_date
+from todo.jobs.mf import download_mf_input_date
 
 import datetime
 

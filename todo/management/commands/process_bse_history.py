@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from todo.nifty import process_nifty
+from todo.jobs.bse import process_bse_historial
 
 
 import datetime
@@ -16,7 +16,7 @@ class Command(BaseCommand):
     #                         help="end date in format YYYY-MM-DD")
 
     def handle(self, *args, **options):
-        print("processing nify history")
+        print("processing bse history")
 
         # start = datetime.datetime.strptime(
         #     options["start"][0], '%Y-%m-%d')
@@ -27,4 +27,4 @@ class Command(BaseCommand):
         # print("end date ", end)
         # download_mf_input(options["amc"][0], start, end)
 
-        process_nifty()
+        process_bse_historial()

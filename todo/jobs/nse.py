@@ -27,26 +27,31 @@ from todo.models import Index, IndexData
 
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-04-2018&toDate=01-07-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-Apr-2018&toDate=01-Jul-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
+nifty_indexes = [
+    "NIFTY NEXT 50",
+    "NIFTY 50",
+    "NIFTY SMLCAP 100",
+    "NIFTY MIDCAP 100"
+]
 
 
-def process_nifty():
+def process_nifty_daily():
+    for name in nifty_indexes:
+        start_date = datetime.datetime.today()
+        end_date = datetime.datetime.today() - datetime.timedelta(days=7)
 
-    nifty_indexes = [
-        "NIFTY NEXT 50",
-        "NIFTY 50",
-        "NIFTY SMLCAP 100",
-        "NIFTY MIDCAP 100"
-    ]
+        latest_index = Index.objects.get(name=name, type="NSE")
 
-    bse_indexes = [
-        "SENSEX"
-    ]
+        process_data(name, start_date, end_date, latest_index)
+
+
+def process_nifty_historial():
 
     days = 90
     index = 0
 
     try:
-        latest_index = Index.objects.get(parsed=False)
+        latest_index = Index.objects.get(parsed=False, type="NSE")
         # latest_index = Index.objects.filter(
         #     parsed=False).all().order_by("-end_date").first()
         name = latest_index.name
@@ -57,20 +62,32 @@ def process_nifty():
         print(start_date)
         end_date = start_date - datetime.timedelta(days=days)
     except Index.DoesNotExist:
-        index = Index.objects.filter().all().count()
+        index = Index.objects.filter(type="NSE").all().count()
         name = urllib.parse.quote(nifty_indexes[index])
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
             name=name,
             start_date=start_date,
-            end_date=end_date
+            end_date=end_date, 
+            type="NSE"
         )
         latest_index.save()
 
     print(name)
     print(start_date)
     print(end_date)
+
+    res = process_data(name, start_date, end_date, latest_index)
+
+    if res:
+        Index.objects.filter(pk=latest_index.id).update(
+            start_date=start_date, end_date=end_date)
+    else:
+        Index.objects.filter(pk=latest_index.id).update(parsed=True)
+
+
+def process_data(name, start_date, end_date, latest_index):
 
     url = "https://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=" + \
         name+"&fromDate=" + \
@@ -211,58 +228,6 @@ def process_nifty():
                 )
                 index_data_obj.save()
 
-        Index.objects.filter(pk=latest_index.id).update(
-            start_date=start_date, end_date=end_date)
+        return True
     else:
-        Index.objects.filter(pk=latest_index.id).update(parsed=True)
-
-    # print(rows)
-    # print(soup.find_all("tr"))
-
-    return
-
-    #         "https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForYear/w?strIndex=SENSEX&dtFromDate=01/01/2019&dtToDate=01/07/2019"
-
-    # url = "https://www.niftyindices.com/Backpage.aspx/getHistoricaldatatabletoString"
-
-    # params = {
-    #     'name': 'NIFTY 50',
-    #     'startDate': '01-Jul-2018',
-    #     'endDate': '01-Jul-2019'
-    # }
-
-    # response = requests.post(url, json=params)
-
-    # data = response.json()
-
-    # # print(data["d"])
-
-    # d = json.loads(data["d"])
-
-    # for line in d:
-    # print(line)
-    # line["Index Name"]
-    # line["INDEX_NAME"]
-    # line["HistoricalDate"]
-    # line["OPEN"]
-    # line["HIGH"]
-    # line["LOW"]
-    # line["CLOSE"]
-
-    # date = datetime.datetime.strptime(
-    #     line["HistoricalDate"], '%d %b %Y')
-
-    # try:
-    #     index_data = Index.objects.get(
-    #         trade_name=line["INDEX_NAME"], date=date)
-    # except Index.DoesNotExist:
-    #     index_data = Index(
-    #         name=line["Index Name"],
-    #         trade_name=line["INDEX_NAME"],
-    #         date=date,
-    #         open=open,
-    #         close=close)
-    #     index_data.save()
-
-    return True
-    # print(data)
+        return False

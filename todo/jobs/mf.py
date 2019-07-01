@@ -1,11 +1,6 @@
-
-import logging
-from apscheduler.schedulers.background import BackgroundScheduler
-
 from todo.models import AMC, Scheme, Nav, MFDownload, NavSerializer
 from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, MFDownloadSerializer
 
-from todo.nifty import process_nifty
 
 import requests
 import datetime
@@ -56,7 +51,7 @@ def find_amc_no_to_process():
     return amc_no, amc_id
 
 
-def download_mf():
+def download_mf_historical_data():
     print("Starting mf download")
 
     amc_no, amc_id = find_amc_no_to_process()
@@ -360,14 +355,3 @@ def do_process_data(url, amc_no):
 
     return True
 
-
-scheduler = BackgroundScheduler()
-
-# job = scheduler.add_job(download_mf, 'interval', minutes=1)
-
-job = scheduler.add_job(process_nifty, 'interval', minutes=1)
-
-job = scheduler.add_job(schedule_daily_download_mf, 'interval', hours=12)
-
-logging.basicConfig()
-logging.getLogger('apscheduler').setLevel(logging.DEBUG)

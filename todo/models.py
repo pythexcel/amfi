@@ -158,6 +158,7 @@ class NavSerializer(serializers.ModelSerializer):
 
 class Index(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    type = models.CharField(max_length=255, unique=True)
     start_date = models.DateField(null=False)
     end_date = models.DateField(null=False)
     parsed = models.BooleanField(default=False)
