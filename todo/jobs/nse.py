@@ -35,7 +35,7 @@ nifty_indexes = [
 ]
 
 
-def process_nifty_daily():
+def process_nse_daily():
     for name in nifty_indexes:
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=7)
@@ -45,7 +45,7 @@ def process_nifty_daily():
         process_data(name, start_date, end_date, latest_index)
 
 
-def process_nifty_historial():
+def process_nse_historial():
 
     days = 90
     index = 0
@@ -56,20 +56,21 @@ def process_nifty_historial():
         #     parsed=False).all().order_by("-end_date").first()
         name = latest_index.name
         start_date = getattr(latest_index, "end_date")
-        # start_date = datetime.datetime.strptime(
-        #     start_date, '%Y-%m-%d')
-        # start_end = latest_index.end_date
         print(start_date)
         end_date = start_date - datetime.timedelta(days=days)
     except Index.DoesNotExist:
         index = Index.objects.filter(type="NSE").all().count()
-        name = urllib.parse.quote(nifty_indexes[index])
+        if index >= len(nifty_indexes):
+            print("nse completed")
+            return
+        else:
+            name = urllib.parse.quote(nifty_indexes[index])
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
             name=name,
             start_date=start_date,
-            end_date=end_date, 
+            end_date=end_date,
             type="NSE"
         )
         latest_index.save()

@@ -24,11 +24,13 @@ from todo.models import Index, IndexData
 # requests_log.setLevel(logging.DEBUG)
 # requests_log.propagate = True
 
-# https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-04-2018&toDate=01-07-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
-# https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-Apr-2018&toDate=01-Jul-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
+
 bse_indexes = [
     "SENSEX"
 ]
+
+# https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
+# https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
 
 
 def process_bse_daily():
@@ -50,14 +52,15 @@ def process_bse_historial():
         name = latest_index.name
 
         start_date = getattr(latest_index, "end_date")
-        # start_date = datetime.datetime.strptime(
-        #     start_date, '%Y-%m-%d')
-        # start_end = latest_index.end_date
         print(start_date)
         end_date = start_date - datetime.timedelta(days=days)
     except Index.DoesNotExist:
         index = Index.objects.filter(type="BSE").all().count()
-        name = urllib.parse.quote(bse_indexes[index])
+        if index >= len(bse_indexes):
+            print("bse completed")
+            return
+        else:
+            name = urllib.parse.quote(bse_indexes[index])
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
@@ -82,46 +85,52 @@ def process_bse_historial():
 
 
 def process_data(name, start_date, end_date, latest_index):
-    url = "https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=" + \
-        start_date.strftime("%d-%m-%Y")+"&dtToDate=" + \
-        end_date.strftime("%d-%m-%Y")
 
-    response = requests.get(url)
+    params = {
+        "fmdt": end_date.strftime("%d/%m/%Y"),
+        "index": name,
+        "period": "D",
+        "todt": start_date.strftime("%d/%m/%Y")
+    }
+    url = "https://api.bseindia.com/BseIndiaAPI/api/IndexArchDaily/w"
 
-    data = response.text
+    print(url)
 
-    data = response.text.splitlines()
+    response = requests.get(url, params=params)
+
+    data = response.json()
 
     index_data = {}
 
-    for row in data:
-        cols = row.split(",")
+    for row in data["Table"]:
 
-        if (len(cols) > 5) & (cols[0] != "Date"):
-            date = cols[0]
-            open = cols[1]
-            high = cols[2]
-            low = cols[3]
-            close = cols[4]
-            index_data[date] = {
-                "open": open,
-                "high": high,
-                "low": low,
-                "close": close
-            }
+        date = row["tdate"]
+        open = row["I_open"]
+        high = row["I_high"]
+        low = row["I_low"]
+        close = row["I_close"]
+        index_data[date] = {
+            "open": open,
+            "high": high,
+            "low": low,
+            "close": close,
+            "pe": row["I_pe"],
+            "pe": row["I_pb"],
+            "div": row["I_yl"]
+        }
 
     if bool(index_data):
         for date in index_data:
             try:
                 print(date)
                 IndexData.objects.get(index=latest_index, date=datetime.datetime.strptime(
-                    date, '%d-%b-%Y'))
+                    date, '%Y-%m-%dT%H:%M:%S'))
                 # data exists nothing to do
             except IndexData.DoesNotExist:
                 index_data_obj = IndexData(
                     index=latest_index,
                     date=datetime.datetime.strptime(
-                        date, '%d-%b-%Y'),
+                        date, '%Y-%m-%dT%H:%M:%S'),
                     open=index_data[date]['open'],
                     close=index_data[date]['close'],
                     high=index_data[date]['high'],

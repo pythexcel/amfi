@@ -41,7 +41,7 @@ def find_amc_no_to_process():
             amc_id = -1
             if amc_no > amc_no_end:
                 print("all amcs completed")
-                return
+                return 9999, 9999
 
     else:
         # this mean there is no amc is db.
@@ -55,6 +55,10 @@ def download_mf_historical_data():
     print("Starting mf download")
 
     amc_no, amc_id = find_amc_no_to_process()
+
+    if amc_no == 9999:
+        print("all amcs completed!")
+        return
 
     print("checking for amc no ", amc_no)
 
@@ -354,4 +358,3 @@ def do_process_data(url, amc_no):
                     pass
 
     return True
-
