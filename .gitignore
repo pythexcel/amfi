@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io
 
+mf_portfolio_download/
+
 ### OSX ###
 .DS_Store
 .AppleDouble

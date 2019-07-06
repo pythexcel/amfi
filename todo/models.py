@@ -42,6 +42,43 @@ class Scheme(models.Model):
     fund_option = models.CharField(max_length=255, null=False)
     fund_type = models.CharField(max_length=255, null=False)
 
+    def is_closed_ended(self):
+        s_cat = getattr(self, "scheme_category")
+        if s_cat.contains("Closed"):
+            return True
+
+        return False
+
+    def is_open_ended(self):
+        s_cat = getattr(self, "scheme_category")
+        if "Open" in s_cat:
+            return True
+
+        return False
+
+    def is_debt(self):
+        s_type = getattr(self, "scheme_type")
+        if "Debt" in s_type:
+            return True
+
+        return False
+
+    def is_equity(self):
+        s_type = getattr(self, "scheme_type")
+        if "Equity" in s_type:
+            return True
+
+        return False
+
+    def is_index(self):
+        s_type = getattr(self, "scheme_type")
+        s_sub_type = getattr(self, "scheme_sub_type")
+
+        if "Index" in s_sub_type:
+            return True
+
+        return False
+
     def previous_yr_abs(self, years=1, start_year=0):
         # years how many years to go back
         # start_year which year to start from
@@ -167,7 +204,7 @@ class Index(models.Model):
 class IndexData(models.Model):
     index = models.ForeignKey(
         'Index',
-        on_delete=models.CASCADE,
+        on_delete=models.CASCADE
     )
     date = models.DateField(null=False)
     open = models.FloatField(null=False)
@@ -177,3 +214,29 @@ class IndexData(models.Model):
     pe = models.FloatField(null=True)
     pb = models.FloatField(null=True)
     div = models.FloatField(null=True)
+
+
+class Scheme_Portfolio(models.Model):
+    scheme = models.ForeignKey(
+        'Scheme',
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    isin = models.CharField(max_length=255)
+    quantity = models.CharField(max_length=255)
+    coupon = models.CharField(max_length=255)
+    industry = models.CharField(max_length=255)
+    rating = models.CharField(max_length=255)
+    market = models.CharField(max_length=255)
+    percent = models.CharField(max_length=255)
+
+
+class Scheme_Portfolio_Url(models.Model):
+    amc = models.ForeignKey(
+        'AMC',
+        on_delete=models.CASCADE
+    ),
+    year = models.CharField(max_length=255)
+    month = models.CharField(max_length=255)
+    url = models.TextField()
+    parsed = models.BooleanField(default=False, null=False)

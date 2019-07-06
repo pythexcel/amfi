@@ -16,4 +16,4 @@ urlpatterns = [
 
 urlpatterns = urlpatterns + router.urls
 
-scheduler.start()
+# scheduler.start()

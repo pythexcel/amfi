@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from todo.jobs.nse import process_nse_historial
+from todo.jobs.excel import process_data
 
 
 import datetime
@@ -27,4 +27,4 @@ class Command(BaseCommand):
         # print("end date ", end)
         # download_mf_input(options["amc"][0], start, end)
 
-        process_nse_historial()
+        process_data()
