@@ -6,7 +6,7 @@ from rest_framework import serializers
 import todo.util
 
 import datetime
-
+import re
 from math import ceil
 
 
@@ -22,11 +22,28 @@ class MFDownload(models.Model):
 # https://medium.com/@MicroPyramid/django-model-managers-and-properties-564ef668a04c
 
 
+class AMCManager(models.Manager):
+    def match_amc_with_short_name(self, short_name):
+        amcs = self.filter(name__icontains=short_name)
+        if amcs.count() > 0:
+            return amcs.first()
+        else:
+            return False
+    pass
+
+
 class AMC(models.Model):
     name = models.CharField(max_length=255, unique=True)
     amc_no = models.IntegerField(null=False, unique=True)
     parsed = models.BooleanField(null=False, default=False)
     next_amc_no = models.IntegerField(null=False, default=0)
+
+    objects = AMCManager()
+
+
+class SchemeManager(models.Manager):
+    def get_actual_scheme_names_for_amc(self, amc):
+        pass
 
 
 class Scheme(models.Model):
@@ -41,6 +58,16 @@ class Scheme(models.Model):
     fund_name = models.CharField(max_length=255, null=False)
     fund_option = models.CharField(max_length=255, null=False)
     fund_type = models.CharField(max_length=255, null=False)
+    object = SchemeManager
+
+    def get_clean_name(self):
+        name = getattr(self, "fund_name")
+        name = re.sub("[\(\[].*?[\)\]]", "", name)
+        name = name.replace("Direct", "")
+        name = name.replace("Growth", "")
+        name = name.replace("Plan", "")
+        name = name.strip()
+        return name
 
     def is_closed_ended(self):
         s_cat = getattr(self, "scheme_category")
@@ -214,29 +241,3 @@ class IndexData(models.Model):
     pe = models.FloatField(null=True)
     pb = models.FloatField(null=True)
     div = models.FloatField(null=True)
-
-
-class Scheme_Portfolio(models.Model):
-    scheme = models.ForeignKey(
-        'Scheme',
-        on_delete=models.CASCADE
-    )
-    name = models.CharField(max_length=255)
-    isin = models.CharField(max_length=255)
-    quantity = models.CharField(max_length=255)
-    coupon = models.CharField(max_length=255)
-    industry = models.CharField(max_length=255)
-    rating = models.CharField(max_length=255)
-    market = models.CharField(max_length=255)
-    percent = models.CharField(max_length=255)
-
-
-class Scheme_Portfolio_Url(models.Model):
-    amc = models.ForeignKey(
-        'AMC',
-        on_delete=models.CASCADE
-    ),
-    year = models.CharField(max_length=255)
-    month = models.CharField(max_length=255)
-    url = models.TextField()
-    parsed = models.BooleanField(default=False, null=False)
