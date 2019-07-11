@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path as url
+from todo.jobs import scheduler
+import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,3 +24,12 @@ urlpatterns = [
     url(r'^api/', include('api.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+
+dirspot = os.getcwd()
+
+# bad practice to identify server but using this for now
+
+if "/home/node" in dirspot:
+    print("we are on server so starting schedulers ")
+    scheduler.start()
