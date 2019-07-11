@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'amc.apps.AmcConfig',
+    'api.apps.ApiConfig',
     'rest_framework',
     'rest_framework.authtoken'
 ]

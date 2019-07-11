@@ -209,7 +209,7 @@ class Nav(models.Model):
                 start_nav = df.loc[date.strftime("%Y-%m-%d")]["nav"]
             else:
                 raise ValueError(
-                    "unable to get nav value at all, check your date")
+                    "unable to get nav value at all, check your date" , date)
 
         return start_nav
 
@@ -221,11 +221,14 @@ class NavSerializer(serializers.ModelSerializer):
 
 
 class Index(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    type = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
     start_date = models.DateField(null=False)
     end_date = models.DateField(null=False)
     parsed = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ("name", "type")
 
 
 class IndexData(models.Model):
