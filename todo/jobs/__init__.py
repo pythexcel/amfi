@@ -6,6 +6,8 @@ from todo.jobs.bse import process_bse_historial, process_bse_daily
 from todo.jobs.mf import download_mf_historical_data, schedule_daily_download_mf
 
 from amc.jobs.portfolio_identify import process_zip_file, identify_amc
+from amc.jobs.portfolio_process import process_data as process_amc_portfolio_data
+
 
 scheduler = BackgroundScheduler()
 
@@ -20,6 +22,8 @@ job = scheduler.add_job(process_bse_daily, 'interval', hours=12)
 
 job = scheduler.add_job(process_zip_file, 'interval', days=1)
 job = scheduler.add_job(identify_amc, 'interval', days=1)
+
+job = scheduler.add_job(process_amc_portfolio_data, "interval", minutes=1)
 
 logging.basicConfig()
 logging.getLogger('apscheduler').setLevel(logging.DEBUG)
