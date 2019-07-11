@@ -145,15 +145,15 @@ def download_mf_input(amc_id, start, end):
 
 
 def schedule_daily_download_mf():
-    date = datetime.date.today
+    date = datetime.date.today()
     url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
         date.strftime("%Y-%m-%d")
     do_process_data(url, -1)
-    date = datetime.date.today - datetime.timedelta(days=1)
+    date = datetime.date.today() - datetime.timedelta(days=1)
     url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
         date.strftime("%Y-%m-%d")
     do_process_data(url, -1)
-    date = datetime.date.today - datetime.timedelta(days=2)
+    date = datetime.date.today() - datetime.timedelta(days=2)
     url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
         date.strftime("%Y-%m-%d")
     do_process_data(url, -1)
