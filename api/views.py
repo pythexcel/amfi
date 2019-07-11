@@ -31,6 +31,11 @@ from todo.util import get_date_index_data, fill_date_frame_data
 
 
 @api_view()
+def ping():
+    return Response("Pong")
+
+
+@api_view()
 def abs_return(request, amfi):
     scheme = Scheme.objects.get(fund_code=amfi)
 
