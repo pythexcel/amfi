@@ -8,7 +8,12 @@ from pyxlsb import open_workbook
 from todo.models import AMC
 
 
-path = "/mnt/c/work/newdref/mf_portfolio_download"
+local_path = "/mnt/c/work/newdref/mf_portfolio_download"
+
+server_path = "/home/node/manish_test_mf/mf_portfolio_download"
+
+path = server_path
+
 
 
 def read_excel(xls, sheet_name):
