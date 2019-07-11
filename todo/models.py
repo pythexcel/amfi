@@ -42,9 +42,12 @@ class AMC(models.Model):
 
 
 class SchemeManager(models.Manager):
+    # for now working with open ended schems only
     def get_queryset(self):
         return super().get_queryset().filter(scheme_category='Open Ended Schemes')
-        # for now working with open ended schems only
+
+    def get_category_types(self):
+        return self.only("scheme_type").distinct()
 
     def get_actual_scheme_names_for_amc(self, amc):
         pass
@@ -68,10 +71,11 @@ class Scheme(models.Model):
         max_length=255, null=False)  # grown or what kind
     fund_type = models.CharField(
         max_length=255, null=False)  # direct or regular
-    object = SchemeManager
 
-    def get_category_types(self):
-        return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
+    objects = SchemeManager()
+
+    # def get_category_types(self):
+        # return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
 
     def get_clean_name(self):
         name = getattr(self, "fund_name")
