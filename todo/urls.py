@@ -1,9 +1,12 @@
-from todo.jobs import scheduler
 from rest_framework.routers import DefaultRouter
 from todo.views import rolling_return, abs_return
 from django.urls import path, include, re_path as url
 
 router = DefaultRouter()
+
+
+import os
+
 
 # router.register(r'todo', TodoViewSet, basename='todo')
 
@@ -15,5 +18,3 @@ router = DefaultRouter()
 # ]
 
 # urlpatterns = urlpatterns + router.urls
-
-scheduler.start()
