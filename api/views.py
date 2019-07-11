@@ -31,7 +31,7 @@ from todo.util import get_date_index_data, fill_date_frame_data
 
 
 @api_view()
-def ping():
+def ping(request):
     return Response("Pong")
 
 
