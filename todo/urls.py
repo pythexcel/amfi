@@ -8,12 +8,12 @@ router = DefaultRouter()
 # router.register(r'todo', TodoViewSet, basename='todo')
 
 
-urlpatterns = [
-    url(r'^rolling_return/(?P<amfi>\d+)/$',
-        rolling_return, name='rolling_return'),
-    url(r'^abs_return/(?P<amfi>\d+)/$', abs_return, name='abs_return'),
-]
+# urlpatterns = [
+#     url(r'^rolling_return/(?P<amfi>\d+)/$',
+#         rolling_return, name='rolling_return'),
+#     url(r'^abs_return/(?P<amfi>\d+)/$', abs_return, name='abs_return'),
+# ]
 
-urlpatterns = urlpatterns + router.urls
+# urlpatterns = urlpatterns + router.urls
 
 scheduler.start()

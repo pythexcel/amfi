@@ -210,7 +210,7 @@ def process_data(name, start_date, end_date, latest_index):
     if bool(index_data):
         for date in index_data:
             try:
-                print(date)
+                print(date, "found in data for nse index")
                 IndexData.objects.get(index=latest_index, date=datetime.datetime.strptime(
                     date, '%d-%b-%Y'))
                 # data exists nothing to do
