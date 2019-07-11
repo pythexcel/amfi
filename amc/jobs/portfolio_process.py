@@ -11,7 +11,7 @@ from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio
 from todo.models import Scheme, AMC
 from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
-from amc.jobs.util import path as mf_download_files_path
+from amc.jobs.util import path as mf_download_files_path, local_path, server_path
 
 
 def process_data():
@@ -20,6 +20,10 @@ def process_data():
     for amc_process in to_process:
         file_path = getattr(amc_process, "final_path")
         amc_short_name = getattr(amc_process, "amc")
+
+        # one time temporary code since we parsed files in local it has local path
+        if local_path in file_path:
+            file_path = file_path.replace(local_path, server_path)
 
         amc = AMC.objects.match_amc_with_short_name(amc_short_name)
 
@@ -102,9 +106,11 @@ def process_portfolio(filename, amc, date):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]                               :, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]
+                      :, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1)                               :, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1)
+                                :, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
