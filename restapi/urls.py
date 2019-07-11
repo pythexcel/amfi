@@ -30,6 +30,8 @@ dirspot = os.getcwd()
 
 # bad practice to identify server but using this for now
 
+print("working directory" , dirspot)
+
 if "/home/node" in dirspot:
     print("we are on server so starting schedulers ")
     scheduler.start()
