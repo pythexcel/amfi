@@ -28,12 +28,14 @@ def process_data():
                 process_portfolio(file_path, amc, getattr(amc_process, "date"))
                 amc_process.parsing_completed()
             except Exception as e:
+                print(e)
                 amc_process.addCritical(e)
                 # traceback.print_exc(e)
 
             # break
 
         else:
+            print("unable to match amc")
             amc_process.addCritical("Unable to match amc itself!")
             amc_process.parsing_completed()
 
