@@ -42,6 +42,10 @@ class AMC(models.Model):
 
 
 class SchemeManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(scheme_category='Open Ended Schemes')
+        # for now working with open ended schems only
+
     def get_actual_scheme_names_for_amc(self, amc):
         pass
 
@@ -51,14 +55,23 @@ class Scheme(models.Model):
         'AMC',
         on_delete=models.CASCADE,
     )
+    # this is mainly for open ended or close ended
     scheme_category = models.CharField(max_length=255, null=False)
+    # this is for equity debt etc
     scheme_type = models.CharField(max_length=255, null=False)
+    # this is for type i.e mid cap, large cap etc
     scheme_sub_type = models.CharField(max_length=255, null=False)
-    fund_code = models.CharField(max_length=255, null=False, unique=True)
-    fund_name = models.CharField(max_length=255, null=False)
-    fund_option = models.CharField(max_length=255, null=False)
-    fund_type = models.CharField(max_length=255, null=False)
+    fund_code = models.CharField(
+        max_length=255, null=False, unique=True)  # amfi code
+    fund_name = models.CharField(max_length=255, null=False)  # name
+    fund_option = models.CharField(
+        max_length=255, null=False)  # grown or what kind
+    fund_type = models.CharField(
+        max_length=255, null=False)  # direct or regular
     object = SchemeManager
+
+    def get_category_types(self):
+        return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
 
     def get_clean_name(self):
         name = getattr(self, "fund_name")
@@ -68,6 +81,7 @@ class Scheme(models.Model):
         name = name.replace("Plan", "")
         name = name.strip()
         return name
+    # clean_name = property(get_clean_name)
 
     def is_closed_ended(self):
         s_cat = getattr(self, "scheme_category")
@@ -209,7 +223,7 @@ class Nav(models.Model):
                 start_nav = df.loc[date.strftime("%Y-%m-%d")]["nav"]
             else:
                 raise ValueError(
-                    "unable to get nav value at all, check your date" , date)
+                    "unable to get nav value at all, check your date", date)
 
         return start_nav
 

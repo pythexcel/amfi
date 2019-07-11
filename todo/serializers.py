@@ -11,9 +11,13 @@ class AMCSerializer(serializers.ModelSerializer):
 
 
 class SchemeSerializer(serializers.ModelSerializer):
+    clean_name = serializers.SerializerMethodField()
     class Meta:
         model = Scheme
         fields = '__all__'
+
+    def get_clean_name(self, obj):
+        return obj.get_clean_name()
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
