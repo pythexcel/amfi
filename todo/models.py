@@ -46,8 +46,47 @@ class SchemeManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(scheme_category='Open Ended Schemes')
 
+    """
+    getting expect category types are 
+    [
+        "Equity Scheme",
+        "Debt Scheme",
+        "Hybrid Scheme",   //balance etc type
+        "Other Scheme", // index funds, fof funds (fund of fund)
+        "Income", //these are generally fix internal funds fix income funds
+        "Growth", // very few funds classified as growth
+        "Gilt",
+        "Floating Rate", //there are very fund floating rate funds like 2=3
+        "Solution Oriented Scheme" //like retainment, child education etc
+    ]
+    """
+
     def get_category_types(self):
-        return self.only("scheme_type").distinct()
+        return self.values_list("scheme_type", flat=True).distinct()
+
+    # this function is to return sub types of a scheme. e.g to get sub types of debt scheme
+    def get_sub_category_types(self, type):
+        return self.filter(scheme_type__icontains=type).values_list("scheme_sub_type", flat=True).distinct()
+
+    def get_funds(self, type=None, sub_type=None, amc=None):
+        if type is None and amc is None:
+            raise Exception("either type or amc is needed")
+
+        filter = None
+
+        if type is not None:
+            filter = Q(scheme_type=type)
+
+        if amc is not None:
+            if type is not None:
+                filter = Q(scheme_type=type) & Q(amc=amc)
+            else:
+                filter = Q(amc=amc)
+
+        if sub_type is not None:
+            filter &= Q(scheme_sub_type=sub_type)
+
+        return self.filter(filter)
 
     def get_actual_scheme_names_for_amc(self, amc):
         pass
@@ -75,7 +114,7 @@ class Scheme(models.Model):
     objects = SchemeManager()
 
     # def get_category_types(self):
-        # return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
+    # return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
 
     def get_clean_name(self):
         name = getattr(self, "fund_name")

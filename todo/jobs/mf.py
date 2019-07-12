@@ -21,6 +21,7 @@ def find_amc_no_to_process():
             ser = AMCSerializer(amc)
             amc_no = ser.data["amc_no"]
             amc_id = amc.id
+            is_new_amc = False
         except AMC.DoesNotExist:
             # if there is no amc being parsed then need to find the
             # last amc i.e amc which max amc_no
@@ -39,24 +40,25 @@ def find_amc_no_to_process():
 
             AMC.objects.filter(pk=amc.id).update(next_amc_no=amc_no)
             amc_id = -1
+            is_new_amc = True
             if amc_no > amc_no_end:
                 print("all amcs completed")
-                return 9999, 9999
+                return 999, 999, False
 
     else:
         # this mean there is no amc is db.
         # db is fully empty so start from 1
         amc_no = amc_no_start
 
-    return amc_no, amc_id
+    return amc_no, amc_id, is_new_amc
 
 
 def download_mf_historical_data():
     print("Starting mf download")
 
-    amc_no, amc_id = find_amc_no_to_process()
+    amc_no, amc_id, is_new_amc = find_amc_no_to_process()
 
-    if amc_no == 9999:
+    if amc_no == 999:
         print("all amcs completed!")
         return
 
@@ -85,8 +87,10 @@ def download_mf_historical_data():
         if ser.data["amc_id"] is None:
             raise MFDownload.DoesNotExist('Record does not exist.')
 
-        ser.data["start_date"] = "2019-03-27"
-        ser.data["end_date"] = "2019-02-25"
+        start = datetime.datetime.today()
+        end = (datetime.datetime.today() - datetime.timedelta(days=days_gap))
+        ser.data["start_date"] = start.strftime("%Y-%m-%d")
+        ser.data["end_date"] = end.strftime("%Y-%m-%d")
 
         if ser.data["end_time"] is None and False:
             # this means previous script didn't run properly. so parsing it again
@@ -97,11 +101,17 @@ def download_mf_historical_data():
             end = (start -
                    datetime.timedelta(days=days_gap))
         else:
-            start = ser.data["end_date"]
-            start = datetime.datetime.strptime(
-                start, '%Y-%m-%d')
-            end = (start -
-                   datetime.timedelta(days=days_gap))
+
+            if is_new_amc == True:
+                # this means parsing is completed and we are trying new amc
+                # then start/end date should be start from today not the old date
+                pass
+            else:
+                start = ser.data["end_date"]
+                start = datetime.datetime.strptime(
+                    start, '%Y-%m-%d')
+                end = (start -
+                       datetime.timedelta(days=days_gap))
 
         # MFDownload.objects.filter(pk=mfdownload.id).update(start_date=start, end_date=end,
         #                   start_time=datetime.datetime.now(), end_time=None)
@@ -312,6 +322,13 @@ def do_process_data(url, amc_no):
 
                     # ser = AMCSerializer(amc)
                     # print(ser.data)
+
+                    if scheme_type == "Balanced":
+                        scheme_type = "Hybrid Scheme"
+
+                    if scheme_type == "Liquid":
+                        scheme_type = "Debt Scheme"
+
                     scheme = fetch_or_save_scheme(
                         mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type)
 
@@ -333,9 +350,12 @@ def do_process_data(url, amc_no):
                                 pk=nav.id).update(nav=mf_data[nav_index])
 
                     except Nav.DoesNotExist:
-                        nav = Nav(nav=mf_data[nav_index],
-                                  date=date_time_obj, scheme=scheme)
-                        nav.save()
+                        try:
+                            nav = Nav(nav=mf_data[nav_index],
+                                      date=date_time_obj, scheme=scheme)
+                            nav.save()
+                        except:
+                            pass
 
             else:
                 if line.find(")") != -1:
