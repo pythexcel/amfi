@@ -5,9 +5,12 @@ from rest_framework import serializers
 
 import todo.util
 
+import pandas as pd
+
 import datetime
 import re
 from math import ceil
+from dateutil.relativedelta import relativedelta
 
 
 class MFDownload(models.Model):
@@ -163,12 +166,12 @@ class Scheme(models.Model):
 
         return False
 
+    # this is for calcuation's with base reference of any year but 1st and last of year
     def previous_yr_abs(self, years=1, start_year=0):
         # years how many years to go back
         # start_year which year to start from
         # abs weather absolute return or annulized return
 
-        # this is for calcuation's with basement reference of any year but 1st and last of year
         end_date = datetime.date(datetime.date.today(
         ).year - start_year, 1, 1) - datetime.timedelta(days=1)
         # 1 DAY BECAUSE we need to find the date 31 dec instead of 1jan of the previous
@@ -183,16 +186,15 @@ class Scheme(models.Model):
 
         return ret
 
-    def previous_yr_abs_today(self, years=1, offset_days=0, extrapolateNav=True):
+    # this has all caculate with base reference as today
+    def previous_yr_abs_today(self, years=1, offset_days=0):
         # how many years to go back
         # offset in days, if start from today or few days back
         # abs weather absolute return or annulized return
-
-        # this has all caculate with base reference as today
         end_date = datetime.date.today() - datetime.timedelta(days=offset_days)
         start_date = end_date - datetime.timedelta(days=365*years)
 
-        ret = self.abs_return(start_date, end_date, extrapolateNav)
+        ret = self.abs_return(start_date, end_date)
 
         if years > 1:
             cagr = todo.util.cagr(
@@ -201,14 +203,32 @@ class Scheme(models.Model):
 
         return ret
 
-    def ytd_abs(self):
-        end_date = datetime.date.today()
+    def ytd_abs(self, offset_days=0):
+        end_date = datetime.date.today() - datetime.timedelta(days=offset_days)
         start_date = datetime.date(datetime.date.today().year, 1, 1)
 
         return self.abs_return(start_date, end_date)
 
-    def abs_return(self, start_date, end_date, extrapolateNav=True):
-        start_nav = Nav.get_nav_for_date(self, start_date, extrapolateNav)
+    def since_start(self, offset_days=0):
+        end_date = datetime.date.today()
+        nav, begin_date = Nav.get_nav_begining(self)
+
+        print("nav " , nav , " begin date ", begin_date)
+
+        difference_in_years = relativedelta(end_date, begin_date).years
+
+        ret = self.abs_return(begin_date, end_date)
+
+        if difference_in_years > 1:
+            cagr = todo.util.cagr(
+                ret["start_nav"], ret["end_nav"], difference_in_years) * 100
+            ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
+            ret["year_since_begin"] = difference_in_years
+
+        return ret
+
+    def abs_return(self, start_date, end_date):
+        start_nav = Nav.get_nav_for_date(self, start_date)
         end_nav = Nav.get_nav_for_date(self, end_date)
 
         pct = (end_nav - start_nav) / (start_nav)
@@ -220,6 +240,39 @@ class Scheme(models.Model):
             "end_date": end_date,
             "pct": todo.util.float_round(pct*100, 2, ceil)
         }
+
+    # //https://stackoverflow.com/questions/35339139/where-is-the-documentation-on-pandas-freq-tags
+    # calculate rolling return for any scheme and frequency
+    def rolling_return(self, start_date, end_date, freq = "M"):
+        f = Q(scheme=self)
+        f &= Q(date__gt=start_date)
+        f &= Q(date__lt=end_date)
+
+        navs = Nav.objects.filter(f)
+        print(navs.query)
+        ser = NavSerializer(navs, many=True)
+
+        df = pd.DataFrame(ser.data, columns=["nav", "date"])
+
+        start_date = df.iloc[0]["date"]
+        end_date = df.iloc[len(df.index) - 1]["date"]
+
+        idx = pd.date_range(start_date, end_date)
+
+        df['Datetime'] = pd.to_datetime(df["date"])
+
+        df = df.set_index("Datetime")
+        df = df.reindex(idx, method='ffill')
+
+        df = df.drop(['date'], axis=1)
+
+        df1 = df.asfreq("M")
+
+        df1['per'] = df1.pct_change()
+
+        print(df1)
+
+        return df1
 
     class Meta:
         unique_together = ("amc", "fund_code")
@@ -235,6 +288,12 @@ class Nav(models.Model):
 
     class Meta:
         unique_together = ("scheme", "date")
+
+    @staticmethod
+    def get_nav_begining(scheme):
+        # this will return the nav value and date since the scheme begain i.e the first data which we have
+        nav = Nav.objects.filter(scheme=scheme).order_by("date").first()
+        return getattr(nav, "nav"), getattr(nav, "date")
 
     @staticmethod
     def get_nav_for_date(scheme, date, extrapolateNav=True):
