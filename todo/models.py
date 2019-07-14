@@ -183,7 +183,7 @@ class Scheme(models.Model):
 
         return ret
 
-    def previous_yr_abs_today(self, years=1, offset_days=0):
+    def previous_yr_abs_today(self, years=1, offset_days=0, extrapolateNav=True):
         # how many years to go back
         # offset in days, if start from today or few days back
         # abs weather absolute return or annulized return
@@ -192,7 +192,7 @@ class Scheme(models.Model):
         end_date = datetime.date.today() - datetime.timedelta(days=offset_days)
         start_date = end_date - datetime.timedelta(days=365*years)
 
-        ret = self.abs_return(start_date, end_date)
+        ret = self.abs_return(start_date, end_date, extrapolateNav)
 
         if years > 1:
             cagr = todo.util.cagr(
@@ -207,8 +207,8 @@ class Scheme(models.Model):
 
         return self.abs_return(start_date, end_date)
 
-    def abs_return(self, start_date, end_date):
-        start_nav = Nav.get_nav_for_date(self, start_date)
+    def abs_return(self, start_date, end_date, extrapolateNav=True):
+        start_nav = Nav.get_nav_for_date(self, start_date, extrapolateNav)
         end_nav = Nav.get_nav_for_date(self, end_date)
 
         pct = (end_nav - start_nav) / (start_nav)
@@ -237,13 +237,19 @@ class Nav(models.Model):
         unique_together = ("scheme", "date")
 
     @staticmethod
-    def get_nav_for_date(scheme, date):
+    def get_nav_for_date(scheme, date, extrapolateNav=True):
+        # this can be optmized by cache because we are calculating the date frame again and again
+        # for large calculation it can be improved
         # this function will get nav for date and will interpolate if nav doesn't exist
         try:
             navs = Nav.objects.get(scheme=scheme, date=date)
             start_nav = navs.nav
             # data exists problem solved
         except Nav.DoesNotExist:
+
+            if extrapolateNav == False:
+                raise Exception(
+                    "Nav doesn't exist and extrapolate is false  for date", date)
             # data doesn't exist. we need to find nearest set of data's and interpolate based on it
             print("nav doesn't existing will intrapolate")
 

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'todo.apps.TodoConfig',
     'amc.apps.AmcConfig',
     'api.apps.ApiConfig',
+    'stats.apps.StatsConfig',
     'rest_framework',
     'rest_framework.authtoken'
 ]

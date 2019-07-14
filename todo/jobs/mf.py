@@ -209,7 +209,7 @@ def fetch_or_save_amc(amc_name, amc_no):
     return amc
 
 
-def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type):
+def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no):
     # this will cache scheme and we don't need to alwways fire sql query
     scheme_unique = fund_code + str(amc.id)
     if scheme_unique in scheme_list:
@@ -217,18 +217,28 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
     try:
         scheme = Scheme.objects.get(
             fund_code=fund_code, amc=amc)
+
     except Scheme.DoesNotExist:
-        scheme = Scheme(
-            scheme_category=scheme_category,
-            scheme_type=scheme_type,
-            scheme_sub_type=scheme_sub_type,
-            fund_code=fund_code,
-            fund_name=fund_name,
-            fund_option=fund_option,
-            fund_type=fund_type,
-            amc=amc
-        )
-        scheme.save()
+        # amc_no -1 means this is called from daily nav update process and we cannot save scheme from there at all
+        if amc_no != -1:
+            print(Scheme.objects.filter(
+                fund_code=fund_code, amc=amc).query)
+
+            print(scheme_category)
+
+            scheme = Scheme(
+                scheme_category=scheme_category,
+                scheme_type=scheme_type,
+                scheme_sub_type=scheme_sub_type,
+                fund_code=fund_code,
+                fund_name=fund_name,
+                fund_option=fund_option,
+                fund_type=fund_type,
+                amc=amc
+            )
+            scheme.save()
+        else:
+            scheme = None
 
     scheme_list[scheme_unique] = scheme
     return scheme
@@ -329,9 +339,16 @@ def do_process_data(url, amc_no):
                     if scheme_type == "Liquid":
                         scheme_type = "Debt Scheme"
 
-                    scheme = fetch_or_save_scheme(
-                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type)
+                    if "Closed" in scheme_category:
+                        # we are skipping closed ended schemes
+                        continue
 
+                    scheme = fetch_or_save_scheme(
+                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no)
+
+                    if scheme is None:
+                        continue
+                        
                     # ser = SchemeSerializer(scheme)
                     # print(ser.data)
 
