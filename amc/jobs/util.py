@@ -81,7 +81,7 @@ def find_row_with_isin_heading(df, scheme):
     # and below the isin has fund portfolio like isin no etc
 
     expected_cols = ["Name", "ISIN", "Quantity", "Coupon",
-                     "Rating", "Industry", "Market", "NAV", "Assets"]
+                     "Rating", "Industry", "Market", "NAV", "Assets", "AUM"]
 
     # for col in expected_cols:
     mask = df.apply(lambda x: x.astype(str).str.contains('ISIN', False))
@@ -124,6 +124,10 @@ def find_row_with_isin_heading(df, scheme):
     if "Assets" in col_indexes:
         col_indexes["NAV"] = col_indexes["Assets"]
         del col_indexes["Assets"]
+
+    if "AUM" in col_indexes:
+        col_indexes["NAV"] = col_indexes["AUM"]
+        del col_indexes["AUM"]
 
     print(col_indexes)
     return col_indexes
