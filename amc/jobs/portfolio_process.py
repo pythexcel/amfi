@@ -34,7 +34,8 @@ def process_data():
             except Exception as e:
                 print(e)
                 amc_process.addCritical(e)
-                # traceback.print_exc(e)
+                amc_process.parsing_completed()
+                traceback.print_exc(e)
 
             # break
 
