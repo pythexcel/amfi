@@ -29,7 +29,7 @@ def process_data():
 
         if amc != False:
             try:
-                process_portfolio(file_path, amc, getattr(amc_process, "date"))
+                process_portfolio(file_path, amc, getattr(amc_process, "date") , amc_process)
                 amc_process.parsing_completed()
             except Exception as e:
                 print(e)
@@ -44,7 +44,7 @@ def process_data():
             amc_process.parsing_completed()
 
 
-def process_portfolio(filename, amc, date):
+def process_portfolio(filename, amc, date, amc_process):
 
     print("filename ", filename)
     print("amc ", amc.name)
@@ -196,7 +196,8 @@ def process_portfolio(filename, amc, date):
                 #
             else:
                 print("unable to read data key columns missing")
-                raise Exception("unable to read data key columns missing")
+                # raise Exception("unable to read data key columns missing")
         else:
             print("fund itself not found")
-            raise Exception("found itself not found")
+            # amc_process.addLog("fund not found ", )
+            # raise Exception("found itself not found")
