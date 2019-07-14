@@ -253,8 +253,8 @@ class Nav(models.Model):
             # data doesn't exist. we need to find nearest set of data's and interpolate based on it
             print("nav doesn't existing will intrapolate")
 
-            date_delta_end = date - datetime.timedelta(days=3)
-            date_delta_start = date + datetime.timedelta(days=3)
+            date_delta_end = date - datetime.timedelta(days=7)
+            date_delta_start = date + datetime.timedelta(days=7)
             f = Q(date__gt=date_delta_end) & Q(
                 date__lt=date_delta_start) & Q(scheme=scheme)
 
