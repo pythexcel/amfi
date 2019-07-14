@@ -150,7 +150,7 @@ def download_mf_historical_data():
 
 def download_mf_input(amc_id, start, end):
     url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+str(amc_id)+'&tp=1&frmdt=' + \
-        end.strftime("%Y-%m-%d")+'&todt='+start.strftime("%Y-%m-%d")
+        start.strftime("%d-%b-%Y")+'&todt='+end.strftime("%d-%b-%Y")
     do_process_data(url, amc_id)
 
 
@@ -348,7 +348,7 @@ def do_process_data(url, amc_no):
 
                     if scheme is None:
                         continue
-                        
+
                     # ser = SchemeSerializer(scheme)
                     # print(ser.data)
 
