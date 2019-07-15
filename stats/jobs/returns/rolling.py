@@ -12,8 +12,9 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 def rolling_return():
     # rolling return will work once a montly only and will refresh all data in table for all schemes
+    rolling_query = Scheme.objects.filter().all()
 
-    rolling_query = Scheme.objects.all()
+    print(rolling_query.query)
 
     for scheme in rolling_query:
         calculate_rolling(scheme)
