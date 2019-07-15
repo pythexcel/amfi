@@ -15,7 +15,15 @@ def find_amc_no_to_process():
 
     if AMC.objects.all().count() > 0:
         try:
-            amc = AMC.objects.get(parsed=False)
+            amc = AMC.objects.filter(parsed=False)
+            # this wiered logic because initially code was written based on single amc always
+            # now changed to multiple at a time
+            if amc.count() == 0:
+                amc = AMC.objects.get(parsed=False)
+            else:
+                amc = AMC.objects.filter(
+                    parsed=False).order_by("amc_no").first()
+
             # this mean there is an amc which still has data being parsed
             # so simply continue with that
             ser = AMCSerializer(amc)
