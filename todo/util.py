@@ -7,6 +7,12 @@ import pandas as pd
 # this will return a date frame with index as date and value is nav
 
 
+def get_priceindex_data(input):
+    df = pd.DataFrame(input, columns=["close", "date"])
+    df['Datetime'] = pd.to_datetime(df["date"])
+    df = df.set_index("Datetime")
+    return df
+
 def get_date_index_data(input):
     df = pd.DataFrame(input, columns=["nav", "date"])
     df['Datetime'] = pd.to_datetime(df["date"])

@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from stats.jobs.returns.abs import abs_return
+from stats.jobs.returns.rolling import rolling_return
 
 
 import datetime
@@ -9,5 +9,5 @@ import datetime
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        print("calculating returns for schemes")
-        abs_return()
+        print("calculating rolling for schemes")
+        rolling_return()

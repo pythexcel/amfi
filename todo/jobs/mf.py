@@ -60,7 +60,25 @@ def download_mf_historical_data():
 
     if amc_no == 999:
         print("all amcs completed!")
-        return
+
+        amc = AMC.objects.order_by("amc_no").first()
+        print(amc)
+        # return
+
+        # one time temporary to check if missed any amc
+
+        start = getattr(amc, "id")
+
+        if start < 100:
+            amc_no = start + 1
+            AMC.objects.get(pk=amc.id).update(next_amc_no=amc_no)
+            if AMC.objects.filter(amc_no=amc_no).count() > 0:
+                pass
+            else:
+                return
+
+        else:
+            return
 
     print("checking for amc no ", amc_no)
 
@@ -156,16 +174,22 @@ def download_mf_input(amc_id, start, end):
 
 def schedule_daily_download_mf():
     date = datetime.date.today()
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
-        date.strftime("%Y-%m-%d")
+    # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
+    #     date.strftime("%Y-%m-%d")
+    url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
+        date.strftime("%Y%m%d000000")
     do_process_data(url, -1)
     date = datetime.date.today() - datetime.timedelta(days=1)
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
-        date.strftime("%Y-%m-%d")
+    # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
+    #     date.strftime("%Y-%m-%d")
+    url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
+        date.strftime("%Y%m%d000000")
     do_process_data(url, -1)
     date = datetime.date.today() - datetime.timedelta(days=2)
-    url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
-        date.strftime("%Y-%m-%d")
+    # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
+    #     date.strftime("%Y-%m-%d")
+    url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
+        date.strftime("%Y%m%d000000")
     do_process_data(url, -1)
 
 
@@ -238,7 +262,7 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
             )
             scheme.save()
         else:
-            scheme = None
+            return None
 
     scheme_list[scheme_unique] = scheme
     return scheme
@@ -277,10 +301,10 @@ def do_process_data(url, amc_no):
 
     for line in mf_nav_data[1:]:
         if len(line.strip()) > 0:
-            # print(line)
             if line.find(";") != -1:
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
+
                 mf_data = line.split(";")
                 if len(mf_data[scheme_name_index].split("-")) == 3:
                     fund_name = mf_data[scheme_name_index].split(
@@ -328,8 +352,6 @@ def do_process_data(url, amc_no):
 
                     # print(mf_data[0])
 
-                    print("saving to db ", line)
-
                     # ser = AMCSerializer(amc)
                     # print(ser.data)
 
@@ -343,6 +365,7 @@ def do_process_data(url, amc_no):
                         # we are skipping closed ended schemes
                         continue
 
+                    # print(amc_no)
                     scheme = fetch_or_save_scheme(
                         mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no)
 
@@ -351,6 +374,8 @@ def do_process_data(url, amc_no):
 
                     # ser = SchemeSerializer(scheme)
                     # print(ser.data)
+
+                    print("saving to db ", line)
 
                     date_time_str = mf_data[date_index]
                     date_time_obj = datetime.datetime.strptime(
@@ -371,7 +396,8 @@ def do_process_data(url, amc_no):
                             nav = Nav(nav=mf_data[nav_index],
                                       date=date_time_obj, scheme=scheme)
                             nav.save()
-                        except:
+                        except Exception as e:
+                            print(e)
                             pass
 
             else:
