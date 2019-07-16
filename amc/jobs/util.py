@@ -12,7 +12,7 @@ local_path = "/mnt/c/work/newdref/mf_portfolio_download"
 
 server_path = "/home/node/manish_test_mf/mf_portfolio_download"
 
-path = server_path
+path = local_path
 
 
 
