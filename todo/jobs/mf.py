@@ -98,7 +98,7 @@ def download_mf_historical_data():
         if(count > 2):
             # this means we didn't find data when parsing url to consicutive times
             # which means for sure amc data is finished
-            print("data completed for amc %s", amc_no)
+            print("data completed for amc ", amc_no)
             AMC.objects.filter(amc_no=amc_no).update(parsed=True)
             return
 
@@ -250,6 +250,11 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
         scheme = Scheme.objects.get(
             fund_code=fund_code, amc=amc)
 
+        if getattr(scheme, "fund_name") != fund_name:
+            print("old fund name ", getattr(scheme, "fund_name"),
+                  " new fund name ", fund_name)
+            Scheme.objects.filter(pk=scheme.id).update(fund_name=fund_name)
+
     except Scheme.DoesNotExist:
         # amc_no -1 means this is called from daily nav update process and we cannot save scheme from there at all
         if amc_no != -1:
@@ -313,24 +318,50 @@ def do_process_data(url, amc_no):
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
 
+                fund_types = ["direct", "regular", "growth",
+                              "dividend", "bonus", "reinvestment"]
+
                 mf_data = line.split(";")
+
+                scheme_data = mf_data[scheme_name_index].split("-")
+
+                # - is crticial but problem some fund names have - in build in this.
+                # below logic skips this totally causing problem with scheme name
+                # so we need identify fund type and option and rest of the part include - is part of schmeme name
+
+                duplicate_scheme_date = [scheme_data[0]]
+
+                for data_point in scheme_data[1:]:
+                    found = False
+                    for t in fund_types:
+                        if t in data_point.lower():
+                            found = True
+                            break
+                    if found == False:
+                        duplicate_scheme_date.append(data_point)
+
+                scheme_name_new = " ".join(duplicate_scheme_date)
+                scheme_name_new = scheme_name_new.strip()
+
+                scheme_name_new = scheme_name_new.replace("  ", " ")
+
                 if len(mf_data[scheme_name_index].split("-")) == 3:
-                    fund_name = mf_data[scheme_name_index].split(
-                        "-")[0].strip()
+                    # fund_name = mf_data[scheme_name_index].split(
+                        # "-")[0].strip()
                     fund_option = mf_data[scheme_name_index].split(
                         "-")[1].strip()
                     fund_type = mf_data[scheme_name_index].split(
                         "-")[2].strip()
                 else:
                     if len(mf_data[scheme_name_index].split("-")) == 2:
-                        fund_name = mf_data[scheme_name_index].split(
-                            "-")[0].strip()
+                        # fund_name = mf_data[scheme_name_index].split(
+                        #     "-")[0].strip()
                         fund_option = ""
                         fund_type = mf_data[scheme_name_index].split(
                             "-")[1].strip()
                     else:
-                        fund_name = mf_data[scheme_name_index].split(
-                            "-")[0].strip()
+                        # fund_name = mf_data[scheme_name_index].split(
+                        #     "-")[0].strip()
                         fund_option = ""
                         fund_type = ""
 
@@ -375,10 +406,12 @@ def do_process_data(url, amc_no):
 
                     # print(amc_no)
                     scheme = fetch_or_save_scheme(
-                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no)
+                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, scheme_name_new, fund_option, fund_type, amc_no)
 
                     if scheme is None:
                         continue
+
+                    # continue  # temp code
 
                     # ser = SchemeSerializer(scheme)
                     # print(ser.data)
@@ -423,8 +456,8 @@ def do_process_data(url, amc_no):
                     scheme_type = scheme_type
                     scheme_sub_type = scheme_sub_type
                 else:
-                    print("amc")
-                    print(line.strip())
+                    # print("amc")
+                    # print(line.strip())
                     amc_name = line.strip()
                     pass
 
