@@ -9,6 +9,8 @@ from amc.jobs.portfolio_identify import process_zip_file, identify_amc
 from amc.jobs.portfolio_process import process_data as process_amc_portfolio_data
 from stats.jobs.returns.abs import abs_return
 
+from amc.jobs.ter_process import start_process
+
 from apscheduler.triggers.combining import OrTrigger
 from apscheduler.triggers.cron import CronTrigger
 
@@ -32,6 +34,12 @@ trigger = OrTrigger([CronTrigger(hour=4, minute=0),
                      CronTrigger(hour=23, minute=0)])
 
 job = scheduler.add_job(abs_return, trigger)
+
+trigger2 = OrTrigger([CronTrigger(day=7, hour=4, minute=0),
+                      CronTrigger(day=15, hour=4, minute=0),
+                      CronTrigger(day=21, hour=4, minute=0)])
+
+job = scheduler.add_job(start_process, trigger2)
 
 logging.basicConfig()
 logging.getLogger('apscheduler').setLevel(logging.DEBUG)

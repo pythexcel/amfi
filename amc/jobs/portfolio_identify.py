@@ -11,7 +11,7 @@ from todo.models import Scheme, AMC
 from amc.models import Scheme_Portfolio, AMC_Portfolio_Process
 from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, get_amc_common_names
 
-from amc.jobs.util import path as mf_download_files_path
+from amc.jobs.util import portfolio_path as mf_download_files_path
 
 
 """

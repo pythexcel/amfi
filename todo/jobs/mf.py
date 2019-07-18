@@ -251,6 +251,7 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
             fund_code=fund_code, amc=amc)
 
         if getattr(scheme, "fund_name") != fund_name:
+            # this can be removed after sometime
             print("old fund name ", getattr(scheme, "fund_name"),
                   " new fund name ", fund_name)
             Scheme.objects.filter(pk=scheme.id).update(fund_name=fund_name)
