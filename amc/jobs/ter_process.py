@@ -193,6 +193,9 @@ def process_ter(filename, f):
                 "this means amc not found means there is no index column so lets try with scheme name")
 
             df1 = read_excel(xls, 2)
+            df1.loc[-1] = df1.columns
+            df1.index = df1.index + 1
+            df1 = df1.sort_index()
             row_index = find_row_index(df1, "Name of Scheme")
             print(df1)
             print(row_index)
@@ -584,7 +587,7 @@ def identify_amc_from_scheme_array(schemes):
 
     for amc_name in amcs:
         for scheme_name in schemes:
-            if amc_name == "ITI" and "ITI" in scheme_name:
+            if amc_name == "ITI" and "ITI" in str(scheme_name):
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
                 else:
@@ -711,6 +714,8 @@ def find_head_row(df):
 
 
 def find_row_index(df, to_match):
+    
+
     mask = df.apply(lambda x: x.astype(str).str.contains(to_match, False))
     df1 = df[mask.any(axis=1)]
 

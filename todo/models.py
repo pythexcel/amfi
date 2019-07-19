@@ -30,6 +30,12 @@ class AMCManager(models.Manager):
         if "Parag Parikh" in short_name:
             short_name = "PPFAS"
 
+        if "Mahindra" in short_name:
+            short_name = "Mahindra Mutual Fund"
+            amcs = self.filter(name=short_name)
+            if amcs.count() > 0:
+                return amcs.first()
+
         amcs = self.filter(name__icontains=short_name)
         if amcs.count() > 0:
             return amcs.first()
