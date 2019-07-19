@@ -76,10 +76,17 @@ def get_amc_common_names():
     for amc in AMC.objects.all():
         name = amc.name
         name = name.replace("Mutual Fund", "").strip()
-        name = name.replace("Mahindra", "").strip()  # for kotak mahindra
         name = name.replace("Financial", "").strip()  # for jm financial
         name = name.replace("Templeton", "").strip()  # for franklin
         name = name.replace("Aditya", "").strip()  # for absl
+
+        name2 = name.replace("Mahindra", "").strip()  # for kotak mahindra
+
+        if not name2.strip():
+            # this is mahindra mutual fund
+            pass
+        else:
+            name = name2
 
         if "PPFAS" in name:
             name = "Parag Parikh"
