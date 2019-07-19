@@ -160,13 +160,8 @@ def process_ter(filename, f):
 
         df1 = read_excel(xls, 0)
 
-        df_copy = df1.copy()
-
-        print(df_copy)
-
         indexes = find_col_index(df1, "Scheme")
-        
-        amc = None
+
         if len(indexes) > 0:
             col_indexes = {}
             col_indexes["Scheme"] = indexes[0]
@@ -188,23 +183,19 @@ def process_ter(filename, f):
 
             amc, final_amc = identify_amc_from_scheme_array(schemes)
 
-        if amc is None:
-            print(
-                "this means amc not found means there is no index column so lets try with scheme name")
+            if amc is None:
+                print(
+                    "this means amc not found means there is no index column so lets try with scheme name")
+                row_index = find_row_index(df1, "Name of Scheme")
 
-            df1 = read_excel(xls, 2)
-            row_index = find_row_index(df1, "Name of Scheme")
-            print(df1)
-            print(row_index)
+                if row_index != -1:
+                    df1 = df1.fillna(False)
+                    scheme_name_row = df1.iloc[row_index].values
 
-            if row_index != -1:
-                df1 = df1.fillna(False)
-                scheme_name_row = df1.iloc[row_index].values
+                    print("scheme name row")
+                    print(scheme_name_row)
 
-                print("scheme name row")
-                print(scheme_name_row)
-
-                amc, final_amc = identify_amc_from_scheme_name(scheme_name_row)
+                    identify_amc_from_scheme_name(scheme_name_row)
 
             if amc is not None:
 
@@ -550,19 +541,14 @@ def identify_amc_from_scheme_name(scheme_names):
 
     for amc_name in amcs:
         for scheme_name in scheme_names:
-            if scheme_name is False:
-                continue
-
-            if scheme_name is None:
-                continue
-            print(amc_name , "xxx", scheme_name)
+            # print(amc_name , "xxx", scheme_name)
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
             if ratio > 95:
-                if amc_name in amc_score:
-                    amc_score[amc_name] += 1
-                else:
-                    amc_score[amc_name] = 1
-                break
+             if amc_name in amc_score:
+                amc_score[amc_name] += 1
+             else:
+                amc_score[amc_name] = 1
+             break
 
     max_score = 0
     final_amc = None
