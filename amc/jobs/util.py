@@ -5,6 +5,7 @@ import pandas as pd
 import datetime
 from pyxlsb import open_workbook
 
+import os
 from todo.models import AMC
 
 
@@ -12,10 +13,18 @@ local_base_path = "/mnt/c/work/newdref/"
 server_base_path = "/home/node/manish_test_mf/"
 
 
-portfolio_path = server_base_path + "mf_portfolio_download"
-ter_path = server_base_path + "mf_ter_download"
-aum_path = server_base_path + "mf_aum_download"
-download_path = server_base_path + "downloads"
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+actual_path = server_base_path
+
+if local_base_path in dir_path:
+    actual_path = local_base_path
+
+
+portfolio_path = actual_path + "mf_portfolio_download"
+ter_path = actual_path + "mf_ter_download"
+aum_path = actual_path + "mf_aum_download"
+download_path = actual_path + "downloads"
 
 
 def read_excel(xls, sheet_name):
