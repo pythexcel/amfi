@@ -15,43 +15,43 @@ from amc.jobs.util import portfolio_path as mf_download_files_path
 
 
 """
-
-# https://mutualfund.adityabirlacapital.com/forms-and-downloads/portfolio
-# https://www.icicipruamc.com/Downloads/MonthlyPortfolioDisclosure.aspx
-
-# https://www.dspim.com/about-us/mandatory-disclosure/month-end-portfolio-disclosures
-
-https://www.hdfcfund.com/statutory-disclosure/monthly-portfolio
-
+https://mutualfund.adityabirlacapital.com/forms-and-downloads/portfolio
 https://www.barodamf.com/Downloads/Pages/Latest-Factsheet-and-Profile.aspx
-
+https://dspim.com/about-us/mandatory-disclosure/portfolio-disclosures
+https://www.hdfcfund.com/statutory-disclosure/monthly-portfolio
 https://www.principalindia.com/all-downloads/disclosures
-
 http://www.quant-mutual.com/statutory-disclosures
-
 https://www.jmfinancialmf.com/Downloads/FactSheets.aspx?SubReportID=A49C5853-C27A-42C5-9703-699AFEACE164
-
 https://assetmanagement.kotak.com/portfolios
-
 https://www.licmf.com/statutory-disclosure
-
+https://www.icicipruamc.com/Downloads/MonthlyPortfolioDisclosure.aspx
 https://www.reliancemutual.com/investor-service/downloads/factsheets
-
 https://www.sbimf.com/en-us/portfolios
-
 https://www.tatamutualfund.com/downloads/monthly-portfolio
-
 https://www.taurusmutualfund.com/Download/portfolio.php
-
 https://www.franklintempletonindia.com/investor/reports
-
 https://www.utimf.com/about/statutory-disclosures/scheme-dashboard
-
-https://www.canararobeco.com/statutory-disclosures/scheme-monthly-portfolio#
-
+https://www.canararobeco.com/statutory-disclosures/scheme-monthly-portfolio
 https://www.sundarammutual.com/Monthly_Portfolio
-
-http://www.saharamutual.com/Downloads/MonthlyPortfolio.aspx
+http://www.saharamutual.com/downloads/MonthlyPortfolio.aspx
+https://www.boiaxamf.com/investor-corner#t2
+https://www.edelweissmf.com/statutory#Monthly-Portfolio-of-Schemes
+https://www.idfcmf.com/download-centre.aspx?tab=disclosures
+https://www.axismf.com/statutory-disclosures
+https://www.motilaloswalmf.com/downloads/mutual-fund/Month-End-Portfolio
+https://www.ltfs.com/companies/lnt-investment-management/statutory-disclosures.html
+https://www.idbimutual.co.in/Downloads/Fund-Portfolios
+http://www.dhflpramericamf.com/statutory-disclosure/monthlyportfolio
+https://www.bnpparibasmf.in/downloads/monthly-portfolio-scheme
+http://www.unionmf.com/downloads/others/monthlyportfolios.aspx
+https://www.iiflmf.com/downloads/disclosures
+http://www.indiabullsamc.com/portfolio-disclosure/
+https://shriramamc.com/StatDis-MonthlyPort.aspx
+https://www.mahindramutualfund.com/downloads#MANDATORY-DISCLOSURES
+https://www.miraeassetmf.co.in/downloads/portfolios
+https://www.yesamc.in/regulatory-disclosures/monthly-and-half-yearly-portfolio-disclosures
+http://amc.ppfas.com/downloads/portfolio-disclosure/
+http://www.itimf.com/statutory-disclosure/monthly-portfolios
 
 """
 

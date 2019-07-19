@@ -21,28 +21,43 @@ from fuzzywuzzy import fuzz, process
 from amc.models import Scheme_AUM_Process, Scheme_AUM_Process_Log, Scheme_AUM
 
 """
-https://mutualfund.adityabirlacapital.com/forms-and-downloads/total-expense-ratio
-https://www.icicipruamc.com/Downloads/total-expense-ratio.aspx
-https://www.dspim.com/quick-links/total-expense-ratio-of-mutual-fund-schemes
+https://mutualfund.adityabirlacapital.com/forms-and-downloads/disclosures
+https://www.barodamf.com/Downloads/pages/disclosure-of-aum-by-geography.aspx
+https://dspim.com/QUICK-LINKS/mandatory-disclosures
 https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports
 https://www.principalindia.com/all-downloads/disclosures
 http://www.quant-mutual.com/statutory-disclosures
-https://www.jmfinancialmf.com/Downloads/Remuneration.aspx?SubReportID=0383C306-CFB7-4CFE-B516-2A8FE89ABF5D
-# this works when you delete the first sheet named Notice from excel
-https://assetmanagement.kotak.com/total-expense-ratio
+https://www.jmfinancialmf.com/Downloads/FactSheets.aspx?SubReportID=A49C5853-C27A-42C5-9703-699AFEACE164
+https://assetmanagement.kotak.com/aaum
 https://www.licmf.com/total-expense-ratio
+https://www.icicipruamc.com/AboutUs/Financials.aspx
 https://www.reliancemutual.com/investor-services/downloads/total-expense-ratio-of-mutual-fund-schemes
-https://www.sbimf.com/en-us/disclosure/total-expense-ratio-of-mutual-fund-schemes
+https://www.sbimf.com/en-us/disclosure
+https://www.taurusmutualfund.com/latest_update.php
 https://www.franklintempletonindia.com/investor/reports
-http://www.saharamutual.com/downloads/TotalExpenseRatio.aspx
-https://www.sundarammutual.com/TER
-https://www.canararobeco.com/investor-corner/total-expense-ratio
-https://old.canararobeco.com/forms-downloads/Pages/expenseratio.aspx
-https://www.utimf.com/forms-and-downloads/#js-ter-wrapper
-http://www.tatamutualfund.com/our-funds/total-expense-ratio
-https://www.dspim.com/quick-links/total-expense-ratio-of-mutual-fund-schemes
-
-only latest data is needed not old
+https://www.utimf.com/about/statutory-disclosures/disclosure-of-aum
+https://www.canararobeco.com/statutory-disclosures/assets-under-management-average-assets-under-management-disclosure
+https://www.sundarammutual.com/Monthly_AUM_Disclosure
+https://www.quantumamc.com/financials/aum-details/qmf/22/2019-2020
+https://www.boiaxamf.com/regulatory-reports/aum-report
+https://www.edelweissmf.com/statutory#Other-Disclosures
+https://www.idfcmf.com/download-centre.aspx?tab=disclosures
+https://www.axismf.com/statutory-disclosures
+https://www.motilaloswalmf.com/downloads/mutual-fund
+https://www.ltfs.com/companies/lnt-investment-management/statutory-disclosures.html
+https://www.idbimutual.co.in/Statutory-Disclosure/Average-AUM
+http://www.dhflpramericamf.com/statutorydisclosures/averageaum
+https://www.bnpparibasmf.in/statutory-disclosures/assets-under-management-disclosure
+http://www.unionmf.com/downloads/others/miscellaneous/assetsundermanagement.aspx
+https://www.iiflmf.com/downloads/disclosures
+http://www.indiabullsamc.com/aum-disclosure/
+https://www.shriramamc.com/StatDis-AUM.aspx
+https://www.mahindramutualfund.com/downloads#MANDATORY-DISCLOSURES
+https://www.miraeassetmf.co.in/downloads/regulatory
+https://invescomutualfund.com/about-us?tab=Assets&active=MonthlyDisclosure
+https://www.yesamc.in/regulatory-disclosures/AAUM
+http://amc.ppfas.com/schemes/assets-under-management/
+http://www.itimf.com/statutory-disclosure/assets-under-management
 
 """
 
@@ -51,7 +66,6 @@ def start_process():
     process_zip_file()
     process_file()
 
-    # Scheme_TER_Process
     pass
 
 
@@ -63,19 +77,19 @@ def process_file():
 
             if ".xls" in f.lower() or ".xlsx" in f.lower():
 
-                process_aum(os.path.join(aum_path, f), f)
-                break
+                # process_aum(os.path.join(aum_path, f), f)
+                # break
 
-                # try:
-                #     os.mkdir(os.path.join(aum_path, "processed_files"))
-                # except FileExistsError:
-                #     pass
+                try:
+                    os.mkdir(os.path.join(aum_path, "processed_files"))
+                except FileExistsError:
+                    pass
 
-                # os.rename(os.path.join(aum_path, f), os.path.join(
-                #     os.path.join(aum_path, "processed_files"), f))
+                os.rename(os.path.join(aum_path, f), os.path.join(
+                    os.path.join(aum_path, "processed_files"), f))
 
-                # process_ter(os.path.join(
-                #     os.path.join(aum_path, "processed_files"), f), f)
+                process_aum(os.path.join(
+                    os.path.join(aum_path, "processed_files"), f), f)
 
                 # break
 
@@ -156,6 +170,11 @@ def process_aum(filename, f):
 
         date = find_date_from_sheet(df1, f)
 
+        if date is False:
+            print("date not found !")
+            aum_process.addCritical("date not found so stopped")
+            return
+
         print("Date found ", date)
 
         columns = [""] * df1.shape[1]
@@ -188,8 +207,6 @@ def process_aum(filename, f):
             print(getattr(amc, "name"))
 
             aum_process.setAMC(getattr(amc, "name"))
-
-            
 
             schemes = Scheme.objects.get_funds(amc=amc)
 
@@ -268,10 +285,11 @@ def process_aum(filename, f):
                 print(df3)
 
                 print(fund_name)
+
+                df3["Date"] = date
                 for row in df3.itertuples():
                     print(row)
-
-                    # save_row_to_db(row, scheme_name_map[fund_name])
+                    save_row_to_db(row, scheme_name_map[fund_name])
 
                 # print(df3)
                 # break
@@ -356,6 +374,7 @@ def identify_amc_from_scheme_array(schemes):
 
     for amc_name in amcs:
         for scheme_name in schemes:
+            # print(amc_name, "----------------", scheme_name)
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
             if ratio > 95:
                 if amc_name in amc_score:
@@ -471,21 +490,18 @@ def save_row_to_db(row, scheme):
                 break
 
     if date is not None:
-        ter = row.Total_TER
+        total = row.Grand_Total
         print(date)
-        if isinstance(ter, str):
-            ter = ter.replace("%", '')
-            ter = float(ter)
 
         try:
-            sc = Scheme_TER.objects.get(
+            sc = Scheme_AUM.objects.get(
                 scheme=scheme, date=date)
-            Scheme_TER.objects.filter(pk=sc.id).update(ter=ter)
+            Scheme_AUM.objects.filter(pk=sc.id).update(aum=total)
         except:
             tr_db = Scheme_AUM(
                 scheme=scheme,
                 date=date,
-                ter=ter
+                aum=total
             )
             tr_db.save()
 

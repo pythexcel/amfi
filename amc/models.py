@@ -10,7 +10,7 @@ class Scheme_AUM_Process(models.Model):
             file_name=file)
 
     def addCritical(self, log):
-        log = Scheme_AUM_Process(
+        log = Scheme_AUM_Process_Log(
             process=self,
             log=log,
             level="CRITIAL"

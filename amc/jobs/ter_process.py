@@ -22,28 +22,44 @@ from amc.models import Scheme_TER_Process, Scheme_TER_Process_Log, Scheme_TER
 
 """
 https://mutualfund.adityabirlacapital.com/forms-and-downloads/total-expense-ratio
-https://www.icicipruamc.com/Downloads/total-expense-ratio.aspx
+https://www.barodamf.com/Downloads/Pages/expenseratio.aspx
 https://www.dspim.com/quick-links/total-expense-ratio-of-mutual-fund-schemes
 https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports
 https://www.principalindia.com/all-downloads/disclosures
 http://www.quant-mutual.com/statutory-disclosures
 https://www.jmfinancialmf.com/Downloads/Remuneration.aspx?SubReportID=0383C306-CFB7-4CFE-B516-2A8FE89ABF5D
-# this works when you delete the first sheet named Notice from excel
 https://assetmanagement.kotak.com/total-expense-ratio
 https://www.licmf.com/total-expense-ratio
+https://www.icicipruamc.com/Downloads/total-expense-ratio.aspx
 https://www.reliancemutual.com/investor-services/downloads/total-expense-ratio-of-mutual-fund-schemes
 https://www.sbimf.com/en-us/disclosure/total-expense-ratio-of-mutual-fund-schemes
+https://www.taurusmutualfund.com/scheme_searchresult.php?to_date=18-07-2019&from_date=01-01-2019&schemecode=All
 https://www.franklintempletonindia.com/investor/reports
-http://www.saharamutual.com/downloads/TotalExpenseRatio.aspx
-https://www.sundarammutual.com/TER
+https://www.utimf.com/forms-and-downloads/#js-ter-wrapper
 https://www.canararobeco.com/investor-corner/total-expense-ratio
 https://old.canararobeco.com/forms-downloads/Pages/expenseratio.aspx
-https://www.utimf.com/forms-and-downloads/#js-ter-wrapper
-http://www.tatamutualfund.com/our-funds/total-expense-ratio
-https://www.dspim.com/quick-links/total-expense-ratio-of-mutual-fund-schemes
-
-only latest data is needed not old
-
+https://www.sundarammutual.com/TER
+http://www.saharamutual.com/downloads/TotalExpenseRatio.aspx
+https://www.quantumamc.com/total-expense-ratio/report-1
+https://www.boiaxamf.com/investor-corner#t4
+https://www.edelweissmf.com/statutory
+https://www.idfcmf.com/total-expense-ratio.aspx
+https://www.axismf.com/total-expense-ratio
+https://www.motilaloswalmf.com/downloads/mutual-fund/totalexpenseratio
+https://www.ltfs.com/companies/lnt-investment-management/statutory-disclosures.html
+https://www.idbimutual.co.in/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes
+http://www.dhflpramericamf.com/statutory-disclosure/portfolio-related/expense-ratio
+https://www.bnpparibasmf.in/downloads/total-expense-ratio-of-mutual-fund-schemes
+http://www.unionmf.com/downloads/TotalExpenseRatioOfMutualFundSchemes.aspx
+https://www.iiflmf.com/expenses-ratio
+http://www.indiabullsamc.com/downloads/total-expense-ratio-of-mutual-fund-schemes/
+https://www.shriramamc.com/TER-Latest.aspx
+https://www.mahindramutualfund.com/downloads#MANDATORY-DISCLOSURES
+https://www.miraeassetmf.co.in/downloads/total-expense-ratio
+https://invescomutualfund.com/about-us?tab=Statutory&active=ExpenseRatioDisclosure
+https://www.yesamc.in/regulatory-disclosures/total-expense-ratio-of-mutual-funds-schemes
+http://amc.ppfas.com/statutory-disclosures/total-expense-ratio-TER/
+http://www.itimf.com/statutory-disclosure/total-expense-ratio
 """
 
 
@@ -404,7 +420,7 @@ def process_ter(filename, f):
                     if len(df3.index) > 1:
                         df3['ratio'] = df3.apply(lambda row: fuzz.token_set_ratio(
                             fund_name, row["Scheme"]), axis=1)
-                        df3 =df3.sort_values(by="ratio")
+                        df3 = df3.sort_values(by="ratio")
                         print(df3)
 
                     df4.drop(labels=df3.index, axis=0, inplace=True)
@@ -556,7 +572,7 @@ def find_head_row(df):
     if len(indexes) > 0:
         col_indexes["Date"] = indexes[0]
 
-    if col_indexes["Scheme"] == col_indexes["Date"]:
+    if ("Scheme" in col_indexes and "Date" in col_indexes) and col_indexes["Scheme"] == col_indexes["Date"]:
         # some issue!! both cannot be same index
         # if they are same it means that the are in different rows and the word scheme is there two times
         print("both index sames for date, scheme try to solve it ")

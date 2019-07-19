@@ -15,6 +15,7 @@ server_base_path = "/home/node/manish_test_mf/"
 portfolio_path = local_base_path + "mf_portfolio_download"
 ter_path = local_base_path + "mf_ter_download"
 aum_path = local_base_path + "mf_aum_download"
+download_path = local_base_path + "downloads"
 
 
 def read_excel(xls, sheet_name):
@@ -70,6 +71,9 @@ def get_amc_common_names():
         name = name.replace("Financial", "").strip()  # for jm financial
         name = name.replace("Templeton", "").strip()  # for franklin
         name = name.replace("Aditya", "").strip()  # for absl
+
+        if "PPFAS" in name:
+            name = "Parag Parikh"
 
         # we can also try another logic i.e finding the common word among all fund names
         # instead of removing above manually. but will see that later on
@@ -146,7 +150,6 @@ def find_date_from_sheet(df, file_name=False):
     # so trying to identity which cell has "as on" mentioned and then find date in that cell
 
     # for some amc i don't remember name it didn't have as on, rather it had "month ended"
-
 
     df.loc[-1] = df.columns
     df.index = df.index + 1
