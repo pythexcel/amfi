@@ -8,12 +8,14 @@ from pyxlsb import open_workbook
 from todo.models import AMC
 
 
-local_path = "/mnt/c/work/newdref/mf_portfolio_download"
+local_base_path = "/mnt/c/work/newdref/"
+server_base_path = "/home/node/manish_test_mf/"
 
-server_path = "/home/node/manish_test_mf/mf_portfolio_download"
 
-path = local_path
-
+portfolio_path = local_base_path + "mf_portfolio_download"
+ter_path = local_base_path + "mf_ter_download"
+aum_path = local_base_path + "mf_aum_download"
+download_path = local_base_path + "downloads"
 
 
 def read_excel(xls, sheet_name):
@@ -51,7 +53,13 @@ def ExcelFile(path):
         ret["sheet_names"] = wb.sheets
         return ret
     else:
-        return pd.ExcelFile(path)
+        try:
+            return pd.ExcelFile(path)
+        except Exception as e:
+            print(e)
+            df = pd.read_html(path)
+            print(df)
+            return df
 
 
 def get_amc_common_names():
@@ -63,6 +71,9 @@ def get_amc_common_names():
         name = name.replace("Financial", "").strip()  # for jm financial
         name = name.replace("Templeton", "").strip()  # for franklin
         name = name.replace("Aditya", "").strip()  # for absl
+
+        if "PPFAS" in name:
+            name = "Parag Parikh"
 
         # we can also try another logic i.e finding the common word among all fund names
         # instead of removing above manually. but will see that later on
@@ -139,17 +150,24 @@ def find_date_from_sheet(df, file_name=False):
     # so trying to identity which cell has "as on" mentioned and then find date in that cell
 
     # for some amc i don't remember name it didn't have as on, rather it had "month ended"
+
+    df.loc[-1] = df.columns
+    df.index = df.index + 1
+    df = df.sort_index()
+
+    # print(df)
     mask = df.apply(lambda x: x.astype(
         str).str.contains('as on|month ended', False))
     df1 = df[mask.any(axis=1)]
     df1 = df1.fillna(0)
+    # print("date finding ")
     # print(df1)
 
     cells = []
 
-    for cell in df1.columns:
-        if cell != 0:
-            cells.append(cell)
+    # for cell in df1.columns:
+    #     if cell != 0:
+    #         cells.append(cell)
 
     for row in df1.to_numpy():
         for cell in row:

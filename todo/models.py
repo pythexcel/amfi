@@ -27,6 +27,9 @@ class MFDownload(models.Model):
 
 class AMCManager(models.Manager):
     def match_amc_with_short_name(self, short_name):
+        if "Parag Parikh" in short_name:
+            short_name = "PPFAS"
+
         amcs = self.filter(name__icontains=short_name)
         if amcs.count() > 0:
             return amcs.first()
