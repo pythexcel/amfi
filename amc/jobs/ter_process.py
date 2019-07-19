@@ -557,6 +557,7 @@ def identify_amc_from_scheme_name(scheme_names):
                 continue
             print(amc_name , "xxx", scheme_name)
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
+
             if ratio > 95:
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
@@ -583,8 +584,15 @@ def identify_amc_from_scheme_array(schemes):
 
     for amc_name in amcs:
         for scheme_name in schemes:
-            # print(amc_name , "xxx", scheme_name)
+            if amc_name == "ITI" and "ITI" in scheme_name:
+                if amc_name in amc_score:
+                    amc_score[amc_name] += 1
+                else:
+                    amc_score[amc_name] = 1
+                continue
+
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
+            print(amc_name , "xxx", scheme_name, " ratio ", ratio)
             if ratio > 95:
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
@@ -613,7 +621,7 @@ def find_head_row(df):
     df.index = df.index + 1
     df = df.sort_index()
 
-    print(df)
+    # print(df)
 
     col_indexes = {}
 
@@ -721,8 +729,8 @@ def find_col_index(df, col_name, strict=False):
     mask = df.apply(lambda x: x.astype(str).str.contains(col_name, False))
     df1 = df[mask.any(axis=1)]
 
-    print(col_name)
-    print(df1)
+    # print(col_name)
+    # print(df1)
 
     indexes = df1.index.values
 
@@ -744,7 +752,7 @@ def find_col_index(df, col_name, strict=False):
             for val in base_row:
                 val = str(val)
                 ratio = fuzz.token_set_ratio(col_name, val)
-                # print(col_name, "xxx", val)
+                # print(col_name, "xxx", val, " ratio ", ratio)
                 if col_name in val or ratio > 95:
                     i = list(base_row).index(val)
                     indexes.append(i)
