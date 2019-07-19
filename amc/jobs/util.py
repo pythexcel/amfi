@@ -12,10 +12,10 @@ local_base_path = "/mnt/c/work/newdref/"
 server_base_path = "/home/node/manish_test_mf/"
 
 
-portfolio_path = local_base_path + "mf_portfolio_download"
-ter_path = local_base_path + "mf_ter_download"
-aum_path = local_base_path + "mf_aum_download"
-download_path = local_base_path + "downloads"
+portfolio_path = server_base_path + "mf_portfolio_download"
+ter_path = server_base_path + "mf_ter_download"
+aum_path = server_base_path + "mf_aum_download"
+download_path = server_base_path + "downloads"
 
 
 def read_excel(xls, sheet_name):
