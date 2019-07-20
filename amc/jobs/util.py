@@ -173,7 +173,7 @@ def find_date_from_sheet(df, file_name=False):
 
     # print(df)
     mask = df.apply(lambda x: x.astype(
-        str).str.contains('as on|month ended', False))
+        str).str.contains('as on|month ended|month of', False))
     df1 = df[mask.any(axis=1)]
     df1 = df1.fillna(0)
     # print("date finding ")
@@ -203,13 +203,17 @@ def find_date_from_sheet(df, file_name=False):
             date_matched = cell.to_pydatetime()
             break
 
-        if "as on" in str(cell) or "for the month ended" in str(cell):
+        if "month of" in str(cell) or "as on" in str(cell) or "for the month ended" in str(cell):
             # print(cell)
             try:
                 cell = cell[cell.index("as on")+len("as on"):]
             except:
-                cell = cell[cell.index(
-                    "for the month ended")+len("for the month ended"):]
+                try:
+                    cell = cell[cell.index(
+                        "for the month ended")+len("for the month ended"):]
+                except:
+                    cell = cell[cell.index(
+                        "month of")+len("month of"):]
 
             r = re.compile('(?<!\d)(?:2100|200[1-9]|20[1-9]\d)(?!\d)')
             match = re.search(r, cell)

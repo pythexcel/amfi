@@ -79,19 +79,19 @@ def process_file():
 
             if ".xls" in f.lower() or ".xlsx" in f.lower():
 
-                process_ter(os.path.join(ter_path, f), f)
-                break
+                # process_ter(os.path.join(ter_path, f), f)
+                # break
 
-                # try:
-                #     os.mkdir(os.path.join(ter_path, "processed_files"))
-                # except FileExistsError:
-                #     pass
+                try:
+                    os.mkdir(os.path.join(ter_path, "processed_files"))
+                except FileExistsError:
+                    pass
 
-                # os.rename(os.path.join(ter_path, f), os.path.join(
-                #     os.path.join(ter_path, "processed_files"), f))
+                os.rename(os.path.join(ter_path, f), os.path.join(
+                    os.path.join(ter_path, "processed_files"), f))
 
-                # process_ter(os.path.join(
-                #     os.path.join(ter_path, "processed_files"), f), f)
+                process_ter(os.path.join(
+                    os.path.join(ter_path, "processed_files"), f), f)
 
                 # break
 
