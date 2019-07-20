@@ -55,12 +55,12 @@ def organize_files():
 
                     if "ter" in df.to_string().lower():
                         os.rename(os.path.join(download_path, f),
-                                  os.path.join(aum_path, f))
+                                  os.path.join(ter_path, f))
                         continue
 
                     if "portfolio" in df.to_string().lower():
                         os.rename(os.path.join(download_path, f),
-                                  os.path.join(aum_path, f))
+                                  os.path.join(portfolio_path, f))
                         continue
                         
                 except Exception as e:
