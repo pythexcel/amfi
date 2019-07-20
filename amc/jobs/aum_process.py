@@ -77,20 +77,22 @@ def process_file():
 
             if ".xls" in f.lower() or ".xlsx" in f.lower():
 
-                process_aum(os.path.join(aum_path, f), f)
-                break
+                # process_aum(os.path.join(aum_path, f), f)
+                # break
+                try:
 
-                # try:
-                #     os.mkdir(os.path.join(aum_path, "processed_files"))
-                # except FileExistsError:
-                #     pass
+                    try:
+                        os.mkdir(os.path.join(aum_path, "processed_files"))
+                    except FileExistsError:
+                        pass
 
-                # os.rename(os.path.join(aum_path, f), os.path.join(
-                #     os.path.join(aum_path, "processed_files"), f))
+                    os.rename(os.path.join(aum_path, f), os.path.join(
+                        os.path.join(aum_path, "processed_files"), f))
 
-                # process_aum(os.path.join(
-                #     os.path.join(aum_path, "processed_files"), f), f)
-
+                    process_aum(os.path.join(
+                        os.path.join(aum_path, "processed_files"), f), f)
+                except:
+                    pass
                 # break
 
         break  # this break is important to prevent further processing of sub directories
