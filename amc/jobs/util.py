@@ -259,9 +259,30 @@ def find_date_from_sheet(df, file_name=False):
 
     return date_matched
 
+
+def find_date_from_filename(filename):
+    # this will match only year/month not actual date
+    # use this as last resort if normal functon don't work
+
+    years = [2016,2017,2018,2019,2020,2021]
+
+    dateFound = False
+
+    for year in years:
+        d = datetime.date(int(year), 1, 1)
+        if d.strftime("%y") in filename or d.strftime("%Y") in filename:
+            for i in range(12):
+                d = datetime.date(int(year), (i+1), 1)
+                # print(d)
+                if d.strftime("%b").lower() in filename.lower() or d.strftime("%B").lower() in filename.lower() or d.strftime("%m") in filename.lower():
+                    print(d)
+                    dateFound = d
+                    break
+            break
+
+
+    return dateFound
 # this function is to find the fund name from sheet.
-
-
 def match_fund_name_from_sheet(fund_names, sheet_df):
 
     # for col in expected_cols:

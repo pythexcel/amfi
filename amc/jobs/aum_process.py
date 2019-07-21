@@ -12,7 +12,7 @@ import datefinder
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
-from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
+from amc.jobs.util import ExcelFile, read_excel, find_date_from_filename, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import aum_path
 
@@ -77,22 +77,22 @@ def process_file():
 
             if ".xls" in f.lower() or ".xlsx" in f.lower():
 
-                # process_aum(os.path.join(aum_path, f), f)
-                # break
-                try:
+                process_aum(os.path.join(aum_path, f), f)
+                break
+                # try:
 
-                    try:
-                        os.mkdir(os.path.join(aum_path, "processed_files"))
-                    except FileExistsError:
-                        pass
+                #     try:
+                #         os.mkdir(os.path.join(aum_path, "processed_files"))
+                #     except FileExistsError:
+                #         pass
 
-                    os.rename(os.path.join(aum_path, f), os.path.join(
-                        os.path.join(aum_path, "processed_files"), f))
+                #     os.rename(os.path.join(aum_path, f), os.path.join(
+                #         os.path.join(aum_path, "processed_files"), f))
 
-                    process_aum(os.path.join(
-                        os.path.join(aum_path, "processed_files"), f), f)
-                except:
-                    pass
+                #     process_aum(os.path.join(
+                #         os.path.join(aum_path, "processed_files"), f), f)
+                # except:
+                #     pass
                 # break
 
         break  # this break is important to prevent further processing of sub directories
@@ -172,8 +172,14 @@ def process_aum(filename, f):
 
         date = find_date_from_sheet(df1, f)
 
+
+
         if date is False:
-            print("date not found !")
+            print("trying to find just month year from filename")
+            date = find_date_from_filename(f)
+
+        if date is False:
+            print("date not found !" , date)
             aum_process.addCritical("date not found so stopped")
             return
 
@@ -376,9 +382,10 @@ def identify_amc_from_scheme_array(schemes):
 
     for amc_name in amcs:
         for scheme_name in schemes:
-            # print(amc_name, "----------------", scheme_name)
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
-            if ratio > 95:
+            print(str(scheme_name).find(amc_name))
+            print(amc_name, "----------------", scheme_name, '----', ratio)
+            if ratio > 95 or str(scheme_name).find(amc_name) == 0:
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
                 else:
