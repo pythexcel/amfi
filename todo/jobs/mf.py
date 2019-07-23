@@ -86,7 +86,7 @@ def download_mf_historical_data():
         #         return
 
         # else:
-            return
+        return
 
     print("checking for amc no ", amc_no)
 
