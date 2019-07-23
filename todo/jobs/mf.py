@@ -69,23 +69,23 @@ def download_mf_historical_data():
     if amc_no == 999:
         print("all amcs completed!")
 
-        amc = AMC.objects.order_by("amc_no").first()
-        print(amc)
-        # return
+        # amc = AMC.objects.order_by("amc_no").first()
+        # print(amc)
+        # # return
 
-        # one time temporary to check if missed any amc
+        # # one time temporary to check if missed any amc
 
-        start = getattr(amc, "id")
+        # start = getattr(amc, "id")
 
-        if start < 100:
-            amc_no = start + 1
-            AMC.objects.get(pk=amc.id).update(next_amc_no=amc_no)
-            if AMC.objects.filter(amc_no=amc_no).count() > 0:
-                pass
-            else:
-                return
+        # if start < 100:
+        #     amc_no = start + 1
+        #     AMC.objects.get(pk=amc.id).update(next_amc_no=amc_no)
+        #     if AMC.objects.filter(amc_no=amc_no).count() > 0:
+        #         pass
+        #     else:
+        #         return
 
-        else:
+        # else:
             return
 
     print("checking for amc no ", amc_no)
