@@ -109,7 +109,7 @@ def process_zip_file():
         for f in filenames:
             if ".xlsb" in f:
                 print("process xlsb ", f)
-                call(["soffice", "--headless", "--convert-to", "xlsx", f])
+                call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(aum_path, f)])
                 try:
                     os.mkdir(os.path.join(aum_path, "processed_xlsb"))
                 except FileExistsError:
