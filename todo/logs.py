@@ -1,12 +1,14 @@
 
 from django.conf import settings
 
+import datetime
 from pymongo import MongoClient
 
 dataSource = False
 
 
 def getDataSource():
+    global dataSource
     if dataSource is False:
         client = MongoClient(settings.MONGO_URL)
         db = client[settings.MONGO_DB]
@@ -16,19 +18,21 @@ def getDataSource():
         return dataSource
 
 
-def addLogs(logs, process_name, isUI=False):
+def addLogs(log, log_id):
+    log["log_id"] = log_id
+    log["time"] = datetime.datetime.now()
+    db = getDataSource()
+    if log["type"] == "alert":
+        db.alert.insert_one(log)
+    db.log_detail.insert_one(log)
 
-    for log in logs:
-        if log["type"] == "alert":
-            log["process"] = process_name
-            db.alert.insert_one(log)
-            pass
-        else:
-            if isUI is True:
-                db = getDataSource()
-                log["process"] = process_name  # which process is this
-                db.logs.insert_one(log)
 
-            pass
+def startLogs(process_name, detail={}):
+    db = getDataSource()
+    detail["process_name"] = process_name
+    detail["time"] = datetime.datetime.now()
+    return db.logs.insert_one(detail).inserted_id
 
-    pass
+def get_logs(process_name):
+    db = getDataSource()
+    return db.logs.find({"process": process_name}).sort("time")

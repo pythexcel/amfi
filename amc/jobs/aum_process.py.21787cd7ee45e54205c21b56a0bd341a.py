@@ -9,9 +9,6 @@ import shutil
 import json
 import datefinder
 
-from subprocess import call
-
-
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
@@ -109,7 +106,7 @@ def process_zip_file():
         for f in filenames:
             if ".xlsb" in f:
                 print("process xlsb ", f)
-                call(["soffice", "--headless", "--convert-to", "xlsx", f])
+                os.system("soffice --headless --convert-to xlsx " + f)
                 try:
                     os.mkdir(os.path.join(aum_path, "processed_xlsb"))
                 except FileExistsError:

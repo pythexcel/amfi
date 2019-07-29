@@ -5,7 +5,7 @@ from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, MF
 import requests
 import datetime
 
-from todo.logs import addLogs
+from todo.logs import addLogs, startLogs
 
 amc_no_start = 1
 amc_no_end = 75
@@ -112,8 +112,10 @@ def download_mf_historical_data():
     print(start)
     print(end)
 
-    res, logs = do_process_data(url, amc_no)
-    addLogs(logs)
+    log = startLogs("download_mf_historical_data", {
+        "url": url
+    })
+    res = do_process_data(url, amc_no, log)
 
     if res is False:
         # data didn't come from amfi url which menas false
@@ -141,19 +143,29 @@ def schedule_daily_nav_download():
     #     date.strftime("%Y-%m-%d")
     url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
         date.strftime("%Y%m%d000000")
-    do_process_data(url, -1)
+    log = startLogs("schedule_daily_nav_download", {
+        "url": url
+    })
+    do_process_data(url, -1, log)
     date = datetime.date.today() - datetime.timedelta(days=1)
     # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
     #     date.strftime("%Y-%m-%d")
     url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
         date.strftime("%Y%m%d000000")
-    do_process_data(url, -1)
+    log = startLogs("schedule_daily_nav_download", {
+        "url": url
+    })
+    do_process_data(url, -1, log)
     date = datetime.date.today() - datetime.timedelta(days=2)
     # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
     #     date.strftime("%Y-%m-%d")
+
+    log = startLogs("schedule_daily_nav_download", {
+        "url": url
+    })
     url = "https://www.amfiindia.com/spages/NAVAll.txt?t=" + \
         date.strftime("%Y%m%d000000")
-    do_process_data(url, -1)
+    do_process_data(url, -1, log)
 
 
 # this is to process nave for a single date
@@ -290,9 +302,8 @@ def find_amc_no_to_process():
     return amc_no, amc_id, is_new_amc
 
 
-def do_process_data(url, amc_no):
+def do_process_data(url, amc_no, log_id=False):
     print(url)
-    logs = []
     response = requests.get(url)
 
     mf_nav_data = response.text.splitlines()
@@ -312,20 +323,22 @@ def do_process_data(url, amc_no):
     except ValueError:
         print("no more data")
         print(url)
-        logs.append({
-            "type": "error",
-            "message": "file response doesn't have valid data unable to find one of the columns from Scheme Code , Name, NAV, Date"
-        })
-        return False, logs
+        if log_id is not False:
+            addLogs({
+                "type": "error",
+                "message": "file response doesn't have valid data unable to find one of the columns from Scheme Code , Name, NAV, Date"
+            }, log_id)
+        return False
 
     amc_name = ""
 
     print("valid data found", len(mf_nav_data))
 
-    logs.append({
-        "type": "log",
-        "message": "valid data found starting to process now " + str(len(mf_nav_data))
-    })
+    if log_id is not False:
+        addLogs({
+            "type": "log",
+            "message": "valid data found starting to process now " + str(len(mf_nav_data))
+        }, log_id)
 
     scheme_category = ""
     scheme_type = ""
@@ -333,10 +346,11 @@ def do_process_data(url, amc_no):
 
     for line in mf_nav_data[1:]:
         if len(line.strip()) > 0:
-            logs.append({
-                "type": "log",
-                "message": line
-            })
+            if log_id is not False:
+                addLogs({
+                    "type": "log",
+                    "message": line
+                }, log_id)
             if line.find(";") != -1:
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
@@ -408,10 +422,11 @@ def do_process_data(url, amc_no):
                         amc = fetch_amc(amc_name)
                         if amc == False:
                             print("amc name doesn't exist ", amc_name)
-                            logs.append({
-                                "type": "alert",
-                                "message": "AMC not found " + amc_name
-                            })
+                            if log_id is not False:
+                                addLogs({
+                                    "type": "alert",
+                                    "message": "AMC not found " + amc_name
+                                }, log_id)
                             continue
                     else:
                         amc = fetch_or_save_amc(amc_name, amc_no)
@@ -445,10 +460,11 @@ def do_process_data(url, amc_no):
 
                     print("saving to db ", line)
 
-                    logs.append({
-                        "type": "log",
-                        "message": "saving to db " + line
-                    })
+                    if log_id is not False:
+                        addLogs({
+                            "type": "log",
+                            "message": "saving to db " + line
+                        }, log_id)
 
                     date_time_str = mf_data[date_index]
                     date_time_obj = datetime.datetime.strptime(
@@ -471,10 +487,11 @@ def do_process_data(url, amc_no):
                             nav.save()
                         except Exception as e:
                             print(e)
-                            logs.append({
-                                "type": "error",
-                                "message": "error in saving nav " + e
-                            })
+                            if log_id is not False:
+                                addLogs({
+                                    "type": "error",
+                                    "message": "error in saving nav " + e
+                                }, log_id)
                             pass
 
             else:
@@ -497,4 +514,4 @@ def do_process_data(url, amc_no):
                     amc_name = line.strip()
                     pass
 
-    return True, logs
+    return True

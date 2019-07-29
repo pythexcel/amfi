@@ -383,6 +383,11 @@ class Index(models.Model):
     end_date = models.DateField(null=False)
     parsed = models.BooleanField(default=False)
 
+    @staticmethod
+    def get_latest_index_date():
+        return Index.objects.raw("SELECT MAX(date) as max_date, index_id, todo_index.id, todo_index.name as name, todo_index.type as type FROM `todo_indexdata` JOIN todo_index on todo_index.id = index_id GROUP by index_id")
+        
+
     # this is for calcuation's with base reference of any year but 1st and last of year
     def previous_yr_abs(self, years=1, start_year=0):
         # years how many years to go back

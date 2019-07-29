@@ -1,4 +1,4 @@
-from todo.models import AMC, Scheme, Nav
+from todo.models import AMC, Scheme, Nav, Index
 import datetime
 from django.db.models import Max
 
@@ -12,6 +12,27 @@ def health_check():
     print("nav health check")
     print(ret)
 
+    ret = index_check()
+    print("index health check")
+    print(ret)
+
+    pass
+
+
+def index_check():
+    index_data = Index.get_latest_index_date()
+    ret = []
+    for index in index_data:
+        max_date = getattr(index, "max_date")
+        name = getattr(index, "name")
+        type_name = getattr(index, "type")
+        ret.append({
+            "max_date": max_date,
+            "name": name,
+            "type_name": type_name
+        })
+
+    return ret
     pass
 
 
