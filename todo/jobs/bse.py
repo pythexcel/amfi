@@ -4,6 +4,10 @@ import json
 import datetime
 import urllib.parse
 
+import json
+
+from todo.logs import startLogs, addLogs
+
 
 from todo.models import Index, IndexData
 
@@ -34,11 +38,12 @@ bse_indexes = [
 
 
 def process_bse_daily():
+    log = startLogs("process_bse_daily", {})
     for name in bse_indexes:
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=7)
         latest_index = Index.objects.get(name=name, type="BSE")
-        process_data(name, start_date, end_date, latest_index)
+        process_data(name, start_date, end_date, latest_index, log)
 
 
 def process_bse_historial():
@@ -75,7 +80,7 @@ def process_bse_historial():
     print(start_date)
     print(end_date)
 
-    res = process_data(name, start_date, end_date, latest_index)
+    res = process_data(name, start_date, end_date, latest_index, False)
 
     if res:
         Index.objects.filter(pk=latest_index.id).update(
@@ -84,7 +89,7 @@ def process_bse_historial():
         Index.objects.filter(pk=latest_index.id).update(parsed=True)
 
 
-def process_data(name, start_date, end_date, latest_index):
+def process_data(name, start_date, end_date, latest_index, log_id):
 
     params = {
         "fmdt": end_date.strftime("%d/%m/%Y"),
@@ -95,6 +100,12 @@ def process_data(name, start_date, end_date, latest_index):
     url = "https://api.bseindia.com/BseIndiaAPI/api/IndexArchDaily/w"
 
     print(url)
+
+    if log_id is not False:
+        addLogs({
+            "type": "log",
+            "message": "URL: " + url
+        }, log_id)
 
     response = requests.get(url, params=params)
 
@@ -123,6 +134,7 @@ def process_data(name, start_date, end_date, latest_index):
         for date in index_data:
             try:
                 print(date)
+
                 IndexData.objects.get(index=latest_index, date=datetime.datetime.strptime(
                     date, '%Y-%m-%dT%H:%M:%S'))
                 # data exists nothing to do
@@ -140,7 +152,17 @@ def process_data(name, start_date, end_date, latest_index):
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
                 )
                 index_data_obj.save()
+                if log_id is not False:
+                    addLogs({
+                        "type": "log",
+                        "message": "saving data : " + json.dumps(index_data)
+                    }, log_id)
 
         return True
     else:
+        if log_id is not False:
+            addLogs({
+                "type": "error",
+                "message": "problem parsing data"
+            }, log_id)
         return False

@@ -5,6 +5,8 @@ import datetime
 from bs4 import BeautifulSoup
 import urllib.parse
 
+from todo.logs import startLogs, addLogs
+
 
 from todo.models import Index, IndexData
 
@@ -36,13 +38,14 @@ nifty_indexes = [
 
 
 def process_nse_daily():
+    log = startLogs("process_bse_daily", {})
     for name in nifty_indexes:
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=7)
 
         latest_index = Index.objects.get(name=name, type="NSE")
 
-        process_data(name, start_date, end_date, latest_index)
+        process_data(name, start_date, end_date, latest_index, log)
 
 
 def process_nse_historial():
@@ -79,7 +82,7 @@ def process_nse_historial():
     print(start_date)
     print(end_date)
 
-    res = process_data(name, start_date, end_date, latest_index)
+    res = process_data(name, start_date, end_date, latest_index, False)
 
     if res:
         Index.objects.filter(pk=latest_index.id).update(
@@ -88,7 +91,7 @@ def process_nse_historial():
         Index.objects.filter(pk=latest_index.id).update(parsed=True)
 
 
-def process_data(name, start_date, end_date, latest_index):
+def process_data(name, start_date, end_date, latest_index, log_id):
 
     url = "https://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=" + \
         name+"&fromDate=" + \
@@ -105,6 +108,12 @@ def process_data(name, start_date, end_date, latest_index):
     r2 = requests.get(url2)
 
     print(url2)
+
+    if log_id is not False:
+        addLogs({
+            "type": "log",
+            "message": "URL: " + url2
+        }, log_id)
 
     # print(r.text)
 
@@ -228,7 +237,19 @@ def process_data(name, start_date, end_date, latest_index):
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
                 )
                 index_data_obj.save()
+                if log_id is not False:
+                    addLogs({
+                        "type": "log",
+                        "message": "saving data : " + json.dumps(index_data)
+                    }, log_id)
 
         return True
     else:
+
+        if log_id is not False:
+            addLogs({
+                "type": "error",
+                "message": "problem parsing data"
+            }, log_id)
+
         return False

@@ -56,7 +56,7 @@ class AMC(models.Model):
 class SchemeManager(models.Manager):
     # for now working with open ended schems only
     def get_queryset(self):
-        return super().get_queryset().filter(scheme_category='Open Ended Schemes')
+        return super().get_queryset().filter(scheme_category='Open Ended Schemes',fund_active=True)
 
     """
     getting expect category types are 
@@ -122,6 +122,7 @@ class Scheme(models.Model):
         max_length=255, null=False)  # grown or what kind
     fund_type = models.CharField(
         max_length=255, null=False)  # direct or regular
+    fund_active = models.BooleanField(default=True)
 
     objects = SchemeManager()
 
@@ -314,6 +315,15 @@ class Nav(models.Model):
         unique_together = ("scheme", "date")
 
     @staticmethod
+    def count_navs_date(date):
+        return Nav.objects.filter(date=date).count()
+
+    @staticmethod
+    def get_latest_nav_date():
+        nav = Nav.objects.all().order_by("-date").first()
+        return getattr(nav, "date")
+
+    @staticmethod
     def get_nav_begining(scheme):
         # this will return the nav value and date since the scheme begain i.e the first data which we have
         nav = Nav.objects.filter(scheme=scheme).order_by("date").first()
@@ -372,6 +382,11 @@ class Index(models.Model):
     start_date = models.DateField(null=False)
     end_date = models.DateField(null=False)
     parsed = models.BooleanField(default=False)
+
+    @staticmethod
+    def get_latest_index_date():
+        return Index.objects.raw("SELECT MAX(date) as max_date, index_id, todo_index.id, todo_index.name as name, todo_index.type as type FROM `todo_indexdata` JOIN todo_index on todo_index.id = index_id GROUP by index_id")
+        
 
     # this is for calcuation's with base reference of any year but 1st and last of year
     def previous_yr_abs(self, years=1, start_year=0):
