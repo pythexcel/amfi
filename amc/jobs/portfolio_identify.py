@@ -12,6 +12,7 @@ from amc.models import Scheme_Portfolio, AMC_Portfolio_Process
 from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, get_amc_common_names
 
 from amc.jobs.util import portfolio_path as mf_download_files_path
+from subprocess import call
 
 
 """
@@ -67,6 +68,17 @@ def process_zip_file():
 
     for (dirpath, dirnames, filenames) in os.walk(mf_download_files_path):
         for f in filenames:
+            if ".xlsb" in f:
+                print("process xlsb ", f)
+                call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(mf_download_files_path, f), "--outdir", mf_download_files_path])
+                try:
+                    os.mkdir(os.path.join(mf_download_files_path, "processed_xlsb"))
+                except FileExistsError:
+                    pass
+
+                os.rename(os.path.join(mf_download_files_path, f), os.path.join(
+                    os.path.join(mf_download_files_path, "processed_xlsb"), f))
+
             if ".zip" in f:
 
                 print("processing file ", f)

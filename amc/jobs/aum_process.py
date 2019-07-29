@@ -109,7 +109,8 @@ def process_zip_file():
         for f in filenames:
             if ".xlsb" in f:
                 print("process xlsb ", f)
-                call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(aum_path, f)])
+                call(["soffice", "--headless", "--convert-to", "xlsx",
+                      os.path.join(aum_path, f), "--outdir", aum_path])
                 try:
                     os.mkdir(os.path.join(aum_path, "processed_xlsb"))
                 except FileExistsError:
@@ -394,8 +395,8 @@ def identify_amc_from_scheme_array(schemes):
     for amc_name in amcs:
         for scheme_name in schemes:
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
-            print(str(scheme_name).find(amc_name))
-            print(amc_name, "----------------", scheme_name, '----', ratio)
+            # print(str(scheme_name).find(amc_name))
+            # print(amc_name, "----------------", scheme_name, '----', ratio)
             if ratio > 95 or str(scheme_name).find(amc_name) == 0:
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
