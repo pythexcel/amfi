@@ -19,6 +19,8 @@ from amc.jobs.util import ter_path
 from fuzzywuzzy import fuzz, process
 
 from amc.models import Scheme_TER_Process, Scheme_TER_Process_Log, Scheme_TER
+from subprocess import call
+
 
 """
 https://mutualfund.adityabirlacapital.com/forms-and-downloads/total-expense-ratio
@@ -104,8 +106,17 @@ def process_zip_file():
 
     for (dirpath, dirnames, filenames) in os.walk(ter_path):
         for f in filenames:
-            if ".zip" in f:
+            if ".xlsb" in f:
+                    print("process xlsb ", f)
+                    call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(ter_path, f), "--outdir", ter_path])
+                    try:
+                        os.mkdir(os.path.join(ter_path, "processed_xlsb"))
+                    except FileExistsError:
+                        pass
 
+                    os.rename(os.path.join(ter_path, f), os.path.join(
+                        os.path.join(ter_path, "processed_xlsb"), f))
+            if ".zip" in f:
                 print("processing file ", f)
                 with zipfile.ZipFile(os.path.join(ter_path, f)) as zip_file:
                     for member in zip_file.namelist():
