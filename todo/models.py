@@ -56,7 +56,7 @@ class AMC(models.Model):
 class SchemeManager(models.Manager):
     # for now working with open ended schems only
     def get_queryset(self):
-        return super().get_queryset().filter(scheme_category='Open Ended Schemes')
+        return super().get_queryset().filter(scheme_category='Open Ended Schemes',fund_active=True)
 
     """
     getting expect category types are 
@@ -122,6 +122,7 @@ class Scheme(models.Model):
         max_length=255, null=False)  # grown or what kind
     fund_type = models.CharField(
         max_length=255, null=False)  # direct or regular
+    fund_active = models.BooleanField(default=True)
 
     objects = SchemeManager()
 
@@ -312,6 +313,15 @@ class Nav(models.Model):
 
     class Meta:
         unique_together = ("scheme", "date")
+
+    @staticmethod
+    def count_navs_date(date):
+        return Nav.objects.filter(date=date).count()
+
+    @staticmethod
+    def get_latest_nav_date():
+        nav = Nav.objects.all().order_by("-date").first()
+        return getattr(nav, "date")
 
     @staticmethod
     def get_nav_begining(scheme):

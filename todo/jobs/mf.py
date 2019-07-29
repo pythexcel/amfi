@@ -5,62 +5,14 @@ from todo.serializers import UserSerializer, AMCSerializer, SchemeSerializer, MF
 import requests
 import datetime
 
+from todo.logs import addLogs
+
 amc_no_start = 1
 amc_no_end = 75
 
 
-def find_amc_no_to_process():
-    # on amfi website all amc have different no and they are not in serial order.
-    # so we need to keep checkin amc's until we get data and skip if data not found
-
-    if AMC.objects.all().count() > 0:
-        try:
-            amc = AMC.objects.filter(parsed=False)
-            # this wiered logic because initially code was written based on single amc always
-            # now changed to multiple at a time
-            if amc.count() == 0:
-                amc = AMC.objects.get(parsed=False)
-            else:
-                amc = AMC.objects.filter(
-                    parsed=False).order_by("amc_no").first()
-
-            # this mean there is an amc which still has data being parsed
-            # so simply continue with that
-            ser = AMCSerializer(amc)
-            amc_no = ser.data["amc_no"]
-            amc_id = amc.id
-            is_new_amc = False
-        except AMC.DoesNotExist:
-            # if there is no amc being parsed then need to find the
-            # last amc i.e amc which max amc_no
-            amc = AMC.objects.all().order_by("-amc_no").first()
-            ser = AMCSerializer(amc)
-            print(ser.data)
-            if ser.data["next_amc_no"] == 0:
-                amc_no = int(ser.data["amc_no"])+1
-            else:
-                amc_no = int(ser.data["next_amc_no"])+1
-
-            # above if condition is due to a problem that all amc_no are not in sequence
-            # e.g after amc no 5 there is no amc with no 6 rather to 7.
-            # because our code works only incrementally and to solve this problem have added
-            # another db column next_amc_no which stores these increments where amc no is missing
-
-            AMC.objects.filter(pk=amc.id).update(next_amc_no=amc_no)
-            amc_id = -1
-            is_new_amc = True
-            if amc_no > amc_no_end:
-                print("all amcs completed")
-                return 999, 999, False
-
-    else:
-        # this mean there is no amc is db.
-        # db is fully empty so start from 1
-        amc_no = amc_no_start
-
-    return amc_no, amc_id, is_new_amc
-
-
+# this function mainly check if any new amc is found
+# if yes add it to db for processing its historical data
 def download_mf_historical_data():
     print("Starting mf download")
 
@@ -160,7 +112,8 @@ def download_mf_historical_data():
     print(start)
     print(end)
 
-    res = do_process_data(url, amc_no)
+    res, logs = do_process_data(url, amc_no)
+    addLogs(logs)
 
     if res is False:
         # data didn't come from amfi url which menas false
@@ -174,13 +127,15 @@ def download_mf_historical_data():
     print("Completed mf download")
 
 
+# this is mainly a command line function to download amc data for a specific dates
 def download_mf_input(amc_id, start, end):
     url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?mf='+str(amc_id)+'&tp=1&frmdt=' + \
         start.strftime("%d-%b-%Y")+'&todt='+end.strftime("%d-%b-%Y")
     do_process_data(url, amc_id)
 
 
-def schedule_daily_download_mf():
+# this is to download mutual fund daily nav. we download always for last 3 days
+def schedule_daily_nav_download():
     date = datetime.date.today()
     # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
     #     date.strftime("%Y-%m-%d")
@@ -201,6 +156,7 @@ def schedule_daily_download_mf():
     do_process_data(url, -1)
 
 
+# this is to process nave for a single date
 def download_mf_input_date(date):
     # process mf data only for a single day for all mfs
     # url = 'http://portal.amfiindia.com/DownloadNAVHistoryReport_Po.aspx?frmdt=' + \
@@ -282,8 +238,61 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
     return scheme
 
 
+def find_amc_no_to_process():
+    # on amfi website all amc have different no and they are not in serial order.
+    # so we need to keep checkin amc's until we get data and skip if data not found
+
+    if AMC.objects.all().count() > 0:
+        try:
+            amc = AMC.objects.filter(parsed=False)
+            # this wiered logic because initially code was written based on single amc always
+            # now changed to multiple at a time
+            if amc.count() == 0:
+                amc = AMC.objects.get(parsed=False)
+            else:
+                amc = AMC.objects.filter(
+                    parsed=False).order_by("amc_no").first()
+
+            # this mean there is an amc which still has data being parsed
+            # so simply continue with that
+            ser = AMCSerializer(amc)
+            amc_no = ser.data["amc_no"]
+            amc_id = amc.id
+            is_new_amc = False
+        except AMC.DoesNotExist:
+            # if there is no amc being parsed then need to find the
+            # last amc i.e amc which max amc_no
+            amc = AMC.objects.all().order_by("-amc_no").first()
+            ser = AMCSerializer(amc)
+            print(ser.data)
+            if ser.data["next_amc_no"] == 0:
+                amc_no = int(ser.data["amc_no"])+1
+            else:
+                amc_no = int(ser.data["next_amc_no"])+1
+
+            # above if condition is due to a problem that all amc_no are not in sequence
+            # e.g after amc no 5 there is no amc with no 6 rather to 7.
+            # because our code works only incrementally and to solve this problem have added
+            # another db column next_amc_no which stores these increments where amc no is missing
+
+            AMC.objects.filter(pk=amc.id).update(next_amc_no=amc_no)
+            amc_id = -1
+            is_new_amc = True
+            if amc_no > amc_no_end:
+                print("all amcs completed")
+                return 999, 999, False
+
+    else:
+        # this mean there is no amc is db.
+        # db is fully empty so start from 1
+        amc_no = amc_no_start
+
+    return amc_no, amc_id, is_new_amc
+
+
 def do_process_data(url, amc_no):
     print(url)
+    logs = []
     response = requests.get(url)
 
     mf_nav_data = response.text.splitlines()
@@ -303,11 +312,20 @@ def do_process_data(url, amc_no):
     except ValueError:
         print("no more data")
         print(url)
-        return False
+        logs.append({
+            "type": "error",
+            "message": "file response doesn't have valid data unable to find one of the columns from Scheme Code , Name, NAV, Date"
+        })
+        return False, logs
 
     amc_name = ""
 
     print("valid data found", len(mf_nav_data))
+
+    logs.append({
+        "type": "log",
+        "message": "valid data found starting to process now " + str(len(mf_nav_data))
+    })
 
     scheme_category = ""
     scheme_type = ""
@@ -315,6 +333,10 @@ def do_process_data(url, amc_no):
 
     for line in mf_nav_data[1:]:
         if len(line.strip()) > 0:
+            logs.append({
+                "type": "log",
+                "message": line
+            })
             if line.find(";") != -1:
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
@@ -386,6 +408,10 @@ def do_process_data(url, amc_no):
                         amc = fetch_amc(amc_name)
                         if amc == False:
                             print("amc name doesn't exist ", amc_name)
+                            logs.append({
+                                "type": "alert",
+                                "message": "AMC not found " + amc_name
+                            })
                             continue
                     else:
                         amc = fetch_or_save_amc(amc_name, amc_no)
@@ -419,6 +445,11 @@ def do_process_data(url, amc_no):
 
                     print("saving to db ", line)
 
+                    logs.append({
+                        "type": "log",
+                        "message": "saving to db " + line
+                    })
+
                     date_time_str = mf_data[date_index]
                     date_time_obj = datetime.datetime.strptime(
                         date_time_str, '%d-%b-%Y')
@@ -440,6 +471,10 @@ def do_process_data(url, amc_no):
                             nav.save()
                         except Exception as e:
                             print(e)
+                            logs.append({
+                                "type": "error",
+                                "message": "error in saving nav " + e
+                            })
                             pass
 
             else:
@@ -462,4 +497,4 @@ def do_process_data(url, amc_no):
                     amc_name = line.strip()
                     pass
 
-    return True
+    return True, logs
