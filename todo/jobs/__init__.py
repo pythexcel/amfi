@@ -17,15 +17,20 @@ from apscheduler.triggers.cron import CronTrigger
 scheduler = BackgroundScheduler()
 
 
-trigger2 = OrTrigger([CronTrigger(hour=4, minute=0),CronTrigger(hour=16, minute=0)])
+# trigger2 = OrTrigger([CronTrigger(hour=4, minute=0),CronTrigger(hour=16, minute=0)])
 
-job_mf_historical = scheduler.add_job(download_mf_historical_data, trigger2)
+# job_mf_historical = scheduler.add_job(download_mf_historical_data, trigger2)
 
+job_mf_historical = scheduler.add_job(
+    download_mf_historical_data, 'interval', minute=1)
 
-process_nse_historial = scheduler.add_job(process_nse_historial, OrTrigger([CronTrigger(hour=3, minute=0),CronTrigger(hour=15, minute=0)]))
-process_bse_historial = scheduler.add_job(process_bse_historial, OrTrigger([CronTrigger(hour=3, minute=15),CronTrigger(hour=15, minute=15)]))
+process_nse_historial = scheduler.add_job(process_nse_historial, OrTrigger(
+    [CronTrigger(hour=3, minute=0), CronTrigger(hour=15, minute=0)]))
+process_bse_historial = scheduler.add_job(process_bse_historial, OrTrigger(
+    [CronTrigger(hour=3, minute=15), CronTrigger(hour=15, minute=15)]))
 
-schedule_daily_nav_download = scheduler.add_job(schedule_daily_nav_download, 'interval', hours=12)
+schedule_daily_nav_download = scheduler.add_job(
+    schedule_daily_nav_download, 'interval', hours=12)
 job = scheduler.add_job(process_nse_daily, 'interval', hours=12)
 job = scheduler.add_job(process_bse_daily, 'interval', hours=12)
 
@@ -53,7 +58,7 @@ logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 # print(job_mf_historical.name)
 # print(job_mf_historical.next_run_time)
 
-job_mf_historical.pause() 
+job_mf_historical.pause()
 # i don't think we should have this job running always this always
 # this was a one time affair to get all information of amc at a go
 
