@@ -211,12 +211,12 @@ def fetch_or_save_amc(amc_name, amc_no):
 
 def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no):
     # this will cache scheme and we don't need to alwways fire sql query
-    scheme_unique = fund_code + str(amc.id)
+    scheme_unique = fund_code
     if scheme_unique in scheme_list:
         return scheme_list[scheme_unique]
     try:
         scheme = Scheme.objects.get(
-            fund_code=fund_code, amc=amc)
+            fund_code=fund_code)
 
         if getattr(scheme, "fund_name") != fund_name:
             # this can be removed after sometime
@@ -228,21 +228,25 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
         # amc_no -1 means this is called from daily nav update process and we cannot save scheme from there at all
         if amc_no != -1:
             print(Scheme.objects.filter(
-                fund_code=fund_code, amc=amc).query)
+                fund_code=fund_code).query)
 
             print(scheme_category)
 
-            scheme = Scheme(
-                scheme_category=scheme_category,
-                scheme_type=scheme_type,
-                scheme_sub_type=scheme_sub_type,
-                fund_code=fund_code,
-                fund_name=fund_name,
-                fund_option=fund_option,
-                fund_type=fund_type,
-                amc=amc
-            )
-            scheme.save()
+            try:
+                scheme = Scheme(
+                    scheme_category=scheme_category,
+                    scheme_type=scheme_type,
+                    scheme_sub_type=scheme_sub_type,
+                    fund_code=fund_code,
+                    fund_name=fund_name,
+                    fund_option=fund_option,
+                    fund_type=fund_type,
+                    amc=amc
+                )
+                scheme.save()
+            except Exception as e:
+                print(e)
+
         else:
             return None
 
@@ -351,7 +355,7 @@ def do_process_data(url, amc_no, log_id=False):
                     "type": "log",
                     "message": line
                 }, log_id)
-            
+
             # print(line)
 
             if line.find(";") != -1:
@@ -420,7 +424,6 @@ def do_process_data(url, amc_no, log_id=False):
                     fund_option = "Growth"
 
                 if fund_type == "Direct" and fund_option == "Growth":
-
 
                     # print("here")
                     if amc_no == -1:
