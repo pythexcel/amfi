@@ -499,7 +499,7 @@ def do_process_data(url, amc_no, log_id=False):
                             if log_id is not False:
                                 addLogs({
                                     "type": "error",
-                                    "message": "error in saving nav " + e
+                                    "message": "error in saving nav " + str(e)
                                 }, log_id)
                             pass
 
