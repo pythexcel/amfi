@@ -58,7 +58,7 @@ logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 # print(job_mf_historical.name)
 # print(job_mf_historical.next_run_time)
 
-job_mf_historical.pause()
+# job_mf_historical.pause()
 # i don't think we should have this job running always this always
 # this was a one time affair to get all information of amc at a go
 
