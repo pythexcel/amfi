@@ -22,7 +22,7 @@ scheduler = BackgroundScheduler()
 # job_mf_historical = scheduler.add_job(download_mf_historical_data, trigger2)
 
 job_mf_historical = scheduler.add_job(
-    download_mf_historical_data, 'interval', minute=1)
+    download_mf_historical_data, 'interval', minutes=1)
 
 process_nse_historial = scheduler.add_job(process_nse_historial, OrTrigger(
     [CronTrigger(hour=3, minute=0), CronTrigger(hour=15, minute=0)]))
