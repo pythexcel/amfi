@@ -80,22 +80,22 @@ def process_file():
 
             if ".xls" in f.lower() or ".xlsx" in f.lower():
 
-                # process_aum(os.path.join(aum_path, f), f)
-                # break
-                try:
+                process_aum(os.path.join(aum_path, f), f)
+                break
+                # try:
 
-                    try:
-                        os.mkdir(os.path.join(aum_path, "processed_files"))
-                    except FileExistsError:
-                        pass
+                #     try:
+                #         os.mkdir(os.path.join(aum_path, "processed_files"))
+                #     except FileExistsError:
+                #         pass
 
-                    os.rename(os.path.join(aum_path, f), os.path.join(
-                        os.path.join(aum_path, "processed_files"), f))
+                #     os.rename(os.path.join(aum_path, f), os.path.join(
+                #         os.path.join(aum_path, "processed_files"), f))
 
-                    process_aum(os.path.join(
-                        os.path.join(aum_path, "processed_files"), f), f)
-                except:
-                    pass
+                #     process_aum(os.path.join(
+                #         os.path.join(aum_path, "processed_files"), f), f)
+                # except:
+                #     pass
                 # break
 
         break  # this break is important to prevent further processing of sub directories
@@ -210,7 +210,7 @@ def process_aum(filename, f):
 
         df1.columns = columns
 
-        # print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
+        print(df1["Scheme"])
 
         # df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
 
@@ -237,10 +237,11 @@ def process_aum(filename, f):
             scheme_name_map = {}
             scheme_not_found = []
             for fund in schemes:
-                fund_name = getattr(fund, "fund_name")
+                fund_name = fund.get_clean_name()
                 scheme_name_map[fund_name] = fund
-                mask = df4.apply(lambda x: fund_name ==
-                                 x["Scheme"], axis=1)
+                mask = df4.apply(lambda x: fund_name.lower() ==
+                                 str(x["Scheme"]).lower() or fund_name.lower() in
+                                 str(x["Scheme"]).lower(), axis=1)
 
                 df3 = df4[mask]
 
@@ -261,11 +262,13 @@ def process_aum(filename, f):
 
             scheme_still_not_found = []
             for fund_name in scheme_not_found:
-                short_fund_name = fund_name.replace(amc_unique, "")
+                short_fund_name = fund_name.lower().replace(amc_unique.lower(), "")
 
                 def m(x):
-                    scheme = str(x["Scheme"]).replace(amc_unique, "")
-
+                    scheme = str(x["Scheme"]).lower().replace(
+                        amc_unique.lower(), "")
+                    # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
+                    #     short_fund_name, scheme))
                     return fuzz.token_set_ratio(
                         short_fund_name, scheme) > 95
 

@@ -351,6 +351,9 @@ def do_process_data(url, amc_no, log_id=False):
                     "type": "log",
                     "message": line
                 }, log_id)
+            
+            # print(line)
+
             if line.find(";") != -1:
                 # df = pd.DataFrame(line.split(';'), index=colums)
                 # print(df)
@@ -408,16 +411,18 @@ def do_process_data(url, amc_no, log_id=False):
                 # print("Direct" in line)
                 # print("Growth" in line)
 
-                if "Direct" in line:
+                if "direct" in line.lower():
                     fund_type = "Direct"
                 else:
                     fund_type = "Regular"
 
-                if "Growth" in line:
+                if "growth" in line.lower():
                     fund_option = "Growth"
 
                 if fund_type == "Direct" and fund_option == "Growth":
 
+
+                    # print("here")
                     if amc_no == -1:
                         amc = fetch_amc(amc_name)
                         if amc == False:
@@ -444,9 +449,10 @@ def do_process_data(url, amc_no, log_id=False):
 
                     if "Closed" in scheme_category:
                         # we are skipping closed ended schemes
+                        # print(scheme_category)
                         continue
 
-                    # print(amc_no)
+                    # print(amc_no, "====" , mf_data[scheme_code_index])
                     scheme = fetch_or_save_scheme(
                         mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, scheme_name_new, fund_option, fund_type, amc_no)
 
@@ -509,8 +515,8 @@ def do_process_data(url, amc_no, log_id=False):
                     scheme_type = scheme_type
                     scheme_sub_type = scheme_sub_type
                 else:
-                    # print("amc")
-                    # print(line.strip())
+                    print("amc")
+                    print(line.strip())
                     amc_name = line.strip()
                     pass
 
