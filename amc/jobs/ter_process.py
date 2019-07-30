@@ -411,7 +411,7 @@ def process_ter(filename, f):
             scheme_name_map = {}
             scheme_not_found = []
             for fund in schemes:
-                fund_name = getattr(fund, "fund_name")
+                fund_name = fund.get_clean_name()
                 scheme_name_map[fund_name] = fund
                 mask = df4.apply(lambda x: fund_name ==
                                  x["Scheme"], axis=1)
@@ -438,8 +438,10 @@ def process_ter(filename, f):
                 short_fund_name = fund_name.replace(amc_unique, "")
 
                 def m(x):
-                    scheme = str(x["Scheme"]).replace(amc_unique, "")
-
+                    scheme = str(x["Scheme"]).lower().replace(
+                        amc_unique.lower(), "")
+                    # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
+                    #     short_fund_name, scheme))
                     return fuzz.token_set_ratio(
                         short_fund_name, scheme) > 95
 

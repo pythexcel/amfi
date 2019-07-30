@@ -56,7 +56,7 @@ class AMC(models.Model):
 class SchemeManager(models.Manager):
     # for now working with open ended schems only
     def get_queryset(self):
-        return super().get_queryset().filter(scheme_category='Open Ended Schemes',fund_active=True)
+        return super().get_queryset().filter(scheme_category='Open Ended Schemes', fund_active=True)
 
     """
     getting expect category types are 
@@ -132,6 +132,7 @@ class Scheme(models.Model):
     def get_clean_name(self):
         name = getattr(self, "fund_name")
         name = re.sub("[\(\[].*?[\)\]]", "", name)
+        name = re.sub(' +', ' ', name)
         name = name.replace("Direct", "")
         name = name.replace("Growth", "")
         name = name.replace("Plan", "")
@@ -386,9 +387,9 @@ class Index(models.Model):
     @staticmethod
     def get_latest_index_date():
         return Index.objects.raw("SELECT MAX(date) as max_date, index_id, todo_index.id, todo_index.name as name, todo_index.type as type FROM `todo_indexdata` JOIN todo_index on todo_index.id = index_id GROUP by index_id")
-        
 
     # this is for calcuation's with base reference of any year but 1st and last of year
+
     def previous_yr_abs(self, years=1, start_year=0):
         # years how many years to go back
         # start_year which year to start from
