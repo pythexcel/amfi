@@ -433,6 +433,10 @@ def do_process_data(url, amc_no, log_id=False):
                     if "dividend" in line.lower():
                         fund_option = "Dividend"
 
+                    if "segregated" in line.lower():
+                        # these are funds having segregated portfolio
+                        fund_option = "Segregated"
+
                 if fund_type == "Direct" and fund_option == "Growth":
 
                     # print("here")
@@ -506,6 +510,7 @@ def do_process_data(url, amc_no, log_id=False):
                             nav.save()
                         except Exception as e:
                             print(e)
+                            print(scheme)
                             if log_id is not False:
                                 addLogs({
                                     "type": "error",
