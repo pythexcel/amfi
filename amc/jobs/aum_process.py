@@ -34,7 +34,7 @@ https://www.jmfinancialmf.com/Downloads/FactSheets.aspx?SubReportID=A49C5853-C27
 https://assetmanagement.kotak.com/aaum
 https://www.licmf.com/total-expense-ratio
 https://www.icicipruamc.com/AboutUs/Financials.aspx
-https://www.reliancemutual.com/investor-services/downloads/total-expense-ratio-of-mutual-fund-schemes
+https://www.reliancemutual.com/about-us/disclosure-of-aum
 https://www.sbimf.com/en-us/disclosure
 https://www.taurusmutualfund.com/latest_update.php
 https://www.franklintempletonindia.com/investor/reports
@@ -247,7 +247,9 @@ def process_aum(filename, f):
 
                 if len(df3.index) > 0:
                     # print(df3)
+                    # print("dropping index", df3.index)
                     df4.drop(labels=df3.index, axis=0, inplace=True)
+                    # print(df4)
                     print("fund name direct match ", fund_name)
                     # df3 = df3.drop_duplicates(subset="Total TER", keep="last")
                     # print(df3)
@@ -258,18 +260,19 @@ def process_aum(filename, f):
 
             print(df4.shape)
 
-            # print(df4)
+            print(df4)
 
             scheme_still_not_found = []
             for fund_name in scheme_not_found:
-                short_fund_name = fund_name.lower().replace(amc_unique.lower(), "")
+                short_fund_name = fund_name.lower().replace(amc_unique.lower(), "").strip()
 
                 def m(x):
                     scheme = str(x["Scheme"]).lower().replace(
-                        amc_unique.lower(), "")
-                    # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
-                    #     short_fund_name, scheme))
+                        amc_unique.lower(), "").strip()
+                    print(short_fund_name, "=====", scheme, "=====", fuzz.ratio(
+                        scheme, short_fund_name))
                     return fuzz.token_set_ratio(
+                        short_fund_name, scheme) > 95 or fuzz.ratio(
                         short_fund_name, scheme) > 95
 
                 mask = df4.apply(m, axis=1)
@@ -347,7 +350,7 @@ def process_aum(filename, f):
 
             """
 
-            move_file_finally(aum_path, amc, filename, f, aum_process)
+            
 
             # break
             # print(scheme_map)
@@ -356,6 +359,8 @@ def process_aum(filename, f):
             aum_process.addLog(json.dumps(scheme_still_not_found))
             # for row in df2.itertuples():
             #     print(row)
+
+            move_file_finally(aum_path, amc, filename, f, aum_process)
 
         else:
             print("unable to identify amc!")

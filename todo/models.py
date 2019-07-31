@@ -123,6 +123,7 @@ class Scheme(models.Model):
     fund_type = models.CharField(
         max_length=255, null=False)  # direct or regular
     fund_active = models.BooleanField(default=True)
+    line = models.CharField(max_length=255) # saving the orignal line from csv. required for debugging
 
     objects = SchemeManager()
 
