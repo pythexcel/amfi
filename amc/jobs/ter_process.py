@@ -443,6 +443,7 @@ def process_ter(filename, f):
                     # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
                     #     short_fund_name, scheme))
                     return fuzz.token_set_ratio(
+                        short_fund_name, scheme) > 95 or fuzz.ratio(
                         short_fund_name, scheme) > 95
 
                 mask = df4.apply(m, axis=1)

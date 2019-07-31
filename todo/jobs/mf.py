@@ -209,7 +209,7 @@ def fetch_or_save_amc(amc_name, amc_no):
     return amc
 
 
-def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no):
+def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_sub_type, fund_name, fund_option, fund_type, amc_no, line):
     # this will cache scheme and we don't need to alwways fire sql query
     scheme_unique = fund_code
     if scheme_unique in scheme_list:
@@ -217,6 +217,9 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
     try:
         scheme = Scheme.objects.get(
             fund_code=fund_code)
+
+        if len(getattr(scheme, "line").strip()) == 0:
+            Scheme.objects.filter(pk=scheme.id).update(line=line)
 
         if getattr(scheme, "fund_name") != fund_name:
             # this can be removed after sometime
@@ -241,7 +244,8 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
                     fund_name=fund_name,
                     fund_option=fund_option,
                     fund_type=fund_type,
-                    amc=amc
+                    amc=amc,
+                    line=line
                 )
                 scheme.save()
             except Exception as e:
@@ -422,6 +426,12 @@ def do_process_data(url, amc_no, log_id=False):
 
                 if "growth" in line.lower():
                     fund_option = "Growth"
+                    if "bonus" in line.lower():
+                        fund_option = "Growth Bonus"
+
+                    # sometimes find its has growth in it. this is causing issue
+                    if "dividend" in line.lower():
+                        fund_option = "Dividend"
 
                 if fund_type == "Direct" and fund_option == "Growth":
 
@@ -457,7 +467,7 @@ def do_process_data(url, amc_no, log_id=False):
 
                     # print(amc_no, "====" , mf_data[scheme_code_index])
                     scheme = fetch_or_save_scheme(
-                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, scheme_name_new, fund_option, fund_type, amc_no)
+                        mf_data[scheme_code_index], amc, scheme_category, scheme_type, scheme_sub_type, scheme_name_new, fund_option, fund_type, amc_no, line)
 
                     if scheme is None:
                         continue
