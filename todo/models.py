@@ -123,7 +123,8 @@ class Scheme(models.Model):
     fund_type = models.CharField(
         max_length=255, null=False)  # direct or regular
     fund_active = models.BooleanField(default=True)
-    line = models.CharField(max_length=255) # saving the orignal line from csv. required for debugging
+    # saving the orignal line from csv. required for debugging
+    line = models.CharField(max_length=255)
 
     objects = SchemeManager()
 
@@ -134,9 +135,10 @@ class Scheme(models.Model):
         name = getattr(self, "fund_name")
         name = re.sub("[\(\[].*?[\)\]]", "", name)
         name = re.sub(' +', ' ', name)
-        name = name.replace("Direct", "")
-        name = name.replace("Growth", "")
-        name = name.replace("Plan", "")
+        name = name.replace(" Direct", "")
+        name = name.replace(" Growth", "")
+        # add space because some fund name has plan in there name itself
+        name = name.replace(" Plan ", "")
         name = name.strip()
         return name
     # clean_name = property(get_clean_name)

@@ -420,7 +420,7 @@ def process_ter(filename, f):
 
                 if len(df3.index) > 0:
                     # print(df3)
-                    df4.drop(labels=df3.index, axis=0, inplace=True)
+                    df4.drop(labels=df3.index[0], axis=0, inplace=True)
                     print("fund name direct match ", fund_name)
                     # df3 = df3.drop_duplicates(subset="Total TER", keep="last")
                     # print(df3)
@@ -429,7 +429,7 @@ def process_ter(filename, f):
                     # print("fund name not found or some other error", fund_name)
                     scheme_not_found.append(fund_name)
 
-            print(df4.shape)
+            
 
             # print(df4)
 
@@ -443,8 +443,8 @@ def process_ter(filename, f):
                     # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
                     #     short_fund_name, scheme))
                     return fuzz.token_set_ratio(
-                        short_fund_name, scheme) > 95 or fuzz.ratio(
-                        short_fund_name, scheme) > 95
+                        short_fund_name, scheme) > 90 or fuzz.ratio(
+                        short_fund_name, scheme) >= 90
 
                 mask = df4.apply(m, axis=1)
                 df3 = df4[mask]
@@ -463,7 +463,7 @@ def process_ter(filename, f):
                         df3 = df3.sort_values(by="ratio")
                         print(df3)
 
-                    df4.drop(labels=df3.index, axis=0, inplace=True)
+                    df4.drop(labels=df3.index[0], axis=0, inplace=True)
                     print("fund name fuzzy match ", fund_name,
                           " with ", df3["Scheme"].iloc[0])
                     scheme_map[fund_name] = df3["Scheme"].iloc[0]
