@@ -3,18 +3,14 @@ import numpy as np
 import requests
 import datetime
 import traceback
-
-import zipfile
 import shutil
-
-from subprocess import call
 
 import os
 
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
-from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
+from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import portfolio_path as mf_download_files_path, local_base_path, server_base_path
 
@@ -70,52 +66,7 @@ http://www.itimf.com/statutory-disclosure/monthly-portfolios
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
 
-    for (dirpath, dirnames, filenames) in os.walk(mf_download_files_path):
-        for f in filenames:
-            if ".xlsb" in f:
-                print("process xlsb ", f)
-                call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(
-                    mf_download_files_path, f), "--outdir", mf_download_files_path])
-                try:
-                    os.mkdir(os.path.join(
-                        mf_download_files_path, "processed_xlsb"))
-                except FileExistsError:
-                    pass
-
-                os.rename(os.path.join(mf_download_files_path, f), os.path.join(
-                    os.path.join(mf_download_files_path, "processed_xlsb"), f))
-
-            if ".zip" in f:
-
-                print("processing file ", f)
-                with zipfile.ZipFile(os.path.join(mf_download_files_path, f)) as zip_file:
-                    for member in zip_file.namelist():
-                        filename = os.path.basename(member)
-                        # skip directories
-                        if not filename:
-                            continue
-
-                        # copy file (taken from zipfile's extract)
-                        source = zip_file.open(member)
-                        target = open(os.path.join(
-                            mf_download_files_path, filename), "wb")
-                        with source, target:
-                            shutil.copyfileobj(source, target)
-
-                with zipfile.ZipFile(os.path.join(mf_download_files_path, f), "r") as zip_ref:
-                    print(mf_download_files_path)
-                    zip_ref.extractall(mf_download_files_path)
-                # os.remove(os.path.join(path, f))
-                try:
-                    os.mkdir(os.path.join(mf_download_files_path, "processed"))
-                except FileExistsError:
-                    pass
-
-                os.rename(os.path.join(mf_download_files_path, f), os.path.join(
-                    os.path.join(mf_download_files_path, "processed"), f))
-
-        break  # this break is important to prevent further processing of sub directories
-
+    generic_process_zip_file(mf_download_files_path)
     identify_amc()
 
 def move_files_from_folder_to_parent():
@@ -270,7 +221,7 @@ def identify_amc():
 
                                 # os.rename(os.path.join(
                                 #     mf_download_files_path, f), os.path.join(
-                                #     mf_download_files_path, "procssed", f))
+                                #     mf_download_files_path, "processed", f))
 
                             except Exception as e:
                                 traceback.print_exc(e)
@@ -303,6 +254,8 @@ def process_data(amc_process):
     # for amc_process in to_process:
     file_path = getattr(amc_process, "final_path")
     amc_short_name = getattr(amc_process, "amc")
+
+    print(file_path,"xxxxxxxxxxxxxxxxxxxxxxxx")
 
     # one time temporary code since we parsed files in local it has local path
     if local_base_path in file_path:
