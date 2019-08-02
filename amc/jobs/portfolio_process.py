@@ -125,7 +125,7 @@ def identify_amc():
                     for sheet_name in sheet_names:
                         if sheet_name == "Index" or sheet_name == "Sheet1":
                             continue
-                        # print("checking for sheet name", sheet_name)
+                        print("checking for sheet name", sheet_name)
                         # df1 = pd.read_excel(xls, sheet_name)
                         df1 = read_excel(xls, sheet_name)
 
@@ -138,10 +138,12 @@ def identify_amc():
                         indexes = df2.index.values
 
                         if len(indexes) > 0:
-                            df1 = df1.head(indexes[0])
+                            # df1 = df1.head(indexes[0])
                             # print(df1)
                             amc, score = match_fund_name_from_sheet(
                                 amc_names, df1)
+
+                            print(amc , "xxxx", score)
 
                             if score > 0:
                                 if amc in amc_sheet_match:
@@ -310,7 +312,7 @@ def process_portfolio(filename, amc, date, amc_process):
         print("checking for sheet name", sheet_name)
         df1 = pd.read_excel(xls, sheet_name)
 
-        fund, ratio = match_fund_name_from_sheet(fund_names.keys(), df1)
+        fund, ratio = match_fund_name_from_sheet    (fund_names.keys(), df1)
 
         print(fund, "===",  ratio, "===", sheet_name)
 
