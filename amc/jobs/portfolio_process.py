@@ -116,6 +116,7 @@ def process_zip_file():
 
         break  # this break is important to prevent further processing of sub directories
 
+    identify_amc()
 
 def move_files_from_folder_to_parent():
     # this is temporary one time function i made to move all processed files from
