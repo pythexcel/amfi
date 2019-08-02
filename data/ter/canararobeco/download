@@ -1,0 +1,917 @@
+<div id="dvtable">
+
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%" class="navSchemeTabContent">
+
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="5">REGULAR PLAN</td>
+                                    <td colspan="5">DIRECT PLAN</td>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                <tr>
+                                    <td>Name of Scheme</td>
+                                    <td>Date (dd/mm/yyyy)</td>
+                                    <td>Base TER(%)</td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(B)(%)</td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(C)(%)</td>
+                                    <td>GST(%)	</td>
+                                    <td>Total TER(%)</td>
+                                    <td>Base TER(%)</td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(B)(%)</td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(C)(%)</td>
+                                    <td>GST(%)</td>
+                                    <td>Total TER(%)</td>
+                                </tr>
+                                <!-- ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Infrastructure</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">2.25</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.04</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.23</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.57</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">1.38</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.23</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.66</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Equity Diversified Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.99</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.07</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.21</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.32</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">1.28</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.21</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.54</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Equity Taxsaver Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">2.06</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.19</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.33</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">1.21</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.19</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.4</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Emerging Equities</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.72</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.06</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.09</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.92</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.68</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.09</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.82</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Consumer Trends Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">2.24</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.09</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.18</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.56</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">1.1</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.18</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.33</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Bluechip Equity Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">2.24</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.09</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.2</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.58</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">1.24</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.2</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.49</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Gold Exchange Traded Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.5</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 --><td ng-if="x.RegularGst == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.5</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 --><td ng-if="x.DirectBaseTER == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 --><td ng-if="x.DirectGst == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 --><td ng-if="x.DirectTotalTER == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Gold Savings Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.5</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.04</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.59</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.37</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.04</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.46</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Equity Hybrid Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.87</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.13</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.13</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.83</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.13</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.01</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Dynamic Bond Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.63</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.12</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.75</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.82</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.12</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.94</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Gilt Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.18</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.07</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.25</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.53</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.07</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.6</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Income Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.78</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.12</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.9</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.75</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.12</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.87</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Savings Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.51</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.04</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.55</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.27</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.04</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.31</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Conservative Hybrid Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.99</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.02</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.19</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.25</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.96</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.19</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">1.2</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">CANARA ROBECO GILT 1988</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.17</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.17</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 --><td ng-if="x.DirectBaseTER == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 --><td ng-if="x.DirectGst == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 --><td ng-if="x.DirectTotalTER == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Liquid Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.01</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.11</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.07</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.01</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Ultra Short Term Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.9</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.95</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.38</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.43</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Short Duration Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.2</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.25</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.46</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.51</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Corporate Bond Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1.19</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.06</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.25</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.42</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.06</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.48</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Capital Protection Oriented Fund Series 7</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.08</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.65</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.73</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Capital Protection Oriented Fund Series 8</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.08</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.65</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.73</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Capital Protection Oriented Fund Series 9</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.08</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.65</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.73</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Dual Advantage Fund Series 1</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.08</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.65</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.73</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Fixed Maturity Plan Series 8</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">0.45</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 --><td ng-if="x.RegularGst == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">0.45</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.15</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 --><td ng-if="x.DirectGst == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.15</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Small Cap Fund</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">2.25</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 --><td ng-if="x.RegularAddl_expense_c1 > 0" class="ng-binding ng-scope">0.11</td><!-- end ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 --><td ng-if="x.RegularAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">2.49</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.59</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 --><td ng-if="x.DirectAddl_expense_c2 > 0" class="ng-binding ng-scope">0.05</td><!-- end ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.72</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table --><tr ng-repeat="x in SchemeDetails.Table" class="ng-scope">
+                                    <td class="ng-binding">Canara Robeco Capital Protection Oriented Fund Series 10</td>
+                                    <td class="ng-binding">06/12/2019</td>
+                                    <!-- ngIf: x.RegularBaseTER == 0.00 -->
+                                    <!-- ngIf: x.RegularBaseTER > 0 --><td ng-if="x.RegularBaseTER > 0" class="ng-binding ng-scope">1</td><!-- end ngIf: x.RegularBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.RegularAddl_expense_c1 == 0.00 --><td ng-if="x.RegularAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c1 > 0 -->
+
+                                    <!-- ngIf: x.RegularAddl_expense_c2 == 0.00 --><td ng-if="x.RegularAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.RegularAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.RegularAddl_expense_c2 > 0 -->
+
+                                    <!-- ngIf: x.RegularGst == 0.00 -->
+                                    <!-- ngIf: x.RegularGst > 0 --><td ng-if="x.RegularGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.RegularGst > 0 -->
+                                    
+                                    
+                                    <!-- ngIf: x.RegularTotalTER == 0.00 -->
+                                    <!-- ngIf: x.RegularTotalTER > 0 --><td ng-if="x.RegularTotalTER > 0" class="ng-binding ng-scope">1.08</td><!-- end ngIf: x.RegularTotalTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectBaseTER == 0.00 -->
+                                    <!-- ngIf: x.DirectBaseTER > 0 --><td ng-if="x.DirectBaseTER > 0" class="ng-binding ng-scope">0.65</td><!-- end ngIf: x.DirectBaseTER > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c1 == 0.00 --><td ng-if="x.DirectAddl_expense_c1 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c1 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c1 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectAddl_expense_c2 == 0.00 --><td ng-if="x.DirectAddl_expense_c2 == 0.00" class="ng-scope">0.00</td><!-- end ngIf: x.DirectAddl_expense_c2 == 0.00 -->
+                                    <!-- ngIf: x.DirectAddl_expense_c2 > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectGst == 0.00 -->
+                                    <!-- ngIf: x.DirectGst > 0 --><td ng-if="x.DirectGst > 0" class="ng-binding ng-scope">0.08</td><!-- end ngIf: x.DirectGst > 0 -->
+                                    
+                                    <!-- ngIf: x.DirectTotalTER == 0.00 -->
+                                    <!-- ngIf: x.DirectTotalTER > 0 --><td ng-if="x.DirectTotalTER > 0" class="ng-binding ng-scope">0.73</td><!-- end ngIf: x.DirectTotalTER > 0 -->
+                                    
+                                </tr><!-- end ngRepeat: x in SchemeDetails.Table -->
+                            </tbody>
+                        </table>
+                    </div>
