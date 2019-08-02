@@ -17,7 +17,7 @@ import re
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
-from amc.jobs.util import ExcelFile, read_excel, find_date_from_filename, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
+from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, find_date_from_filename, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import aum_path
 
@@ -106,50 +106,7 @@ def process_file():
 
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
-
-    for (dirpath, dirnames, filenames) in os.walk(aum_path):
-        for f in filenames:
-            if ".xlsb" in f:
-                print("process xlsb ", f)
-                call(["soffice", "--headless", "--convert-to", "xlsx",
-                      os.path.join(aum_path, f), "--outdir", aum_path])
-                try:
-                    os.mkdir(os.path.join(aum_path, "processed_xlsb"))
-                except FileExistsError:
-                    pass
-
-                os.rename(os.path.join(aum_path, f), os.path.join(
-                    os.path.join(aum_path, "processed_xlsb"), f))
-            if ".zip" in f:
-
-                print("processing file ", f)
-                with zipfile.ZipFile(os.path.join(aum_path, f)) as zip_file:
-                    for member in zip_file.namelist():
-                        filename = os.path.basename(member)
-                        # skip directories
-                        if not filename:
-                            continue
-
-                        # copy file (taken from zipfile's extract)
-                        source = zip_file.open(member)
-                        target = open(os.path.join(
-                            aum_path, filename), "wb")
-                        with source, target:
-                            shutil.copyfileobj(source, target)
-
-                with zipfile.ZipFile(os.path.join(aum_path, f), "r") as zip_ref:
-                    print(aum_path)
-                    zip_ref.extractall(aum_path)
-                # os.remove(os.path.join(path, f))
-                try:
-                    os.mkdir(os.path.join(aum_path, "processed_zips"))
-                except FileExistsError:
-                    pass
-
-                os.rename(os.path.join(aum_path, f), os.path.join(
-                    os.path.join(aum_path, "processed_zips"), f))
-
-        break  # this break is important to prevent further processing of sub directories
+    generic_process_zip_file(aum_path)
 
 
 def process_aum(filename, f):
@@ -159,7 +116,6 @@ def process_aum(filename, f):
 
     #  = "/mnt/c/work/newdref/mf_ter_download/Total Expense Ratio of Mutual Fund Schemes.xlsx"
 
-
     """
     this we need to report for dashboard processing
     1. able to process a file and see view i.e logs 
@@ -168,7 +124,7 @@ def process_aum(filename, f):
     because if any issue need to correct it 
     3. able to manually map scheme name to a word in excel file because sometimes manually is not possible at all
     4. able to view the dataframe processed not the entire file 
-    
+    5. 
     """
 
     aum_process = Scheme_AUM_Process(file_name=filename)

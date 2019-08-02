@@ -6,6 +6,11 @@ import datetime
 from pyxlsb import open_workbook
 
 import os
+
+import zipfile
+import shutil
+from subprocess import call
+
 from todo.models import AMC
 
 
@@ -25,6 +30,54 @@ portfolio_path = actual_path + "mf_portfolio_download"
 ter_path = actual_path + "mf_ter_download"
 aum_path = actual_path + "mf_aum_download"
 download_path = actual_path + "downloads"
+
+
+def generic_process_zip_file(base_folder_path):
+    for (dirpath, dirnames, filenames) in os.walk(base_folder_path):
+        for f in filenames:
+            if ".xlsb" in f:
+                print("process xlsb ", f)
+                call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(
+                    base_folder_path, f), "--outdir", base_folder_path])
+                try:
+                    os.mkdir(os.path.join(
+                        base_folder_path, "processed_xlsb"))
+                except FileExistsError:
+                    pass
+
+                os.rename(os.path.join(base_folder_path, f), os.path.join(
+                    os.path.join(base_folder_path, "processed_xlsb"), f))
+
+            if ".zip" in f:
+
+                print("processing file ", f)
+                with zipfile.ZipFile(os.path.join(base_folder_path, f)) as zip_file:
+                    for member in zip_file.namelist():
+                        filename = os.path.basename(member)
+                        # skip directories
+                        if not filename:
+                            continue
+
+                        # copy file (taken from zipfile's extract)
+                        source = zip_file.open(member)
+                        target = open(os.path.join(
+                            base_folder_path, filename), "wb")
+                        with source, target:
+                            shutil.copyfileobj(source, target)
+
+                with zipfile.ZipFile(os.path.join(base_folder_path, f), "r") as zip_ref:
+                    print(base_folder_path)
+                    zip_ref.extractall(base_folder_path)
+                # os.remove(os.path.join(path, f))
+                try:
+                    os.mkdir(os.path.join(base_folder_path, "processed"))
+                except FileExistsError:
+                    pass
+
+                os.rename(os.path.join(base_folder_path, f), os.path.join(
+                    os.path.join(base_folder_path, "processed"), f))
+
+        break  # this break is important to prevent further processing of sub directories
 
 
 def read_excel(xls, sheet_name):
@@ -264,7 +317,7 @@ def find_date_from_filename(filename):
     # this will match only year/month not actual date
     # use this as last resort if normal functon don't work
 
-    years = [2016,2017,2018,2019,2020,2021]
+    years = [2016, 2017, 2018, 2019, 2020, 2021]
 
     dateFound = False
 
@@ -280,9 +333,10 @@ def find_date_from_filename(filename):
                     break
             break
 
-
     return dateFound
 # this function is to find the fund name from sheet.
+
+
 def match_fund_name_from_sheet(fund_names, sheet_df):
 
     # for col in expected_cols:
