@@ -69,6 +69,7 @@ def process_zip_file():
     generic_process_zip_file(mf_download_files_path)
     identify_amc()
 
+
 def move_files_from_folder_to_parent():
     # this is temporary one time function i made to move all processed files from
     # amc directorys back to original path for testing purposes
@@ -255,7 +256,7 @@ def process_data(amc_process):
     file_path = getattr(amc_process, "final_path")
     amc_short_name = getattr(amc_process, "amc")
 
-    print(file_path,"xxxxxxxxxxxxxxxxxxxxxxxx")
+    print(file_path, "xxxxxxxxxxxxxxxxxxxxxxxx")
 
     # one time temporary code since we parsed files in local it has local path
     if local_base_path in file_path:
@@ -318,15 +319,19 @@ def process_portfolio(filename, amc, date, amc_process):
 
             scheme = fund_names[fund]
 
-            Scheme_Portfolio_Data.objects.filter(scheme=scheme,
-                                                 date=date).delete()
-
-            scheme_data = Scheme_Portfolio_Data(
-                scheme=scheme,
-                url=filename,
-                date=date
-            )
-            scheme_data.save()
+            try:
+                scheme_port = Scheme_Portfolio_Data.objects.get(
+                    scheme=scheme, date=date)
+                Scheme_Portfolio.objects.filter(scheme=scheme_port).delete()
+                scheme_port.delete()
+            except Exception as e:
+                print(e)
+                scheme_data = Scheme_Portfolio_Data(
+                    scheme=scheme,
+                    url=filename,
+                    date=date
+                )
+                scheme_data.save()
 
             if "ISIN" in col_indexes and "Name" in col_indexes and "Market" in col_indexes and "Quantity" in col_indexes and "Rating" in col_indexes:
                 # df1.fillna(False)
@@ -344,11 +349,9 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]
-                      :, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1)
-                                :, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
