@@ -11,6 +11,8 @@ import datefinder
 
 from subprocess import call
 
+import re
+
 
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
@@ -248,6 +250,9 @@ def process_aum(filename, f):
                 if len(df3.index) > 0:
                     # print(df3)
                     # print("dropping index", df3.index)
+                    if len(df3.index) > 1:
+                        print("multipe index can cause issue")
+                        
                     df4.drop(labels=df3.index, axis=0, inplace=True)
                     # print(df4)
                     print("fund name direct match ", fund_name)
@@ -269,6 +274,7 @@ def process_aum(filename, f):
                 def m(x):
                     scheme = str(x["Scheme"]).lower().replace(
                         amc_unique.lower(), "").strip()
+                    scheme = re.sub("[\(\[].*?[\)\]]", "", scheme)
                     print(short_fund_name, "=====", scheme, "=====", fuzz.ratio(
                         scheme, short_fund_name))
                     return fuzz.token_set_ratio(

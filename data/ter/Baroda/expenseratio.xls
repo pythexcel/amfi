@@ -1,0 +1,417 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" id="gdexpense" style="border-collapse:collapse;display:none">
+		<tr>
+			<th scope="col">
+                                <tr>
+                                    <th id="gdexpense_schemenamep" colspan="12">                                        
+                                        <p>Total Expense Ratio (TER) for <span id="gdexpense_lblSchemeName">All</span> </p> 
+                                      </th>
+			
+                              
+                                    
+                                </tr>
+                                  <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th colspan="5">Regular Plan</th>
+                                    <th colspan="5">Direct Plan</th>
+                                </tr>
+                                 <tr>
+                                    <td>Name of Scheme</td>
+                                    <td>Date (MM/DD     /YYYY)</td>
+                                    <td>Base TER(%)<sup>1</sup></td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(b)(%)<sup>2</sup></td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(b)(%)<sup>3</sup></td>
+                                    <td>GST(%)<sup>4</sup></td>
+                                    <td>Total TER(%)</td>
+                                    <td>Base TER(%)<sup>1</sup></td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(b)(%)<sup>2</sup></td>
+                                    <td>Additional Expense As Per Regulation 52(6A)(b)(%)<sup>3</sup></td>
+                                    <td>GST(%)<sup>4</sup></td>
+                                    <td>Total TER(%)</td>
+                                     
+                                </tr>
+                            </th>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Banking and Financial Services Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_0">2.25</span></td>
+                                    <td style="mso-number-format:\@;">0.06</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.22</td>
+                                    <td style="mso-number-format:\@;">2.58</td>
+                                    <td style="mso-number-format:\@;">1.55</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.22</td>
+                                    <td style="mso-number-format:\@;">1.82</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Conservative Hybrid Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_1">1.90</span></td>
+                                    <td style="mso-number-format:\@;">0.03</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.15</td>
+                                    <td style="mso-number-format:\@;">2.08</td>
+                                    <td style="mso-number-format:\@;">0.99</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.15</td>
+                                    <td style="mso-number-format:\@;">1.14</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Credit Risk Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_2">1.64</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                    <td style="mso-number-format:\@;">1.74</td>
+                                    <td style="mso-number-format:\@;">0.71</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                    <td style="mso-number-format:\@;">0.81</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Dynamic Bond Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_3">1.43</span></td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.14</td>
+                                    <td style="mso-number-format:\@;">1.58</td>
+                                    <td style="mso-number-format:\@;">1.01</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.14</td>
+                                    <td style="mso-number-format:\@;">1.15</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Dynamic Equity Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_4">2.25</span></td>
+                                    <td style="mso-number-format:\@;">0.06</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                    <td style="mso-number-format:\@;">2.46</td>
+                                    <td style="mso-number-format:\@;">0.85</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                    <td style="mso-number-format:\@;">1.00</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda ELSS 96 Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_5">2.25</span></td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.24</td>
+                                    <td style="mso-number-format:\@;">2.54</td>
+                                    <td style="mso-number-format:\@;">1.60</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.24</td>
+                                    <td style="mso-number-format:\@;">1.84</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Equity Savings Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_6">1.75</span></td>
+                                    <td style="mso-number-format:\@;">0.66</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">2.51</td>
+                                    <td style="mso-number-format:\@;">0.54</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.64</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Fixed Maturity Plan - Series P </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_7">0.50</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.02</td>
+                                    <td style="mso-number-format:\@;">0.52</td>
+                                    <td style="mso-number-format:\@;">0.20</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.02</td>
+                                    <td style="mso-number-format:\@;">0.22</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Gilt Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_8">1.74</span></td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.15</td>
+                                    <td style="mso-number-format:\@;">1.90</td>
+                                    <td style="mso-number-format:\@;">1.02</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.15</td>
+                                    <td style="mso-number-format:\@;">1.17</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Hybrid Equity Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_9">2.14</span></td>
+                                    <td style="mso-number-format:\@;">0.04</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.21</td>
+                                    <td style="mso-number-format:\@;">2.44</td>
+                                    <td style="mso-number-format:\@;">1.43</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.21</td>
+                                    <td style="mso-number-format:\@;">1.69</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Large Cap Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_10">2.25</span></td>
+                                    <td style="mso-number-format:\@;">0.04</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.24</td>
+                                    <td style="mso-number-format:\@;">2.58</td>
+                                    <td style="mso-number-format:\@;">1.65</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.24</td>
+                                    <td style="mso-number-format:\@;">1.94</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Liquid Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_11">0.19</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.20</td>
+                                    <td style="mso-number-format:\@;">0.09</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Mid-cap Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_12">2.25</span></td>
+                                    <td style="mso-number-format:\@;">0.06</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.22</td>
+                                    <td style="mso-number-format:\@;">2.58</td>
+                                    <td style="mso-number-format:\@;">1.55</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.22</td>
+                                    <td style="mso-number-format:\@;">1.82</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Money Market Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_13">0.57</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.03</td>
+                                    <td style="mso-number-format:\@;">0.60</td>
+                                    <td style="mso-number-format:\@;">0.27</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.03</td>
+                                    <td style="mso-number-format:\@;">0.30</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Multi Cap Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_14">2.13</span></td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.23</td>
+                                    <td style="mso-number-format:\@;">2.51</td>
+                                    <td style="mso-number-format:\@;">1.49</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.05</td>
+                                    <td style="mso-number-format:\@;">0.23</td>
+                                    <td style="mso-number-format:\@;">1.77</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Overnight Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_15">0.14</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.15</td>
+                                    <td style="mso-number-format:\@;">0.09</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.01</td>
+                                    <td style="mso-number-format:\@;">0.10</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Short Term Bond Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_16">1.23</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.06</td>
+                                    <td style="mso-number-format:\@;">1.29</td>
+                                    <td style="mso-number-format:\@;">0.53</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.06</td>
+                                    <td style="mso-number-format:\@;">0.59</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Treasury Advantage Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_17">0.82</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.08</td>
+                                    <td style="mso-number-format:\@;">0.90</td>
+                                    <td style="mso-number-format:\@;">0.51</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.08</td>
+                                    <td style="mso-number-format:\@;">0.59</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr><tr>
+			<td>
+                                <tr>    
+                                    
+                                    <td>Baroda Ultra Short Duration Fund </td>
+                                    <td>07/30/2019</td>                                    
+                                    <td style="mso-number-format:\@;"><span id="gdexpense_lblVal_18">0.36</span></td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.02</td>
+                                    <td style="mso-number-format:\@;">0.38</td>
+                                    <td style="mso-number-format:\@;">0.18</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.00</td>
+                                    <td style="mso-number-format:\@;">0.02</td>
+                                    <td style="mso-number-format:\@;">0.20</td>
+                                       
+                                </tr>
+
+                            </td>
+		</tr>
+	</table>
+</div>1. Base TER excludes additional expenses provided in Regulation 52(6A)(b) and 52(6A)(c) of SEBI (Mutual Funds) Regulations, 1996. <br/>2. Additional Expenses not exceeding 0.30% in terms of Regulation 52(6A)(b) of SEBI (Mutual Funds) Regulations, 1996.<br/>3. Additional Expenses not exceeding 0.05% in terms of Regulation 52(6A)(c) of SEBI (Mutual Funds) Regulations, 1996. <br/>4. Present GST rate is 18% on the management fee component of the Base TER <br/>5. Percentages mentioned above are annualized.<br/> 6. Base TER of direct plan shall have a lower expense ratio excluding distribution expenses, commission, etc., and no commission shall be paid from such plans.

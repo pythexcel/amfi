@@ -388,6 +388,9 @@ def do_process_data(url, amc_no, log_id=False):
                     if found == False:
                         duplicate_scheme_date.append(data_point)
 
+                    # problem with this logic. there are funds like UTI Regular Savings Fund - Direct Plan
+                    # not sure solution for this
+
                 scheme_name_new = " ".join(duplicate_scheme_date)
                 scheme_name_new = scheme_name_new.strip()
 

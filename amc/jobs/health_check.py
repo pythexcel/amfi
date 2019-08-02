@@ -8,21 +8,16 @@ from collections import Counter
 
 def health_check():
     # general health check for all cron jobs running and reporting
-
-    scheme_health_check()
-
-    # ret = aum_health_check()
-
-    # print("nav health check")
-    # print(ret)
-
-    pass
+    return {
+        "duplicate_schemes": scheme_health_check(),
+        "aaum_data_check": aum_health_check()
+    }
 
 
 def scheme_health_check():
 
-    for scheme in Scheme.objects.raw("select * from todo_scheme where scheme_category = 'Close Ended Schemes' "):
-        Nav.objects.filter(scheme=getattr(scheme, "id")).delete()
+    # for scheme in Scheme.objects.raw("select * from todo_scheme where scheme_category = 'Close Ended Schemes' "):
+    #     Nav.objects.filter(scheme=getattr(scheme, "id")).delete()
 
     # find duplicate scheme
     scheme_names = []
@@ -33,13 +28,15 @@ def scheme_health_check():
     items = [k for k, v in Counter(scheme_names).items() if v > 1]
     print(items)
 
+    return items
+
     """
-    delete FROM `amc_scheme_ter` where scheme_id = 896;
-    delete from amc_scheme_portfolio_data where scheme_id = 896;
-    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 896;
-    delete FROM `stats_schemestats` WHERE `scheme_id` = 896;
-    delete FROM `todo_nav` where scheme_id = 896;
-    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 896;
+    delete FROM `amc_scheme_ter` where scheme_id = 2118;
+    delete from amc_scheme_portfolio_data where scheme_id = 2118;
+    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 2118;
+    delete FROM `stats_schemestats` WHERE `scheme_id` = 2118;
+    delete FROM `todo_nav` where scheme_id = 2118;
+    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 2118;
 
     """
 
@@ -55,18 +52,21 @@ def aum_health_check():
     for amc in AMC.objects.all():
         # id = getattr(amc, "id")
 
-        scheme = Scheme.objects.filter(amc=amc).first()
+        schemes = Scheme.objects.filter(amc=amc)
 
-        aums = Scheme_AUM.objects.filter(
-            scheme=scheme, date__gt=datetime.datetime(2019, 1, 1)).order_by('date')
+        for scheme in schemes:
+            aums = Scheme_AUM.objects.filter(
+                scheme=scheme, date__gt=datetime.datetime(2019, 1, 1)).order_by('date')
 
-        if aums.count() == 6:
-            # print("all good")
-            pass
-        else:
-            print("amc name ", getattr(amc, "name"))
-            print("scheme name ", getattr(scheme, "fund_name"))
-            for aum in aums:
-                print(getattr(aum, "date"), " ==== ", getattr(aum, "aum"))
+            if aums.count() == 0:
+                print("aaum not found for this scheme at all",
+                      getattr(scheme, "fund_name"))
+                # print("all good")
+            #     pass
+            # else:
+            #     print("amc name ", getattr(amc, "name"))
+            #     print("scheme name ", getattr(scheme, "fund_name"))
+            #     for aum in aums:
+            #         print(getattr(aum, "date"), " ==== ", getattr(aum, "aum"))
 
     return {}
