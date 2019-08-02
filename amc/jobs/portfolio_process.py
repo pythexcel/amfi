@@ -166,7 +166,7 @@ def identify_amc():
 
                     amc_process.setAMC(max_amc)
 
-                    amc_process.addLog("amc identified as " + max_amc)
+                    amc_process.addLog("amc identified as " + str(max_amc))
 
                     if max_amc != False:
                         if len(sheet_names) > 2:
