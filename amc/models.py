@@ -105,6 +105,10 @@ class Scheme_Portfolio_Data(models.Model):
     parsed = models.BooleanField(default=False, null=False)
 
 
+    class Meta:
+        unique_together = ("scheme", "date")
+
+
 class Scheme_Portfolio(models.Model):
     scheme = models.ForeignKey(
         'Scheme_Portfolio_Data',
