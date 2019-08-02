@@ -410,6 +410,7 @@ def process_portfolio(filename, amc, date, amc_process):
                                 print(e)
                                 print(scheme_data)
                                 print(isin)
+                                traceback.print_exc(e)
                                 pass
                             
 
