@@ -404,7 +404,14 @@ def process_portfolio(filename, amc, date, amc_process):
                                 market=market,
                                 percent=nav_per
                             )
-                            scheme_portfolio.save()
+                            try:
+                                scheme_portfolio.save()
+                            except Exception as e:
+                                print(e)
+                                print(scheme_data)
+                                print(isin)
+                                pass
+                            
 
                     else:
                         if quantity != False and rating != False:
