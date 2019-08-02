@@ -326,12 +326,13 @@ def process_portfolio(filename, amc, date, amc_process):
                 scheme_port.delete()
             except Exception as e:
                 print(e)
-                scheme_data = Scheme_Portfolio_Data(
-                    scheme=scheme,
-                    url=filename,
-                    date=date
-                )
-                scheme_data.save()
+                
+            scheme_data = Scheme_Portfolio_Data(
+                scheme=scheme,
+                url=filename,
+                date=date
+            )
+            scheme_data.save()
 
             if "ISIN" in col_indexes and "Name" in col_indexes and "Market" in col_indexes and "Quantity" in col_indexes and "Rating" in col_indexes:
                 # df1.fillna(False)
