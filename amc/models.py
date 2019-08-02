@@ -105,6 +105,10 @@ class Scheme_Portfolio_Data(models.Model):
     parsed = models.BooleanField(default=False, null=False)
 
 
+    class Meta:
+        unique_together = ("scheme", "date")
+
+
 class Scheme_Portfolio(models.Model):
     scheme = models.ForeignKey(
         'Scheme_Portfolio_Data',
@@ -138,12 +142,18 @@ class AMC_Portfolio_Process(models.Model):
     objects = AMC_Portfolio_ProcessManager()
 
     def parsing_completed(self):
-        AMC_Portfolio_Process.objects.filter(pk=self.id).update(
-            parsed=True)
+        # AMC_Portfolio_Process.objects.filter(pk=self.id).update(
+        #     parsed=True)
+        self.parsed = True
+        self.save()
 
     def setFinalFilePath(self, path):
-        AMC_Portfolio_Process.objects.filter(pk=self.id).update(
-            final_path=path, parsed=False, processed=True)
+        # AMC_Portfolio_Process.objects.filter(pk=self.id).update(
+        #     final_path=path, parsed=False, processed=True)
+        self.final_path = path
+        self.parsed = False
+        self.processed = True
+        self.save()
 
     def addCritical(self, log):
         log = AMC_Portfolio_Process_Log(
@@ -162,8 +172,11 @@ class AMC_Portfolio_Process(models.Model):
         log.save()
 
     def setAMC(self, amc, processed=False):
-        AMC_Portfolio_Process.objects.filter(pk=self.id).update(
-            amc=amc, processed=processed)
+        # AMC_Portfolio_Process.objects.filter(pk=self.id).update(
+        #     amc=amc, processed=processed)
+        self.amc = amc
+        self.processed = processed
+        self.save()
 
 
 class AMC_Portfolio_Process_Log(models.Model):

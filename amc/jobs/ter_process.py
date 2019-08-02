@@ -12,7 +12,7 @@ import datefinder
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
-from amc.jobs.util import ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
+from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import ter_path
 
@@ -103,48 +103,7 @@ def process_file():
 
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
-
-    for (dirpath, dirnames, filenames) in os.walk(ter_path):
-        for f in filenames:
-            if ".xlsb" in f:
-                    print("process xlsb ", f)
-                    call(["soffice", "--headless", "--convert-to", "xlsx", os.path.join(ter_path, f), "--outdir", ter_path])
-                    try:
-                        os.mkdir(os.path.join(ter_path, "processed_xlsb"))
-                    except FileExistsError:
-                        pass
-
-                    os.rename(os.path.join(ter_path, f), os.path.join(
-                        os.path.join(ter_path, "processed_xlsb"), f))
-            if ".zip" in f:
-                print("processing file ", f)
-                with zipfile.ZipFile(os.path.join(ter_path, f)) as zip_file:
-                    for member in zip_file.namelist():
-                        filename = os.path.basename(member)
-                        # skip directories
-                        if not filename:
-                            continue
-
-                        # copy file (taken from zipfile's extract)
-                        source = zip_file.open(member)
-                        target = open(os.path.join(
-                            ter_path, filename), "wb")
-                        with source, target:
-                            shutil.copyfileobj(source, target)
-
-                with zipfile.ZipFile(os.path.join(ter_path, f), "r") as zip_ref:
-                    print(ter_path)
-                    zip_ref.extractall(ter_path)
-                # os.remove(os.path.join(path, f))
-                try:
-                    os.mkdir(os.path.join(ter_path, "processed_zips"))
-                except FileExistsError:
-                    pass
-
-                os.rename(os.path.join(ter_path, f), os.path.join(
-                    os.path.join(ter_path, "processed_zips"), f))
-
-        break  # this break is important to prevent further processing of sub directories
+    generic_process_zip_file(ter_path)
 
 
 def process_ter(filename, f):
@@ -176,7 +135,7 @@ def process_ter(filename, f):
         print(df_copy)
 
         indexes = find_col_index(df1, "Scheme")
-        
+
         amc = None
         if len(indexes) > 0:
             col_indexes = {}
@@ -420,7 +379,7 @@ def process_ter(filename, f):
 
                 if len(df3.index) > 0:
                     # print(df3)
-                    df4.drop(labels=df3.index, axis=0, inplace=True)
+                    df4.drop(labels=df3.index[0], axis=0, inplace=True)
                     print("fund name direct match ", fund_name)
                     # df3 = df3.drop_duplicates(subset="Total TER", keep="last")
                     # print(df3)
@@ -428,8 +387,6 @@ def process_ter(filename, f):
                 else:
                     # print("fund name not found or some other error", fund_name)
                     scheme_not_found.append(fund_name)
-
-            print(df4.shape)
 
             # print(df4)
 
@@ -443,8 +400,8 @@ def process_ter(filename, f):
                     # print(short_fund_name, "=====", scheme, "=====", fuzz.token_set_ratio(
                     #     short_fund_name, scheme))
                     return fuzz.token_set_ratio(
-                        short_fund_name, scheme) > 95 or fuzz.ratio(
-                        short_fund_name, scheme) > 95
+                        short_fund_name, scheme) > 90 or fuzz.ratio(
+                        short_fund_name, scheme) >= 90
 
                 mask = df4.apply(m, axis=1)
                 df3 = df4[mask]
@@ -463,7 +420,7 @@ def process_ter(filename, f):
                         df3 = df3.sort_values(by="ratio")
                         print(df3)
 
-                    df4.drop(labels=df3.index, axis=0, inplace=True)
+                    df4.drop(labels=df3.index[0], axis=0, inplace=True)
                     print("fund name fuzzy match ", fund_name,
                           " with ", df3["Scheme"].iloc[0])
                     scheme_map[fund_name] = df3["Scheme"].iloc[0]
@@ -572,7 +529,7 @@ def identify_amc_from_scheme_name(scheme_names):
 
             if scheme_name is None:
                 continue
-            print(amc_name , "xxx", scheme_name)
+            print(amc_name, "xxx", scheme_name)
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
 
             if ratio > 95:
@@ -609,7 +566,7 @@ def identify_amc_from_scheme_array(schemes):
                 continue
 
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
-            print(amc_name , "xxx", scheme_name, " ratio ", ratio)
+            print(amc_name, "xxx", scheme_name, " ratio ", ratio)
             if ratio > 95:
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
@@ -728,7 +685,6 @@ def find_head_row(df):
 
 
 def find_row_index(df, to_match):
-    
 
     mask = df.apply(lambda x: x.astype(str).str.contains(to_match, False))
     df1 = df[mask.any(axis=1)]
