@@ -214,7 +214,7 @@ def identify_amc():
                                 # os.rename(os.path.join(path, f), os.path.join(
                                 #     os.path.join(path, max_amc, y, m), f))
 
-                                shutil.copy(os.path.join(mf_download_files_path, f),
+                                shutil.rename(os.path.join(mf_download_files_path, f),
                                             os.path.join(mf_download_files_path, max_amc, y, m))
 
                                 amc_process.setFinalFilePath(os.path.join(

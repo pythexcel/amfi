@@ -1,0 +1,6571 @@
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Email Id: manisharies.iitg@gmail.com
+
+Mahima Khera
+
+C - 19 KIDWAI NAGAR [ EAST ]
+NEW DELHI - 110023
+DELHI
+INDIA
+Mobile: 9873346064
+
+This Consolidated Account Statement is brought to you as an investor
+friendly initiative by CAMS, Karvy, FTAMIL and SBFS, and lists the
+transactions, balances and valuation of Mutual Funds in which you are
+holding investments. The consolidation has been carried out based on the
+email id entered by you. If you have not entered a PAN Number and if the
+email id is common to several members of your family, this statement will
+consolidate all those investments as well.
+
+If you find any folios missing from this consolidation, you have not
+registered your email id against those folios.
+
+Date
+
+Transaction
+
+Amount
+(INR)
+
+Units
+
+Price
+(INR)
+
+                     Unit
+
+Balance
+
+Aditya Birla Sun Life Mutual Fund
+Folio No: 1018541241 / 0
+B205DZ-Aditya Birla Sun Life Arbitrage Fund - Dividend-Direct Plan (formerly known as Aditya Birla Sun Life Enhanced Arbitrage Fund)  - Reinvest
+(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+12-Dec-2018
+21-Dec-2018
+25-Jan-2019
+22-Feb-2019
+
+Purchase - via Internet
+Dividend Reinvestment @ Rs.0.05578073 per unit
+Dividend Reinvestment @ Rs.0.05489533 per unit
+Switch-Out - To ABSL Corporate Bond Fund - Growth-DIRECT - via
+myCAMS Online , less STT
+ *** STT Paid ***
+
+100,000.00
+503.95
+498.45
+(101,146.64)
+
+9,034.403
+45.664
+45.158
+(9,125.225)
+
+ Opening Unit Balance: 0.000
+9,034.403
+9,080.067
+9,125.225
+0.000
+
+11.0688
+11.0360
+11.0378
+11.0844
+
+22-Feb-2019
+Closing Unit Balance: 0.000
+"w.e.f. 22-May-2019, Entry Load - Nil, Exit Load : For redemption/switch out of units within 30 days from the date of allotment: 0.25% of the applicable NAV For
+redemption/switch out of units after 30 days from the date of allotment: NilNote: The exit load rate levied at the time of redemption/switch-out of units will be the
+rate prevailing at the time of allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free
+numbers 1800-270-7000  or from any of our Investor Service Centers."
+
+NAV on 18-Jul-2019: INR 11.1083
+
+Valuation on 18-Jul-2019: INR 0.00
+
+1.01
+
+Folio No: 1018541241 / 0
+B205GZ-Aditya Birla Sun Life Arbitrage Fund - Growth-Direct Plan (formerly known as Aditya Birla Sun Life Enhanced Arbitrage Fund) (Advisor:
+DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+26-Mar-2018
+22-Feb-2019
+
+Purchase - via Internet
+Switch-Out - To ABSL Corporate Bond Fund - Growth-DIRECT - via
+myCAMS Online , less STT
+ *** STT Paid ***
+Purchase - via myCAMS Online
+
+22-Feb-2019
+10-Apr-2019
+Closing Unit Balance: 7,661.583
+"w.e.f. 22-May-2019, Entry Load - Nil, Exit Load : For redemption/switch out of units within 30 days from the date of allotment: 0.25% of the applicable NAV For
+redemption/switch out of units after 30 days from the date of allotment: NilNote: The exit load rate levied at the time of redemption/switch-out of units will be the
+rate prevailing at the time of allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free
+numbers 1800-270-7000  or from any of our Investor Service Centers."
+
+7,661.583
+Valuation on 18-Jul-2019: INR 153,471.47
+
+NAV on 18-Jul-2019: INR 20.0313
+
+2.12
+150,000.00
+
+7,661.583
+
+19.5782
+
+200,000.00
+(212,189.47)
+
+10,912.623
+(10,912.623)
+
+ Opening Unit Balance: 0.000
+10,912.623
+0.000
+
+18.3274
+19.4446
+
+Folio No: 1018541241 / 0
+
+PAN: AXTPP9979K
+
+B32Z-Aditya Birla Sun Life Corporate Bond Fund - Growth-Direct Plan (formerly known as Aditya Birla Sun Life Short Term Fund) (Advisor: DIRECT)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+27-Aug-2018
+
+Switch-In - From ABSL Frontline Equity Fund -Grow-DIRECT - via Internet
+
+35,727.94
+
+524.485
+
+27-Aug-2018
+22-Feb-2019
+
+Switch-In - From ABSL Pure Value Fund - Growth-DIRECT - via Internet
+Switch-In - From ABSL Arbitrage Fund - Div-DIRECT - via myCAMS Online
+
+186,907.91
+101,146.64
+
+2,743.799
+1,421.981
+
+27-Feb-2019
+
+Switch-In - From ABSL Arbitrage Fund - Gr-DIRECT - via myCAMS Online
+
+212,189.47
+
+2,982.007
+
+ Opening Unit Balance: 0.000
+524.485
+
+68.1201
+
+68.1201
+71.1308
+
+71.1566
+
+3,268.284
+4,690.265
+
+7,672.272
+
+Redemption - ICICI DC UPLOAD -  CMS1140487016
+
+03-Jun-2019
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+Closing Unit Balance: 0.000
+"w.e.f 05-May-2015 Entry Load : Nil Exit Load : NilNote: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time
+of allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from
+any of our Investor Service Centers."
+
+NAV on 18-Jul-2019: INR 74.6224
+
+(563,726.35)
+
+(7,672.272)
+
+73.4758
+
+Folio No: 1018541241 / 0
+B51Z-Aditya Birla Sun Life Equity Fund - Growth-Direct Plan (Advisor: DIRECT)
+
+Purchase - SIP - via Internet
+
+20-Feb-2017
+21-Feb-2017 ***SIP Registered***
+10-Mar-2017
+
+Purchase - SIP - Instalment 1/61 - via Internet
+
+PAN: AXTPP9979K
+
+10,000.00
+
+10,000.00
+
+15.809
+
+16.076
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+15.809
+
+632.56
+
+622.04
+
+31.885
+
+Page 1 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Purchase - SIP - Instalment 2/61 - via Internet
+Purchase - SIP - Instalment 3/61 - via Internet
+Purchase - SIP - Instalment 4/61 - via Internet
+Purchase - SIP - Instalment 5/61 - via Internet
+Purchase - SIP - Instalment 6/61 - via Internet
+Purchase - SIP - Instalment 7/61
+Purchase - SIP - Instalment 8/61
+Purchase - SIP - Instalment 9/61
+Purchase - SIP - Instalment 10/61
+Purchase - SIP - Instalment 11/61
+Purchase - SIP - Instalment 12/61
+Purchase - SIP - Instalment 13/61
+Purchase - SIP - Instalment 14/61
+Purchase - SIP - Instalment 15/61
+Purchase - SIP - Instalment 16/61
+Purchase - SIP - Instalment 17/61
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Purchase - SIP - Instalment 18/61
+Switch-In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+
+10-Apr-2017
+10-May-2017
+12-Jun-2017
+10-Jul-2017
+10-Aug-2017
+11-Sep-2017
+10-Oct-2017
+10-Nov-2017
+11-Dec-2017
+10-Jan-2018
+12-Feb-2018
+12-Mar-2018
+10-Apr-2018
+10-May-2018
+11-Jun-2018
+10-Jul-2018
+11-Jul-2018
+18-Jul-2018
+25-Jul-2018
+01-Aug-2018
+08-Aug-2018
+10-Aug-2018
+16-Aug-2018
+20-Aug-2018 ***SIPTerminated***
+27-Aug-2018
+
+27-Aug-2018
+27-Aug-2018
+
+Switch-Out - To ABSL Savings Fund - Growth-DIRECT - via Internet , less
+STT
+ *** STT Paid ***
+Switch-Out - To ABSL Savings Fund - Growth-DIRECT - via Internet , less
+STT
+ *** STT Paid ***
+
+Amount
+(INR)
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+10,000.00
+5,000.00
+
+Units
+
+15.317
+14.951
+14.720
+14.414
+14.354
+13.673
+13.714
+13.524
+13.396
+12.925
+13.271
+13.620
+13.390
+13.228
+13.383
+13.417
+6.755
+6.934
+6.759
+6.601
+6.530
+13.055
+6.515
+
+(156,875.82)
+
+(200.690)
+
+Price
+(INR)
+652.85
+668.87
+679.34
+693.79
+696.67
+731.39
+729.18
+739.45
+746.49
+773.67
+753.53
+734.24
+746.83
+755.95
+747.24
+745.31
+740.17
+721.11
+739.75
+757.44
+765.70
+765.97
+767.47
+
+781.69
+
+1.57
+(83,412.24)
+
+(105.641)
+
+789.59
+
+                     Unit
+
+Balance
+47.202
+62.153
+76.873
+91.287
+105.641
+119.314
+133.028
+146.552
+159.948
+172.873
+186.144
+199.764
+213.154
+226.382
+239.765
+253.182
+259.937
+266.871
+273.630
+280.231
+286.761
+299.816
+306.331
+
+105.641
+
+0.000
+
+27-Aug-2018
+Closing Unit Balance: 0.000
+WEF 15-May-2017 For redemption/switch out of  units within 365 days from the date of allotment: 1.00% of applicable NAV. For redemption/switch out of units after
+365 days from the date of allotment: Nil  Note: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of
+allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any
+of our Investor Service Centers.
+
+Valuation on 18-Jul-2019: INR 0.00
+
+NAV on 18-Jul-2019: INR 760.71
+
+0.83
+
+Folio No: 1018541241 / 0
+
+PAN: AXTPP9979K
+
+B292GZ-Aditya Birla Sun Life Focused Equity Fund - Growth-Direct Plan (formerly known as Aditya Birla Sun Life Top 100 Fund) (Advisor: DIRECT)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+Purchase SIP - via Internet
+
+20-Feb-2017
+21-Feb-2017 ***SIP Registered***
+15-Mar-2017
+17-Apr-2017
+15-May-2017
+15-Jun-2017
+17-Jul-2017
+16-Aug-2017
+15-Sep-2017
+16-Oct-2017
+15-Nov-2017
+15-Dec-2017
+15-Jan-2018
+15-Feb-2018
+15-Mar-2018
+16-Apr-2018
+15-May-2018
+15-Jun-2018
+16-Jul-2018
+16-Aug-2018
+20-Aug-2018 ***SIPTerminated***
+27-Aug-2018
+
+Purchase SIP - Instalment 1/61 - via Internet
+Purchase SIP - Instalment 2/61 - via Internet
+Purchase SIP - Instalment 3/61 - via Internet
+Purchase SIP - Instalment 4/61 - via Internet
+Purchase SIP - Instalment 5/61 - via Internet
+Purchase SIP - Instalment 6/61 - via Internet
+Purchase SIP - Instalment 7/61
+Purchase SIP - Instalment 8/61
+Purchase SIP - Instalment 9/61
+Purchase SIP - Instalment 10/61
+Purchase SIP - Instalment 11/61
+Purchase SIP - Instalment 12/61
+Purchase SIP - Instalment 13/61
+Purchase SIP - Instalment 14/61
+Purchase SIP - Instalment 15/61
+Purchase SIP - Instalment 16/61
+Purchase SIP - Instalment 17/61
+Purchase SIP - Instalment 18/61
+
+Switch-Out - To ABSL Savings Fund - Growth-DIRECT - via Internet , less
+STT
+ *** STT Paid ***
+Switch-Out - To ABSL Savings Fund - Growth-DIRECT - via Internet , less
+STT
+ *** STT Paid ***
+
+27-Aug-2018
+27-Aug-2018
+
+27-Aug-2018
+
+10,000.00
+
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+
+194.370
+
+191.827
+187.707
+181.874
+182.193
+173.890
+172.010
+168.289
+167.126
+169.363
+165.343
+159.547
+165.967
+169.397
+168.105
+165.767
+167.430
+169.300
+160.512
+
+(126,477.13)
+
+(1,996.146)
+
+ Opening Unit Balance: 0.000
+194.370
+
+51.4482
+
+52.1302
+53.2745
+54.9830
+54.8870
+57.5077
+58.1361
+59.4217
+59.8350
+59.0448
+60.4803
+62.6773
+60.2528
+59.0329
+59.4867
+60.3255
+59.7263
+59.0668
+62.3005
+
+63.3613
+
+386.197
+573.904
+755.778
+937.971
+1,111.861
+1,283.871
+1,452.160
+1,619.286
+1,788.649
+1,953.992
+2,113.539
+2,279.506
+2,448.903
+2,617.008
+2,782.775
+2,950.205
+3,119.505
+3,280.017
+
+1,283.871
+
+1.27
+(82,168.59)
+
+0.82
+
+(1,283.871)
+
+64.0013
+
+0.000
+
+Page 2 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Amount
+(INR)
+
+Units
+
+Closing Unit Balance: 0.000
+WEF 15-May-2017 For redemption/switch out of  units within 365 days from the date of allotment: 1.00% of applicable NAV. For redemption/switch out of units after
+365 days from the date of allotment: Nil  Note: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of
+allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any
+of our Investor Service Centers.
+
+NAV on 18-Jul-2019: INR 64.1494
+
+Folio No: 1018541241 / 0
+B92Z-Aditya Birla Sun Life Frontline Equity Fund -Growth-Direct Plan (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+25-Apr-2018
+02-May-2018
+09-May-2018
+16-May-2018
+23-May-2018
+30-May-2018
+06-Jun-2018
+13-Jun-2018
+20-Jun-2018
+27-Jun-2018
+04-Jul-2018
+11-Jul-2018
+18-Jul-2018
+25-Jul-2018
+01-Aug-2018
+08-Aug-2018
+16-Aug-2018
+27-Aug-2018
+
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch In - Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-Out - To ABSL Corporate Bond Fund - Growth-DIRECT - via Internet
+, less STT
+ *** STT Paid ***
+
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+2,000.00
+(35,727.94)
+
+8.781
+8.682
+8.670
+8.765
+8.975
+8.818
+8.818
+8.704
+8.787
+8.906
+8.877
+8.760
+8.827
+8.634
+8.455
+8.376
+8.409
+(148.244)
+
+27-Aug-2018
+Closing Unit Balance: 0.000
+WEF 15-May-2017 For redemption/switch out of  units within 365 days from the date of allotment: 1.00% of applicable NAV. For redemption/switch out of units after
+365 days from the date of allotment: Nil  Note: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of
+allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any
+of our Investor Service Centers.
+
+Valuation on 18-Jul-2019: INR 0.00
+
+NAV on 18-Jul-2019: INR 237.89
+
+0.36
+
+Folio No: 1018541241 / 0
+B153GZ-Aditya Birla Sun Life Liquid Fund - Growth-Direct Plan (formerly known as Aditya Birla Sun Life Cash Plus) (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Price
+(INR)
+
+                     Unit
+
+Balance
+Valuation on 18-Jul-2019: INR 0.00
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+8.781
+17.463
+26.133
+34.898
+43.873
+52.691
+61.509
+70.213
+79.000
+87.906
+96.783
+105.543
+114.370
+123.004
+131.459
+139.835
+148.244
+0.000
+
+227.76
+230.35
+230.68
+228.19
+222.84
+226.82
+226.82
+229.79
+227.60
+224.56
+225.31
+228.30
+226.57
+231.64
+236.54
+238.78
+237.84
+241.01
+
+Purchase - via Internet
+25-Mar-2018
+Purchase - via Internet
+08-Apr-2018
+09-Apr-2018 ***STP Registered***
+09-Apr-2018 ***STP Registered***
+25-Apr-2018
+
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 1/52
+
+25-Apr-2018
+
+01-May-2018
+02-May-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+1/52
+Purchase - via Internet
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 2/52
+
+02-May-2018
+
+09-May-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+2/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 3/52
+
+09-May-2018
+
+16-May-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+3/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 4/52
+
+16-May-2018
+
+23-May-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+4/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 5/52
+
+23-May-2018
+
+30-May-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+5/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 6/52
+
+30-May-2018
+
+06-Jun-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+6/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 7/52
+
+06-Jun-2018
+
+13-Jun-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+7/52
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 8/52
+
+300,000.00
+500,000.00
+
+1,076.149
+1,787.133
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+1,076.149
+2,863.282
+
+278.7717
+279.7778
+
+(5,000.00)
+
+(2,000.00)
+
+133,361.00
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(2,000.00)
+
+(5,000.00)
+
+(17.815)
+
+(7.126)
+
+474.636
+(17.792)
+
+(7.117)
+
+(17.770)
+
+(7.108)
+
+(17.748)
+
+(7.099)
+
+(17.726)
+
+(7.090)
+
+(17.701)
+
+(7.080)
+
+(17.676)
+
+(7.070)
+
+(17.650)
+
+280.6582
+
+280.6582
+
+280.9754
+281.0257
+
+281.0257
+
+281.3745
+
+281.3745
+
+281.7178
+
+281.7178
+
+282.0728
+
+282.0728
+
+282.4752
+
+282.4752
+
+282.8688
+
+282.8688
+
+283.2829
+
+2,845.467
+
+2,838.341
+
+3,312.977
+3,295.185
+
+3,288.068
+
+3,270.298
+
+3,263.190
+
+3,245.442
+
+3,238.343
+
+3,220.617
+
+3,213.527
+
+3,195.826
+
+3,188.746
+
+3,171.070
+
+3,164.000
+
+3,146.350
+
+Page 3 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+13-Jun-2018
+
+20-Jun-2018
+20-Jun-2018
+
+20-Jun-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+8/52
+Purchase - via Internet
+Switch-Out - To ABSL Pure Value Fund - Growth-DIRECT - Instalment 9/52
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+9/52
+
+26-Jun-2018 ***STP Registered***
+27-Jun-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+10/52
+
+Amount
+(INR)
+(2,000.00)
+
+200,000.00
+(5,000.00)
+
+(2,000.00)
+
+Units
+
+(7.060)
+
+704.974
+(17.624)
+
+(7.050)
+
+Price
+(INR)
+283.2829
+
+283.6983
+283.6983
+
+283.6983
+
+                     Unit
+
+Balance
+3,139.290
+
+3,844.264
+3,826.640
+
+3,819.590
+
+(2,000.00)
+
+(7.040)
+
+284.0985
+
+3,812.550
+
+27-Jun-2018 ***STPTerminated***
+04-Jul-2018
+
+11-Jul-2018
+
+11-Jul-2018
+18-Jul-2018
+
+18-Jul-2018
+25-Jul-2018
+
+25-Jul-2018
+01-Aug-2018
+
+01-Aug-2018
+08-Aug-2018
+
+08-Aug-2018
+16-Aug-2018
+
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+11/52
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+12/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 1/74
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+13/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 2/74
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+14/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 3/74
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+15/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 4/74
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+16/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 5/74
+Switch-Out - To ABSL Frontline Equity Fund -Grow-DIRECT - Instalment
+17/52
+Switch-Out - To ABSL Equity Fund - Growth-DIRECT - Instalment 6/74
+
+(2,000.00)
+
+(2,000.00)
+
+(5,000.00)
+(2,000.00)
+
+(5,000.00)
+(2,000.00)
+
+(5,000.00)
+(2,000.00)
+
+(5,000.00)
+(2,000.00)
+
+(5,000.00)
+(2,000.00)
+
+(7.029)
+
+(7.019)
+
+(17.548)
+(7.009)
+
+(17.523)
+(7.000)
+
+(17.500)
+(6.990)
+
+(17.475)
+(6.980)
+
+(17.451)
+(6.970)
+
+284.5405
+
+284.9387
+
+284.9387
+285.3328
+
+285.3328
+285.7190
+
+285.7190
+286.1208
+
+286.1208
+286.5179
+
+286.5179
+286.9600
+
+3,805.521
+
+3,798.502
+
+3,780.954
+3,773.945
+
+3,756.422
+3,749.422
+
+3,731.922
+3,724.932
+
+3,707.457
+3,700.477
+
+3,683.026
+3,676.056
+
+16-Aug-2018
+20-Aug-2018 ***STPTerminated***
+20-Aug-2018 ***STPTerminated***
+Closing Unit Balance: 3,658.632
+"Entry Load- NIL. Exit Load- NILNote: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of allotment of
+the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any of our
+Investor Service Centers."
+
+NAV on 18-Jul-2019: INR 307.0117
+
+Valuation on 18-Jul-2019: INR 1,123,242.83
+
+(5,000.00)
+
+3,658.632
+
+286.9600
+
+(17.424)
+
+Folio No: 1018541241 / 0
+B296GZ-Aditya Birla Sun Life Pure Value Fund - Growth-Direct Plan (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase - SIP - via Internet
+
+27-Feb-2017
+28-Feb-2017 ***SIP Registered***
+15-Mar-2017
+17-Apr-2017
+15-May-2017
+15-Jun-2017
+17-Jul-2017
+16-Aug-2017
+15-Sep-2017
+16-Oct-2017
+15-Nov-2017
+15-Dec-2017
+15-Jan-2018
+15-Feb-2018
+15-Mar-2018
+16-Apr-2018
+25-Apr-2018
+02-May-2018
+09-May-2018
+15-May-2018
+16-May-2018
+23-May-2018
+30-May-2018
+06-Jun-2018
+13-Jun-2018
+15-Jun-2018
+20-Jun-2018
+16-Jul-2018
+16-Aug-2018
+20-Aug-2018 ***SIPTerminated***
+
+Purchase - SIP - Instalment 1/985 - via Internet
+Purchase - SIP - Instalment 2/985 - via Internet
+Purchase - SIP - Instalment 3/985 - via Internet
+Purchase - SIP - Instalment 4/985 - via Internet
+Purchase - SIP - Instalment 5/985 - via Internet
+Purchase - SIP - Instalment 6/985 - via Internet
+Purchase - SIP - Instalment 7/985
+Purchase - SIP - Instalment 8/985
+Purchase - SIP - Instalment 9/985
+Purchase - SIP - Instalment 10/985
+Purchase - SIP - Instalment 11/985
+Purchase - SIP - Instalment 12/985
+Purchase - SIP - Instalment 13/985
+Purchase - SIP - Instalment 14/985
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Purchase - SIP - Instalment 15/985
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch-In-Systematic - From ABSL Cash Plus - Growth-DIRECT
+Switch-In-Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Switch-In-Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Purchase - SIP - Instalment 16/985
+Switch-In-Systematic - From ABSL Liquid Fund - Growth-DIRECT
+Purchase - SIP - Instalment 17/985
+Purchase - SIP - Instalment 18/985
+
+7,500.00
+
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+5,000.00
+5,000.00
+5,000.00
+7,500.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+7,500.00
+5,000.00
+7,500.00
+7,500.00
+
+146.277
+
+146.187
+136.156
+132.066
+134.841
+132.721
+127.983
+120.143
+115.549
+115.744
+111.234
+101.096
+109.911
+114.192
+112.579
+75.564
+74.898
+75.786
+115.946
+77.453
+80.955
+78.632
+81.865
+79.674
+120.285
+81.302
+131.794
+124.779
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+146.277
+
+51.2727
+
+51.3040
+55.0838
+56.7897
+55.6211
+56.5096
+58.6016
+62.4258
+64.9077
+64.7980
+67.4253
+74.1870
+68.2370
+65.6791
+66.6199
+66.1692
+66.7575
+65.9754
+64.6854
+64.5553
+61.7628
+63.5871
+61.0760
+62.7557
+62.3519
+61.4992
+56.9071
+60.1061
+
+292.464
+428.620
+560.686
+695.527
+828.248
+956.231
+1,076.374
+1,191.923
+1,307.667
+1,418.901
+1,519.997
+1,629.908
+1,744.100
+1,856.679
+1,932.243
+2,007.141
+2,082.927
+2,198.873
+2,276.326
+2,357.281
+2,435.913
+2,517.778
+2,597.452
+2,717.737
+2,799.039
+2,930.833
+3,055.612
+
+Page 4 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+27-Aug-2018
+
+27-Aug-2018
+27-Aug-2018
+
+Switch-Out - To ABSL Corporate Bond Fund - Growth-DIRECT - via Internet
+, less STT
+ *** STT Paid ***
+Switch-Out - To ABSL Corporate Bond Fund - Growth-DIRECT - via Internet
+, less STT
+ *** STT Paid ***
+
+Amount
+(INR)
+(128,011.83)
+
+1.28
+(58,896.08)
+
+Units
+
+(2,099.381)
+
+Price
+(INR)
+60.9766
+
+                     Unit
+
+Balance
+956.231
+
+(956.231)
+
+61.5925
+
+0.000
+
+27-Aug-2018
+Closing Unit Balance: 0.000
+WEF 15-May-2017 For redemption/switch out of  units within 365 days from the date of allotment: 1.00% of applicable NAV. For redemption/switch out of units after
+365 days from the date of allotment: Nil  Note: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of
+allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any
+of our Investor Service Centers.
+
+NAV on 18-Jul-2019: INR 51.6159
+
+Valuation on 18-Jul-2019: INR 0.00
+
+0.59
+
+Folio No: 1018541241 / 0
+B132GZ-Aditya Birla Sun Life Savings Fund - Growth-Direct Plan  (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+30-Aug-2018
+30-Aug-2018
+
+Switch-In - From ABSL Equity Fund - Growth-DIRECT - via Internet
+Switch-In - From ABSL Focused Equity Fund - Growth-DIRECT - via
+Internet
+
+240,288.06
+208,645.72
+
+679.980
+590.435
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+679.980
+1,270.415
+
+353.3751
+353.3751
+
+Closing Unit Balance: 1,270.415
+"Entry Load- NIL. Exit Load - NILNote: The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time of allotment of
+the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from any of our
+Investor Service Centers."
+
+NAV on 18-Jul-2019: INR 381.6770
+
+Valuation on 18-Jul-2019: INR 484,888.19
+
+Folio No: 1018541241 / 0
+B231GZ-Aditya Birla Sun Life Tax Plan - (ELSS U/S 80C of IT ACT) - Growth-Direct Plan (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase - via Internet
+
+21-Mar-2018
+Closing Unit Balance: 752.823
+WEF 15-May-2017 Entry Load : Nil Exit Load : Nil Note:The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time
+of allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from
+any of our Investor Service Centers.
+
+NAV on 18-Jul-2019: INR 39.56
+
+30,000.00
+
+752.823
+
+Folio No: 1018541241 / 0
+B02GZ-Aditya Birla Sun Life Tax Relief'96 Fund- (ELSS U/S 80C of IT ACT) - Growth-Direct Plan (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+39.85
+752.823
+Valuation on 18-Jul-2019: INR 29,781.68
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+25.99
+1,923.817
+Valuation on 18-Jul-2019: INR 61,100.43
+
+Purchase - via Internet
+
+24-Mar-2017
+Closing Unit Balance: 1,923.817
+WEF 15-May-2017 Entry Load : Nil Exit Load : Nil Note:The exit load rate levied at the time of redemption/switch-out of units will be the rate prevailing at the time
+of allotment of the corresponding units. Customers may request for a separate Exit Load Applicability Report by calling our toll free numbers 1800-270-7000  or from
+any of our Investor Service Centers.
+
+NAV on 18-Jul-2019: INR 31.76
+
+50,000.00
+
+1,923.817
+
+Franklin Templeton Mutual Fund
+Folio No: 20530810 / 0
+FTI415-4159910399861  Franklin India Taxshield - Direct - GROWTH  (Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+Purchase
+
+24-Mar-2017
+Closing Unit Balance: 99.630
+Entry Load - NIL; Exit Load: Nil
+
+NAV on 18-Jul-2019: INR 597.8214
+
+50,000.00
+
+99.630
+
+Folio No: 20530810 / 0
+FTI417-4179910384755  Franklin India Prima Fund - Direct - GROWTH  (Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+27-Feb-2017
+20-Apr-2017
+22-May-2017
+20-Jun-2017
+20-Jul-2017
+21-Aug-2017
+20-Sep-2017
+23-Oct-2017
+20-Nov-2017
+20-Dec-2017
+22-Jan-2018
+20-Feb-2018
+20-Mar-2018
+20-Apr-2018
+21-May-2018
+20-Jun-2018
+
+Systematic Investment Purchase - 1 / 18
+Systematic Investment Purchase - 2 / 18
+Systematic Investment Purchase - 3 / 18
+Systematic Investment Purchase - 4 / 18
+Systematic Investment Purchase - 5 / 18
+Systematic Investment Purchase - 6 / 18
+Systematic Investment Purchase - 7 / 18
+Systematic Investment Purchase - 8 / 18
+Systematic Investment Purchase - 9 / 18
+Systematic Investment Purchase - 10 / 18
+Systematic Investment Purchase - 11 / 18
+Systematic Investment Purchase - 12 / 18
+Systematic Investment Purchase - 13 / 18
+Systematic Investment Purchase - 14 / 18
+Systematic Investment Purchase - 15 / 18
+Systematic Investment Purchase - 16 / 18
+
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+
+8.793
+8.113
+8.175
+7.974
+7.906
+7.993
+7.604
+7.579
+7.422
+7.130
+6.860
+7.321
+7.514
+7.179
+7.366
+7.399
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+99.630
+Valuation on 18-Jul-2019: INR 59,560.95
+
+501.8561
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+8.793
+16.906
+25.081
+33.055
+40.961
+48.954
+56.558
+64.137
+71.559
+78.689
+85.549
+92.870
+100.384
+107.563
+114.929
+122.328
+
+852.9250
+924.3916
+917.3848
+940.6152
+948.6544
+938.3390
+986.3605
+989.5253
+1,010.4767
+1,051.9406
+1,093.3063
+1,024.5016
+998.1412
+1,044.6994
+1,018.2593
+1,013.6810
+
+Page 5 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+8.793
+Valuation on 18-Jul-2019: INR 8,727.65
+
+852.9250
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+10.863
+46.848
+82.298
+Valuation on 18-Jul-2019: INR 351,076.99
+
+4,241.0751
+4,246.5191
+4,231.3611
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+98.375
+196.992
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+50.8260
+50.7011
+61.8489
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Systematic Investment Purchase - 17 / 18
+Systematic Investment Purchase - 18 / 18
+
+20-Jul-2018
+20-Aug-2018
+Closing Unit Balance: 137.047
+Entry Load - NIL; Exit Load: 1% if redeemed/switched-out within 1 year from the date of allotment: For SIP/STP, basis registration date
+
+NAV on 18-Jul-2019: INR 992.5679
+
+7.556
+7.163
+
+Amount
+(INR)
+7,500.00
+7,500.00
+
+Units
+
+                     Unit
+
+Price
+(INR)
+992.6415
+1,047.1183
+
+Balance
+129.884
+137.047
+Valuation on 18-Jul-2019: INR 136,028.45
+
+Folio No: 20530810 / 0
+FTI417-4179910399861  Franklin India Prima Fund - Direct - GROWTH  (Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+Systematic Investment Purchase - 1 / 1
+
+27-Feb-2017
+Closing Unit Balance: 8.793
+Entry Load - NIL; Exit Load: 1% if redeemed/switched-out within 1 year from the date of allotment: For SIP/STP, basis registration date
+
+NAV on 18-Jul-2019: INR 992.5679
+
+7,500.00
+
+8.793
+
+Folio No: 20530810 / 0
+FTI436-4369910384755  Franklin India Short Term Income Plan -  Retail Plan - Direct - GROWTH  (Advisor: INA200005166)
+
+PAN: AXTPP9979K
+
+Purchase
+Purchase
+Purchase
+
+04-Jun-2019
+06-Jun-2019
+12-Jun-2019
+Closing Unit Balance: 82.298
+w.e.f 20/02/2017 Entry Load - NIL; Exit Load: Nil -if redeemed upto 10% of the Units within 1 year from the date of allotment.0.50% if redeemed/switched-out on or
+before 1 year from the date of allotment. Nil - if redeemed after 1 year from the date of allotment
+
+NAV on 18-Jul-2019: INR 4,265.9237
+
+46,070.00
+152,810.00
+150,000.00
+
+10.863
+35.985
+35.450
+
+Folio No: 20530810 / 0
+FTI478-4789910384755  Franklin India Smaller Companies Fund - Direct - GROWTH  (Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+Purchase
+Systematic Investment Purchase - 1 / 1
+Exchange To 4859910384755(UBSG-GP)
+
+20-Feb-2017
+27-Feb-2017
+27-Aug-2018
+Closing Unit Balance: 0.000
+Entry Load - NIL; Exit Load: 1% if redeemed/switched-out within 1 year from the date of allotment: For SIP/STP, basis registration date
+
+5,000.00
+5,000.00
+(12,183.74)
+
+NAV on 18-Jul-2019: INR 54.9974
+
+98.375
+98.617
+(196.992)
+
+Folio No: 20530810 / 0
+FTI482-4829910384755  Franklin India Focused Equity Fund - Direct (erstwhile Franklin India High Growth Companies Fund - Direct) - GROWTH
+(Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+
+27-Feb-2017
+10-Apr-2017
+10-May-2017
+22-May-2017
+12-Jun-2017
+03-Jul-2017
+10-Jul-2017
+01-Aug-2017
+10-Aug-2017
+01-Sep-2017
+11-Sep-2017
+03-Oct-2017
+10-Oct-2017
+01-Nov-2017
+10-Nov-2017
+01-Dec-2017
+11-Dec-2017
+01-Jan-2018
+10-Jan-2018
+01-Feb-2018
+12-Feb-2018
+01-Mar-2018
+12-Mar-2018
+02-Apr-2018
+10-Apr-2018
+02-May-2018
+10-May-2018
+01-Jun-2018
+11-Jun-2018
+02-Jul-2018
+10-Jul-2018
+01-Aug-2018
+10-Aug-2018
+
+Systematic Investment Purchase - 1 / 18
+Systematic Investment Purchase - 2 / 18
+Systematic Investment Purchase - 3 / 18
+Systematic Investment Purchase - 1 / 16
+Systematic Investment Purchase - 4 / 18
+Systematic Investment Purchase - 2 / 16
+Systematic Investment Purchase - 5 / 18
+Systematic Investment Purchase - 3 / 16
+Systematic Investment Purchase - 6 / 18
+Systematic Investment Purchase - 4 / 16
+Systematic Investment Purchase - 7 / 18
+Systematic Investment Purchase - 5 / 16
+Systematic Investment Purchase - 8 / 18
+Systematic Investment Purchase - 6 / 16
+Systematic Investment Purchase - 9 / 18
+Systematic Investment Purchase - 7 / 16
+Systematic Investment Purchase - 10 / 18
+Systematic Investment Purchase - 8 / 16
+Systematic Investment Purchase - 11 / 18
+Systematic Investment Purchase - 9 / 16
+Systematic Investment Purchase - 12 / 18
+Systematic Investment Purchase - 10 / 16
+Systematic Investment Purchase - 13 / 18
+Systematic Investment Purchase - 11 / 16
+Systematic Investment Purchase - 14 / 18
+Systematic Investment Purchase - 12 / 16
+Systematic Investment Purchase - 15 / 18
+Systematic Investment Purchase - 13 / 16
+Systematic Investment Purchase - 16 / 18
+Systematic Investment Purchase - 14 / 16
+Systematic Investment Purchase - 17 / 18
+Systematic Investment Purchase - 15 / 16
+Systematic Investment Purchase - 18 / 18
+
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+5,000.00
+
+141.283
+136.345
+131.483
+133.104
+131.321
+132.024
+129.660
+126.688
+131.334
+128.692
+129.460
+130.388
+129.296
+117.961
+117.736
+118.233
+115.942
+114.285
+114.164
+113.587
+117.320
+121.069
+122.208
+125.816
+121.672
+124.262
+122.761
+122.974
+122.474
+127.451
+125.146
+120.038
+118.121
+
+35.3899
+36.6717
+38.0278
+37.5645
+38.0745
+37.8720
+38.5624
+39.4669
+38.0710
+38.8525
+38.6220
+38.3472
+38.6711
+42.3868
+42.4680
+42.2892
+43.1250
+43.7501
+43.7966
+44.0192
+42.6184
+41.2989
+40.9137
+39.7407
+41.0940
+40.2375
+40.7295
+40.6589
+40.8250
+39.2307
+39.9533
+41.6535
+42.3294
+
+ Opening Unit Balance: 0.000
+141.283
+277.628
+409.111
+542.215
+673.536
+805.560
+935.220
+1,061.908
+1,193.242
+1,321.934
+1,451.394
+1,581.782
+1,711.078
+1,829.039
+1,946.775
+2,065.008
+2,180.950
+2,295.235
+2,409.399
+2,522.986
+2,640.306
+2,761.375
+2,883.583
+3,009.399
+3,131.071
+3,255.333
+3,378.094
+3,501.068
+3,623.542
+3,750.993
+3,876.139
+3,996.177
+4,114.298
+Page 6 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Systematic Investment Purchase - 16 / 16
+Systematic Investment Reversed
+Purchase
+
+03-Sep-2018
+03-Sep-2018
+04-Jun-2019
+Closing Unit Balance: 16,245.577
+w.e.f 11/12/2017 Entry Load: Nil, Exit Load: 1% if redeemed/switched-out within 1 year from the date of allotment: For SIP/STP, basis registration date
+
+116.660
+(116.660)
+12,131.279
+
+NAV on 18-Jul-2019: INR 44.6471
+
+Amount
+(INR)
+5,000.00
+(5,000.00)
+563,726.00
+
+Units
+
+                     Unit
+
+Price
+(INR)
+42.8597
+42.8597
+46.4688
+
+Balance
+4,230.958
+4,114.298
+16,245.577
+Valuation on 18-Jul-2019: INR 725,317.90
+
+Folio No: 20530810 / 0
+FTI485-4859910384755  Franklin India Ultra Short Bond Fund Super Institutional Plan - Direct - GROWTH  (Advisor: 0000000000)
+
+PAN: AXTPP9979K
+
+Exchange From 4789910384755(FISCF-GP)
+Redemption Of Units
+
+27-Aug-2018
+03-Jun-2019
+Closing Unit Balance: 0.000
+Entry Load - NIL; Exit Load - NIL. Switches : Please refer KIM.
+
+NAV on 18-Jul-2019: INR 27.1118
+
+12,183.74
+(13,120.12)
+
+489.155
+(489.155)
+
+KYC: OK  PAN: OK
+Registrar : FTAMIL
+ Opening Unit Balance: 0.000
+489.155
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+24.9077
+26.8220
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+9,317.928
+18,631.517
+
+10.732
+10.737
+
+9,317.928
+9,313.589
+
+HDFC Mutual Fund
+Folio No: 11201050 / 75
+HAFWDT-HDFC Arbitrage Fund - Wholesale Plan - Normal Dividend- Direct Plan  - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+30-Jan-2017
+08-Feb-2017
+20-Feb-2017
+27-Mar-2017
+24-Apr-2017
+22-May-2017
+27-Jun-2017
+24-Jul-2017
+28-Aug-2017
+25-Sep-2017
+24-Oct-2017
+26-Oct-2017
+
+Purchase - via HDFCMFOnline
+Purchase - via HDFCMFOnline
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+***Dividend Paid @ Rs.0.05 per unit***
+Switch Out - To HDFC Balanced Fund-DP-Growth - via HDFC MFOnline ,
+less STT
+ *** STT Paid ***
+
+100,000.00
+100,000.00
+931.58
+931.58
+931.58
+931.58
+931.58
+931.58
+931.58
+931.58
+931.58
+(200,566.27)
+
+(18,631.517)
+
+10.765
+
+0.000
+
+26-Oct-2017
+Closing Unit Balance: 0.000
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended scheme investing in
+arbitrage
+opportunities - Current Load Structure : Entry Load: Not Applicable; Exit Load : In respect of each purchase/switch-in of units from allotment date, 0.25% if units are
+redeemed/swtiched-out within 1 month; No Exit Load if units are redeemed /switched-out after 1 month. Applicable for the subscriptions made w.e.f. 15-June-2015.
+The rate of exit load levied on units redeemed/switched-out will be the rate prevailing at the time of allotment of the units. For further details visit
+www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9.
+
+NAV on 18-Jul-2019: INR 10.817
+
+Valuation on 18-Jul-2019: INR 0.00
+
+2.01
+
+Folio No: 11201050 / 75
+HGFGT-HDFC Balanced Advantage Fund - Direct Plan - Growth Option (formerly HDFC Growth Fund, erstwhile HDFC Prudence Fund merged)
+(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+Switch-In - From HDFC Hybrid Equity Fund-Dir-Growth
+
+14-Jun-2018
+Closing Unit Balance: 2,467.539
+*Due to change in Scheme Name and  the fundamental attributes of HDFC Growth Fund and merger of HDFC Prudence Fund therein,  w.e.f.  June 01, 2018 (close of
+business hours) , the scheme shall be managed as HDFC Balanced Advantage Fund (erstwhile HDFC Prudence Fund and HDFC Growth Fund), an open-ended scheme
+Balanced Advantage Fund. Current Load Structure :  Entry Load - Nil. Exit Load : In respect of each purchase/switch-in of units from allotment date, Nil exit load upto
+15% of the units ("the limit") redeemed/switched-out; 1% if units in excess of the limit are redeemed/switched-out within  1 year. No Exit Load if units are redeemed
+/switched-out after 1 year. Applicable for the subscriptions made w.e.f. May 08, 2015.  The rate of exit load levied on units redeemed will be the rate prevailing at
+the time of allotment of the units. For further details visit www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.  GST
+Identification Number : 27AAATH1809A1Z9
+
+NAV on 18-Jul-2019: INR 209.268
+
+468,134.14
+
+2,467.539
+
+ Opening Unit Balance: 0.000
+2,467.539
+Valuation on 18-Jul-2019: INR 516,376.95
+
+189.717
+
+Folio No: 11201050 / 75
+HBFGT-HDFC Balanced Fund - Direct Plan - Growth Option (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+
+28-Dec-2016 ***SIPRegistered***
+15-Feb-2017
+15-Mar-2017
+17-Apr-2017
+15-May-2017
+15-Jun-2017
+27-Jun-2017
+
+SIP Purchase - Instalment 1/20 - via HDFCMFOnline
+SIP Purchase - Instalment 2/20 - via HDFCMFOnline
+SIP Purchase - Instalment 3/20 - via HDFCMFOnline
+SIP Purchase - Instalment 4/20 - via HDFCMFOnline
+SIP Purchase - Instalment 5/20 - via HDFCMFOnline
+Switch-In - From HDFC Liquid- Direct - Monthly- Div - via HDFCMFOnline
+
+17-Jul-2017
+25-Jul-2017
+
+SIP Purchase - Instalment 6/20 - via HDFCMFOnline
+Switch-In - From HDFC Liquid- Direct - Monthly- Div - via HDFCMFOnline
+
+16-Aug-2017
+
+SIP Purchase - Instalment 7/20 - via HDFCMFOnline
+
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+8,333.00
+
+10,000.00
+8,333.00
+
+10,000.00
+
+77.450
+75.325
+72.941
+70.895
+69.408
+58.457
+
+67.507
+56.088
+
+67.624
+
+129.115
+132.758
+137.098
+141.053
+144.076
+142.550
+
+148.132
+148.571
+
+147.876
+
+77.450
+152.775
+225.716
+296.611
+366.019
+424.476
+
+491.983
+548.071
+
+615.695
+Page 7 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Switch-In - From HDFC Liquid- Direct - Monthly- Div
+SIP Purchase - Instalment 8/20
+Switch-In - From HDFC Liquid- Direct - Monthly- Div
+SIP Purchase - Instalment 9/20
+Switch-In - From HDFC Liquid- Direct - Monthly- Div
+Switch-In - From HDFC Liquid- Direct - Monthly- Div - via HDFC MFOnline
+
+28-Aug-2017
+15-Sep-2017
+25-Sep-2017
+16-Oct-2017
+25-Oct-2017
+27-Oct-2017
+
+31-Oct-2017
+
+Amount
+(INR)
+8,333.00
+10,000.00
+8,333.00
+10,000.00
+8,333.00
+58,491.57
+
+Units
+
+56.377
+66.794
+56.770
+66.554
+54.691
+382.851
+
+200,566.27
+
+1,306.604
+
+Price
+(INR)
+147.809
+149.713
+146.785
+150.254
+152.366
+152.779
+
+153.502
+
+                     Unit
+
+Balance
+672.072
+738.866
+795.636
+862.190
+916.881
+1,299.732
+
+2,606.336
+
+Switch-In - From HDFC Arbitrage Fund-WP- Direct- ND - via HDFC
+MFOnline
+SIP Purchase - Instalment 10/20
+SIP Purchase - Instalment 11/20
+SIP Purchase - Instalment 12/20
+SIP Purchase - Instalment 13/20
+SIP Purchase - Instalment 14/20
+SIP Purchase - Instalment 15/20
+SIP Purchase - Instalment 16/20
+Switch-Out (Merger)  - To HDFC Hybrid Equity Fund-Dir-Growth
+
+15-Nov-2017
+15-Dec-2017
+15-Jan-2018
+15-Feb-2018
+15-Mar-2018
+16-Apr-2018
+15-May-2018
+01-Jun-2018
+Closing Unit Balance: 0.000
+* An open-ended Balanced Scheme - Current Load Structure : Entry Load: Not Applicable; Exit Load: In respect of each purchase/switch-in of units from allotment
+date, Nil exit load upto 15% of the units ("the limit") redeemed/switched-out; 1% if units in excess of the limit are redeemed /switched-out within 1 year. No Exit
+Load if units are redeemed /switched-out after 1 year. Applicable for the subscriptions made w.e.f. 21-Jan-2016. The rate of exit load levied on units redeemed will
+be the rate prevailing at the time of allotment of the units. For further details visit www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service
+Centre. GST Identification Number : 27AAATH1809A1Z9.
+
+2,671.946
+2,736.274
+2,798.541
+2,862.331
+2,926.891
+2,990.619
+3,054.414
+0.000
+Valuation on 01-Jun-2018: INR 0.00
+
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+(471,677.87)
+
+65.610
+64.328
+62.267
+63.790
+64.560
+63.728
+63.795
+(3,054.414)
+
+152.416
+155.454
+160.599
+156.764
+154.894
+156.918
+156.751
+154.425
+
+NAV on 01-Jun-2018: INR 154.425
+
+Folio No: 11201050 / 75
+HPREGT-HDFC Hybrid Equity Fund - Direct Plan - Growth Option (formerly HDFC Premier Multi-Cap Fund, erstwhile HDFC Balanced Fund merged)
+(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+01-Jun-2018
+11-Jun-2018
+11-Jun-2018
+11-Jun-2018
+11-Jun-2018
+15-Jun-2018
+16-Jul-2018
+16-Aug-2018
+27-Aug-2018
+
+Switch-In (Merger)  - From HDFC Balanced Fund-DP-Growth
+Switch Out - To HDFC Balanced Advantage Fund-DIR-Gr , less STT
+ *** STT Paid ***
+Switch Out - To HDFC Balanced Advantage Fund-DIR-Gr , less STT
+ *** STT Paid ***
+SIP Purchase - Instalment 17/20
+SIP Purchase - Instalment 18/20
+SIP Purchase - Instalment 19/20
+Switch Out - To HDFC Low Duration Fund-DP-Retail-Gr - via myCAMS
+Online
+SIP Purchase - Instalment 20/20
+SIP Purchase(Reversal - Miscellaneous) - Instalment No 20
+
+471,677.87
+(358,430.95)
+3.90
+(109,703.19)
+1.10
+10,000.00
+10,000.00
+10,000.00
+(30,783.64)
+
+8,914.047
+(6,841.142)
+
+(2,072.905)
+
+189.022
+191.961
+184.560
+(565.543)
+
+ Opening Unit Balance: 0.000
+8,914.047
+2,072.905
+
+52.914
+52.394
+
+52.923
+
+52.904
+52.094
+54.183
+54.432
+
+0.000
+
+189.022
+380.983
+565.543
+0.000
+
+17-Sep-2018
+17-Sep-2018
+Closing Unit Balance: 0.000
+*Due to change in Scheme Name and  the fundamental attributes of HDFC Premier Multi-Cap Fund and merger of HDFC Balanced Fund therein,  w.e.f.  June 01, 2018
+(close of business hours) , the scheme shall be managed as HDFC Hybrid Equity Fund (erstwhile HDFC Balanced Fund and HDFC Premier Multi-Cap Fund), an open-
+ended hybrid scheme investing predominantly in equity and equity related instruments. Current Load Structure : Entry Load: Not Applicable. Exit Load: In respect of
+each purchase/switch-in of units from allotment date, Nil exit load upto 15% of the units ("the limit") redeemed/switched-out; 1% if units in excess of the limit are
+redeemed/switched-out within  1 year. No Exit Load if units are redeemed /switched-out after 1 year. The rate of exit load levied on units redeemed will be the rate
+prevailing at the time of allotment of the units. For further details visit www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.
+GST Identification Number : 27AAATH1809A1Z9
+
+184.587
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+NAV on 18-Jul-2019: INR 56.603
+
+10,000.00
+(10,000.00)
+
+184.587
+(184.587)
+
+54.175
+54.175
+
+Folio No: 11201050 / 75
+HLFDTN-HDFC Liquid Fund - Direct Plan - Monthly Dividend  - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+97.088
+
+1,029.9970
+
+97.088
+
+Purchase - via HDFCMFOnline
+***Dividend Paid @ Rs.4.6549 per unit***
+***Dividend Paid @ Rs.3.7341 per unit***
+***Dividend Paid @ Rs.3.7755 per unit***
+***Dividend Paid @ Rs.3.8062 per unit***
+***Dividend Paid @ Rs.4.5814 per unit***
+
+15-Jan-2017
+30-Jan-2017
+27-Feb-2017
+27-Mar-2017
+24-Apr-2017
+29-May-2017
+10-Jun-2017 ***STPRegistered***
+10-Jun-2017 ***STP Cancelledvia Online wef 10-Jun-2017***
+10-Jun-2017 ***STPRegistered***
+27-Jun-2017
+
+Switch Out - To HDFC Balanced Fund-DP-Growth -under FlexSTP -
+Instalment 1/12 - via H
+***Dividend Paid @ Rs.3.7902 per unit***
+Switch Out - To HDFC Balanced Fund-DP-Growth -under FlexSTP -
+Instalment 2/12 - via HDFCMFOnline
+***Dividend Paid @ Rs.4.4845 per unit***
+Switch Out - To HDFC Balanced Fund-DP-Growth -under FlexSTP -
+Instalment 3/12
+***Dividend Paid @ Rs.3.5845 per unit***
+
+27-Jun-2017
+25-Jul-2017
+
+31-Jul-2017
+28-Aug-2017
+
+28-Aug-2017
+
+100,000.00
+451.93
+362.54
+366.56
+369.54
+444.80
+
+(8,333.00)
+
+337.37
+(8,333.00)
+
+362.94
+(8,333.00)
+
+261.13
+
+(8.078)
+
+1,031.5476
+
+(8.079)
+
+1,031.4552
+
+89.010
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+80.931
+
+(8.080)
+
+1,031.2629
+
+72.851
+
+Page 8 of 18
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+25-Sep-2017
+
+25-Sep-2017
+25-Oct-2017
+
+Switch Out - To HDFC Balanced Fund-DP-Growth -under FlexSTP -
+Instalment 4/12
+***Dividend Paid @ Rs.3.5709 per unit***
+Switch Out - To HDFC Balanced Fund-DP-Growth -under FlexSTP -
+Instalment 5/12
+Switch Out - To HDFC Balanced Fund-DP-Growth - via HDFC MFOnline
+
+Amount
+(INR)
+(8,333.00)
+
+231.29
+(8,333.00)
+
+Units
+
+(8.081)
+
+Price
+(INR)
+1,031.2440
+
+                     Unit
+
+Balance
+64.770
+
+(8.078)
+
+1,031.5719
+
+56.692
+
+26-Oct-2017
+27-Nov-2017 ***FlexSTP -Nil Units Instalment No 6***
+Valuation on 18-Jul-2019: INR 0.00
+Closing Unit Balance: 0.000
+*Due to change in fundamental attributes therein w.e.f.  May 16, 2018, An open ended Liquid Scheme. Current Load Structure: Entry Load: Not Applicable. Exit Load:
+Nil. For further details visit www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.  GST Identification Number :
+27AAATH1809A1Z9. On account of the change in face value of units, the NAV and balance units in this scheme were adjusted with effect from August 30, 2015. This
+change did not affect the value of units held (subject to rounding off).
+
+NAV on 18-Jul-2019: INR 1,030.8831
+
+(58,491.57)
+
+1,031.7430
+
+(56.692)
+
+0.000
+
+Folio No: 11201050 / 75
+
+PAN: AXTPP9979K
+
+H54T-HDFC Low Duration Fund - Direct Plan - Growth Option (formerly HDFC Cash Management Fund - Treasury Advantage Plan)(Advisor: DIRECT)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+
+27-Aug-2018
+
+Switch-In - From HDFC Hybrid Equity Fund-Dir-Growth - via myCAMS
+Online
+Switch out - To HDFC Small Cap Fund - Direct Growth Plan
+
+03-Jun-2019
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+Closing Unit Balance: 0.000
+*Due to change in the Scheme name and fundamental attributes of HDFC Cash Management Fund - Treasury Advantage Plan therein w.e.f.  May 16, 2018, the scheme
+shall be managed as HDFC Low Duration Fund,. An Open ended low duration debt scheme investing in instruments such that the Macaulay Duration of the posrtfolio is
+between 6 months and 12 months. Current Load Structure : Entry Load: Not Applicable.  Exit Load : Nil. For further details visit www.hdfcfund.com (under Investor
+Corner) or contact any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9
+
+NAV on 18-Jul-2019: INR 41.9703
+
+(32,805.32)
+
+(790.699)
+
+41.4890
+
+30,783.64
+
+790.699
+
+ Opening Unit Balance: 0.000
+790.699
+
+38.9322
+
+Folio No: 11201050 / 75
+HACG1G-HDFC Small Cap Fund - Direct Growth Plan (Advisor: INA200005166)
+
+PAN: AXTPP9979K
+
+Switch-In - From HDFC Low Duration Fund-DP-Growth
+
+03-Jun-2019
+Closing Unit Balance: 697.436
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended equity scheme
+predominantly investing in small cap stocks. Current Load Structure - Entry Load: Not Applicable; Exit Load: 1% if units are redeemed/switched-out within 1 year from
+the allotment date; No Exit Load if units are redeemed /switched-out after 1 year. The rate of exit load levied on units redeemed/switched-out will be the rate
+prevailing at the time of allotment of the units. For further details visit www.hdfcfund.com or contact any of our Investor Service Centre.  GST Identification Number
+: 27AAATH1809A1Z9
+
+NAV on 18-Jul-2019: INR 43.631
+
+32,805.32
+
+697.436
+
+Folio No: 7565726 / 46
+HACG1G-HDFC Small Cap Fund - Direct Growth Plan (Advisor: INA200005166)
+
+PAN: AXTPP9979K
+
+Switch-In - From HDFC Tax Saver- Direct- Div
+
+03-Jun-2019
+Closing Unit Balance: 718.943
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended equity scheme
+predominantly investing in small cap stocks. Current Load Structure - Entry Load: Not Applicable; Exit Load: 1% if units are redeemed/switched-out within 1 year from
+the allotment date; No Exit Load if units are redeemed /switched-out after 1 year. The rate of exit load levied on units redeemed/switched-out will be the rate
+prevailing at the time of allotment of the units. For further details visit www.hdfcfund.com or contact any of our Investor Service Centre.  GST Identification Number
+: 27AAATH1809A1Z9
+
+NAV on 18-Jul-2019: INR 43.631
+
+33,816.92
+
+718.943
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+697.436
+Valuation on 18-Jul-2019: INR 30,429.83
+
+47.037
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+718.943
+Valuation on 18-Jul-2019: INR 31,368.20
+
+47.037
+
+Folio No: 7565726 / 46
+H31T-HDFC Tax Saver - Direct Plan - Dividend  - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+01-Jan-2013
+01-Feb-2013
+01-Mar-2013
+14-Mar-2013
+01-Apr-2013
+02-May-2013
+03-Jun-2013
+01-Jul-2013
+01-Aug-2013
+13-Mar-2014
+12-Mar-2015
+10-Mar-2016
+16-Mar-2017
+15-Mar-2018
+14-Mar-2019
+03-Jun-2019
+
+SIP Purchases - Instalment 6/13
+SIP Purchases - Instalment 7/13
+SIP Purchases - Instalment 8/13
+***Dividend Paid @ Rs.6.00 per unit***
+SIP Purchases - Instalment 9/13
+SIP Purchases - Instalment 10/13
+SIP Purchases - Instalment 11/13
+SIP Purchases - Instalment 12/13
+SIP Purchases - Instalment 13/13
+***Dividend Paid @ Rs.6.00 per unit***
+***Dividend Paid @ Rs.7.00 per unit***
+***Dividend Paid @ Rs.6.00 per unit***
+***Dividend Paid @ Rs.6.50 per unit***
+***Dividend Paid @ Rs.7.00 per unit***
+***Dividend Paid @ Rs.6.00 per unit***
+Switch Out - To HDFC Small Cap Fund - Direct Growth Plan
+
+3,500.00
+3,500.00
+3,500.00
+1,153.40
+3,500.00
+3,500.00
+3,500.00
+3,500.00
+3,500.00
+3,461.18
+4,038.05
+3,461.18
+3,749.62
+4,038.05
+3,461.18
+(33,816.92)
+
+62.504
+62.717
+67.013
+
+76.503
+74.411
+75.072
+77.334
+81.310
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+62.504
+125.221
+192.234
+
+55.996
+55.806
+52.229
+
+45.750
+47.036
+46.622
+45.258
+43.045
+
+268.737
+343.148
+418.220
+495.554
+576.864
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+(576.864)
+
+58.622
+
+0.000
+
+Page 9 of 18
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Amount
+(INR)
+
+Units
+
+Price
+(INR)
+
+                     Unit
+
+Balance
+Valuation on 18-Jul-2019: INR 0.00
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+44.743
+
+Closing Unit Balance: 0.000
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended Equity Linked Savings
+Scheme with a statutory lock in of 3 years and tax benefit  -  Current Load Structure : Entry Load - Not Applicable. Exit Load - Nil. This scheme qualifies for deduction
+u/s 80C of the Income-Tax Act, 1961(the "Act"), subject to the limits and conditions specified in Sec.80C read with Sec.80CCE of the Act.  "Only those units which
+have completed the lock-in period would be reflected as available units to redeem"."Effective February 06, 2015, dividend(s) declared, if any, under Dividend Option
+of the Scheme will be compulsorily paid out vide addendum date January 29, 2015". For further details visit www.hdfcfund.com (under Investor Corner) or contact
+any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9.
+
+NAV on 18-Jul-2019: INR 55.888
+
+Folio No: 7565726 / 46
+H31-HDFC TaxSaver - Regular Plan - Dividend   - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+44.743
+
+55.875
+
+2,500.00
+
+SIP Purchases
+
+86.015
+44.743
+
+60.574
+60.574
+
+41.272
+(41.272)
+
+2,500.00
+(2,500.00)
+
+SIP Purchases - Instalment 1/12
+SIP Purchases (Reversal)
+
+44.158
+42.301
+41.228
+47.020
+47.515
+46.614
+49.560
+50.364
+46.613
+44.895
+
+56.615
+59.100
+60.639
+53.169
+52.615
+53.632
+50.444
+49.639
+53.633
+55.685
+
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+3,030.07
+
+SIP Purchases - Instalment 2/12
+SIP Purchases - Instalment 3/12
+SIP Purchases - Instalment 4/12
+SIP Purchases - Instalment 5/12
+SIP Purchases - Instalment 6/12
+SIP Purchases - Instalment 7/12
+SIP Purchases - Instalment 8/12
+SIP Purchases - Instalment 9/12
+SIP Purchases - Instalment 10/12
+SIP Purchases - Instalment 11/12
+***Dividend Paid @ Rs.6.00 per unit***
+
+21-Mar-2011
+22-Mar-2011 ***Registration of Nominee***
+23-Mar-2011 ***Change of Phone - OTP Update***
+23-Mar-2011 ***Change of Phone - OTP Update***
+24-Mar-2011 ***HPIN Generation***
+26-Mar-2011 ***SIPRegistered - 21/03/2011***
+25-Apr-2011
+25-Apr-2011
+23-May-2011 ***Address Updated from KRA Data***
+25-May-2011
+27-Jun-2011
+25-Jul-2011
+25-Aug-2011
+26-Sep-2011
+25-Oct-2011
+25-Nov-2011
+26-Dec-2011
+25-Jan-2012
+27-Feb-2012
+01-Mar-2012
+13-Mar-2012 ***HPIN Generation***
+13-Mar-2012 ***SIPRegistered***
+26-Mar-2012
+26-Apr-2012 ***SIP Cancelled***
+25-Jul-2012
+03-Aug-2012 ***SIPRegistered - 25/07/2012***
+SIP Purchases - Instalment 2/13
+03-Sep-2012
+SIP Purchases - Instalment 3/13
+01-Oct-2012
+SIP Purchases - Instalment 4/13
+01-Nov-2012
+SIP Purchases - Instalment 5/13
+03-Dec-2012
+***Dividend Paid @ Rs.6.00 per unit***
+14-Mar-2013
+***Dividend Paid @ Rs.6.00 per unit***
+13-Mar-2014
+04-Dec-2014 ***Address Updated from KRA Data***
+***Dividend Paid @ Rs.7.00 per unit***
+12-Mar-2015
+***Dividend Paid @ Rs.6.00 per unit***
+10-Mar-2016
+19-Dec-2016 ***HPIN Generation***
+16-Mar-2017
+15-Mar-2018
+14-Mar-2019
+Closing Unit Balance: 898.793
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended Equity Linked Savings
+Scheme with a statutory lock in of 3 years and tax benefit  -  Current Load Structure : Entry Load - Not Applicable. Exit Load - Nil. This scheme qualifies for deduction
+u/s 80C of the Income-Tax Act, 1961(the "Act"), subject to the limits and conditions specified in Sec.80C read with Sec.80CCE of the Act.  "Only those units which
+have completed the lock-in period would be reflected as available units to redeem"."Effective February 06, 2015, dividend(s) declared, if any, under Dividend Option
+of the Scheme will be compulsorily paid out vide addendum date January 29, 2015". For further details visit www.hdfcfund.com (under Investor Corner) or contact
+any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9.
+
+***Dividend Paid @ Rs.6.50 per unit***
+***Dividend Paid @ Rs.7.00 per unit***
+***Dividend Paid @ Rs.6.00 per unit***
+
+88.901
+131.202
+172.430
+219.450
+266.965
+313.579
+363.139
+413.503
+460.116
+505.011
+
+3,500.00
+3,500.00
+3,500.00
+3,500.00
+5,392.76
+5,392.76
+
+Valuation on 18-Jul-2019: INR 47,301.68
+
+NAV on 18-Jul-2019: INR 52.628
+
+SIP Purchases - Instalment 12/12
+
+700.283
+766.798
+833.953
+898.793
+
+48.421
+52.620
+52.118
+53.979
+
+72.283
+66.515
+67.155
+64.840
+
+5,842.15
+6,291.55
+5,392.76
+
+6,291.55
+5,392.76
+
+SIP Purchases
+
+2,500.00
+
+3,500.00
+
+555.363
+
+628.000
+
+49.650
+
+50.352
+
+48.185
+
+72.637
+
+Folio No: 7567418 / 14
+H01-HDFC Equity Fund - Regular Plan - Dividend   - Payout(Advisor: DIRECT)
+
+Compulsory Dividend Reinvested @ Rs.4.00 per unit
+
+SIP Purchases
+
+21-Mar-2011
+22-Mar-2011 ***Registration of Nominee***
+23-Mar-2011
+23-Mar-2011 ***Change of Phone - OTP Update***
+23-Mar-2011 ***Change of Phone - OTP Update***
+24-Mar-2011 ***HPIN Generation***
+26-Mar-2011 ***SIPRegistered - 21/03/2011***
+25-Apr-2011
+25-Apr-2011
+
+SIP Purchase - Instalment 1/12
+SIP Purchase (Reversal)
+
+PAN: AXTPP9979K
+
+2,500.00
+
+205.52
+
+51.381
+
+4.563
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+51.381
+
+48.656
+
+45.043
+
+55.944
+
+2,500.00
+(2,500.00)
+
+51.091
+(51.091)
+
+48.932
+48.932
+
+107.035
+55.944
+Page 10 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+23-May-2011 ***Address Updated from KRA Data***
+SIP Purchase - Instalment 2/12
+25-May-2011
+SIP Purchase - Instalment 3/12
+27-Jun-2011
+SIP Purchase - Instalment 4/12
+25-Jul-2011
+SIP Purchase - Instalment 5/12
+25-Aug-2011
+SIP Purchase - Instalment 6/12
+26-Sep-2011
+SIP Purchase - Instalment 7/12
+25-Oct-2011
+SIP Purchase - Instalment 8/12
+25-Nov-2011
+SIP Purchase - Instalment 9/12
+26-Dec-2011
+SIP Purchase - Instalment 10/12
+25-Jan-2012
+SIP Purchase - Instalment 11/12
+27-Feb-2012
+***Dividend Paid @ Rs.4.00 per unit***
+23-Mar-2012
+SIP Purchase - Instalment 12/12
+26-Mar-2012
+Purchase - via HDFCMF Online
+30-Apr-2012
+***Dividend Paid @ Rs.4.00 per unit***
+21-Mar-2013
+***Dividend Paid @ Rs.4.00 per unit***
+20-Mar-2014
+04-Dec-2014 ***Address Updated from KRA Data***
+***Dividend Paid @ Rs.5.50 per unit***
+19-Mar-2015
+***Dividend Paid @ Rs.4.50 per unit***
+17-Mar-2016
+***Dividend Paid @ Rs.5.00 per unit***
+23-Mar-2017
+***Dividend Paid @ Rs.5.50 per unit***
+22-Mar-2018
+*Switch Out - To HDFCLiquid- DP - Growthoption - via myCAMS Online ,
+27-Aug-2018
+less STT
+ *** STT Paid ***
+***Dividend Paid @ Rs.5.25 per unit***
+Redemption  - NEFT PAYOUT -  N135190826288261
+
+Amount
+(INR)
+
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,500.00
+2,583.64
+2,500.00
+20,000.00
+4,846.20
+4,846.20
+
+6,663.53
+5,451.98
+6,057.76
+6,663.53
+(66,665.59)
+
+Units
+
+55.191
+53.204
+52.041
+60.716
+60.821
+59.480
+64.691
+66.120
+59.703
+57.998
+
+63.722
+501.920
+
+Price
+(INR)
+
+45.297
+46.989
+48.039
+41.175
+41.104
+42.031
+38.645
+37.810
+41.874
+43.105
+
+39.233
+39.847
+
+                     Unit
+
+Balance
+
+111.135
+164.339
+216.380
+277.096
+337.917
+397.397
+462.088
+528.208
+587.911
+645.909
+
+709.631
+1,211.551
+
+(1,192.903)
+
+55.886
+
+18.648
+
+27-Aug-2018
+20-Mar-2019
+10-May-2019
+Closing Unit Balance: 0.000
+*Due to change in fundamental attributes of the Scheme  w.e.f.  May 23, 2018, the type of the Scheme has been changed to an  Open-ended Equity Scheme investing
+across large cap, mid cap & small cap stocks. Scheme - Current Load Structure : Entry Load: Not Applicable. Exit Load: Redemption/Switch-out within 1 Year of
+allotment - 1%.  The rate of exit load levied on units redeemed will be the rate prevailing at the time of allotment of the units. For further details visit
+www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9
+
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+NAV on 18-Jul-2019: INR 50.877
+
+1.00
+97.90
+(912.99)
+
+(18.648)
+
+48.959
+
+Folio No: 7567418 / 14
+HF243G-HDFC FMP 92D April 2012 (2) - Growth - Series XXI (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+NFO Purchase  - via HDFCMF Online
+Redemption
+
+03-May-2012
+02-Aug-2012
+Closing Unit Balance: 0.000
+A Close Ended Income Scheme. Entry Load: Not Applicable, Exit Load: Not Applicable. The Units of the Scheme will be listed on the National Stock  Exchange (NSE),
+where investors can purchase / sell units on a continuous basis. The plan does not provide redemption/switch facility until the date of Maturity / Final Redemption
+date. The plan matures on  02 August 2012 .
+
+NAV on 02-Aug-2012: INR 10.2355
+
+50,000.00
+(51,177.50)
+
+5,000.000
+(5,000.000)
+
+Folio No: 7567418 / 14
+HFDC4D-HDFC FMP 92D December 2011(2)-Dividend-Series XIX  - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+5,000.000
+0.000
+Valuation on 02-Aug-2012: INR 0.00
+
+10.0000
+10.2355
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+2,000.000
+
+NFO Purchase  - via HDFCMF Online
+
+***Dividend Paid @ Rs.0.2128 per unit***
+Redemption
+
+28-Dec-2011
+13-Mar-2012 ***HPIN Generation***
+28-Mar-2012
+28-Mar-2012
+Closing Unit Balance: 0.000
+A Close Ended Income Scheme. Entry Load: Not Applicable, Exit Load: Not Applicable. The Units of the Scheme will be listed on the National Stock  Exchange (NSE),
+where investors can purchase / sell units on a continuous basis. The plan does not provide redemption/switch facility until the date of Maturity / Final Redemption
+date. The plan matures on 28 March 2012.
+
+0.000
+Valuation on 28-Mar-2012: INR 0.00
+
+NAV on 28-Mar-2012: INR 10.0000
+
+425.60
+(20,000.00)
+
+(2,000.000)
+
+20,000.00
+
+2,000.000
+
+10.0000
+
+10.0000
+
+Switch-In - From HDFC Equity Fund-Dividend - via myCAMS Online
+Switch-In - From HDFC TaxSaver - Dividend - via myCAMS Online
+
+Folio No: 7567418 / 14
+HLFGTN-HDFC Liquid Fund - Direct Plan - Growth Option (Advisor: DIRECT)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+29-Aug-2018
+18.916
+29-Aug-2018
+32.150
+Valuation on 18-Jul-2019: INR 120,768.78
+Closing Unit Balance: 32.150
+*Due to change in fundamental attributes therein w.e.f.  May 16, 2018, An open ended Liquid Scheme. Current Load Structure: Entry Load: Not Applicable. Exit Load:
+Nil. For further details visit www.hdfcfund.com (under Investor Corner) or contact any of our Investor Service Centre.  GST Identification Number :
+27AAATH1809A1Z9. On account of the change in face value of units, the NAV and balance units in this scheme were adjusted with effect from August 30, 2015. This
+change did not affect the value of units held (subject to rounding off).
+
+NAV on 18-Jul-2019: INR 3,756.4163
+
+3,524.3416
+3,524.3416
+
+PAN: AXTPP9979K
+
+66,665.59
+46,640.27
+
+18.916
+13.234
+
+Folio No: 7567418 / 14
+H31-HDFC TaxSaver - Regular Plan - Dividend   - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+22-Mar-2012
+
+Purchase - via HDFCMF Online
+
+30,000.00
+
+599.077
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+599.077
+
+50.077
+
+Page 11 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Units
+
+                     Unit
+
+Price
+(INR)
+47.602
+46.658
+
+Balance
+674.588
+761.337
+
+Dividend Reinvested @ Rs.6.00 per unit
+Dividend Reinvested @ Rs.6.00 per unit
+***Dividend Paid @ Rs.7.00 per unit***
+***Dividend Paid @ Rs.6.00 per unit***
+***Dividend Paid @ Rs.6.50 per unit***
+***Dividend Paid @ Rs.7.00 per unit***
+*Switch Out - To HDFCLiquid- DP - Growthoption - via myCAMS Online
+***Dividend Paid @ Rs.6.00 per unit***
+
+15-Mar-2013
+14-Mar-2014
+12-Mar-2015
+10-Mar-2016
+16-Mar-2017
+15-Mar-2018
+27-Aug-2018
+14-Mar-2019
+Closing Unit Balance: 8.467
+*Due to change in fundamental attributes of the Scheme w.e.f.  May 23, 2018, the type of the Scheme has been changed to an open-ended Equity Linked Savings
+Scheme with a statutory lock in of 3 years and tax benefit  -  Current Load Structure : Entry Load - Not Applicable. Exit Load - Nil. This scheme qualifies for deduction
+u/s 80C of the Income-Tax Act, 1961(the "Act"), subject to the limits and conditions specified in Sec.80C read with Sec.80CCE of the Act.  "Only those units which
+have completed the lock-in period would be reflected as available units to redeem"."Effective February 06, 2015, dividend(s) declared, if any, under Dividend Option
+of the Scheme will be compulsorily paid out vide addendum date January 29, 2015". For further details visit www.hdfcfund.com (under Investor Corner) or contact
+any of our Investor Service Centre.  GST Identification Number : 27AAATH1809A1Z9.
+
+NAV on 18-Jul-2019: INR 52.628
+
+Valuation on 18-Jul-2019: INR 445.60
+
+75.511
+86.749
+
+(752.870)
+
+61.950
+
+8.467
+
+Amount
+(INR)
+3,594.46
+4,047.53
+5,329.36
+4,568.02
+4,948.69
+5,329.36
+(46,640.27)
+50.80
+
+ICICI Prudential Mutual Fund
+Folio No: 9501494 / 35
+P8042-ICICI Prudential Bluechip Fund - Direct Plan - Growth (formerly ICICI Prudential Focused Bluechip Equity Fund)(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+14-Jun-2018
+
+Equity Switch - From Equity&Debt Fund - DP - Growth - via myCAMS
+Online - DIRECT
+
+327,813.11
+
+7,724.153
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+42.44
+7,724.153
+
+Closing Unit Balance: 7,724.153
+Current : Entry Load - Nil. Exit Load w.e.f 16-Jul-2010 [including SIP,STP,SWP(SIP) wherever available] - If redeemed or switched out upto 1 year - 1.0%, > 1 year -
+Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For SIP/STP
+transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda available on
+www.icicipruamc.com.
+
+NAV on 18-Jul-2019: INR 44.71
+
+Valuation on 18-Jul-2019: INR 345,346.88
+
+Scheme Name of ICICI Prudential Focused Bluechip Equity Fund has been changed to ICICI Prudential Bluechip Fund with effect from May 28, 2018.
+
+Folio No: 9501494 / 35
+P8017-ICICI Prudential Equity & Debt Fund - Direct Plan - Growth (formerly ICICI Prudential Balanced Fund)(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase - DIRECT
+22-May-2017
+26-May-2017 ***SIPRegistered***
+19-Jun-2017
+27-Jun-2017
+03-Jul-2017
+10-Jul-2017
+10-Jul-2017
+17-Jul-2017
+24-Jul-2017
+31-Jul-2017
+07-Aug-2017
+10-Aug-2017
+14-Aug-2017
+21-Aug-2017
+28-Aug-2017
+04-Sep-2017
+11-Sep-2017
+11-Sep-2017
+18-Sep-2017
+25-Sep-2017
+03-Oct-2017
+09-Oct-2017
+10-Oct-2017
+16-Oct-2017
+23-Oct-2017
+26-Oct-2017
+10-Nov-2017
+11-Dec-2017
+10-Jan-2018
+12-Feb-2018
+12-Mar-2018
+10-Apr-2018
+12-Apr-2018 ***Medical Advantage Feature RegisteredInstalment No PKRISH120418***
+
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+SIP Purchase - Instalment 1/990 - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+SIP Purchase - Instalment 2/990 - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+SIP Purchase - Instalment 3/990 - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+SIP Purchase - Instalment 4/990 - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+STP Switch In - From Equity Arbitrage Fund - Drt Div - DIRECT
+Equity Switch - From Equity Arbitrage Fund - Drt Div - DIRECT
+SIP Purchase - Instalment 5/990 - DIRECT
+SIP Purchase - Instalment 6/990 - DIRECT
+SIP Purchase - Instalment 7/990 - DIRECT
+SIP Purchase - Instalment 8/990 - DIRECT
+SIP Purchase - Instalment 9/990 - DIRECT
+SIP Purchase - Instalment 10/990 - DIRECT
+
+10-May-2018
+11-Jun-2018
+
+SIP Purchase - Instalment 11/990 - DIRECT
+SIP Purchase - Instalment 12/990 - DIRECT
+
+10,000.00
+
+5,000.00
+5,050.86
+4,894.87
+10,000.00
+4,773.67
+4,794.85
+4,834.76
+4,950.79
+4,956.27
+10,000.00
+5,723.34
+5,107.10
+4,367.41
+5,103.73
+10,000.00
+4,697.76
+4,297.42
+6,318.15
+4,549.77
+4,158.43
+10,000.00
+3,692.52
+5,206.56
+109,256.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+10,000.00
+
+10,000.00
+10,000.00
+
+81.853
+
+40.355
+41.184
+39.497
+79.491
+37.947
+37.728
+37.792
+38.636
+38.630
+79.592
+45.431
+40.636
+34.316
+40.177
+78.327
+36.796
+33.300
+49.899
+35.718
+32.306
+77.549
+28.252
+39.928
+814.432
+73.828
+73.492
+72.015
+72.892
+74.200
+74.030
+
+73.752
+74.206
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+81.853
+
+122.17
+
+123.90
+122.64
+123.93
+125.80
+125.80
+127.09
+127.93
+128.14
+128.30
+125.64
+125.98
+125.68
+127.27
+127.03
+127.67
+127.67
+129.05
+126.62
+127.38
+128.72
+128.95
+130.70
+130.40
+134.15
+135.45
+136.07
+138.86
+137.19
+134.77
+135.08
+
+135.59
+134.76
+
+122.208
+163.392
+202.889
+282.380
+320.327
+358.055
+395.847
+434.483
+473.113
+552.705
+598.136
+638.772
+673.088
+713.265
+791.592
+828.388
+861.688
+911.587
+947.305
+979.611
+1,057.160
+1,085.412
+1,125.340
+1,939.772
+2,013.600
+2,087.092
+2,159.107
+2,231.999
+2,306.199
+2,380.229
+
+2,453.981
+2,528.187
+
+Page 12 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+11-Jun-2018
+
+11-Jun-2018
+11-Jun-2018
+
+11-Jun-2018
+10-Jul-2018
+10-Aug-2018
+27-Aug-2018
+27-Aug-2018
+27-Aug-2018
+27-Aug-2018
+10-Sep-2018
+10-Sep-2018
+
+Switch Out - To Bluechip Fund - Direct Plan Growth - via myCAMS Online ,
+less STT
+ *** STT Paid ***
+Switch Out - To Bluechip Fund - Direct Plan Growth - via myCAMS Online ,
+less STT
+ *** STT Paid ***
+SIP Purchase - Instalment 13/990 - DIRECT
+SIP Purchase - Instalment 14/990 - DIRECT
+Switch Out - To Savings Fund - DP - Growth , less STT
+ *** STT Paid ***
+Switch Out - To Savings Fund - DP - Growth , less STT
+ *** STT Paid ***
+SIP Purchase - Instalment 15/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 15
+
+10-Oct-2018
+10-Oct-2018
+
+SIP Purchase - Instalment 16/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 16
+
+12-Nov-2018
+12-Nov-2018
+
+SIP Purchase - Instalment 17/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 17
+
+10-Dec-2018
+10-Dec-2018
+
+SIP Purchase - Instalment 18/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 18
+
+10-Jan-2019
+10-Jan-2019
+
+SIP Purchase - Instalment 19/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 19
+
+11-Feb-2019
+11-Feb-2019
+
+SIP Purchase - Instalment 20/990 - DIRECT
+SIP Purchase -ISIP Rejection - Payment not received- - Instalment No 20
+
+Amount
+(INR)
+(284,815.83)
+
+Units
+
+(2,134.912)
+
+Price
+(INR)
+133.41
+
+                     Unit
+
+Balance
+393.275
+
+2.85
+(42,997.28)
+
+0.43
+10,000.00
+10,000.00
+(27,774.75)
+0.28
+(3,117.21)
+0.03
+10,000.00
+(10,000.00)
+
+10,000.00
+(10,000.00)
+
+10,000.00
+(10,000.00)
+
+10,000.00
+(10,000.00)
+
+10,000.00
+(10,000.00)
+
+10,000.00
+(10,000.00)
+
+(319.069)
+
+134.76
+
+75.058
+72.743
+(199.806)
+
+(22.201)
+
+71.383
+(71.383)
+
+75.717
+(75.717)
+
+74.151
+(74.151)
+
+76.208
+(76.208)
+
+72.945
+(72.945)
+
+75.649
+(75.649)
+
+133.23
+137.47
+139.01
+
+140.41
+
+140.09
+140.09
+
+132.07
+132.07
+
+134.86
+134.86
+
+131.22
+131.22
+
+137.09
+137.09
+
+132.19
+132.19
+
+74.206
+
+149.264
+222.007
+22.201
+
+0.000
+
+71.383
+0.000
+
+75.717
+0.000
+
+74.151
+0.000
+
+76.208
+0.000
+
+72.945
+0.000
+
+75.649
+0.000
+
+SIP Purchase - Instalment 21/990 - DIRECT
+SIP Purchase (Reversal) - Instalment No 21
+
+11-Mar-2019
+11-Mar-2019
+28-Mar-2019 ***SIPCancelled***
+Closing Unit Balance: 0.000
+Current : Entry Load - Nil. Exit Load w.e.f 10-Nov-2016 [including SIP,STP,SWP&Micro(SIP) wherever available] - If redeemed or switched out upto 10% of the units
+within 1 year - Nil, more than 10% of units within 1 Year - 1.0%, > 1 year - Nil. For lumpsum investment/switch in, the applicable load will be based on the load
+structure as on the date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on the
+registration date. For details, please refer to SID and Addenda available on www.icicipruamc.com.
+
+NAV on 18-Jul-2019: INR 144.03
+
+10,000.00
+(10,000.00)
+
+71.418
+(71.418)
+
+140.02
+140.02
+
+Valuation on 18-Jul-2019: INR 0.00
+
+71.418
+0.000
+
+Folio No: 9501494 / 35
+P8177-ICICI Prudential Equity Arbitrage Fund - Direct Plan - Dividend  - Payout(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase - DIRECT
+
+27-Apr-2017
+28-Apr-2017 ***Registration of Nominee***
+28-Apr-2017 ***Address Updated from KRA Data***
+02-Jun-2017
+12-Jun-2017 ***VA RegisteredSTP***
+19-Jun-2017
+
+***Dividend Payout @ Rs.0.1167 per unit***
+
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 1/39 , less STT
+
+200,000.00
+
+13,725.423
+
+1,601.76
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+13,725.423
+
+14.5715
+
+(5,000.00)
+
+(342.977)
+
+14.5784
+
+13,382.446
+
+19-Jun-2017
+27-Jun-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 2/39 , less STT
+
+27-Jun-2017
+03-Jul-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 3/39 , less STT
+
+03-Jul-2017
+10-Jul-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 4/39 , less STT
+
+10-Jul-2017
+17-Jul-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 5/39 , less STT
+
+17-Jul-2017
+24-Jul-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 6/39 , less STT
+
+24-Jul-2017
+31-Jul-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 7/39 , less STT
+
+31-Jul-2017
+07-Aug-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 8/39 , less STT
+
+07-Aug-2017
+14-Aug-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 9/39 , less STT
+
+0.05
+(5,050.86)
+
+0.05
+(4,894.87)
+
+0.05
+(4,773.67)
+
+0.05
+(4,794.85)
+
+0.05
+(4,834.76)
+
+0.05
+(4,950.79)
+
+0.05
+(4,956.27)
+
+0.05
+(5,723.34)
+
+(345.811)
+
+14.6060
+
+13,036.635
+
+(334.746)
+
+14.6228
+
+12,701.889
+
+(326.161)
+
+14.6361
+
+12,375.728
+
+(327.172)
+
+14.6556
+
+12,048.556
+
+(329.210)
+
+14.6861
+
+11,719.346
+
+(336.879)
+
+14.6962
+
+11,382.467
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+(337.013)
+
+14.7066
+
+11,045.454
+
+(388.438)
+
+14.7344
+
+10,657.016
+
+Page 13 of 18
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+14-Aug-2017
+21-Aug-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 10/39 , less STT
+
+21-Aug-2017
+28-Aug-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 11/39 , less STT
+
+28-Aug-2017
+04-Sep-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 12/39 , less STT
+
+04-Sep-2017
+11-Sep-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 13/39 , less STT
+
+11-Sep-2017
+18-Sep-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 14/39 , less STT
+
+18-Sep-2017
+22-Sep-2017
+25-Sep-2017
+
+ *** STT Paid ***
+***Dividend Payout @ Rs.0.0753 per unit***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 15/39 , less STT
+
+25-Sep-2017
+03-Oct-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 16/39 , less STT
+
+03-Oct-2017
+04-Oct-2017
+09-Oct-2017
+
+ *** STT Paid ***
+***Dividend Payout @ Rs.0.06 per unit***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 17/39 , less STT
+
+09-Oct-2017
+16-Oct-2017
+
+ *** STT Paid ***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 18/39 , less STT
+
+16-Oct-2017
+18-Oct-2017
+23-Oct-2017
+
+ *** STT Paid ***
+***Dividend Payout @ Rs.0.10 per unit***
+*Switch Out - To Balanced Fund - DP - Growth - Instalment 19/39 , less STT
+
+Amount
+(INR)
+0.06
+(5,107.10)
+
+0.05
+(4,367.41)
+
+0.04
+(5,103.73)
+
+0.05
+(4,697.76)
+
+0.05
+(4,297.42)
+
+0.04
+682.40
+(6,318.15)
+
+0.06
+(4,549.77)
+
+0.05
+499.61
+(4,158.43)
+
+0.04
+(3,692.52)
+
+0.04
+779.41
+(5,206.56)
+
+Units
+
+Price
+(INR)
+
+                     Unit
+
+Balance
+
+(346.144)
+
+14.7544
+
+10,310.872
+
+(295.820)
+
+14.7639
+
+10,015.052
+
+(345.092)
+
+14.7896
+
+9,669.960
+
+(317.452)
+
+14.7985
+
+9,352.508
+
+(290.114)
+
+14.8130
+
+9,062.394
+
+(428.089)
+
+14.7591
+
+8,634.305
+
+(307.485)
+
+14.7969
+
+8,326.820
+
+(282.280)
+
+14.7317
+
+8,044.540
+
+(250.431)
+
+14.7448
+
+7,794.109
+
+(354.974)
+
+14.6676
+
+7,439.135
+
+ *** STT Paid ***
+Switch Out - To Balanced Fund - DP - Growth , less STT
+ *** STT Paid ***
+
+23-Oct-2017
+26-Oct-2017
+26-Oct-2017
+30-Oct-2017 ***VA Nil UnitsInstalment No 20***
+30-Oct-2017 ***Nil Balance - STP Not processed***
+Closing Unit Balance: 0.000
+Current : Entry Load - Nil. Exit Load w.e.f 06-Apr-2015 [including SIP,STP,SWP&Micro(SIP) wherever available] if redeemed or switched out within 1 month - 0.25%, >
+1 month - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com.
+
+0.05
+(109,256.00)
+1.09
+
+NAV on 18-Jul-2019: INR 14.6466
+
+Valuation on 18-Jul-2019: INR 0.00
+
+(7,439.135)
+
+14.6868
+
+0.000
+
+Folio No: 9501494 / 35
+P8178-ICICI Prudential Equity Arbitrage Fund - Direct Plan - Growth (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase - DIRECT
+Purchase Appln : MYCAMSONLINE - via myCAMS Online - DIRECT
+
+11-Apr-2018
+06-Nov-2018
+Closing Unit Balance: 29,185.432
+Current : Entry Load - Nil. Exit Load w.e.f 06-Apr-2015 [including SIP,STP,SWP&Micro(SIP) wherever available] if redeemed or switched out within 1 month - 0.25%, >
+1 month - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com.
+
+NAV on 18-Jul-2019: INR 25.8514
+
+500,000.00
+200,000.00
+
+21,078.814
+8,106.618
+
+Folio No: 9501494 / 35
+P8086-ICICI Prudential Savings Fund - Direct Plan - Growth (formerly ICICI Prudential Mutual Fund - Flexible Income Plan)(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Switch In - From Equity&Debt Fund - DP - Growth - DIRECT
+Redemption - ELECTRONIC PAYMENT -  CMS1140338527
+
+27-Aug-2018
+03-Jun-2019
+Closing Unit Balance: 0.000
+Current : Entry & Exit Load - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable
+NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and
+Addenda available on www.icicipruamc.com.
+
+NAV on 18-Jul-2019: INR 371.1334
+
+30,891.96
+(32,950.07)
+
+89.854
+(89.854)
+
+Scheme Name of ICICI Prudential Mutual Fund - Flexible Income Plan has been changed to ICICI Prudential Savings Fund with effect from May 28, 2018.
+
+Kotak Mutual Fund
+Folio No: 5096166 / 60
+K135D-Kotak Savings Fund - Direct Plan - Growth (Erstwhile Kotak Treasury Adv.) (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+Page 14 of 18
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+89.854
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+343.8065
+366.7067
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+21,078.814
+29,185.432
+Valuation on 18-Jul-2019: INR 754,484.28
+
+23.7205
+24.6712
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+Switch-In - From Kotak Std Multicap-Gr (Reg Plan) - via myCAMS Online
+Purchase (Continuous Offer) - via myCAMS Online
+Switch-out - To Kotak Std Multicap-Direct Plan-Gr
+
+27-Aug-2018
+03-Sep-2018
+27-May-2019
+Closing Unit Balance: 0.000
+Entry Load (w.e.f. 23-Jan-2009) - Nil, Exit Load (w.e.f. 23-Jan-2009) - Nil.
+
+NAV on 18-Jul-2019: INR 31.3140
+
+Amount
+(INR)
+26,949.27
+100,000.00
+(134,916.72)
+
+Units
+
+927.293
+3,436.402
+(4,363.695)
+
+                     Unit
+
+Price
+(INR)
+29.0623
+29.1002
+30.9180
+
+Balance
+927.293
+4,363.695
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+Folio No: 5096166 / 60
+K168D-Kotak Standard Multicap Fund -   Direct Plan - Growth (Erstwhile Kotak Select Focus) (Advisor: INA200005166)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+27-May-2019
+3,433.170
+Valuation on 18-Jul-2019: INR 129,591.87
+Closing Unit Balance: 3,433.170
+Entry Load (w.e.f. 24-Aug-2009) - NIL. Exit Load (w.e.f. 18-Oct-2010) Irrespective of the investment amount (including SIP / STP): 1% for Exit within One Year; NIL for
+exit after One Year.
+
+Switch-In - From Kotak Savings Fund-Dir Plan - Growth
+
+NAV on 18-Jul-2019: INR 37.747
+
+PAN: AXTPP9979K
+
+134,916.72
+
+3,433.170
+
+39.298
+
+Folio No: 5096166 / 60
+K168-Kotak Standard Multicap Fund - Growth (Regular Plan) (Erstwhile Kotak Select Focus) (Advisor: ARN-0020)
+
+PAN: AXTPP9979K
+
+25,000.00
+
+763.825
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+763.825
+
+32.730
+
+Purchase (Continuous Offer)
+
+28-Feb-2018
+01-Mar-2018 ***Registration of Nominee***
+01-Mar-2018 ***Address Updated from KRA Data***
+27-Aug-2018
+27-Aug-2018
+
+Redemption - NEFT -  KKBK182427017167
+*Switch-Out - To Kotak Savings Fund-Dir Plan - Growth - via myCAMS
+Online , less STT
+ *** STT Paid ***
+
+27-Aug-2018
+Valuation on 18-Jul-2019: INR 0.00
+Closing Unit Balance: 0.000
+Entry Load (w.e.f. 24-Aug-2009) - NIL. Exit Load (w.e.f. 18-Oct-2010) Irrespective of the investment amount (including SIP / STP): 1% for Exit within One Year; NIL for
+exit after One Year.
+
+NAV on 18-Jul-2019: INR 35.399
+
+0.27
+
+(24.19)
+(26,949.27)
+
+(0.685)
+(763.140)
+
+35.314
+35.314
+
+763.140
+0.000
+
+L&T Mutual Fund
+Folio No: 1766166 / 30
+FFTAFD-L&T Tax Advantage Fund - Dividend Payout  - Payout(Advisor: DIRECT)
+
+Purchase
+
+***Dividend Payout @ Rs.1.00 per unit***
+***Dividend Payout @ Rs.1.00 per unit***
+***Dividend Payout @ Rs.1.20 per unit***
+
+21-Mar-2011
+22-Mar-2011 ***Registration of Nominee***
+23-Mar-2011 ***Change of Phone - OTP Update***
+23-Mar-2011 ***Change of Phone - OTP Update***
+23-Mar-2011 ***Change of Phone - OTP Update***
+06-May-2011 ***Address Updated from KRA Data***
+01-Dec-2011
+18-Mar-2013
+21-Mar-2014
+04-Dec-2014 ***Address Updated from KRA Data***
+12-Dec-2014
+27-Feb-2015
+24-Nov-2015
+18-Mar-2016
+18-Nov-2016
+17-Mar-2017
+17-Nov-2017
+16-Mar-2018
+27-Aug-2018
+
+***Dividend Payout @ Rs.2.00 per unit***
+***Dividend Payout @ Rs.1.70 per unit***
+***Dividend Payout @ Rs.1.20 per unit***
+***Dividend Payout @ Rs.1.20 per unit***
+***Dividend Payout @ Rs.1.00 per unit***
+***Dividend Payout @ Rs.1.00 per unit***
+***Dividend Payout @ Rs.1.20 per unit***
+***Dividend Payout @ Rs.1.20 per unit***
+Redemption - ELECTRONIC PAYMENT - via myCAMS Online -  UTR
+18909270216 , less STT
+ *** STT Paid ***
+
+PAN: AXTPP9979K
+
+10,000.00
+
+570.907
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+570.907
+
+17.516
+
+570.91
+570.91
+685.09
+
+1,141.81
+970.54
+685.09
+685.09
+570.91
+570.91
+685.09
+685.09
+(14,178.91)
+
+(570.907)
+
+24.836
+
+0.000
+
+27-Aug-2018
+Closing Unit Balance: 0.000
+An Open-ended Equity Linked Savings Scheme with a lock-in period of 3 years. Investments in this scheme qualify for deduction u/s 80C of the Income-tax Act, 1961
+subject to the terms and conditions specified therein and read with Section 80CCE of the Act. Current Entry Load - NIL; Exit Load - NIL(If redeemed on completion of
+3 years from the date of allotment). STT during the exit window (15-10-2012 to 15-11-2012) was paid by the AMC.
+
+NAV on 18-Jul-2019: INR 20.900
+
+Valuation on 18-Jul-2019: INR 0.00
+
+0.14
+
+Mirae Asset Mutual Fund
+Folio No: 7995770572 / 0
+117EBD1G-Mirae Asset Emerging Bluechip Fund - Direct Plan - Growth(Advisor: 000000-0)
+
+03-Apr-2017
+02-May-2017
+01-Jun-2017
+03-Jul-2017
+01-Aug-2017
+
+Systematic Investment (1/28)
+Systematic Investment (2/28)
+Systematic Investment (3/28)
+Systematic Investment (4/28)
+Systematic Investment (5/28)
+
+PAN: AXTPP9979K
+
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+
+168.369
+160.941
+157.911
+156.351
+151.085
+
+KYC: OK  PAN: OK
+Registrar : KARVY
+ Opening Unit Balance: 0.000
+168.369
+329.310
+487.221
+643.572
+794.657
+
+44.545
+46.601
+47.495
+47.969
+49.641
+
+Page 15 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Units
+
+Transaction
+
+                     Unit
+
+Systematic Investment (6/28)
+Systematic Investment (7/28)
+Systematic Investment (8/28)
+Systematic Investment (9/28)
+Systematic Investment (10/28)
+Systematic Investment (11/28)
+Systematic Investment (12/28)
+Systematic Investment (13/28)
+Systematic Investment (14/28)
+Systematic Investment (15/28)
+Systematic Investment (16/28)
+Systematic Investment (17/28)
+Systematic Investment (18/28)
+Systematic Investment Rejection (18/28)
+Systematic Investment (19/28)
+Systematic Investment Rejection (19/28)
+Systematic Investment (20/28)
+Systematic Investment Rejection (20/28)
+Systematic Investment (21/28)
+Systematic Investment Rejection (21/28)
+Systematic Investment (22/28)
+Systematic Investment Rejection (22/28)
+Systematic Investment (23/28)
+Systematic Investment Rejection (23/28)
+Systematic Investment (24/28)
+Systematic Investment Rejection (24/28)
+Systematic Investment (25/28)
+Systematic Investment Rejection (25/28)
+Systematic Investment (26/28)
+Systematic Investment Rejection (26/28)
+Systematic Investment (27/28)
+Systematic Investment Rejection (27/28)
+Systematic Investment (28/28)
+
+Balance
+01-Sep-2017
+946.126
+03-Oct-2017
+1,097.409
+01-Nov-2017
+1,239.686
+01-Dec-2017
+1,381.702
+01-Jan-2018
+1,517.162
+01-Feb-2018
+1,654.153
+01-Mar-2018
+1,798.229
+02-Apr-2018
+1,946.205
+02-May-2018
+2,087.961
+01-Jun-2018
+2,234.023
+02-Jul-2018
+2,384.459
+01-Aug-2018
+2,526.820
+03-Sep-2018
+2,662.808
+03-Sep-2018
+2,526.820
+01-Oct-2018
+2,675.461
+01-Oct-2018
+2,526.820
+01-Nov-2018
+2,675.138
+01-Nov-2018
+2,526.820
+03-Dec-2018
+2,670.073
+03-Dec-2018
+2,526.820
+01-Jan-2019
+2,668.239
+01-Jan-2019
+2,526.820
+01-Feb-2019
+2,670.204
+01-Feb-2019
+2,526.820
+01-Mar-2019
+2,669.906
+01-Mar-2019
+2,526.820
+01-Apr-2019
+2,659.437
+01-Apr-2019
+2,526.820
+02-May-2019
+2,660.722
+02-May-2019
+2,526.820
+03-Jun-2019
+2,655.205
+03-Jun-2019
+2,526.820
+01-Jul-2019
+2,656.900
+Valuation on 18-Jul-2019: INR 149,490.48
+Closing Unit Balance: 2,656.900
+Entry Load: Nil and Exit Load :  For SWP 15% of the units allotted (including Switch-in/STP-in) on or before completion of 365 days from the date of allotment of units
+is NIL. Any redemption in excess of such limit, on FIFO basis, or other redemptionsof investor who have not opted for SWP(Inc Switch out, STP out) and If redeemed
+within 1 year (365 Days) from the date of allotment Exit load is 1%  and after 365 days from the date of allotment Exit load is NIL .Scheme name change : Mirae Asset
+India Opportunities Fund has been renamed as Mirae Asset India Equity Fund with effect from 01st March, 2018and Mirae Asset Prudence Fund has been renamed as
+Mirae Asset Hybrid-Equity Fund with effect from 14th March, 2018
+
+151.469
+151.283
+142.277
+142.016
+135.460
+136.991
+144.076
+147.976
+141.756
+146.062
+150.436
+142.361
+135.988
+(135.988)
+148.641
+(148.641)
+148.318
+(148.318)
+143.253
+(143.253)
+141.419
+(141.419)
+143.384
+(143.384)
+143.086
+(143.086)
+132.617
+(132.617)
+133.902
+(133.902)
+128.385
+(128.385)
+130.080
+
+Amount
+(INR)
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+(7,500.00)
+7,500.00
+
+Price
+(INR)
+49.515
+49.576
+52.714
+52.811
+55.367
+54.748
+52.056
+50.684
+52.908
+51.348
+49.855
+52.683
+55.152
+55.152
+50.457
+50.457
+50.567
+50.567
+52.355
+52.355
+53.034
+53.034
+52.307
+52.307
+52.416
+52.416
+56.554
+56.554
+56.011
+56.011
+58.418
+58.418
+57.657
+
+NAV on 18-Jul-2019: INR 56.265
+
+SBI Mutual Fund
+Folio No: 11578983
+LD103G-SBI Blue Chip Fund - Direct Plan - Growth (Advisor: INA200005166)
+
+PAN: AXTPP9979K
+
+Purchase- Systematic - Instalment 2
+Purchase- Systematic - Instalment 3
+Purchase- Systematic
+
+Purchase- Systematic
+19-Jun-2015
+25-Jun-2015 ***SIPRegistered***
+20-Jul-2015
+20-Aug-2015
+08-Sep-2015
+09-Sep-2015 ***Change of Investor Email Options***
+19-Sep-2015 ***SIPRegistered***
+21-Sep-2015
+12-Oct-2015
+20-Oct-2015
+10-Nov-2015
+20-Nov-2015
+10-Dec-2015
+21-Dec-2015
+11-Jan-2016
+20-Jan-2016
+10-Feb-2016
+22-Feb-2016
+10-Mar-2016
+21-Mar-2016
+11-Apr-2016
+20-Apr-2016
+10-May-2016
+20-May-2016
+10-Jun-2016
+
+Purchase- Systematic - Instalment 4
+Purchase- Systematic - Instalment 2
+Purchase- Systematic - Instalment 5
+Purchase- Systematic - Instalment 3
+Purchase- Systematic - Instalment 6
+Purchase- Systematic - Instalment 4
+Purchase- Systematic - Instalment 7
+Purchase- Systematic - Instalment 5
+Purchase- Systematic - Instalment 8
+Purchase- Systematic - Instalment 6
+Purchase- Systematic - Instalment 9
+Purchase- Systematic - Instalment 7
+Purchase- Systematic - Instalment 10
+Purchase- Systematic - Instalment 8
+Purchase- Systematic - Instalment 11
+Purchase- Systematic - Instalment 9
+Purchase- Systematic - Instalment 12
+Purchase- Systematic - Instalment 10
+
+20,000.00
+
+20,000.00
+20,000.00
+20,000.00
+
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+
+704.466
+
+666.467
+673.614
+729.341
+
+706.854
+698.895
+685.340
+710.104
+699.506
+710.785
+698.127
+712.725
+744.574
+743.273
+747.016
+727.180
+707.024
+699.469
+678.806
+674.805
+682.589
+652.707
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+704.466
+
+28.3903
+
+30.0090
+29.6906
+27.4220
+
+28.2944
+28.6166
+29.1826
+28.1649
+28.5916
+28.1379
+28.6481
+28.0613
+26.8610
+26.9080
+26.7732
+27.5035
+28.2876
+28.5931
+29.4635
+29.6382
+29.3002
+30.6416
+
+1,370.933
+2,044.547
+2,773.888
+
+3,480.742
+4,179.637
+4,864.977
+5,575.081
+6,274.587
+6,985.372
+7,683.499
+8,396.224
+9,140.798
+9,884.071
+10,631.087
+11,358.267
+12,065.291
+12,764.760
+13,443.566
+14,118.371
+14,800.960
+15,453.667
+Page 16 of 18
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+20-Jun-2016
+11-Jul-2016
+20-Jul-2016
+10-Aug-2016
+22-Aug-2016
+12-Sep-2016
+20-Sep-2016
+10-Oct-2016
+20-Oct-2016
+10-Nov-2016
+21-Nov-2016
+12-Dec-2016
+20-Dec-2016
+10-Jan-2017
+20-Jan-2017
+10-Feb-2017
+20-Feb-2017
+05-Mar-2017 ***Cancelled wef 15-MAR-2017<$> SIP Ceased As Per Investor Written
+
+Purchase- Systematic - Instalment 13
+Purchase- Systematic - Instalment 11
+Purchase- Systematic - Instalment 14
+Purchase- Systematic - Instalment 12
+Purchase- Systematic - Instalment 15
+Purchase- Systematic - Instalment 13
+Purchase- Systematic - Instalment 16
+Purchase- Systematic - Instalment 14
+Purchase- Systematic - Instalment 17
+Purchase- Systematic - Instalment 15
+Purchase- Systematic - Instalment 18
+Purchase- Systematic - Instalment 16
+Purchase- Systematic - Instalment 19
+Purchase- Systematic - Instalment 17
+Purchase- Systematic - Instalment 20
+Purchase- Systematic - Instalment 18
+Purchase- Systematic - Instalment 21
+
+Request***
+
+Amount
+(INR)
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+
+Units
+
+649.625
+632.101
+626.121
+615.279
+612.216
+605.899
+601.267
+594.769
+596.887
+613.061
+661.925
+642.589
+655.484
+635.407
+631.544
+599.875
+596.196
+
+Price
+(INR)
+30.7870
+31.6405
+31.9427
+32.5056
+32.6682
+33.0088
+33.2631
+33.6265
+33.5072
+32.6232
+30.2149
+31.1241
+30.5118
+31.4759
+31.6684
+33.3403
+33.5460
+
+                     Unit
+
+Balance
+16,103.292
+16,735.393
+17,361.514
+17,976.793
+18,589.009
+19,194.908
+19,796.175
+20,390.944
+20,987.831
+21,600.892
+22,262.817
+22,905.406
+23,560.890
+24,196.297
+24,827.841
+25,427.716
+26,023.912
+
+Purchase- Systematic - Instalment 19
+Purchase- Systematic - Instalment 22
+Purchase- Systematic - Instalment 23
+Purchase- Systematic - Instalment 24
+
+07-Mar-2017 ***Signature Updation***
+07-Mar-2017 ***Change of Bank Mandate***
+10-Mar-2017
+20-Mar-2017
+20-Apr-2017
+22-May-2017
+27-May-2017 ***Cancelled SIP Ceased As Per Investor Written Request***
+06-May-2019
+Closing Unit Balance: 28,372.284
+Entry Load: NIL ; Exit Load - W.e.f. 03-Apr-2014: 1%  if redeemed/ switched out within 1 year from the date of investment; NIL if redeemed/ switched after 1 year
+from the date of investment.  STT @ 0.001% is applicable at the time of redemption / switch. For applicability of exit load structure, please refer to Addendum issued
+from time to time.
+
+28,372.284
+Valuation on 18-Jul-2019: INR 1,192,498.45
+
+Switch In - From SBI Magnum TaxGain Scheme-Reg Gr
+
+26,620.754
+27,201.073
+27,771.861
+28,333.847
+
+20,000.00
+20,000.00
+20,000.00
+20,000.00
+
+NAV on 18-Jul-2019: INR 42.0304
+
+33.5097
+34.4638
+35.0393
+35.5881
+
+596.842
+580.319
+570.788
+561.986
+
+1,586.59
+
+41.2773
+
+38.437
+
+Folio No: 11578983
+LD47RG-SBI Magnum Low Duration Fund Direct Growth (formerly Ultra Short Term Debt Fund)(Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+27-Aug-2018
+03-Jun-2019
+Closing Unit Balance: 0.000
+
+Switch In - From SBI Magnum TaxGain Scheme-Reg Gr
+Redemption(DC-ICICI Bank)
+
+NAV on 18-Jul-2019: INR 2,495.1881
+
+143,351.65
+(152,810.77)
+
+61.931
+(61.931)
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+2,314.6895
+61.931
+2,467.4359
+0.000
+Valuation on 18-Jul-2019: INR 0.00
+
+Load: (w.e.f. 07-Apr-2014) Entry Load - Nil; Exit Load - Nil ;   For applicability of load structure, please refer to SAI/SID / KIM / Addendum issued from time to time.
+**Scheme name of "SBI Ultra Short Term Debt Fund"  has been changed to "SBI Magnum Low Duration Fund"  with effect from 16th May 2018.
+
+Folio No: 11578983
+LD099G-SBI Magnum Multicap Fund - Direct Plan - Growth (Advisor: DIRECT)
+
+PAN: AXTPP9979K
+
+Purchase
+
+01-Oct-2018
+Closing Unit Balance: 2,523.468
+Entry Load: NIL ; Exit Load - W.e.f. 15-Jan-2019: 0.10% if redeemed/switched within 30 Calendar days from the date of investment;  NIL if redeemed/switched after
+30 Calendar days from the date of investment. STT @ 0.001% is applicable at the time of redemption / switch. For applicability of exit load structure for specific
+transaction, please refer to Addendum issued from time to time.
+
+NAV on 18-Jul-2019: INR 51.9437
+
+120,000.00
+
+2,523.468
+
+Folio No: 11578983
+L018G-SBI Magnum Tax Gain Scheme - Regular Plan - Growth (Advisor: ARN29345)
+
+PAN: AXTPP9979K
+
+30,000.00
+
+Purchase u/s 80C of  IT ACT 1961
+
+*Switch Out - To SBI Magnum Low Duration F Dir Gr , less STT
+ *** STT Paid ***
+Switch Out - To SBI Blue Chip Fund Dir Plan-G , less STT
+ *** STT Paid ***
+
+20-Jan-2009
+15-Nov-2014 ***Address Updated from KRA Data***
+04-Dec-2014 ***Address Updated from KRA Data***
+07-Mar-2017 ***Change of Bank Mandate***
+27-Aug-2018
+27-Aug-2018
+06-May-2019
+06-May-2019
+Closing Unit Balance: 0.000
+Load : (w.e.f. 01.08.2009) Entry Load : Normal & SIP/STP:-NIL. Exit Load:- NIL - If redeemed/switched effected after the lockin period of 3 Years. W.E.F. 01-June-
+2013 STT @0.001% is applicable at the time of redemption/switchover. For applicability of load structure, please refer to SAI/SID/KIM / Addendum issued from time
+to time.
+All the investments in this scheme are under ELSS. Normal investment and each SIP instalment will be locked for 3 years from the date of every SIP Instalment
+Investment date.
+
+(143,351.65)
+1.43
+(1,586.59)
+0.02
+
+NAV on 18-Jul-2019: INR 140.7351
+
+(976.042)
+
+146.8719
+
+142.6168
+
+(11.125)
+
+30.3900
+
+987.167
+
+Valuation on 18-Jul-2019: INR 0.00
+
+11.125
+
+0.000
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+2,523.468
+Valuation on 18-Jul-2019: INR 131,078.26
+
+47.5536
+
+KYC: OK  PAN: OK
+Registrar : CAMS
+ Opening Unit Balance: 0.000
+987.167
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Page 17 of 18
+
+Consolidated Account Statement
+
+01-Jan-1990 To 19-Jul-2019
+
+Date
+
+Transaction
+
+UTI Mutual Fund
+Folio No: 577324777242 / 0
+108SFD2G-UTI Arbitrage Fund-Direct Growth Plan(Advisor: INA200005166)
+
+Amount
+(INR)
+
+Units
+
+Price
+(INR)
+
+                     Unit
+
+Balance
+
+PAN: AXQPK8384A
+
+KYC: OK  PAN: OK
+Registrar : KARVY
+ Opening Unit Balance: 0.000
+13,550.240
+12,780.051
+
+Purchase
+Lateral Out less TDS, STT
+ *** STT Paid ***
+Lateral Out less TDS, STT
+ *** STT Paid ***
+Lateral Out less TDS, STT
+ *** STT Paid ***
+Lateral Out less TDS, STT
+ *** STT Paid ***
+Lateral Out less TDS, STT
+ *** STT Paid ***
+
+13-May-2019
+07-Jun-2019
+07-Jun-2019
+17-Jun-2019
+17-Jun-2019
+08-Jul-2019
+08-Jul-2019
+09-Jul-2019
+09-Jul-2019
+10-Jul-2019
+10-Jul-2019
+Closing Unit Balance: 9,906.621
+For subscriptions received w.e.f. March 6th , 2019, applicable Exit load: Redemption / Switch out within 21 days from the date of allotment – (i) NIL for upto 10% of
+the allotted Units (ii) 0.25 % for beyond 10% of the allotted Units.Redemption / Switch out after 21 days from the date of allotment – NIL
+
+350,000.00
+(20,000.00)
+0.20
+(20,000.00)
+0.20
+(20,000.00)
+0.20
+(15,000.00)
+0.15
+(20,000.00)
+0.20
+
+NAV on 18-Jul-2019: INR 26.1770
+
+13,550.240
+(770.189)
+
+25.8298
+25.9679
+
+(768.928)
+
+(765.602)
+
+(573.878)
+
+(765.022)
+
+26.0105
+
+26.1235
+
+26.1382
+
+26.1433
+
+Valuation on 18-Jul-2019: INR 259,325.62
+
+12,011.123
+
+11,245.521
+
+10,671.643
+
+9,906.621
+
+Folio No: 577324777242 / 0
+108NID2G-UTI Nifty Index Fund-Direct Growth Plan(Advisor: INA200005166)
+
+PAN: AXQPK8384A
+
+Lateral In
+
+10-Jul-2019
+Closing Unit Balance: 264.216
+W.e.f. 02-05-2016 - Entry load and Exit load : Nil.
+
+NAV on 18-Jul-2019: INR 76.3874
+
+20,000.00
+
+264.216
+
+Folio No: 577324777242 / 0
+108NYG1G-UTI Nifty Next 50 Index Fund - Direct Plan Growth(Advisor: INA200005166)
+
+PAN: AXQPK8384A
+
+20,000.00
+20,000.00
+20,000.00
+15,000.00
+
+2,043.527
+2,097.931
+2,086.724
+1,556.679
+
+NAV on 18-Jul-2019: INR 9.7044
+
+KYC: OK  PAN: OK
+Registrar : KARVY
+ Opening Unit Balance: 0.000
+264.216
+Valuation on 18-Jul-2019: INR 20,182.77
+
+75.6957
+
+KYC: OK  PAN: OK
+Registrar : KARVY
+ Opening Unit Balance: 0.000
+2,043.527
+4,141.458
+6,228.182
+7,784.861
+Valuation on 18-Jul-2019: INR 75,547.41
+
+9.7870
+9.5332
+9.5844
+9.6359
+
+Lateral In
+Lateral In
+Lateral In
+Lateral In
+
+07-Jun-2019
+17-Jun-2019
+08-Jul-2019
+09-Jul-2019
+Closing Unit Balance: 7,784.861
+Entry Load -  Nil, Exit Load -  Nil
+
+Folio No: 599324437047 / 0
+108NYG1G-UTI Nifty Next 50 Index Fund - Direct Plan Growth
+
+Zero balance SIP
+Sys. Investment (1/3)
+Sys. Investment (2/3)
+Sys. Investment (3/3)
+
+11-Apr-2019
+26-Apr-2019
+27-May-2019
+26-Jun-2019
+Closing Unit Balance: 7,602.262
+Entry Load -  Nil, Exit Load -  Nil
+
+PAN: AXTPP9979K
+
+25,000.00
+25,000.00
+25,000.00
+25,000.00
+
+2,509.310
+2,526.401
+2,566.551
+
+KYC: OK  PAN: OK
+Registrar : KARVY
+ Opening Unit Balance: 0.000
+0.000
+2,509.310
+5,035.711
+7,602.262
+Valuation on 18-Jul-2019: INR 73,775.39
+
+9.9629
+9.8955
+9.7407
+
+NAV on 18-Jul-2019: INR 9.7044
+
+2
+0
+0
+1
+-
+e
+v
+L
+
+i
+
+ 
+
+i
+
+.
+
+:
+
+ 
+
+4
+3
+V
+n
+o
+s
+r
+e
+V
+1
+4
+2
+3
+8
+9
+1
+7
+0
+9
+1
+-
+S
+W
+S
+A
+C
+S
+M
+A
+C
+
+Page 18 of 18
+
+
