@@ -214,7 +214,7 @@ def identify_amc():
                                 # os.rename(os.path.join(path, f), os.path.join(
                                 #     os.path.join(path, max_amc, y, m), f))
 
-                                shutil.copy(os.path.join(mf_download_files_path, f),
+                                shutil.rename(os.path.join(mf_download_files_path, f),
                                             os.path.join(mf_download_files_path, max_amc, y, m))
 
                                 amc_process.setFinalFilePath(os.path.join(
@@ -410,7 +410,7 @@ def process_portfolio(filename, amc, date, amc_process):
                                 print(e)
                                 print(scheme_data)
                                 print(isin)
-                                traceback.print_exc(e)
+                                # traceback.print_exc(e)
                                 pass
                             
 
