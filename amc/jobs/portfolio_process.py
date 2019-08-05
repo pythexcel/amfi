@@ -143,7 +143,7 @@ def identify_amc():
                             amc, score = match_fund_name_from_sheet(
                                 amc_names, df1)
 
-                            print(amc , "xxxx", score)
+                            print(amc, "xxxx", score)
 
                             if score > 0:
                                 if amc in amc_sheet_match:
@@ -214,8 +214,8 @@ def identify_amc():
                                 # os.rename(os.path.join(path, f), os.path.join(
                                 #     os.path.join(path, max_amc, y, m), f))
 
-                                shutil.copy(os.path.join(mf_download_files_path, f),
-                                            os.path.join(mf_download_files_path, max_amc, y, m))
+                                shutil.move(os.path.join(mf_download_files_path, f),
+                                            os.path.join(mf_download_files_path, max_amc, y, m, f))
 
                                 amc_process.setFinalFilePath(os.path.join(
                                     os.path.join(mf_download_files_path, max_amc, y, m), f))
@@ -232,9 +232,13 @@ def identify_amc():
                                 print(e)
                         else:
                             amc_process.addCritical("date not found! see data")
+                            shutil.move(os.path.join(mf_download_files_path, f),
+                                            os.path.join(mf_download_files_path, "processed_files", f))
                             print("date not found! see data")
                     else:
                         amc_process.addCritical("amc not found! see data")
+                        shutil.move(os.path.join(mf_download_files_path, f),
+                                            os.path.join(mf_download_files_path, "processed_files", f))
                         print("amc not found! see data")
                         break
 
@@ -312,7 +316,7 @@ def process_portfolio(filename, amc, date, amc_process):
         print("checking for sheet name", sheet_name)
         df1 = pd.read_excel(xls, sheet_name)
 
-        fund, ratio = match_fund_name_from_sheet    (fund_names.keys(), df1)
+        fund, ratio = match_fund_name_from_sheet(fund_names.keys(), df1)
 
         print(fund, "===",  ratio, "===", sheet_name)
 
@@ -354,9 +358,11 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]
+                      :, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1)
+                                :, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
@@ -407,12 +413,13 @@ def process_portfolio(filename, amc, date, amc_process):
                             try:
                                 scheme_portfolio.save()
                             except Exception as e:
+                                from django.db import connection
+                                print(connection.queries[-1])
                                 print(e)
                                 print(scheme_data)
                                 print(isin)
-                                traceback.print_exc(e)
+                                # traceback.print_exc(e)
                                 pass
-                            
 
                     else:
                         if quantity != False and rating != False:
