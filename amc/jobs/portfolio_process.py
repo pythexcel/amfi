@@ -232,9 +232,13 @@ def identify_amc():
                                 print(e)
                         else:
                             amc_process.addCritical("date not found! see data")
+                            shutil.move(os.path.join(mf_download_files_path, f),
+                                            os.path.join(mf_download_files_path, "processed_files", f))
                             print("date not found! see data")
                     else:
                         amc_process.addCritical("amc not found! see data")
+                        shutil.move(os.path.join(mf_download_files_path, f),
+                                            os.path.join(mf_download_files_path, "processed_files", f))
                         print("amc not found! see data")
                         break
 
