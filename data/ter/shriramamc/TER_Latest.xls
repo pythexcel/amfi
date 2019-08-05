@@ -1,0 +1,23 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">SchemeName</th><th scope="col">TER_Date</th><th scope="col">Plan_Type</th><th scope="col">Base TER (%)</th><th scope="col">Additional expense as per Regulation 52(6A)(b) (%)</th><th scope="col">Additional expense as per Regulation 52(6A)(c)</th><th scope="col">GST (%)</th><th scope="col">Total TER (%)</th>
+		</tr><tr>
+			<td>Shriram Balanced Advantage Fund</td><td>05/08/2019 </td><td>Regular Plan</td><td>2.25</td><td>0.30</td><td>0.05</td><td>0.04</td><td>2.64</td>
+		</tr><tr>
+			<td>Shriram Balanced Advantage Fund</td><td>05/08/2019 </td><td>Direct Plan</td><td>0.55</td><td>0.00</td><td>0.05</td><td>0.04</td><td>0.64</td>
+		</tr><tr>
+			<td>Shriram Hybrid Equity Fund</td><td>05/08/2019 </td><td>Regular Plan</td><td>2.05</td><td>0.25</td><td>0.05</td><td>0.05</td><td>2.40</td>
+		</tr><tr>
+			<td>Shriram Hybrid Equity Fund</td><td>05/08/2019 </td><td>Direct Plan</td><td>0.60</td><td>0.00</td><td>0.05</td><td>0.05</td><td>0.70</td>
+		</tr><tr>
+			<td>Shriram Long Term Equity Fund</td><td>05/08/2019 </td><td>Regular Plan</td><td>2.25</td><td>0.30</td><td>0.00</td><td>0.05</td><td>2.60</td>
+		</tr><tr>
+			<td>Shriram Long Term Equity Fund</td><td>05/08/2019 </td><td>Direct Plan</td><td>0.60</td><td>0.00</td><td>0.00</td><td>0.05</td><td>0.65</td>
+		</tr><tr>
+			<td>Shriram Multicap Fund</td><td>05/08/2019 </td><td>Regular Plan</td><td>2.25</td><td>0.25</td><td>0.05</td><td>0.05</td><td>2.60</td>
+		</tr><tr>
+			<td>Shriram Multicap Fund</td><td>05/08/2019 </td><td>Direct Plan</td><td>0.60</td><td>0.00</td><td>0.05</td><td>0.05</td><td>0.70</td>
+		</tr>
+	</table>
+</div>
