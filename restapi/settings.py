@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'amc.apps.AmcConfig',
+    'portfolio.apps.PortfolioConfig',
     'api.apps.ApiConfig',
     'stats.apps.StatsConfig',
     'rest_framework',
