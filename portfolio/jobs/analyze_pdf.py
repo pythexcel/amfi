@@ -1,19 +1,106 @@
+from django.conf import settings
 from todo.models import Scheme, AMC
 import datetime
 from colorama import Fore, Back, Style, init
+import subprocess
+import os
+import traceback
+
+
+from amc.jobs.util import user_portfolio_path
+
+from portfolio.models import PortfolioAdmin, Portfolio
 
 init(autoreset=True)
 
 
 def analyze_pdf():
 
-    # pdf2txt.py -o ../test.txt ../mycase2.pdf
-    # qpdf --password=YOURPASSWORD-HERE --decrypt input.pdf output.pdf
+    try:
+        os.mkdir(os.path.join(os.path.join(
+            user_portfolio_path, "processed_files")))
 
+    except FileExistsError:
+        pass
+
+    try:
+        os.mkdir(os.path.join(os.path.join(
+            user_portfolio_path, "secure_pdfs")))
+
+    except FileExistsError:
+        pass
+
+    to_process = PortfolioAdmin.objects.filter()
+
+    if to_process.count() > 0:
+        for row in to_process:
+            row.is_processed = True
+            row.save()
+
+            PortfolioAdmin.cleanLogs(row)
+            try:
+                ret = remove_password_pdf(getattr(row, "file_name"),
+                                          getattr(row, "password"))
+                ret = pdf2text(ret)
+                process_pdf_extract(ret, row)
+            except Exception as e:
+                row.addErrorLog(str(e))
+                traceback.print_exc()
+
+            break
+
+                
+    else:
+        print("not pdf's to process")
+
+
+def pdf2text(f):
     # pdf2txt.py -F 0 -W 10 -M 10 -L 10 -o ../test.txt ../mycase2-unsecure.pdf
 
-    # Open a PDF file.
-    doc = '/mnt/c/work/newdref/test.txt'
+    f2 = f.replace(".pdf", ".dat")
+
+    process = subprocess.Popen(
+        ["pdf2txt.py", "-F", "0", "-W", "10", "-M", "10", "-L", "10", "-o" + os.path.join(user_portfolio_path, f2), os.path.join(user_portfolio_path, f)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    output, err = process.communicate()
+
+    if len(err) > 0:
+        print(Fore.RED, str(err))
+        raise Exception(str(err))
+    else:
+        f3 = os.path.join(
+            os.path.join(user_portfolio_path, "processed_files"), f2)
+        os.rename(os.path.join(
+            user_portfolio_path, f2), f3)
+        os.rename(os.path.join(
+            user_portfolio_path, f), os.path.join(
+            os.path.join(user_portfolio_path, "processed_files"), f))
+        return f3
+
+
+def remove_password_pdf(f, passowrd):
+    # qpdf --password=YOURPASSWORD-HERE --decrypt input.pdf output.pdf
+
+    f2 = f.replace(".pdf", "-unsecure.pdf")
+
+    process = subprocess.Popen(["qpdf", "--password=" + passowrd, "--decrypt", os.path.join(
+        user_portfolio_path, f), os.path.join(user_portfolio_path, f2)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    output, err = process.communicate()
+
+    if len(err) > 0:
+        print(Fore.RED + str(err))
+        # os.rename(os.path.join(user_portfolio_path, f), os.path.join(
+        #     os.path.join(user_portfolio_path, "secure_pdfs"), "error-" + f))
+
+        raise Exception(str(err))
+    else:
+        # os.rename(os.path.join(user_portfolio_path, f), os.path.join(
+        #     os.path.join(user_portfolio_path, "secure_pdfs"), f))
+        return f2
+
+
+def process_pdf_extract(doc, process):
 
     text_file = open(doc, "r")
 
@@ -39,6 +126,8 @@ def analyze_pdf():
     # since we don't always have all funds, we will keep text itself in case fund doesn't match
     trxs = []
 
+    is_mf_started = False
+
     is_mf_block = False
     is_folio_block = False
     is_scheme_block = False
@@ -54,13 +143,43 @@ def analyze_pdf():
 
     folio_line_no = 0
 
+    pf_email_id = ""
+    pf_phone = ""
+
+    portfolio_obj = None
+
+    # print(lines[1],"Xxx")
+    # if lines[0] != "Consolidated Account Statement":
+    #     print(Fore.RED + "wrong file its not CAS")
+    #     process.addErrorLog("wrong file its not CAS" + lines[0])
+    #     return
     # basically these are different states or "lines" we will encouter when we are processing the text file
     # in the above sequence
     i = 0
     while i < len(lines):
-
         line = lines[i].strip()
+
+        if not is_mf_started:
+            if "Email Id:" in line:
+                pf_email_id = line.replace("Email Id:", "").strip()
+
+            if "Mobile:" in line:
+                pf_phone = line.replace("Mobile:", "").strip()
+
         if is_mf_line(line):
+
+            if len(pf_email_id) == 0:
+                print(Fore.RED + " problem email id not found itself!")
+                process.addErrorLog("wrong file its not CAS" + lines[0])
+                break
+
+            try:
+                portfolio_obj = Portfolio.objects.get(email=pf_email_id)
+            except Portfolio.DoesNotExist:
+                portfolio_obj = Portfolio(email=pf_email_id, mobile=pf_phone)
+                portfolio_obj.save()
+
+            is_mf_started = True
 
             if current_state == "FUND" or current_state == "TRX_START" or current_state == "TRX_END":
                 print(
@@ -87,8 +206,10 @@ def analyze_pdf():
                     amc = amc_name_map[line]
                     is_mf_block = True
                     current_state = "MF"
+                    portfolio_obj.addAMC(amc)
                 else:
                     print(Fore.RED + "amc not found!!", line)
+                    process.addErrorLog("amc not found!!" + line)
         else:
             # this mean's we have found an mutual fund.
             # now next lines in the text file will be related to folio and fund related
@@ -106,8 +227,8 @@ def analyze_pdf():
                     folio = line
                     is_folio_block = True
                     current_state = "FOLIO"
-
                     folio_line_no = i
+                    portfolio_obj.addFolio(line)
 
             else:
 
@@ -130,10 +251,13 @@ def analyze_pdf():
                                       name, " scheme found")
                                 scheme_found = scheme
                                 fund = scheme
+                                portfolio_obj.addFund(getattr(scheme, "id"))
                                 break
 
                         current_state = "FUND"
                         if scheme_found == False:
+                            portfolio_obj.addFund(best_fund_match)
+                            process.addErrorLog("scheme not found!" + line)
                             print(
                                 Fore.RED + "                 scheme not found! ", line)
 
@@ -174,7 +298,8 @@ def analyze_pdf():
                                 if line == "Zero balance SIP":
                                     line = "***" + line
 
-                                i = process_automatic_trx(line, lines, trxs, i)
+                                i = process_automatic_trx(
+                                    line, lines, trxs, i, portfolio_obj)
 
                             else:
                                 if is_trx_line(line):
@@ -222,7 +347,7 @@ def analyze_pdf():
 
                                             if "***" in line:
                                                 i = process_automatic_trx(
-                                                    line, lines, trxs, i + 1)
+                                                    line, lines, trxs, i + 1, portfolio_obj)
                                             else:
                                                 val, t = extract_date_or_number(
                                                     line, False)
@@ -327,7 +452,7 @@ def analyze_pdf():
                                         print("trx_balance", trx_balance)
                                         print("trx_type", trx_type)
 
-                                        trxs.append({
+                                        trx = {
                                             "type": "MANUAL",
                                             "name": line,
                                             "date": trx_date,
@@ -336,10 +461,13 @@ def analyze_pdf():
                                             "unit": trx_unit,
                                             "unit_balance": trx_balance,
                                             "trx_type": trx_type
-                                        })
+                                        }
+                                        trxs.append(trx)
+
+                                        portfolio_obj.addTrx(trx)
 
                                     except Exception as e:
-                                        raise Exception("ddd")
+                                        process.addErrorLog(str(e))
                                         print(Fore.RED + str(e))
                                         pass
 
@@ -377,7 +505,7 @@ def analyze_pdf():
                                         else:
                                             balance -= trx["unit"]
 
-                                        print("balance: ",balance)
+                                        print("balance: ", balance)
 
                                 is_folio_block = False
                                 is_scheme_block = False
@@ -400,7 +528,7 @@ def analyze_pdf():
     text_file.close()
 
 
-def process_automatic_trx(line, lines, trxs, i):
+def process_automatic_trx(line, lines, trxs, i, portfolio_obj):
     print("automatic trx:", line)
 
     if line.startswith("***"):
@@ -425,12 +553,14 @@ def process_automatic_trx(line, lines, trxs, i):
             print("trx date", trx_date)
             print("trx value", trx_amount)
 
-            trxs.append({
+            trx = {
                 "type": "AUTOMATIC",
                 "name": actual_trx,
                 "date": trx_date,
                 "amount": trx_amount
-            })
+            }
+            trxs.append(trx)
+            portfolio_obj.addTrx(trx)
 
         except Exception as e:
             print(e)

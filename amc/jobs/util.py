@@ -30,6 +30,7 @@ portfolio_path = actual_path + "mf_portfolio_download"
 ter_path = actual_path + "mf_ter_download"
 aum_path = actual_path + "mf_aum_download"
 download_path = actual_path + "downloads"
+user_portfolio_path = actual_path + "user_portfolio"
 
 
 def generic_process_zip_file(base_folder_path):
