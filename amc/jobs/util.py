@@ -30,6 +30,7 @@ portfolio_path = actual_path + "mf_portfolio_download"
 ter_path = actual_path + "mf_ter_download"
 aum_path = actual_path + "mf_aum_download"
 download_path = actual_path + "downloads"
+user_portfolio_path = actual_path + "user_portfolio"
 
 
 def generic_process_zip_file(base_folder_path):
@@ -279,6 +280,8 @@ def find_date_from_sheet(df, file_name=False):
                 for match in matches:
                     if match.strftime("%Y") == year:
                         date_matched = match
+                        print("matched via date finder ", cell, "xxxxx", match)
+                        break
 
                 if date_matched is False:
                     # if date finder is not able to find for some reaosn

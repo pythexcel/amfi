@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+DEFAULT_PORTFOLIO_PASSWORD = "Java@123"
 
 MONGO_URL = "mongodb://176.9.137.77:27017/"
 MONGO_DB = "mf_logs"
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'amc.apps.AmcConfig',
+    'portfolio.apps.PortfolioConfig',
     'api.apps.ApiConfig',
     'stats.apps.StatsConfig',
     'rest_framework',

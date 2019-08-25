@@ -8,7 +8,7 @@ from collections import Counter
 def health_check():
 
     # general health check for all cron jobs running and reporting
-    # portfolio_health_check()
+    portfolio_health_check()
     return {
         # "duplicate_schemes": scheme_health_check(),
         # "aaum_data_check": aum_health_check()

@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^funds/scheme/(?P<amc_id>\d+)/$', get_schemes),
     url(r'^funds/category', get_fund_categories),
     url(r'^funds/subcategory/(?P<type>[\w|\W]+)/$', get_fund_subcategories),
-        
+
     url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds)
 ]
 
@@ -33,5 +33,19 @@ urlpatterns2 = [
     url(r'^dashboard/summary/dailyindex', index_check),
     url(r'^dashboard/summary/dailyindex/runscript', index_run_script),
 ]
+
+
+# index page for admin dashboard route needed
+# this will be a dedicated page for only all indexes we are tracking
+# mainly need to show index name, last nav, pe/pb ration's etc depend on what we have in db
+
+indexPageRoutes = [
+    # url(r'^dashboard/indexs/get_list/$', lambda: pass),
+    # url(r'^dashboard/indexs/runCron/$', lambda: pass),
+    # need to also figure out a way to see output for a running script
+    # maybe we should just run via command and community the output. thats the simplest
+]
+
+
 
 urlpatterns = urlpatterns + urlpatterns2 + router.urls
