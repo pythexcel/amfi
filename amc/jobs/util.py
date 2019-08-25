@@ -308,7 +308,7 @@ def find_date_from_sheet(df, file_name=False):
         if date_matched.strftime("%Y") not in ["2015", "2016", "2017", "2018", "2019"]:
             print("date found but somthing went wrong need to analytize")
             print(df1)
-            print("year found ", match)
+            # print("year found ", match)
             for match in matches:
                 print("date matches ", match)
             return False
