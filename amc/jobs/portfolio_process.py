@@ -81,9 +81,9 @@ def move_files_from_folder_to_parent():
 
     from amc.jobs.util import server_base_path
 
-    print(os.path.join(server_base_path, "restapi","data","portfolio"))
+    print(os.path.join(server_base_path, "amfi","data","portfolio"))
 
-    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "restapi","data","portfolio")):
+    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "amfi","data","portfolio")):
         for f in filenames:
             if "lock" in f:
                 continue
