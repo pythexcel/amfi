@@ -241,15 +241,23 @@ def identify_amc():
                                 print(e)
                         else:
                             amc_process.addCritical("date not found! see data")
+                            try:
+                                os.mkdir(os.path.join(mf_download_files_path, "processed_files_data_missing"))
+                            except FileExistsError:
+                                pass
                             shutil.move(os.path.join(mf_download_files_path, f),
-                                        os.path.join(mf_download_files_path, "processed_files", f))
+                                        os.path.join(mf_download_files_path, "processed_files_data_missing", f))
                             print(Fore.RED + "date not found! see data")
                     else:
+                        try:
+                            os.mkdir(os.path.join(mf_download_files_path, "processed_files_amc_missing"))
+                        except FileExistsError:
+                            pass
                         amc_process.addCritical("amc not found! see data")
                         shutil.move(os.path.join(mf_download_files_path, f),
-                                    os.path.join(mf_download_files_path, "processed_files", f))
+                                    os.path.join(mf_download_files_path, "processed_files_amc_missing", f))
                         print(Fore.RED + "amc not found! see data")
-                        break
+                        # break
 
                     # print(amc_sheet_match)
                 except Exception as e:
