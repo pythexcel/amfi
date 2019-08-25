@@ -5,6 +5,9 @@ import datetime
 import traceback
 import shutil
 
+from colorama import Fore, Back, Style, init
+
+
 import os
 
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
@@ -13,6 +16,8 @@ from todo.models import Scheme, AMC
 from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import portfolio_path as mf_download_files_path, local_base_path, server_base_path
+
+init(autoreset=True)
 
 
 """
@@ -65,24 +70,26 @@ http://www.itimf.com/statutory-disclosure/monthly-portfolios
 
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
-
-    generic_process_zip_file(mf_download_files_path)
-    identify_amc()
+    move_files_from_folder_to_parent()
+    # generic_process_zip_file(mf_download_files_path)
+    # identify_amc()
 
 
 def move_files_from_folder_to_parent():
     # this is temporary one time function i made to move all processed files from
     # amc directorys back to original path for testing purposes
 
-    for (dirpath, dirnames, filenames) in os.walk(mf_download_files_path):
+    from amc.jobs.util import server_base_path
+
+    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "restapi","portfolio")):
         for f in filenames:
             if "lock" in f:
                 continue
 
-            if ".xls" in f.lower() or ".xlsx" in f.lower():
-                print(os.path.join(dirpath, f))
-                os.rename(os.path.join(dirpath, f),
-                          os.path.join(mf_download_files_path, f))
+            # if ".xls" in f.lower() or ".xlsx" in f.lower():
+            print(os.path.join(dirpath, f))
+            shutil.copy(os.path.join(dirpath, f),
+                        os.path.join(mf_download_files_path, f))
 
     pass
 
@@ -204,9 +211,9 @@ def identify_amc():
                                     mf_download_files_path, f))
                                 amc_process.addLog(os.path.join(
                                     os.path.join(mf_download_files_path, max_amc, y, m), f))
-                                print(os.path.join(mf_download_files_path, f))
-                                print(os.path.join(
-                                    os.path.join(mf_download_files_path, max_amc, y, m), f))
+                                # print(os.path.join(mf_download_files_path, f))
+                                # print(os.path.join(
+                                #     os.path.join(mf_download_files_path, max_amc, y, m), f))
 
                                 # os.chmod(os.path.join(
                                 #     mf_download_files_path, max_amc, y, m), 777)
@@ -218,7 +225,7 @@ def identify_amc():
                                             os.path.join(mf_download_files_path, max_amc, y, m, f))
 
                                 amc_process.setFinalFilePath(os.path.join(
-                                    os.path.join(mf_download_files_path, max_amc, y, m), f))
+                                    mf_download_files_path, max_amc, y, m, f))
 
                                 process_data(amc_process)
 
@@ -233,20 +240,20 @@ def identify_amc():
                         else:
                             amc_process.addCritical("date not found! see data")
                             shutil.move(os.path.join(mf_download_files_path, f),
-                                            os.path.join(mf_download_files_path, "processed_files", f))
-                            print("date not found! see data")
+                                        os.path.join(mf_download_files_path, "processed_files", f))
+                            print(Fore.RED + "date not found! see data")
                     else:
                         amc_process.addCritical("amc not found! see data")
                         shutil.move(os.path.join(mf_download_files_path, f),
-                                            os.path.join(mf_download_files_path, "processed_files", f))
-                        print("amc not found! see data")
+                                    os.path.join(mf_download_files_path, "processed_files", f))
+                        print(Fore.RED + "amc not found! see data")
                         break
 
                     # print(amc_sheet_match)
                 except Exception as e:
                     traceback.print_exc(e)
                     amc_process.addCritical(e)
-                    print(e)
+                    print(Fore.RED + str(e))
 
                 # break
 
@@ -265,8 +272,8 @@ def process_data(amc_process):
     print(file_path, "xxxxxxxxxxxxxxxxxxxxxxxx")
 
     # one time temporary code since we parsed files in local it has local path
-    if local_base_path in file_path:
-        file_path = file_path.replace(local_base_path, server_base_path)
+    # if local_base_path in file_path:
+    #     file_path = file_path.replace(local_base_path, server_base_path)
 
     amc = AMC.objects.match_amc_with_short_name(amc_short_name)
 
@@ -276,7 +283,7 @@ def process_data(amc_process):
                 amc_process, "date"), amc_process)
             amc_process.parsing_completed()
         except Exception as e:
-            print(e)
+            print(Fore.RED + str(e))
             amc_process.addCritical(e)
             amc_process.parsing_completed()
             traceback.print_exc(e)
@@ -284,7 +291,7 @@ def process_data(amc_process):
         # break
 
     else:
-        print("unable to match amc")
+        print(Fore.RED + "unable to match amc")
         amc_process.addCritical("Unable to match amc itself!")
         amc_process.parsing_completed()
 
@@ -326,12 +333,17 @@ def process_portfolio(filename, amc, date, amc_process):
             scheme = fund_names[fund]
 
             try:
-                scheme_port = Scheme_Portfolio_Data.objects.get(
-                    scheme=scheme, date=date)
-                Scheme_Portfolio.objects.filter(scheme=scheme_port).delete()
-                scheme_port.delete()
+                print(scheme)
+                print(date)
+
+                scheme_ports = Scheme_Portfolio_Data.objects.filter(
+                    scheme=scheme, date__year=date.year, date__month=date.month)
+
+                for port in scheme_ports:
+                    Scheme_Portfolio.objects.filter(scheme=port).delete()
+                    port.delete()
             except Exception as e:
-                print(e)
+                print(Fore.RED + str(e))
 
             scheme_data = Scheme_Portfolio_Data(
                 scheme=scheme,
@@ -358,11 +370,9 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]
-                      :, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1)
-                                :, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
@@ -415,7 +425,7 @@ def process_portfolio(filename, amc, date, amc_process):
                             except Exception as e:
                                 # from django.db import connection
                                 # print(connection.queries[-1])
-                                print(e)
+                                print(Fore.RED, str(e))
                                 print(scheme_data)
                                 print(isin)
                                 # traceback.print_exc(e)
@@ -456,9 +466,9 @@ def process_portfolio(filename, amc, date, amc_process):
                 print("columns present")
                 #
             else:
-                print("unable to read data key columns missing")
+                print(Fore.RED + "unable to read data key columns missing")
                 # raise Exception("unable to read data key columns missing")
         else:
-            print("fund itself not found")
+            print(Fore.RED + "fund itself not found")
             # amc_process.addLog("fund not found ", )
             # raise Exception("found itself not found")

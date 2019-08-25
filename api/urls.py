@@ -40,8 +40,8 @@ urlpatterns2 = [
 # mainly need to show index name, last nav, pe/pb ration's etc depend on what we have in db
 
 indexPageRoutes = [
-    url(r'^dashboard/indexs/get_list/$', lambda: pass),
-    url(r'^dashboard/indexs/runCron/$', lambda: pass),
+    # url(r'^dashboard/indexs/get_list/$', lambda: pass),
+    # url(r'^dashboard/indexs/runCron/$', lambda: pass),
     # need to also figure out a way to see output for a running script
     # maybe we should just run via command and community the output. thats the simplest
 ]

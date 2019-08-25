@@ -280,6 +280,8 @@ def find_date_from_sheet(df, file_name=False):
                 for match in matches:
                     if match.strftime("%Y") == year:
                         date_matched = match
+                        print("matched via date finder ", cell, "xxxxx", match)
+                        break
 
                 if date_matched is False:
                     # if date finder is not able to find for some reaosn
