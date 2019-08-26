@@ -378,6 +378,7 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
 
     max_score = 0
     final_match = None
+    fund_cell = None
 
     for fund_name in fund_names:
         for cell in cells:
@@ -386,6 +387,7 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
                 if ratio > max_score:
                     max_score = ratio
                     final_match = fund_name
+                    fund_cell = cell
 
                 # print(fund_name, cell)
                 # print(ratio)
@@ -393,8 +395,34 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
     if final_match is None:
         print("fund not found here is info to debug")
         print(df1)
+    else:
 
-    return final_match, max_score
+        # find if there are duplicates means many times multiple fund names match and it causes problem
+
+        duplicates = []
+        for fund_name in fund_names:
+            if fund_name != final_match:
+                ratio = fuzz.token_set_ratio(fund_name, fund_cell)
+                if ratio == max_score:
+                    print(
+                        "hmm.. one more fund has same score. we need to find which is better!", fund_name)
+                    duplicates.append(fund_name)
+
+        if len(duplicates) > 0:
+            print("actual fund matched ", final_match)
+            max_ratio_score = fuzz.ratio(final_match, fund_cell)
+            for dup in duplicates:
+                ratio_score = fuzz.ratio(dup, fund_cell)
+                print(ratio_score , "====", dup, " === " , fund_cell)
+                if dup.strip().lower() == fund_cell.strip().lower():
+                    ratio_score = 101  # for exact match it should be top
+                if ratio_score > max_ratio_score:
+                    max_ratio_score = ratio_score
+                    final_match = dup
+
+            print("finally better found ", final_match, " cell name ", fund_cell)
+
+    return final_match, max_score, fund_cell
 
 
 # def download_portfolio_from_website():

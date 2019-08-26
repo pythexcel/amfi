@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import requests
+from fuzzywuzzy import fuzz, process
+
 import datetime
 import traceback
 import shutil
@@ -70,9 +72,9 @@ http://www.itimf.com/statutory-disclosure/monthly-portfolios
 
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
-    # move_files_from_folder_to_parent()
-    generic_process_zip_file(mf_download_files_path)
-    identify_amc()
+    move_files_from_folder_to_parent()
+    # generic_process_zip_file(mf_download_files_path)
+    # identify_amc()
 
 
 def move_files_from_folder_to_parent():
@@ -88,10 +90,11 @@ def move_files_from_folder_to_parent():
             if "lock" in f:
                 continue
 
-            # if ".xls" in f.lower() or ".xlsx" in f.lower():
-            print(os.path.join(dirpath, f))
-            shutil.copy(os.path.join(dirpath, f),
-                        os.path.join(mf_download_files_path, f))
+            if "2019" in dirpath:
+                # if ".xls" in f.lower() or ".xlsx" in f.lower():
+                print(os.path.join(dirpath, f))
+                shutil.copy(os.path.join(dirpath, f),
+                            os.path.join(mf_download_files_path, f))
 
     pass
 
@@ -149,7 +152,7 @@ def identify_amc():
                         if len(indexes) > 0:
                             # df1 = df1.head(indexes[0])
                             # print(df1)
-                            amc, score = match_fund_name_from_sheet(
+                            amc, score, cell = match_fund_name_from_sheet(
                                 amc_names, df1)
 
                             print(amc, "xxxx", score)
@@ -213,15 +216,6 @@ def identify_amc():
                                     mf_download_files_path, f))
                                 amc_process.addLog(os.path.join(
                                     os.path.join(mf_download_files_path, max_amc, y, m), f))
-                                # print(os.path.join(mf_download_files_path, f))
-                                # print(os.path.join(
-                                #     os.path.join(mf_download_files_path, max_amc, y, m), f))
-
-                                # os.chmod(os.path.join(
-                                #     mf_download_files_path, max_amc, y, m), 777)
-
-                                # os.rename(os.path.join(path, f), os.path.join(
-                                #     os.path.join(path, max_amc, y, m), f))
 
                                 shutil.move(os.path.join(mf_download_files_path, f),
                                             os.path.join(mf_download_files_path, max_amc, y, m, f))
@@ -308,7 +302,7 @@ def process_data(amc_process):
         amc_process.parsing_completed()
 
 
-def process_portfolio(filename, amc, date, amc_process):
+def identify_funds(filename, amc, date, amc_process):
 
     print("filename ", filename)
     print("amc ", amc.name)
@@ -319,10 +313,16 @@ def process_portfolio(filename, amc, date, amc_process):
 
     fund_names = {}
 
+    fund_check_list = []
     for scheme in schemes:
         fund_name = scheme.get_clean_name()
         fund_names[fund_name] = scheme
-        print(fund_name)
+        fund_check_list.append(fund_name)
+        # print(fund_name)
+
+    print(fund_check_list)
+
+    fund_match_sheet = {}
 
     try:
         sheet_names = xls["sheet_names"]
@@ -335,9 +335,60 @@ def process_portfolio(filename, amc, date, amc_process):
         print("checking for sheet name", sheet_name)
         df1 = pd.read_excel(xls, sheet_name)
 
-        fund, ratio = match_fund_name_from_sheet(fund_names.keys(), df1)
+        fund, ratio, cell = match_fund_name_from_sheet(fund_names.keys(), df1)
 
-        print(fund, "===",  ratio, "===", sheet_name)
+        if fund in fund_match_sheet:
+            amc_process.addCritical("conflict detected : fund : " + fund +
+                                    " cell1: " + cell + " cell2: " + fund_match_sheet[fund]["cell"])
+            print(Fore.RED + "conflict detected see what to do!")
+            print(fund_match_sheet[fund], fund)
+            print(fund, "===",  ratio, "===", sheet_name, " === ", cell)
+            ratio1 = fuzz.ratio(fund, cell)
+            ratio2 = fuzz.ratio(fund, fund_match_sheet[fund]["cell"])
+            print(ratio1, ' ==== ', ratio2)
+
+        fund_match_sheet[sheet_name] = fund
+
+        if fund in fund_check_list:
+            fund_check_list.remove(fund)
+
+    print("fund not found", fund_check_list)
+
+    return fund_match_sheet
+
+
+def process_portfolio(filename, amc, date, amc_process):
+
+    fund_match_sheet = identify_funds(filename, amc, date, amc_process)
+
+    xls = ExcelFile(filename)
+
+    schemes = Scheme.objects.filter(amc=amc)
+
+    fund_names = {}
+
+    for scheme in schemes:
+        fund_name = scheme.get_clean_name()
+        fund_names[fund_name] = scheme
+        # print(fund_name)
+
+    try:
+        sheet_names = xls["sheet_names"]
+    except:
+        sheet_names = xls.sheet_names
+
+    for sheet_name in sheet_names:
+        if sheet_name == "Index":
+            continue
+        print("checking for sheet name", sheet_name)
+        df1 = pd.read_excel(xls, sheet_name)
+
+        if sheet_name not in fund_match_sheet:
+            continue
+
+        fund = fund_match_sheet[sheet_name]
+
+        print(fund, "===", sheet_name)
 
         if fund is not None:
             col_indexes = find_row_with_isin_heading(df1, fund_names[fund])
@@ -382,9 +433,9 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]                               :, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1)                               :, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
