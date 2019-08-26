@@ -437,6 +437,7 @@ def process_portfolio(filename, amc, date, amc_process):
                             except Exception as e:
                                 # from django.db import connection
                                 # print(connection.queries[-1])
+                                traceback.print_exc()
                                 print(Fore.RED, str(e))
                                 print(scheme_data)
                                 print(isin)

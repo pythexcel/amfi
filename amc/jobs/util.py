@@ -120,7 +120,6 @@ def ExcelFile(path):
             return pd.ExcelFile(path)
         except Exception as e:
             print(e)
-            df = pd.read_html(path)
             print(df)
             return df
 
