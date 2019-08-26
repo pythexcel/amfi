@@ -72,9 +72,9 @@ http://www.itimf.com/statutory-disclosure/monthly-portfolios
 
 def process_zip_file():
     # many mf have portfolio as zip files so first we need to extract them
-    move_files_from_folder_to_parent()
-    # generic_process_zip_file(mf_download_files_path)
-    # identify_amc()
+    # move_files_from_folder_to_parent()
+    generic_process_zip_file(mf_download_files_path)
+    identify_amc()
 
 
 def move_files_from_folder_to_parent():
