@@ -81,9 +81,9 @@ def move_files_from_folder_to_parent():
 
     from amc.jobs.util import server_base_path
 
-    print(os.path.join(server_base_path, "amfi","data","portfolio"))
+    print(os.path.join(server_base_path, "amfi", "data", "portfolio"))
 
-    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "amfi","data","portfolio")):
+    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "amfi", "data", "portfolio")):
         for f in filenames:
             if "lock" in f:
                 continue
@@ -242,7 +242,8 @@ def identify_amc():
                         else:
                             amc_process.addCritical("date not found! see data")
                             try:
-                                os.mkdir(os.path.join(mf_download_files_path, "processed_files_data_missing"))
+                                os.mkdir(os.path.join(
+                                    mf_download_files_path, "processed_files_data_missing"))
                             except FileExistsError:
                                 pass
                             shutil.move(os.path.join(mf_download_files_path, f),
@@ -250,7 +251,8 @@ def identify_amc():
                             print(Fore.RED + "date not found! see data")
                     else:
                         try:
-                            os.mkdir(os.path.join(mf_download_files_path, "processed_files_amc_missing"))
+                            os.mkdir(os.path.join(
+                                mf_download_files_path, "processed_files_amc_missing"))
                         except FileExistsError:
                             pass
                         amc_process.addCritical("amc not found! see data")
@@ -380,9 +382,9 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]                               :, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1)                               :, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:
@@ -395,6 +397,10 @@ def process_portfolio(filename, amc, date, amc_process):
                     coupon = row.Coupon
                     rating = row.Rating
                     market = row.Market
+
+                    if "NAV" not in row.keys():
+                        row.NAV = 0
+
                     nav_per = row.NAV
 
                     if name == False:
