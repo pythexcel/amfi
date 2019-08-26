@@ -399,7 +399,7 @@ def process_portfolio(filename, amc, date, amc_process):
                     market = row.Market
 
                     if "NAV" not in row:
-                        row.NAV = 0
+                        row["NAV"] = 0
 
                     nav_per = row.NAV
 
