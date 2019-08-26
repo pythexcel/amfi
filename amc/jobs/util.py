@@ -210,6 +210,9 @@ def find_row_with_isin_heading(df, scheme):
         col_indexes["NAV"] = col_indexes["AUM"]
         del col_indexes["AUM"]
 
+    if "NAV" not in row:
+        row["NAV"] = 0
+
     print(col_indexes)
     return col_indexes
     # print(df1)

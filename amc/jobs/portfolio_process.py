@@ -397,10 +397,6 @@ def process_portfolio(filename, amc, date, amc_process):
                     coupon = row.Coupon
                     rating = row.Rating
                     market = row.Market
-
-                    if "NAV" not in row:
-                        row["NAV"] = 0
-
                     nav_per = row.NAV
 
                     if name == False:
