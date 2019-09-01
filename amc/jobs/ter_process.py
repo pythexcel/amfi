@@ -67,10 +67,10 @@ https://www.invescomutualfund.com/about-us?tab=Statutory&active=ExpenseRatioDisc
 
 
 def start_process():
-    # process_zip_file()
-    # process_file()
+    process_zip_file()
+    process_file()
 
-    move_files_from_folder_to_parent
+    # move_files_from_folder_to_parent
 
     # Scheme_TER_Process
     pass
