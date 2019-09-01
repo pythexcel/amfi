@@ -120,7 +120,7 @@ def ExcelFile(path):
             return pd.ExcelFile(path)
         except Exception as e:
             print(e)
-            return None
+            raise Exception(e)
 
 
 def get_amc_common_names():
