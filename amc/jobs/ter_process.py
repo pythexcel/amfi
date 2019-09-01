@@ -67,10 +67,10 @@ https://www.invescomutualfund.com/about-us?tab=Statutory&active=ExpenseRatioDisc
 
 
 def start_process():
-    process_zip_file()
-    process_file()
+    # process_zip_file()
+    # process_file()
 
-    # move_files_from_folder_to_parent
+    move_files_from_folder_to_parent()
 
     # Scheme_TER_Process
     pass
@@ -89,11 +89,10 @@ def move_files_from_folder_to_parent():
             if "lock" in f:
                 continue
 
-            if "2019" in dirpath:
-                # if ".xls" in f.lower() or ".xlsx" in f.lower():
-                print(os.path.join(dirpath, f))
-                shutil.copy(os.path.join(dirpath, f),
-                            os.path.join(ter_path, f))
+        # if ".xls" in f.lower() or ".xlsx" in f.lower():
+        print(os.path.join(dirpath, f))
+        shutil.copy(os.path.join(dirpath, f),
+                    os.path.join(ter_path, f))
 
     pass
 
