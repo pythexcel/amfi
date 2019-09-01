@@ -89,10 +89,10 @@ def move_files_from_folder_to_parent():
             if "lock" in f:
                 continue
 
-        # if ".xls" in f.lower() or ".xlsx" in f.lower():
-        print(os.path.join(dirpath, f))
-        shutil.copy(os.path.join(dirpath, f),
-                    os.path.join(ter_path, f))
+            # if ".xls" in f.lower() or ".xlsx" in f.lower():
+            print(os.path.join(dirpath, f))
+            shutil.copy(os.path.join(dirpath, f),
+                        os.path.join(ter_path, f))
 
     pass
 
