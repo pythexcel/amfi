@@ -9,13 +9,12 @@ import shutil
 
 from colorama import Fore, Back, Style, init
 
-
 import os
 
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
 from todo.models import Scheme, AMC
-from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
+from amc.jobs.util import match_fund_name_from_array, match_match_force_via_string, generic_process_zip_file, ExcelFile, read_excel, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import portfolio_path as mf_download_files_path, local_base_path, server_base_path
 
@@ -23,6 +22,156 @@ init(autoreset=True)
 
 
 """
+
+portfolio not found for this scheme at all Aditya Birla Sun Life Pharma and Healthcare Fund
+portfolio not found for this scheme at all Baroda ELSS 96 Plan B(Direct)
+portfolio not found for this scheme at all HDFC Mid Cap Opportunities Fund
+portfolio not found for this scheme at all JM Multicap Fund (Direct)
+portfolio not found for this scheme at all JM Liquid Fund Unclaimed Redemption (Direct) Growth Plan
+portfolio not found for this scheme at all JM Liquid Fund Unclaimed Dividend (Direct) Growth Plan
+portfolio not found for this scheme at all JM Liquid Fund Unclaimed Redemption IEF (Direct) Growth Plan
+portfolio not found for this scheme at all JM Liquid Fund Unclaimed Dividend IEF (Direct) Growth Plan
+portfolio not found for this scheme at all Kotak Gilt Investment Provident Fund and Trust
+portfolio not found for this scheme at all Kotak Focused equity Fund
+portfolio not found for this scheme at all LIC MF Government Securities Fund
+portfolio not found for this scheme at all LIC MF Savings Fund
+portfolio not found for this scheme at all LIC NOMURA MF INDIA VISION FUND
+portfolio not found for this scheme at all LIC MF Banking & PSU Debt Fund
+portfolio not found for this scheme at all LIC NOMURA MF SYSTEMATIC ASSET ALLOCATION FUND
+portfolio not found for this scheme at all LIC NOMURA MF TOP 100 FUND
+portfolio not found for this scheme at all LIC MF Infrastructure Fund
+portfolio not found for this scheme at all LIC MF Banking and Financial Services Fund
+portfolio not found for this scheme at all LIC MF Arbitrage Fund
+portfolio not found for this scheme at all LIC MF Short Term Debt Fund
+portfolio not found for this scheme at all LIC MF Overnight Fund
+portfolio not found for this scheme at all ICICI Prudential Moderate Fund
+portfolio not found for this scheme at all ICICI Prudential Regular Savings Fund
+portfolio not found for this scheme at all ICICI Prudential Medium Term Bond Fund
+portfolio not found for this scheme at all ICICI Prudential Asset Allocator Fund
+portfolio not found for this scheme at all ICICI Prudential Regular Gold Savings Fund
+portfolio not found for this scheme at all ICICI Prudential Thematic Advantage Fund
+portfolio not found for this scheme at all ICICI Prudential Long Term Bond Fund
+portfolio not found for this scheme at all ICICI Prudential Constant Maturity Gilt Fund
+portfolio not found for this scheme at all ICICI Prudential Overnight Fund
+portfolio not found for this scheme at all ICICI Prudential Retirement Fund  Hybrid Conservative
+portfolio not found for this scheme at all ICICI Prudential Retirement Fund  Hybrid Aggressive
+portfolio not found for this scheme at all ICICI Prudential MNC Fund
+portfolio not found for this scheme at all Reliance Vision Fund
+portfolio not found for this scheme at all Reliance Japan Equity Fund
+portfolio not found for this scheme at all Reliance Equity Savings Fund
+portfolio not found for this scheme at all Reliance US Equity Opportunites Fund
+portfolio not found for this scheme at all SBI Small Cap Fund
+portfolio not found for this scheme at all Tata Retirement Savings Fund Moderate
+portfolio not found for this scheme at all Tata Retirement Savings Fund Conservative
+portfolio not found for this scheme at all Franklin India Feeder  Franklin US Opportunities Fund
+portfolio not found for this scheme at all UTI MMF
+portfolio not found for this scheme at all UTI  Master Share
+portfolio not found for this scheme at all UTI  Core Equity Fund
+portfolio not found for this scheme at all UTI  Hybrid Equity Fund
+portfolio not found for this scheme at all UTI  NIFTY Index Fund
+portfolio not found for this scheme at all UTI CCF Investment Plan
+portfolio not found for this scheme at all UTI Transpotation and Logistics Fund
+portfolio not found for this scheme at all UTI Corporate Bond Fund
+portfolio not found for this scheme at all UTI Equity Savings Fund
+portfolio not found for this scheme at all Canara Robeco Overnight Fund
+portfolio not found for this scheme at all Sundaram Large and Midcap Fund
+portfolio not found for this scheme at all Sundaram Equity Savings Direct Plan Growth
+portfolio not found for this scheme at all Sahara Liquid Fund Fixed Pricing
+portfolio not found for this scheme at all SaharaTax Gain
+portfolio not found for this scheme at all Sahara Midcap Fund
+portfolio not found for this scheme at all Sahara Wealth Plus Fund Fixed Pricing Option
+portfolio not found for this scheme at all Sahara Wealth Plus Fund Variable Pricing Option
+portfolio not found for this scheme at all Sahara Infrastructure Fund  FIXED PRICING OPTION
+portfolio not found for this scheme at all Sahara Infrastructure Fund  VARIABLE PRICING OPTION
+portfolio not found for this scheme at all Sahara R.E.A.L Fund
+portfolio not found for this scheme at all Sahara Power & Natural resources Fund
+portfolio not found for this scheme at all SAHARA BANKING & FINANCIAL SERVICES FUND
+portfolio not found for this scheme at all SAHARA SHORT TERM BOND FUND
+portfolio not found for this scheme at all Sahara Super 20 Fund
+portfolio not found for this scheme at all Sahara Star Value Fund
+portfolio not found for this scheme at all SAHARA INTERVAL FUND QUARTERLY PLAN
+portfolio not found for this scheme at all QUANTUM INDIA ESG EQUITY FUND
+portfolio not found for this scheme at all BOIAXAEQUITY DEBT REBALANCER FUND DIRECT PLAN GROWTH
+portfolio not found for this scheme at all BOI AXA Small Cap Fund Direct Plan Growth
+portfolio not found for this scheme at all Edelweiss Aggressive Hybrid Fund
+portfolio not found for this scheme at all Edelweiss Overnight Fund
+portfolio not found for this scheme at all IDFC DEF_Direct Plan_Growth
+portfolio not found for this scheme at all IDFC CBF_Direct Plan_Growth
+portfolio not found for this scheme at all Axis Children's Gift Fund  without Lock in
+portfolio not found for this scheme at all Essel Large Cap Equity Fund
+portfolio not found for this scheme at all ESSEL FLEXIBLE INCOME FUND
+portfolio not found for this scheme at all Essel Regular Savings Fund
+portfolio not found for this scheme at all Essel Liquid Fund
+portfolio not found for this scheme at all Essel 3 in 1 Fund
+portfolio not found for this scheme at all Essel Ultra Short Term Fund
+portfolio not found for this scheme at all Essel Long Term Advantage Fund
+portfolio not found for this scheme at all Essel Large & Midcap Fund
+portfolio not found for this scheme at all Essel Equity Hybrid Fund
+portfolio not found for this scheme at all Essel Multi Cap Fund
+portfolio not found for this scheme at all Essel Arbitrage Fund
+portfolio not found for this scheme at all IDBI UST Growth Direct
+portfolio not found for this scheme at all BNP Paribas Mid Cap Fund
+portfolio not found for this scheme at all IIFL SHORT TERM INCOME FUND DIRECT PLAN GROWTH OPTION
+portfolio not found for this scheme at all Indiabulls Overnight Fund
+portfolio not found for this scheme at all Shriram Balanced Advantage Fund
+portfolio not found for this scheme at all Mahindra Dhan Sanchay Equity Savings Yojana
+portfolio not found for this scheme at all Mahindra Low Duration Bachat Yojana
+portfolio not found for this scheme at all Mahindra Unnati Emerging Business Yojana
+portfolio not found for this scheme at all Mahindra Credit Risk Yojana
+portfolio not found for this scheme at all Mahindra Rural Bharat and Consumption Yojana
+portfolio not found for this scheme at all Mahindra Pragati Bluechip Yojana
+portfolio not found for this scheme at all Mahindra Hybrid Equity Nivesh Yojana
+portfolio not found for this scheme at all Mahindra Overnight Fund
+portfolio not found for this scheme at all Mirae Asset Midcap Fund
+portfolio not found for this scheme at all HSBC Large Cap Equity Fund
+portfolio not found for this scheme at all HSBC Infrastructure Equity Fund
+portfolio not found for this scheme at all HSBC Brazil Fund
+portfolio not found for this scheme at all HSBC Cash Fund
+portfolio not found for this scheme at all HSBC Global Emerging Market Fund
+portfolio not found for this scheme at all HSBC Multi Cap Equity Fund
+portfolio not found for this scheme at all HSBC Flexi Debt Fund
+portfolio not found for this scheme at all HSBC Debt Fund
+portfolio not found for this scheme at all HSBC Short Duration Fund
+portfolio not found for this scheme at all HSBC Low Duration Fund
+portfolio not found for this scheme at all HSBC Small Cap Equity Fund
+portfolio not found for this scheme at all HSBC Regular Savings Fund
+portfolio not found for this scheme at all HSBC Tax Saver Equity Fund
+portfolio not found for this scheme at all HSBC Asia Pacific (Ex Japan) Dividend Yield Fund
+portfolio not found for this scheme at all HSBC Managed Solutions  Moderate
+portfolio not found for this scheme at all HSBC Managed Solutions  Conservative
+portfolio not found for this scheme at all HSBC Managed Solutions
+portfolio not found for this scheme at all HSBC Global Consumer Opportunities Fund
+portfolio not found for this scheme at all HSBC Equity Hybrid Fund
+portfolio not found for this scheme at all HSBC Large and Mid Cap Equity Fund
+portfolio not found for this scheme at all HSBC Overnight Fund
+portfolio not found for this scheme at all Invesco India Dynamic Equity Fund
+portfolio not found for this scheme at all Invesco India Contra Fund
+portfolio not found for this scheme at all Invesco India Growth Opportunities Fund
+portfolio not found for this scheme at all Invesco India Financial Services Fund
+portfolio not found for this scheme at all Invesco India Largecap Fund
+portfolio not found for this scheme at all Invesco India PSU Equity Fund
+portfolio not found for this scheme at all Invesco India Arbitrage Fund
+portfolio not found for this scheme at all Invesco India Midcap Fund
+portfolio not found for this scheme at all Invesco India Infrastructure Fund
+portfolio not found for this scheme at all Invesco India Multicap Fund
+portfolio not found for this scheme at all Invesco India Tax Plan
+portfolio not found for this scheme at all Invesco India Banking & PSU Debt Fund
+portfolio not found for this scheme at all Invesco India Corporate Bond Fund
+portfolio not found for this scheme at all Invesco India Money Market Fund
+portfolio not found for this scheme at all Invesco India Gilt Fund
+portfolio not found for this scheme at all Invesco India Gold Fund
+portfolio not found for this scheme at all Invesco India Liquid Fund
+portfolio not found for this scheme at all Invesco India Ultra Short Term Fund
+portfolio not found for this scheme at all Invesco India Short Term Fund
+portfolio not found for this scheme at all Invesco India Treasury Advantage Fund
+portfolio not found for this scheme at all Invesco India Feeder  Invesco Pan European Equity Fund
+portfolio not found for this scheme at all Invesco India Feeder  Invesco Global Equity Income Fund
+portfolio not found for this scheme at all Invesco India Credit Risk Fund
+portfolio not found for this scheme at all Invesco India Equity & Bond Fund
+portfolio not found for this scheme at all Invesco India Smallcap Fund
+portfolio not found for this scheme at all Invesco India Equity Savings Fund
+portfolio not found for this scheme at all Parag Parikh Tax Saver Fund
+
 https://mutualfund.adityabirlacapital.com/forms-and-downloads/portfolio
 https://www.barodamf.com/Downloads/Pages/Latest-Factsheet-and-Profile.aspx
 https://dspim.com/about-us/mandatory-disclosure/portfolio-disclosures
@@ -60,7 +209,7 @@ https://www.miraeassetmf.co.in/downloads/portfolios
 https://www.yesamc.in/regulatory-disclosures/monthly-and-half-yearly-portfolio-disclosures
 http://amc.ppfas.com/downloads/portfolio-disclosure/
 http://www.itimf.com/statutory-disclosure/monthly-portfolios
-
+https://www.invescomutualfund.com/literature-and-form?tab=Complete
 """
 
 # need to figure out multiple things in this
@@ -134,49 +283,57 @@ def identify_amc():
 
                     amc_sheet_match = {}
 
-                    for sheet_name in sheet_names:
-                        if sheet_name == "Index" or sheet_name == "Sheet1":
-                            continue
-                        print("checking for sheet name", sheet_name)
-                        # df1 = pd.read_excel(xls, sheet_name)
-                        df1 = read_excel(xls, sheet_name)
+                    # UTI mf has a totally different format
+                    # we need to hard code for UTI MF no other way
 
-                        mask = df1.apply(lambda x: x.astype(
-                            str).str.contains('ISIN', False))
-                        df2 = df1[mask.any(axis=1)]
+                    if "Performance Data" in sheet_names and "Funds at Glance" in sheet_names and "Portfolio" in sheet_names:
+                        # this is uti mf
+                        max_amc = "UTI"
+                    else:
+                        print("trying to identify amc")
+                        for sheet_name in sheet_names:
+                            if sheet_name == "Index" or sheet_name == "Sheet1":
+                                continue
+                            print("checking for sheet name", sheet_name)
+                            # df1 = pd.read_excel(xls, sheet_name)
+                            df1 = read_excel(xls, sheet_name)
 
-                        # print(df2)
+                            mask = df1.apply(lambda x: x.astype(
+                                str).str.contains('ISIN', False))
+                            df2 = df1[mask.any(axis=1)]
 
-                        indexes = df2.index.values
+                            # print(df2)
 
-                        if len(indexes) > 0:
-                            # df1 = df1.head(indexes[0])
-                            # print(df1)
-                            amc, score, cell = match_fund_name_from_sheet(
-                                amc_names, df1)
+                            indexes = df2.index.values
 
-                            print(amc, "xxxx", score)
+                            if len(indexes) > 0:
+                                # df1 = df1.head(indexes[0])
+                                # print(df1)
+                                amc, score, cell = match_fund_name_from_sheet(
+                                    amc_names, df1)
 
-                            if score > 0:
-                                if amc in amc_sheet_match:
-                                    amc_sheet_match[amc] += 1
-                                else:
-                                    amc_sheet_match[amc] = 1
-                        else:
-                            amc_process.addLog(
-                                "isin not found! in sheet " + sheet_name)
-                            # print(df1)
-                            print("isin not found! in sheet " + sheet_name)
-                            # pass
+                                print(amc, "xxxx", score)
 
-                    max_count = 0
-                    max_amc = False
+                                if score > 0:
+                                    if amc in amc_sheet_match:
+                                        amc_sheet_match[amc] += 1
+                                    else:
+                                        amc_sheet_match[amc] = 1
+                            else:
+                                amc_process.addLog(
+                                    "isin not found! in sheet " + sheet_name)
+                                # print(df1)
+                                print("isin not found! in sheet " + sheet_name)
+                                # pass
 
-                    for amc in amc_sheet_match:
-                        count = amc_sheet_match[amc]
-                        if count > max_count:
-                            max_count = count
-                            max_amc = amc
+                        max_count = 0
+                        max_amc = False
+
+                        for amc in amc_sheet_match:
+                            count = amc_sheet_match[amc]
+                            if count > max_count:
+                                max_count = count
+                                max_amc = amc
 
                     amc_process.setAMC(max_amc)
 
@@ -188,7 +345,17 @@ def identify_amc():
                             df1 = read_excel(xls, 2)
                         else:
                             df1 = read_excel(xls, 0)
-                        date = find_date_from_sheet(df1, f)
+
+                        if max_amc == "UTI":
+                            date = False
+                            for year in ["2015", "2016", "2017", "2018", "2019"]:
+                                if year in f:
+                                    date = match_match_force_via_string(
+                                        year, f)
+                                    break
+
+                        else:
+                            date = find_date_from_sheet(df1, f)
 
                         if date is not False:
 
@@ -212,12 +379,12 @@ def identify_amc():
                                     os.mkdir(os.path.join(
                                         mf_download_files_path, max_amc, y, m))
 
-                                amc_process.addLog(os.path.join(
-                                    mf_download_files_path, f))
+                                # amc_process.addLog(os.path.join(
+                                #     mf_download_files_path, f))
                                 amc_process.addLog(os.path.join(
                                     os.path.join(mf_download_files_path, max_amc, y, m), f))
 
-                                shutil.move(os.path.join(mf_download_files_path, f),
+                                shutil.copy(os.path.join(mf_download_files_path, f),
                                             os.path.join(mf_download_files_path, max_amc, y, m, f))
 
                                 amc_process.setFinalFilePath(os.path.join(
@@ -255,7 +422,7 @@ def identify_amc():
                         print(Fore.RED + "amc not found! see data")
                         # break
 
-                    # print(amc_sheet_match)
+                    print(amc_sheet_match)
                 except Exception as e:
                     traceback.print_exc(e)
                     amc_process.addCritical(e)
@@ -274,8 +441,6 @@ def process_data(amc_process):
     # for amc_process in to_process:
     file_path = getattr(amc_process, "final_path")
     amc_short_name = getattr(amc_process, "amc")
-
-    print(file_path, "xxxxxxxxxxxxxxxxxxxxxxxx")
 
     # one time temporary code since we parsed files in local it has local path
     # if local_base_path in file_path:
@@ -304,6 +469,7 @@ def process_data(amc_process):
 
 def identify_funds(filename, amc, date, amc_process):
 
+    print("identifyign funds")
     print("filename ", filename)
     print("amc ", amc.name)
 
@@ -335,7 +501,8 @@ def identify_funds(filename, amc, date, amc_process):
         print("checking for sheet name", sheet_name)
         df1 = pd.read_excel(xls, sheet_name)
 
-        fund, ratio, cell = match_fund_name_from_sheet(fund_names.keys(), df1)
+        fund, ratio, cell = match_fund_name_from_sheet(
+            fund_names.keys(), df1, True, True)
 
         if fund in fund_match_sheet:
             amc_process.addCritical("conflict detected : fund : " + fund +
@@ -347,17 +514,141 @@ def identify_funds(filename, amc, date, amc_process):
             ratio2 = fuzz.ratio(fund, fund_match_sheet[fund]["cell"])
             print(ratio1, ' ==== ', ratio2)
 
-        fund_match_sheet[sheet_name] = fund
+        if fund is not None:
+            print("fund found : ", fund, "===",  ratio,
+                  "===", sheet_name, " === ", cell)
+            fund_match_sheet[sheet_name] = fund
 
         if fund in fund_check_list:
             fund_check_list.remove(fund)
 
-    print("fund not found", fund_check_list)
+    print(Fore.RED + "fund not found", fund_check_list)
 
     return fund_match_sheet
 
 
 def process_portfolio(filename, amc, date, amc_process):
+
+    if getattr(amc, "name") == "UTI Mutual Fund":
+        xls = ExcelFile(filename)
+        df1 = pd.read_excel(xls, "Portfolio")
+
+        #df1 = df1.fillna("")
+
+        schemes = Scheme.objects.filter(amc=amc)
+
+        fund_names = {}
+
+        for scheme in schemes:
+            fund_name = getattr(scheme, "fund_name")
+            fund_names[fund_name] = scheme
+            # print(fund_name, getattr(scheme, "id"))
+
+        # another problem of equity fund there are just two columns
+        # Equity/Nav
+        # for debt we have
+        # Debt,Nav, Rating
+
+        df1.loc[-1] = df1.columns
+        df1.index = df1.index + 1
+        df1 = df1.sort_index()
+
+        mask = df1.apply(lambda x: x.astype(str).str.contains('UTI', False))
+        df1 = df1[mask.any(axis=1)]
+        indexes = df1.index.values
+        index = indexes[0]
+
+        fund_names_df = df1.loc[index].values
+
+        print(fund_names_df)
+
+        for index, row in enumerate(fund_names_df):
+            print(row, "xxx", type(row), "yy", str(row))
+            if isinstance(row, str) and "UTI" in str(row):
+                row = str(row).strip()
+
+                try:
+
+                    fund, ratio, cell = match_fund_name_from_array(
+                        fund_names.keys(), [row])
+                    print(fund, "===",  ratio, " === ", cell)
+                    start_index = index
+                    end_index = index
+
+                    if fund is not None:
+
+                        # find next is not nan
+                        for i, row2 in enumerate(fund_names_df):
+                            if i > start_index:
+                                print(row2)
+                                if isinstance(row2, str) and "UTI" in str(row2):
+                                    end_index = i
+                                    break
+
+                        end_index = end_index - 1
+
+                        print(start_index, "====", end_index)
+
+                        print(df1.iloc[:, start_index:end_index])
+
+                        df3 = df1.iloc[:, start_index:end_index]
+                        # df3 =
+                        df3 = df3.rename(columns=df3.iloc[1, :])
+                        df3 = df3.iloc[2:]
+
+                        scheme_ports = Scheme_Portfolio_Data.objects.filter(
+                            scheme=fund_names[fund], date__year=date.year, date__month=date.month)
+
+                        for port in scheme_ports:
+                            Scheme_Portfolio.objects.filter(
+                                scheme=port).delete()
+                            port.delete()
+
+                        scheme_data = Scheme_Portfolio_Data(
+                            scheme=fund_names[fund],
+                            url=filename,
+                            date=date
+                        )
+                        scheme_data.save()
+
+                        print(df3)
+                        if "Equity" in df3.columns.values:
+                            for row in df3.iterrows():
+                                name = row[0]
+                                nav_per = row[1]
+
+                                scheme_portfolio = Scheme_Portfolio(
+                                    scheme=scheme_data,
+                                    name=name,
+                                    percent=nav_per
+                                )
+                                scheme_portfolio.save()
+                        else:
+                            for row in df3.iterrows():
+                                name = row[0]
+                                nav_per = row[1]
+                                rating = row[2]
+
+                                scheme_portfolio = Scheme_Portfolio(
+                                    scheme=scheme_data,
+                                    name=name,
+                                    percent=nav_per,
+                                    rating=rating
+                                )
+                                scheme_portfolio.save()
+
+                        # df3.loc[-1] = df3.columns
+                        # df3.index = df3.index + 1
+                        # df3 = df3.sort_index()
+
+                        # print(df3)
+
+                        break
+
+                except Exception as e:
+                    print(Fore.RED + str(e))
+                    pass
+        return
 
     fund_match_sheet = identify_funds(filename, amc, date, amc_process)
 
@@ -384,6 +675,7 @@ def process_portfolio(filename, amc, date, amc_process):
         df1 = pd.read_excel(xls, sheet_name)
 
         if sheet_name not in fund_match_sheet:
+            print("skipping sheet")
             continue
 
         fund = fund_match_sheet[sheet_name]
@@ -433,9 +725,11 @@ def process_portfolio(filename, amc, date, amc_process):
 
                 df1.columns = columns
 
-                print(df1.iloc[col_indexes["row_index"]:, col_indexes["indexes"]])
+                print(df1.iloc[col_indexes["row_index"]
+                      :, col_indexes["indexes"]])
 
-                df2 = df1.iloc[(col_indexes["row_index"]+1):, col_indexes["indexes"]]
+                df2 = df1.iloc[(col_indexes["row_index"]+1)
+                                :, col_indexes["indexes"]]
                 df2 = df2.fillna(False)
 
                 if "Coupon" not in df2.columns:

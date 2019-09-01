@@ -1,5 +1,5 @@
 from todo.models import AMC, Scheme, Nav, Index
-from amc.models import Scheme_AUM, Scheme_Portfolio_Data
+from amc.models import Scheme_AUM, Scheme_Portfolio_Data , Scheme_TER
 import datetime
 from django.db.models import Max
 
@@ -8,7 +8,7 @@ from collections import Counter
 def health_check():
 
     # general health check for all cron jobs running and reporting
-    portfolio_health_check()
+    ter_health_check()
     return {
         # "duplicate_schemes": scheme_health_check(),
         # "aaum_data_check": aum_health_check()
@@ -77,6 +77,33 @@ def aum_health_check():
 
             if aums.count() == 0:
                 print("aaum not found for this scheme at all",
+                      getattr(scheme, "fund_name"))
+                # print("all good")
+            #     pass
+            # else:
+            #     print("amc name ", getattr(amc, "name"))
+            #     print("scheme name ", getattr(scheme, "fund_name"))
+            #     for aum in aums:
+            #         print(getattr(aum, "date"), " ==== ", getattr(aum, "aum"))
+
+    return {}
+
+
+def ter_health_check():
+
+    # for now check if we have current year aum data atleast before going back too much
+
+    for amc in AMC.objects.all():
+        # id = getattr(amc, "id")
+
+        schemes = Scheme.objects.filter(amc=amc)
+
+        for scheme in schemes:
+            aums = Scheme_TER.objects.filter(
+                scheme=scheme, date__gt=datetime.datetime(2019, 1, 1)).order_by('date')
+
+            if aums.count() == 0:
+                print("ter not found for this scheme at all",
                       getattr(scheme, "fund_name"))
                 # print("all good")
             #     pass
