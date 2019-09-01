@@ -62,14 +62,39 @@ https://invescomutualfund.com/about-us?tab=Statutory&active=ExpenseRatioDisclosu
 https://www.yesamc.in/regulatory-disclosures/total-expense-ratio-of-mutual-funds-schemes
 http://amc.ppfas.com/statutory-disclosures/total-expense-ratio-TER/
 http://www.itimf.com/statutory-disclosure/total-expense-ratio
+https://www.invescomutualfund.com/about-us?tab=Statutory&active=ExpenseRatioDisclosure
 """
 
 
 def start_process():
-    process_zip_file()
-    process_file()
+    # process_zip_file()
+    # process_file()
+
+    move_files_from_folder_to_parent
 
     # Scheme_TER_Process
+    pass
+
+
+def move_files_from_folder_to_parent():
+    # this is temporary one time function i made to move all processed files from
+    # amc directorys back to original path for testing purposes
+
+    from amc.jobs.util import server_base_path
+
+    print(os.path.join(server_base_path, "amfi", "data", "ter"))
+
+    for (dirpath, dirnames, filenames) in os.walk(os.path.join(server_base_path, "amfi", "data", "ter")):
+        for f in filenames:
+            if "lock" in f:
+                continue
+
+            if "2019" in dirpath:
+                # if ".xls" in f.lower() or ".xlsx" in f.lower():
+                print(os.path.join(dirpath, f))
+                shutil.copy(os.path.join(dirpath, f),
+                            os.path.join(ter_path, f))
+
     pass
 
 

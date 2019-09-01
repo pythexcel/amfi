@@ -225,7 +225,7 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
             # this can be removed after sometime
             print("old fund name ", getattr(scheme, "fund_name"),
                   " new fund name ", fund_name)
-            Scheme.objects.filter(pk=scheme.id).update(fund_name=fund_name)
+            # Scheme.objects.filter(pk=scheme.id).update(fund_name=fund_name)
 
     except Scheme.DoesNotExist:
         # amc_no -1 means this is called from daily nav update process and we cannot save scheme from there at all

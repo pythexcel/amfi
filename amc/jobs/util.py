@@ -288,14 +288,7 @@ def find_date_from_sheet(df, file_name=False):
                 if date_matched is False:
                     # if date finder is not able to find for some reaosn
                     # doing text match with all months possible
-                    for i in range(12):
-                        d = datetime.date(int(year), (i+1), 1)
-                        # print(d)
-                        cell = cell.replace(year, "")
-                        if d.strftime("%b") in cell or d.strftime("%B") in cell or d.strftime("%m") in cell:
-                            print(d)
-                            date_matched = d
-                            break
+                    date_matched = match_match_force_via_string(year, cell)
 
     print("trying to find date", date_matched)
 
@@ -315,6 +308,19 @@ def find_date_from_sheet(df, file_name=False):
                 print("date matches ", match)
             return False
 
+    return date_matched
+
+
+def match_match_force_via_string(year, cell):
+    date_matched = False
+    for i in range(12):
+        d = datetime.date(int(year), (i+1), 1)
+        # print(d)
+        cell = cell.replace(year, "")
+        if d.strftime("%b") in cell or d.strftime("%B") in cell or d.strftime("%m") in cell:
+            print(d)
+            date_matched = d
+            break
     return date_matched
 
 
@@ -342,7 +348,7 @@ def find_date_from_filename(filename):
 # this function is to find the fund name from sheet.
 
 
-def match_fund_name_from_sheet(fund_names, sheet_df):
+def match_fund_name_from_sheet(fund_names, sheet_df, break_if_isin_not_found=False, strong_match=False):
 
     # for col in expected_cols:
     mask = sheet_df.apply(lambda x: x.astype(str).str.contains('ISIN', False))
@@ -353,6 +359,8 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
         index = indexes[0]
         df1 = sheet_df.head(index)
     else:
+        if break_if_isin_not_found:
+            return None, 0, ""
         df1 = df1.head(3)
 
     df1 = df1.fillna(0)
@@ -364,25 +372,41 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
     cells = []
 
     for cell in df1.columns:
-        if cell != 0:
+        if cell != 0 and "Unnamed:" not in cell:
             cells.append(cell)
             # print(cell)
 
     for row in df1.to_numpy():
         for cell in row:
-            if cell != 0:
-                cells.append(cell)
+            if cell != 0 and "Unnamed:" not in cell:
+                if "\n" in cell:
+                    #MAHINDRA LIQUID FUND \n(AN OPEN-ENDED LIQUID SCHEME)
+                    cell = cell.split("\n")
+                    cells.extend(cell)
+                else:
+                    cells.append(cell)
                 # print(cell)
 
     # string = df1.to_string()
 
+    print(cells)
+    return match_fund_name_from_array(fund_names, cells, strong_match)
+
+
+def match_fund_name_from_array(fund_names, cells,strong_match = False):
     max_score = 0
     final_match = None
     fund_cell = None
 
     for fund_name in fund_names:
         for cell in cells:
-            ratio = fuzz.token_set_ratio(fund_name, cell)
+            if strong_match:
+                ratio = fuzz.token_sort_ratio(fund_name, cell)
+            else:
+                ratio = fuzz.token_set_ratio(fund_name, cell)
+            # was using token_set_ratio before but problem was that
+            #  LIC MF Index Fund Nifty Plan was matching the word Index with score 100 which very wrong
+            # print(fund_name, " ==== ", cell, " ==== ", ratio)
             if ratio > 95:
                 if ratio > max_score:
                     max_score = ratio
@@ -393,8 +417,9 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
                 # print(ratio)
 
     if final_match is None:
-        print("fund not found here is info to debug")
-        print(df1)
+        # print("fund not found here is info to debug")
+        # print(df1)
+        return None, max_score, fund_cell
     else:
 
         # find if there are duplicates means many times multiple fund names match and it causes problem
@@ -413,7 +438,7 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
             max_ratio_score = fuzz.ratio(final_match, fund_cell)
             for dup in duplicates:
                 ratio_score = fuzz.ratio(dup, fund_cell)
-                print(ratio_score , "====", dup, " === " , fund_cell)
+                print(ratio_score, "====", dup, " === ", fund_cell)
                 if dup.strip().lower() == fund_cell.strip().lower():
                     ratio_score = 101  # for exact match it should be top
                 if ratio_score > max_ratio_score:
@@ -423,98 +448,3 @@ def match_fund_name_from_sheet(fund_names, sheet_df):
             print("finally better found ", final_match, " cell name ", fund_cell)
 
     return final_match, max_score, fund_cell
-
-
-# def download_portfolio_from_website():
-# tried this option but doesn;t look fesable.
-# facing different isses with parsing data. since this is once a month operation maybe
-# better to do it manually at this stage.
-#     download_list = {}
-
-#     # https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-june-2018-rev.zip
-#     # https://mutualfund.adityabirlacapital.com/-/media/bsl/files/resources/monthly-portfolio/sebi_monthly_portfolio-jan-19.zip
-#     # https://mutualfund.adityabirlacapital.com/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-march-2018.zip
-#     # https://mutualfund.adityabirlacapital.com/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-september-2018.zip
-#     # https://mutualfund.adityabirlacapital.com/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-february-2019.zip
-#     # https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-january-2017.zip
-#     # download_list["Aditya Birla Sun Life Mutual Fund"] = [
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%B-%Y.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%b-%Y.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/sebi_monthly_portfolio-%B-%y.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/sebi_monthly_portfolio-%b-%y.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%B-%Y-rev.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%b-%Y-rev.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%B-%y-rev.zip",
-#     #     "https://mutualfund.adityabirlacapital.com:443/-/media/bsl/files/resources/monthly-portfolio/monthly-portfolio-%b-%y-rev.zip"
-#     # ]
-#     # download_list["DSP Mutual Fund"] = [
-#     #     "https://www.dspim.com/docs/default-source/portfolio-disclosures/month_end_portfolio_disclosure_%b%Y.zip?sfvrsn=2"
-#     # ]
-
-#     download_list["HDFC Mutual Fund"] = [
-#         "https://files.hdfcfund.com/s3fs-public/%Y-%m/Monthly%20Portfolios%20for%20%b%20%Y_0.xls",
-#         "https://files.hdfcfund.com/s3fs-public/%Y-%m/Monthly%20Portfolios%20for%20%b%20%Y_1.xls"
-#     ]
-
-#     years = [2019, 2018]
-
-#     for amc in download_list:
-#         urls = download_list[amc]
-
-#         for i in range(11):
-#             for year in years:
-#                 month = i + 1
-#                 # month_str = datetime.date(year, month, 1).strftime('%B')
-#                 # print(month_str)
-
-#                 found = False
-#                 for url in urls:
-#                     if "%Y" in url:
-#                         url = url.replace("%Y", str(year))
-
-#                     if "%y" in url:
-#                         url = url.replace("%y", datetime.date(
-#                             year, month, 1).strftime('%y'))
-
-#                     if "%b" in url:
-#                         month_str = datetime.date(
-#                             year, month, 1).strftime('%b').lower()
-#                         url = url.replace("%b", month_str)
-
-#                     if "%B" in url:
-#                         month_str = datetime.date(
-#                             year, month, 1).strftime('%B').lower()
-#                         url = url.replace("%B", month_str)
-
-#                     if "%m" in url:
-#                         month_str = datetime.date(
-#                             year, month, 1).strftime('%m').lower()
-#                         url = url.replace("%m", month_str)
-
-#                     print(url)
-#                     h = requests.head(url, allow_redirects=True, verify=False)
-#                     # print(h.status_code)
-
-
-#                     if h.status_code == 200:
-#                         found = True
-
-#                         # try:
-#                         #     port_url = Scheme_Portfolio.objects.get(
-#                         #         amc=amc,
-#                         #         year=year,
-#                         #         month=month
-#                         #     )
-#                         #     Scheme_Portfolio.objects.filter(
-#                         #         pk=port_url.id, url=url)
-#                         # except Scheme_Portfolio.DoesNotExist:
-#                         #     port_url = Scheme_Portfolio_Url(
-#                         #         amc=amc,
-#                         #         year=year,
-#                         #         month=month,
-#                         #         url=url
-#                         #     )
-#                         #     port_url.save()
-
-#             if found == False:
-#                 print("no url found for year ", year, " and month ", month)
