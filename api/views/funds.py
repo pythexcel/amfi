@@ -14,7 +14,7 @@ from todo.serializers import AMCSerializer, SchemeSerializer
 @api_view()
 def get_amcs(request):
     ret = AMC.objects.all()
-    ser = SchemeSerializer(ret, many=True)
+    ser = AMCSerializer(ret, many=True)
     return Response(ser.data)
 
 
