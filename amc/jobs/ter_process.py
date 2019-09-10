@@ -113,8 +113,8 @@ def process_file():
                 except FileExistsError:
                     pass
 
-                os.rename(os.path.join(ter_path, f), os.path.join(
-                    os.path.join(ter_path, "processed_files"), f))
+                shutil.copy(os.path.join(ter_path, f), os.path.join(
+                    ter_path, "processed_files", f))
 
                 process_ter(os.path.join(
                     os.path.join(ter_path, "processed_files"), f), f)
@@ -182,6 +182,8 @@ def process_ter(filename, f):
 
             amc, final_amc = identify_amc_from_scheme_array(schemes)
 
+            print("final amc ", final_amc, " amc ", amc)
+
         if amc is None:
             print(
                 "this means amc not found means there is no index column so lets try with scheme name")
@@ -203,133 +205,133 @@ def process_ter(filename, f):
 
                 amc, final_amc = identify_amc_from_scheme_name(scheme_name_row)
 
-            if amc is not None:
+        if amc is not None:
 
-                print("amc found", final_amc)
+            print("amc found", final_amc)
 
-                ter_process.setAMC(getattr(amc, "name"))
+            ter_process.setAMC(getattr(amc, "name"))
 
-                schemes = Scheme.objects.filter(amc=amc)
+            schemes = Scheme.objects.filter(amc=amc)
 
-                scheme_sheet_map = {}
+            scheme_sheet_map = {}
 
-                scheme_names = []
-                scheme_name_map = {}
+            scheme_names = []
+            scheme_name_map = {}
 
-                for scheme in schemes:
-                    name = getattr(scheme, "fund_name")
-                    print(name)
-                    scheme_names.append(name)
-                    scheme_name_map[name] = scheme
+            for scheme in schemes:
+                name = getattr(scheme, "fund_name")
+                print(name)
+                scheme_names.append(name)
+                scheme_name_map[name] = scheme
 
-                for sheet in sheet_names:
-                    if sheet == sheet_names[0]:
-                        continue
+            for sheet in sheet_names:
+                if sheet == sheet_names[0]:
+                    continue
 
-                    df1 = read_excel(xls, sheet)
-                    # print(df1)
+                df1 = read_excel(xls, sheet)
+                # print(df1)
 
-                    row_index = find_row_index(df1, "Name of Scheme")
+                row_index = find_row_index(df1, "Name of Scheme")
 
-                    if row_index != -1:
-                        df1 = df1.fillna(False)
-                        scheme_name_row = df1.iloc[row_index].values
+                if row_index != -1:
+                    df1 = df1.fillna(False)
+                    scheme_name_row = df1.iloc[row_index].values
 
-                        print("scheme name row")
-                        print(scheme_name_row)
+                    print("scheme name row")
+                    print(scheme_name_row)
 
-                        scheme_name = None
-                        for cell in scheme_name_row:
-                            if cell is False:
-                                continue
-
-                            if scheme_name is not None:
-                                continue
-
-                            for name in scheme_names:
-
-                                # print(name, "============", cell)
-                                if name == cell:
-                                    scheme_name = name
-                                    print("found scheme name", name,
-                                          " with direct match ", cell)
-
-                                    break
-
-                        for cell in scheme_name_row:
-                            if cell is False:
-                                continue
-
-                            if scheme_name is not None:
-                                continue
-
-                            for name in scheme_names:
-                                # print(name, "xxx", cell)
-                                # print(fuzz.token_set_ratio(name, cell))
-
-                                if fuzz.token_set_ratio(name, cell) > 95:
-                                    scheme_name = name
-                                    print("found scheme name", name,
-                                          " with fuzzy match ", cell)
-
-                                    break
+                    scheme_name = None
+                    for cell in scheme_name_row:
+                        if cell is False:
+                            continue
 
                         if scheme_name is not None:
-                            scheme_names.remove(scheme_name)
-                            scheme_sheet_map[sheet] = scheme_name
+                            continue
 
-                    else:
-                        print("name of scheme not found in sheet", sheet)
+                        for name in scheme_names:
 
-                print("scheme mapped ", scheme_sheet_map)
-                print("scheme not found ", scheme_names)
+                            # print(name, "============", cell)
+                            if name == cell:
+                                scheme_name = name
+                                print("found scheme name", name,
+                                      " with direct match ", cell)
 
-                ter_process.addLog(json.dumps(scheme_sheet_map))
-                ter_process.addLog(json.dumps(scheme_names))
+                                break
 
-                for sheet in scheme_sheet_map:
-                    fund_name = scheme_sheet_map[sheet]
-                    df1 = read_excel(xls, sheet)
-                    col_indexes = find_head_row(df1.head(10))
+                    for cell in scheme_name_row:
+                        if cell is False:
+                            continue
 
-                    if "Date" in col_indexes and "Total_TER" in col_indexes:
+                        if scheme_name is not None:
+                            continue
 
-                        columns = [""] * df1.shape[1]
+                        for name in scheme_names:
+                            # print(name, "xxx", cell)
+                            # print(fuzz.token_set_ratio(name, cell))
 
-                        df1.columns = columns
+                            if fuzz.token_set_ratio(name, cell) > 95:
+                                scheme_name = name
+                                print("found scheme name", name,
+                                      " with fuzzy match ", cell)
 
-                        for key in col_indexes:
-                            if key != "row_index" and key != "indexes":
-                                idx = col_indexes[key]
-                                columns[idx] = key
+                                break
 
-                        df1.columns = columns
+                    if scheme_name is not None:
+                        scheme_names.remove(scheme_name)
+                        scheme_sheet_map[sheet] = scheme_name
 
-                        df2 = df1.drop("", axis=1)
-                        df2 = df2.fillna(False)
+                else:
+                    print("name of scheme not found in sheet", sheet)
 
-                        df2 = df2[df2["Total_TER"] != False]
+            print("scheme mapped ", scheme_sheet_map)
+            print("scheme not found ", scheme_names)
 
-                        df2 = df2.drop_duplicates(
-                            subset="Total_TER", keep="last")
-                        # print(df2)
-                        print(fund_name)
-                        for row in df2.itertuples():
-                            print(row)
-                            save_row_to_db(row, scheme_name_map[fund_name])
+            ter_process.addLog(json.dumps(scheme_sheet_map))
+            ter_process.addLog(json.dumps(scheme_names))
 
-                    else:
-                        print("column not found")
+            for sheet in scheme_sheet_map:
+                fund_name = scheme_sheet_map[sheet]
+                df1 = read_excel(xls, sheet)
+                col_indexes = find_head_row(df1.head(10))
 
-                move_file_finally(ter_path, amc, filename, f, ter_process)
+                if "Date" in col_indexes and "Total_TER" in col_indexes:
 
-            else:
-                print("unable to identify amc")
-                ter_process.addCritical("columns not present unable to parse")
+                    columns = [""] * df1.shape[1]
+
+                    df1.columns = columns
+
+                    for key in col_indexes:
+                        if key != "row_index" and key != "indexes":
+                            idx = col_indexes[key]
+                            columns[idx] = key
+
+                    df1.columns = columns
+
+                    df2 = df1.drop("", axis=1)
+                    df2 = df2.fillna(False)
+
+                    df2 = df2[df2["Total_TER"] != False]
+
+                    df2 = df2.drop_duplicates(
+                        subset="Total_TER", keep="last")
+                    # print(df2)
+                    print(fund_name)
+                    for row in df2.itertuples():
+                        print(row)
+                        save_row_to_db(row, scheme_name_map[fund_name])
+
+                else:
+                    print("column not found")
+
+            move_file_finally(ter_path, amc, filename, f, ter_process)
 
         else:
-            print("scheme column not found unable to process any further")
+            print("unable to identify amc")
             ter_process.addCritical("columns not present unable to parse")
+
+        # else:
+        #     print("scheme column not found unable to process any further")
+        #     ter_process.addCritical("columns not present unable to parse")
 
         return
 
@@ -582,7 +584,8 @@ def identify_amc_from_scheme_array(schemes):
 
     for amc_name in amcs:
         for scheme_name in schemes:
-            if amc_name == "ITI" and "ITI" in str(scheme_name):
+            if amc_name == "ITI" and "ITI " in str(scheme_name):
+                print(amc_name, "xxx", scheme_name, " should be ITI")
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
                 else:
@@ -590,8 +593,15 @@ def identify_amc_from_scheme_array(schemes):
                 continue
 
             ratio = fuzz.token_set_ratio(amc_name, scheme_name)
-            print(amc_name, "xxx", scheme_name, " ratio ", ratio)
+            
             if ratio > 95:
+                print(amc_name, "xxx", scheme_name, " ratio ", ratio)
+                if amc_name == "Mahindra":
+                    if "Kotak" in scheme_name:
+                        ratio = 0
+                        print("skpiping this match due to kotak mahindra issue")
+                        continue
+
                 if amc_name in amc_score:
                     amc_score[amc_name] += 1
                 else:
@@ -600,6 +610,8 @@ def identify_amc_from_scheme_array(schemes):
 
     max_score = 0
     final_amc = None
+
+    print(amc_score)
 
     for key in amc_score:
         if amc_score[key] > max_score:
