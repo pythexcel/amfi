@@ -13,7 +13,7 @@ urlpatterns = [
         rolling_return, name='rolling_return'),
     url(r'^return/abs/(?P<amfi>\d+)/$', abs_return, name='abs_return'),
     url(r'^ping', ping),
-    url(r'^amc',get_amcs)
+    url(r'^amc',get_amcs),
     url(r'^funds/amc', ListAmc.as_view()),
     url(r'^funds/scheme/(?P<amc_id>\d+)/$', get_schemes),
     url(r'^funds/category', get_fund_categories),
