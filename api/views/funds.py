@@ -12,6 +12,13 @@ from todo.serializers import AMCSerializer, SchemeSerializer
 
 
 @api_view()
+def get_amcs(request):
+    ret = AMC.objects.all()
+    ser = SchemeSerializer(ret, many=True)
+    return Response(ser.data)
+
+
+@api_view()
 def get_schemes(request, amc_id):
     ret = Scheme.objects.all().filter(amc=amc_id)
     ser = SchemeSerializer(ret, many=True)
