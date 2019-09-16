@@ -82,7 +82,7 @@ def schem_update_list(request):
         ser = SchemeSerializer(schem,many=False)
         updated_schemes.append(ser.data['fund_name'])
     ret = ",".join(updated_schemes) 
-    return Response(ret + " These are not updated")   
+    return Response(ret + " These are updated")   
     return Response(serializer.data)  
 
 @api_view()
