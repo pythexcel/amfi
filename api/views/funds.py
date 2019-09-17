@@ -37,6 +37,51 @@ def get_funds(request, type, sub_type):
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
 
+@api_view()
+def get_funds_amc(request,type,sub_type):
+    """
+    
+    Returns the AMC based on schemes type and sub_type.
+    
+    """
+    ret = Scheme.objects.get_funds(type=type,sub_type=sub_type)
+    ser = SchemeSerializer(ret, many=True)
+    unique = []
+    for data in ser.data:
+        if data['amc'] not in unique:
+            unique.append(data['amc'])
+        else:
+            pass
+    response = []    
+    for elem in unique:
+        resp = AMC.objects.get(id=elem)
+        serial = AMCSerializer(resp,many=False)
+        response.append(serial.data)
+    return Response(response)
+
+@api_view()
+def get_funds_schemes(request,amc,type,sub_type):
+    """
+    
+    Returns the Schemes based on schemes type and sub_type and amc.
+    
+    """
+    ret = Scheme.objects.get_funds(amc=amc,type=type,sub_type=sub_type)
+    ser = SchemeSerializer(ret, many=True)
+    return Response(ser.data)
+
+
+@api_view()
+def get_funds_schemes_type(request,amc,type):
+    """
+    
+    Returns the schemes based on schemes amc and type.
+    
+    """
+    ret = Scheme.objects.get_funds(amc=amc,type=type)
+    ser = SchemeSerializer(ret, many=True)
+    return Response(ser.data)
+
 
 @api_view()
 def get_fund_subcategories(request, type):

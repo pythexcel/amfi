@@ -1,7 +1,7 @@
 from django.urls import path, include, re_path as url
 from api.views.returns import rolling_return, abs_return
 from api.views.ping import ping
-from api.views.funds import ListAmc, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
+from api.views.funds import ListAmc, get_schemes, get_fund_categories, get_fund_subcategories, get_funds,get_funds_amc,get_funds_schemes,get_funds_schemes_type
 from api.views.dashboard import (nav_check, nav_run_script, get_process_logs, index_check, index_run_script,nav_last_update,schem_list,
 schem_update_list,nav_ten,get_amcs)
 from rest_framework.routers import DefaultRouter
@@ -19,7 +19,10 @@ urlpatterns = [
     url(r'^funds/category', get_fund_categories),
     url(r'^funds/subcategory/(?P<type>[\w|\W]+)/$', get_fund_subcategories),
 
-    url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds)
+    url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds),
+    url(r'^get_funds_scheme/amc/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_amc),
+    url(r'^get_funds_schemes_type/(?P<amc>\d+)/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_schemes),
+    url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$', get_funds_schemes_type)
 ]
 
 

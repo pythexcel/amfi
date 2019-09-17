@@ -14,6 +14,8 @@ import sys
 from todo.logs import get_logs
 from todo.models import AMC,Nav,Scheme,NavSerializer
 from todo.serializers import AMCSerializer, SchemeSerializer
+from django.core import serializers
+from django.http import JsonResponse
 
 
 @api_view()
@@ -25,7 +27,48 @@ def get_amcs(request):
     """
     ret = AMC.objects.all()
     ser = AMCSerializer(ret, many=True)
-    return Response(ser.data)
+    schemes_id = []
+    for data in ser.data:
+        if data not in schemes_id:
+            schemes_id.append(data)
+        else:
+            pass
+    schemes = Scheme.objects.raw("SELECT a.id as amc_id, a.*, s.* FROM todo_amc as a left JOIN todo_scheme as s on a.id = s.amc_id")        
+    amc = Scheme.objects.raw("SELECT id  FROM todo_amc  group by id order by id")
+    amc_data = []
+    result = []
+    for schem in amc: 
+        amc_data.append({
+            "id" : getattr(schem,"id")
+        })
+    for item in amc_data:
+        am_data = {
+            'amc_id' : item['id']
+        }
+        schemes_data = []
+        for sch in schemes:
+            amc_id = getattr(sch,"amc_id")
+            if (amc_id == item['id']):
+                schemes_data.append({
+                    "id":getattr(sch,"id"),
+                    "scheme_category":getattr(sch,"scheme_category"),
+                    "scheme_type":getattr(sch,"scheme_type"),
+                    "scheme_sub_type":getattr(sch,"scheme_sub_type"),
+                    "fund_code":getattr(sch,"fund_code"),
+                    "fund_name":getattr(sch,"fund_name"),
+                    "fund_option":getattr(sch,"fund_option"),
+                    "fund_type":getattr(sch,"fund_type"),
+                    "fund_active":getattr(sch,"fund_active"),
+                    "line":getattr(sch,"line")
+                })
+                am_data['name'] = getattr(sch,"name")
+                am_data['amc_no'] = getattr(sch,'amc_no')
+                am_data['parsed'] = getattr(sch,'parsed')
+                am_data['next_amc_no'] = getattr(sch,'next_amc_no')
+                am_data['logo'] = getattr(sch,'logo')
+        am_data["schemes"] = schemes_data
+        result.append(am_data)
+    return Response (result)
 
 
 @api_view()
@@ -93,7 +136,7 @@ def schem_update_list(request):
 def nav_ten(request):
     """
     
-    Returns a list of all **NAV/SCHEMES** in the system which are updated for 10+ days.
+    Returns a list of all **NAV/SCHEMES** in the system which are not updated for 10+ days.
     
     """
     details = nav_check_data(nav_type="un_updated")
