@@ -49,6 +49,7 @@ class AMC(models.Model):
     amc_no = models.IntegerField(null=False, unique=True)
     parsed = models.BooleanField(null=False, default=False)
     next_amc_no = models.IntegerField(null=False, default=0)
+    logo = models.CharField(max_length=255, null=True)
 
     objects = AMCManager()
 
