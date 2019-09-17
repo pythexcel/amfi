@@ -7,11 +7,25 @@ from rest_framework import generics
 from todo.jobs.health_check import nav_check as nav_check_data, index_check as index_check_data
 from todo.jobs import schedule_daily_nav_download, process_nse_historial, process_bse_historial
 
-import datetime
+from datetime import datetime,timedelta
 
 import sys
 
 from todo.logs import get_logs
+from todo.models import AMC,Nav,Scheme,NavSerializer
+from todo.serializers import AMCSerializer, SchemeSerializer
+
+
+@api_view()
+def get_amcs(request):
+    """
+    
+    Returns a list of all **Amc** in the system.
+    
+    """
+    ret = AMC.objects.all()
+    ser = AMCSerializer(ret, many=True)
+    return Response(ser.data)
 
 
 @api_view()
@@ -41,3 +55,50 @@ def index_run_script(request):
     process_nse_historial.modify(next_run_time=datetime.datetime.now())
     process_bse_historial.modify(next_run_time=datetime.datetime.now())
     return Response([])
+
+
+@api_view()
+def schem_list(request):
+    """
+    
+    Returns a list of all **Schemes** in the system.
+    
+    """
+    schem = Scheme.objects.all()
+    serial = SchemeSerializer(schem,many=True)
+    return Response(serial.data)     
+
+
+@api_view()
+def nav_last_update(request):
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system with a last updated date.
+    
+    """
+    nav = nav_check_data(nav_type="latest_date") 
+    return Response(nav)
+
+@api_view()
+def schem_update_list(request):
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system which are updated a day ago.
+    
+    """
+    details = nav_check_data(nav_type="updated")
+    return Response(details)
+
+@api_view()
+def nav_ten(request):
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system which are updated for 10+ days.
+    
+    """
+    details = nav_check_data(nav_type="un_updated")
+    return Response(details)
+
+    
+
+    
