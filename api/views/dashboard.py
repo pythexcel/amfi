@@ -18,6 +18,11 @@ from todo.serializers import AMCSerializer, SchemeSerializer
 
 @api_view()
 def get_amcs(request):
+    """
+    
+    Returns a list of all **Amc** in the system.
+    
+    """
     ret = AMC.objects.all()
     ser = AMCSerializer(ret, many=True)
     return Response(ser.data)
@@ -54,55 +59,46 @@ def index_run_script(request):
 
 @api_view()
 def schem_list(request):
+    """
+    
+    Returns a list of all **Schemes** in the system.
+    
+    """
     schem = Scheme.objects.all()
     serial = SchemeSerializer(schem,many=True)
     return Response(serial.data)     
 
 
-@api_view(['POST'])
-def nav_last_update(request,scheme_id=None):
-    nav = Nav.objects.filter(scheme=scheme_id)
-    serializer = NavSerializer(nav,many=True) 
-    return Response(serializer.data)
+@api_view()
+def nav_last_update(request):
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system with a last updated date.
+    
+    """
+    nav = nav_check_data(nav_type="latest_date") 
+    return Response(nav)
 
 @api_view()
 def schem_update_list(request):
-    date = datetime.now() - timedelta(1)
-    nav = Nav.objects.filter(date__gte=date)
-    serializer = NavSerializer(nav,many=True) 
-    unique_nav = []
-    for data in serializer.data:
-        if data['scheme'] not in unique_nav:
-            unique_nav.append(data['scheme'])
-        else:
-            pass
-    updated_schemes = []    
-    for element in unique_nav:
-        schem = Scheme.objects.get(id=element)
-        ser = SchemeSerializer(schem,many=False)
-        updated_schemes.append(ser.data['fund_name'])
-    ret = ",".join(updated_schemes) 
-    return Response(ret + " These are updated")   
-    return Response(serializer.data)  
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system which are updated a day ago.
+    
+    """
+    details = nav_check_data(nav_type="updated")
+    return Response(details)
 
 @api_view()
 def nav_ten(request):
-    date = datetime.now() - timedelta(10)
-    nav = Nav.objects.filter(date__lte=date)
-    serializer = NavSerializer(nav,many=True)
-    unique_nav = []
-    for data in serializer.data:
-        if data['scheme'] not in unique_nav:
-            unique_nav.append(data['scheme'])
-        else:
-            pass
-    un_updated_schemes = []    
-    for element in unique_nav:
-        schem = Scheme.objects.get(id=element)
-        ser = SchemeSerializer(schem,many=False)
-        un_updated_schemes.append(ser.data['fund_name'])
-    ret = ",".join(un_updated_schemes) 
-    return Response(ret + " These are not updated from last ten days")   
+    """
+    
+    Returns a list of all **NAV/SCHEMES** in the system which are updated for 10+ days.
+    
+    """
+    details = nav_check_data(nav_type="un_updated")
+    return Response(details)
 
+    
 
     
