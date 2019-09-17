@@ -93,11 +93,14 @@ class SchemeManager(models.Manager):
         if amc is not None:
             if type is not None:
                 filter = Q(scheme_type=type) & Q(amc=amc)
+                print(filter)
             else:
                 filter = Q(amc=amc)
 
         if sub_type is not None:
             filter &= Q(scheme_sub_type=sub_type)
+
+        print(self.filter(filter))
 
         return self.filter(filter)
 

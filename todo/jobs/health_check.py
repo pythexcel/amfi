@@ -125,21 +125,4 @@ def nav_check(nav_type=None):
                 "latest_nav_date": latest_date,
                 "count_navs_date": count
             }
-        else:
-            if nav_type == "latest_date":
-                objects = Nav.objects.raw("SELECT max(todo_nav.date) as `max_date`, todo_nav.scheme_id, todo_scheme.* from todo_nav join todo_scheme on todo_scheme.id = todo_nav.scheme_id where todo_scheme.fund_active = True and todo_scheme.scheme_category =\"Open Ended Schemes\" GROUP by scheme_id ORDER BY `max_date` ASC")
-                funds = []
-                for nav in objects:
-                    funds.append({
-                        "fund_name": getattr(nav, "fund_name"),
-                        "last_update_date": getattr(nav, "max_date"),
-                        "scheme_id": getattr(nav, "scheme_id"),
-                        "scheme_category": getattr(nav, "scheme_category"),
-                        "scheme_type": getattr(nav, "scheme_type"),
-                        "fund_code": getattr(nav, "fund_code"),
-                        "fund_option": getattr(nav, "fund_option"),
-                        "fund_type": getattr(nav, "fund_type"),
-                    })
-            return {
-                "funds":funds
-            }    
+        
