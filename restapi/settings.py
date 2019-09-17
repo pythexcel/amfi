@@ -35,7 +35,7 @@ REST_FRAMEWORK = {
 SECRET_KEY = 'c1jri=!nqaglwm1-fn89g=%fewu&=6wvbki$ypg3fib3u0l8sy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['176.9.137.77','127.0.0.1', 'localhost']
 
