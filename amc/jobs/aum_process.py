@@ -130,7 +130,9 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 amc=amc,
                 name=scheme_name,
                 category=scheme_category,
-                subcategory=scheme_sub_category
+                subcategory=scheme_sub_category,
+                inception=inception,
+                aum=aum
             )
             info.save()
 
