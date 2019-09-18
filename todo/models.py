@@ -59,7 +59,7 @@ class SchemeManager(models.Manager):
         return super().get_queryset().filter(scheme_category='Open Ended Schemes', fund_active=True)
 
     """
-    getting expect category types are 
+    getting expect category types are
     [
         "Equity Scheme",
         "Debt Scheme",
@@ -102,6 +102,111 @@ class SchemeManager(models.Manager):
 
     def get_actual_scheme_names_for_amc(self, amc):
         pass
+
+
+# scheme_types_equity = [
+#     "Contra Fund",   # NIFTY 100 TRI
+#     "Dividend Yield Fund",  # NIFTY 100 TRI
+#     "Large Cap Fund",  # NIFTY 100 TRI
+#     "ELSS",
+#     "Focussed Fund",
+#     "Large & Mid Cap Fund",
+#     "Multi-Cap Fund",
+#     "Mid Cap Fund",
+#     "Sectoral/ Thematic",
+#     "Value Fund",
+#     "Mid Cap Fund",
+#     "Small Cap Fund",
+#     "Arbitrage Fund",
+#     "Aggressive Hybrid Fund",
+#     "Conservative Hybrid Fund",
+#     "Dynamic Asset Allocation Fund",
+#     "Index Fund",
+#     "Fund of Funds",  # like us funds etc
+#     "Retirement Funds",  # solution oriented funds
+#     "Children Fund"  # solution oriented funds
+# ]
+
+# scheme_types_debt = [
+#     "Banking and PSU Fund",
+#     "Corporate Bond Fund",
+#     "Credit Risk Fund",
+#     "Dynamic Bond Fund",
+#     "Floater Fund",
+#     "Fund of Funds - Debt",
+#     "Gilt Fund",
+#     "Liquid Fund",
+#     "Medium Duration Fund",
+#     "Medium to Long Duration Fund",
+#     "Money Market Fund",
+#     "Overnight Fund",
+#     "Short Duration Fund",
+#     "Ultra Short Duration Fund"
+# ]
+
+debt_fund = [
+    {"Text": "Overnight Fund", "Value": "25"},
+    {"Text": "Liquid Fund", "Value": "26"},
+    {"Text": "Ultra Short Duration Fund", "Value": "27"},
+    {"Text": "Low Duration Fund", "Value": "28"},
+    {"Text": "Money Market Fund", "Value": "29"},
+    {"Text": "Short Duration Fund", "Value": "30"},
+    {"Text": "Medium Duration Fund", "Value": "31"},
+    {"Text": "Medium to Long Duration Fund", "Value": "32"},
+    {"Text": "Long Duration Fund", "Value": "33"},
+    {"Text": "Dynamic Bond", "Value": "34"},
+    {"Text": "Corporate Bond Fund", "Value": "35"},
+    {"Text": "Credit Risk Fund", "Value": "36"},
+    {"Text": "Banking and PSU Fund", "Value": "37"},
+    {"Text": "Gilt Fund", "Value": "38"},
+    {"Text": "Gilt Fund with 10 year constant duration", "Value": "39"},
+    {"Text": "Floater Fund", "Value": "40"}
+]
+
+
+solution_fund = [
+    {"Text": "Retirement Fund", "Value": "48"},
+    {"Text": "Children’s Fund", "Value": "49"}
+]
+
+equity_fund = [
+    {"Text": "Multi Cap Fund", "Value": "14"},
+    {"Text": "Large Cap Fund", "Value": "15"},
+    {"Text": "Large & Mid Cap Fund", "Value": "16"},
+    {"Text": "Mid Cap Fund", "Value": "17"},
+    {"Text": "Small Cap Fund", "Value": "18"},
+    {"Text": "Dividend Yield Fund", "Value": "19"},
+    {"Text": "Value Fund", "Value": "20"},
+    {"Text": "Contra Fund", "Value": "21"},
+    {"Text": "Focussed Fund", "Value": "22"},
+    {"Text": "Sectoral/ Thematic", "Value": "23"},
+    {"Text": "ELSS", "Value": "24"}]
+
+hybrid_fund = [
+    {"Text": "Conservative Hybrid Fund", "Value": "41"},
+    {"Text": "Balanced Hybrid Fund", "Value": "42"},
+    {"Text": "Aggressive Hybrid Fund", "Value": "43"},
+    {"Text": "Dynamic Asset Allocation or Balanced Advantage", "Value": "44"},
+    {"Text": "Multi Asset Allocation", "Value": "45"},
+    {"Text": "Arbitrage Fund", "Value": "46"},
+    {"Text": "Equity Savings", "Value": "47"}
+]
+
+other_fund = [
+    {"Text": "Index Funds", "Value": "50"},
+    {"Text": "Gold ETF", "Value": "51"},
+    {"Text": "Other  ETFs", "Value": "52"},
+    {"Text": "FoF Overseas", "Value": "53"},
+    {"Text": "FoF Domestic", "Value": "54"}
+]
+
+fund_categorization = {
+    "Debt Scheme" : debt_fund,
+    "Equity Scheme" : equity_fund,
+    "Hybrid Scheme": hybrid_fund,
+    "Other Scheme" : other_fund,
+    "Solution Oriented Scheme": solution_fund
+}
 
 
 class Scheme(models.Model):
@@ -311,6 +416,10 @@ class Scheme(models.Model):
 
     class Meta:
         unique_together = ("amc", "fund_code")
+
+    @staticmethod
+    def get_fund_categorization():
+        return fund_categorization
 
 
 class Nav(models.Model):
