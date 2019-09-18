@@ -34,5 +34,4 @@ print("working directory" , dirspot)
 
 if "/home/node" in dirspot:
     print("we are on server so starting schedulers ")
-
-scheduler.start()
+    scheduler.start()

@@ -12,6 +12,10 @@ def health_check():
     return {
         # "duplicate_schemes": scheme_health_check(),
         # "aaum_data_check": aum_health_check()
+
+        # also every scheme should have an category, sub category assign. cannot be empty. 
+        # add a check for that
+        
     }
 
 

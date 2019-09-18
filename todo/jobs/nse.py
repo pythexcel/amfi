@@ -34,6 +34,8 @@ nifty_indexes = [
     "NIFTY 50",
     "NIFTY SMLCAP 100",
     "NIFTY MIDCAP 100"
+    "NIFTY 100"
+    "NIFTY LARGEMIDCAP 250"
 ]
 
 
