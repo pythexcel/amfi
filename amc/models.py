@@ -6,6 +6,8 @@ class Scheme_Name_Mismatch(models.Model):
     category = models.TextField()
     subcategory = models.TextField()
     name = models.TextField()
+    inception = models.TextField()
+    aum = models.TextField()
 
 
 # class Scheme_AUM_Process(models.Model):
