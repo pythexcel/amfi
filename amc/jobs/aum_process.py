@@ -37,7 +37,7 @@ def start_process():
         for row in cats[key]:
             print(row['Text'], "xxx", row['Value'])
             today = datetime.date.today() - datetime.timedelta(days=7)
-            download_data(row["Value"], today, key, row["Value"])
+            download_data(row["Value"], today, key, row["Text"])
 
             # break
 
