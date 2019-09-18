@@ -70,6 +70,11 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
             inception_date = col[4].string
             aum_direct = col[8].string
 
+            if inception_date == "NA":
+                 # this means plan doesn't existing for Direct investores
+                 # maybe use this info later
+                 continue
+
             fund_data.append([amc_name, scheme_name, benchmark,
                               inception_date, aum_direct, date])
 
