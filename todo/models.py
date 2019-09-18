@@ -201,12 +201,21 @@ other_fund = [
 ]
 
 fund_categorization = {
-    "Debt Scheme" : debt_fund,
-    "Equity Scheme" : equity_fund,
+    "Debt Scheme": debt_fund,
+    "Equity Scheme": equity_fund,
     "Hybrid Scheme": hybrid_fund,
-    "Other Scheme" : other_fund,
+    "Other Scheme": other_fund,
     "Solution Oriented Scheme": solution_fund
 }
+
+
+class Schmeme_Info(models.Model):
+    scheme = models.ForeignKey(
+        "Scheme",
+        on_delete=models.CASCADE
+    )
+    benchmark  = models.CharField(max_length=255, null=False)
+    inception = models.DateField(null=False)
 
 
 class Scheme(models.Model):

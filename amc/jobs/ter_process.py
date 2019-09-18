@@ -22,7 +22,7 @@ from amc.jobs.util import ter_path
 
 from fuzzywuzzy import fuzz, process
 
-from amc.models import Scheme_TER_Process, Scheme_TER_Process_Log, Scheme_TER
+from amc.models import Scheme_TER
 from subprocess import call
 
 

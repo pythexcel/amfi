@@ -1,42 +1,50 @@
 from django.db import models
 
-class Scheme_AUM_Process(models.Model):
+
+class Scheme_Name_Mismatch(models.Model):
     amc = models.TextField()
-    file_name = models.TextField()
-    date = models.DateTimeField(auto_now_add=True, blank=True)
-
-    def updateFile(self, file):
-        Scheme_AUM_Process.objects.filter(pk=self.id).update(
-            file_name=file)
-
-    def addCritical(self, log):
-        log = Scheme_AUM_Process_Log(
-            process=self,
-            log=log,
-            level="CRITIAL"
-        )
-        log.save()
-
-    def addLog(self, log):
-        log = Scheme_AUM_Process_Log(
-            process=self,
-            log=log,
-            level="LOG"
-        )
-        log.save()
-
-    def setAMC(self, amc):
-        Scheme_AUM_Process.objects.filter(pk=self.id).update(
-            amc=amc)
+    category = models.TextField()
+    subcategory = models.TextField()
+    name = models.TextField()
 
 
-class Scheme_AUM_Process_Log(models.Model):
-    process = models.ForeignKey(
-        'Scheme_AUM_Process',
-        on_delete=models.CASCADE
-    )
-    log = models.TextField()
-    level = models.CharField(max_length=255)
+# class Scheme_AUM_Process(models.Model):
+#     amc = models.TextField()
+#     file_name = models.TextField()
+#     date = models.DateTimeField(auto_now_add=True, blank=True)
+
+#     def updateFile(self, file):
+#         Scheme_AUM_Process.objects.filter(pk=self.id).update(
+#             file_name=file)
+
+#     def addCritical(self, log):
+#         log = Scheme_AUM_Process_Log(
+#             process=self,
+#             log=log,
+#             level="CRITIAL"
+#         )
+#         log.save()
+
+#     def addLog(self, log):
+#         log = Scheme_AUM_Process_Log(
+#             process=self,
+#             log=log,
+#             level="LOG"
+#         )
+#         log.save()
+
+#     def setAMC(self, amc):
+#         Scheme_AUM_Process.objects.filter(pk=self.id).update(
+#             amc=amc)
+
+
+# class Scheme_AUM_Process_Log(models.Model):
+#     process = models.ForeignKey(
+#         'Scheme_AUM_Process',
+#         on_delete=models.CASCADE
+#     )
+#     log = models.TextField()
+#     level = models.CharField(max_length=255)
 
 
 class Scheme_AUM(models.Model):
@@ -47,43 +55,43 @@ class Scheme_AUM(models.Model):
     date = models.DateField()
     aum = models.FloatField()
 
-class Scheme_TER_Process(models.Model):
-    amc = models.TextField()
-    file_name = models.TextField()
-    date = models.DateTimeField(auto_now_add=True, blank=True)
+# class Scheme_TER_Process(models.Model):
+#     amc = models.TextField()
+#     file_name = models.TextField()
+#     date = models.DateTimeField(auto_now_add=True, blank=True)
 
-    def updateFile(self, file):
-        Scheme_TER_Process.objects.filter(pk=self.id).update(
-            file_name=file)
+#     def updateFile(self, file):
+#         Scheme_TER_Process.objects.filter(pk=self.id).update(
+#             file_name=file)
 
-    def addCritical(self, log):
-        log = Scheme_TER_Process_Log(
-            process=self,
-            log=log,
-            level="CRITIAL"
-        )
-        log.save()
+#     def addCritical(self, log):
+#         log = Scheme_TER_Process_Log(
+#             process=self,
+#             log=log,
+#             level="CRITIAL"
+#         )
+#         log.save()
 
-    def addLog(self, log):
-        log = Scheme_TER_Process_Log(
-            process=self,
-            log=log,
-            level="LOG"
-        )
-        log.save()
+#     def addLog(self, log):
+#         log = Scheme_TER_Process_Log(
+#             process=self,
+#             log=log,
+#             level="LOG"
+#         )
+#         log.save()
 
-    def setAMC(self, amc):
-        Scheme_TER_Process.objects.filter(pk=self.id).update(
-            amc=amc)
+#     def setAMC(self, amc):
+#         Scheme_TER_Process.objects.filter(pk=self.id).update(
+#             amc=amc)
 
 
-class Scheme_TER_Process_Log(models.Model):
-    process = models.ForeignKey(
-        'Scheme_TER_Process',
-        on_delete=models.CASCADE
-    )
-    log = models.TextField()
-    level = models.CharField(max_length=255)
+# class Scheme_TER_Process_Log(models.Model):
+#     process = models.ForeignKey(
+#         'Scheme_TER_Process',
+#         on_delete=models.CASCADE
+#     )
+#     log = models.TextField()
+#     level = models.CharField(max_length=255)
 
 
 class Scheme_TER(models.Model):
@@ -103,7 +111,6 @@ class Scheme_Portfolio_Data(models.Model):
     url = models.TextField()
     date = models.DateField()
     parsed = models.BooleanField(default=False, null=False)
-
 
     class Meta:
         unique_together = ("scheme", "date")

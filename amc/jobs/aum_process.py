@@ -15,17 +15,19 @@ from bs4 import BeautifulSoup
 
 import re
 
+from colorama import Fore, Back, Style, init
 
-from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data
 
-from todo.models import Scheme, AMC
+from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data, Scheme_Name_Mismatch
+
+from todo.models import Scheme, AMC, Schmeme_Info
 from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, find_date_from_filename, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import aum_path
 
 from fuzzywuzzy import fuzz, process
 
-from amc.models import Scheme_AUM_Process, Scheme_AUM_Process_Log, Scheme_AUM
+from amc.models import Scheme_AUM
 
 
 def start_process():
@@ -35,12 +37,12 @@ def start_process():
         for row in cats[key]:
             print(row['Text'], "xxx", row['Value'])
             today = datetime.date.today() - datetime.timedelta(days=7)
-            download_data(row["Value"], today)
-            
-            break
+            download_data(row["Value"], today, key, row["Value"])
+
+            # break
 
 
-def download_data(cat_desc, date):
+def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     print(date.strftime("%d-%b-%Y"))
     response = requests.post("https://www.amfiindia.com/modules/LoadMFPerformaceData", data={
@@ -68,12 +70,64 @@ def download_data(cat_desc, date):
             inception_date = col[4].string
             aum_direct = col[8].string
 
+            fund_data.append([amc_name, scheme_name, benchmark,
+                              inception_date, aum_direct, date])
 
-            fund_data.append([amc_name, scheme_name, benchmark, inception_date, aum_direct ,date])
+    df = pd.DataFrame(fund_data, columns=[
+                      'AMC', 'Scheme', "Benchmark", "Inception", "AUM", "Date"])
 
-    df = pd.DataFrame(fund_data, columns=['AMC', 'Scheme', "Benchmark", "Inception", "AUM", "Date"])
     print(df)
 
+    for row in df.itertuples():
+        scheme_name = row.Scheme
+        date = row.Date
+        aum = row.AUM
+        amc = row.AMC
+        benchmark = row.Benchmark
+        inception = row.Inception
+
+        scheme = Scheme.objects.filter(fund_name=scheme_name).first()
+        if scheme:
+
+            Scheme.objects.filter(pk=scheme.id).update(
+                scheme_type=scheme_category, scheme_sub_type=scheme_sub_category)
+
+            print("scheme found ", scheme_name)
+            ters = Scheme_AUM.objects.filter(
+                scheme=scheme,
+                date__year=date.year, date__month=date.month)
+            ters.delete()
+
+            tr_db = Scheme_AUM(
+                scheme=scheme,
+                date=date,
+                aum=aum
+            )
+            tr_db.save()
+
+            info = Schmeme_Info.objects.filter(scheme=scheme)
+            info.delete()
+
+            info = Schmeme_Info(
+                scheme=scheme,
+                benchmark=benchmark,
+                inception=datetime.datetime.strptime(inception, "%d-%b-%Y")
+            )
+            info.save()
+
+        else:
+            print(Fore.RED + "scheme not found with name ", scheme_name)
+
+            info = Scheme_Name_Mismatch.objects.filter(name=scheme_name)
+            info.delete()
+
+            info = Scheme_Name_Mismatch(
+                amc=amc,
+                name=scheme_name,
+                category=scheme_category,
+                subcategory=scheme_sub_category
+            )
+            info.save()
 
 
 """
@@ -175,13 +229,13 @@ https://www.invescomutualfund.com/about-us?tab=Assets&active=MonthlyDisclosure
 
 #     """
 #     this we need to report for dashboard processing
-#     1. able to process a file and see view i.e logs 
+#     1. able to process a file and see view i.e logs
 
-#     2. i need to be able to see which matches for scheme are done direct/fuzzy and with which scheme. 
-#     because if any issue need to correct it 
+#     2. i need to be able to see which matches for scheme are done direct/fuzzy and with which scheme.
+#     because if any issue need to correct it
 #     3. able to manually map scheme name to a word in excel file because sometimes manually is not possible at all
-#     4. able to view the dataframe processed not the entire file 
-#     5. 
+#     4. able to view the dataframe processed not the entire file
+#     5.
 #     """
 
 #     aum_process = Scheme_AUM_Process(file_name=filename)
