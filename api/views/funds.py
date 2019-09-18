@@ -131,4 +131,6 @@ def fix_name_mismatch(request, mismatch_id, scheme_id):
         fund_name=name,
         scheme_type=scheme_category, scheme_sub_type=scheme_sub_category)
 
+    mismatchObj.delete()
+
     return Response("")
