@@ -253,6 +253,7 @@ class Scheme(models.Model):
     @staticmethod
     def find_fund_with_name(match_string):
         match_string = todo.util.clean_fund_string(match_string)
+        print(match_string,"  mmmmmmmmmmmmmmmm")
         return Scheme.objects.filter(clean_name=match_string).first()
 
 
