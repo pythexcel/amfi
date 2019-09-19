@@ -39,7 +39,7 @@ def serialize_doc(doc):
     if doc["log_id"]:
         doc["log_id"] = str(doc["log_id"])
 
-    doc["time"] = doc["time"]["$date"]
+    doc["time"] = doc["time"].strftime("%d-%b-%Y")
     
     return doc
 
