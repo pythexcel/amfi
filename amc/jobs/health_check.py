@@ -14,8 +14,6 @@ def update_scheme_clean_name():
 
 def health_check():
 
-    # update_scheme_clean_name()
-    # return
 
     # general health check for all cron jobs running and reporting
     ter_health_check()
