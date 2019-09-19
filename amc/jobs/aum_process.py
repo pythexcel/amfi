@@ -58,6 +58,8 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     fund_data = []
 
+    Scheme_Name_Mismatch.objects.all().delete()
+
     for row in data.findAll('tr'):
         col = row.findAll('td')
         if len(col) > 8:
@@ -86,7 +88,7 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     print(df)
 
-    Scheme_Name_Mismatch.objects.all().delete()
+    
 
     for row in df.itertuples():
         scheme_name = row.Scheme
