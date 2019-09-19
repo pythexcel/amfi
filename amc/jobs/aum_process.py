@@ -20,7 +20,7 @@ from colorama import Fore, Back, Style, init
 
 from amc.models import AMC_Portfolio_Process, Scheme_Portfolio, Scheme_Portfolio_Data, Scheme_Name_Mismatch
 
-from todo.models import Scheme, AMC, Schmeme_Info
+from todo.models import Scheme, AMC, Scheme_Info
 from amc.jobs.util import generic_process_zip_file, ExcelFile, read_excel, find_date_from_filename, match_fund_name_from_sheet, find_date_from_sheet, find_row_with_isin_heading, get_amc_common_names
 
 from amc.jobs.util import aum_path
@@ -110,10 +110,10 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
             )
             tr_db.save()
 
-            info = Schmeme_Info.objects.filter(scheme=scheme)
+            info = Scheme_Info.objects.filter(scheme=scheme)
             info.delete()
 
-            info = Schmeme_Info(
+            info = Scheme_Info(
                 scheme=scheme,
                 benchmark=benchmark,
                 inception=datetime.datetime.strptime(inception, "%d-%b-%Y")

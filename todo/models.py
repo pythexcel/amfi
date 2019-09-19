@@ -213,7 +213,7 @@ fund_categorization = {
 }
 
 
-class Schmeme_Info(models.Model):
+class Scheme_Info(models.Model):
     scheme = models.ForeignKey(
         "Scheme",
         on_delete=models.CASCADE
