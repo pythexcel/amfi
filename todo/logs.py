@@ -38,6 +38,9 @@ def serialize_doc(doc):
     doc["_id"] = str(doc["_id"])
     if doc["log_id"]:
         doc["log_id"] = str(doc["log_id"])
+
+    doc["time"] = doc["time"]["$date"]
+    
     return doc
 
 
