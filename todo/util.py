@@ -23,13 +23,15 @@ def clean_fund_string(name):
     # add space because some fund name has plan in there name itself
     name = name.replace(" Plan ", "")
 
-    # remove plan if its last word of scheme
-    if name.split()[-1] == "Plan":
-        # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
-        name = ' '.join(name.split(' ')[:-1])
+    
 
     name = name.strip()
     name = name.lower()
+
+    # remove plan if its last word of scheme
+    if name.split()[-1] == "plan":
+        # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
+        name = ' '.join(name.split(' ')[:-1])
     return name
 
 
