@@ -427,6 +427,9 @@ def do_process_data(url, amc_no, log_id=False):
                 else:
                     fund_type = "Regular"
 
+                if "unclaimed" in line.lower():
+                    continue
+                
                 if "growth" in line.lower():
                     fund_option = "Growth"
                     if "bonus" in line.lower():
@@ -478,6 +481,8 @@ def do_process_data(url, amc_no, log_id=False):
 
                     if scheme is None:
                         continue
+
+
 
                     # continue  # temp code
 

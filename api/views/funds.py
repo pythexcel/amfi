@@ -113,7 +113,7 @@ def get_probable_list_for_mismatch(request, amc):
 
     if amc:
         ret = Scheme.objects.raw(
-            "SELECT * FROM `todo_scheme` WHERE amc_id = " + str(amc.id) + " and id not in (SELECT amc_scheme_aum.scheme_id from amc_scheme_aum)")
+            "SELECT * FROM `todo_scheme` WHERE amc_id = " + str(amc.id) + " and id not in (SELECT amc_scheme_aum.scheme_id from todo_scheme_info)")
         ser = SchemeSerializer(ret, many=True)
         return Response(ser.data)
     else:

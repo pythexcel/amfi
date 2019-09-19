@@ -36,12 +36,12 @@ def scheme_health_check():
     return items
 
     """
-    delete FROM `amc_scheme_ter` where scheme_id = 2118;
-    delete from amc_scheme_portfolio_data where scheme_id = 2118;
-    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 2118;
-    delete FROM `stats_schemestats` WHERE `scheme_id` = 2118;
-    delete FROM `todo_nav` where scheme_id = 2118;
-    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 2118;
+    delete FROM `amc_scheme_ter` where scheme_id = 616;
+    delete from amc_scheme_portfolio_data where scheme_id = 616;
+    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 616;
+    delete FROM `stats_schemestats` WHERE `scheme_id` = 616;
+    delete FROM `todo_nav` where scheme_id = 616;
+    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 616;
 
     """
 
