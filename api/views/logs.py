@@ -18,9 +18,10 @@ def get_critical_logs(request):
 
     logs = todo.logs.get_critical_logs()
 
-    logs = [todo.logs.serialize_doc(log) for log in logs]
+    logs = [json.dumps(todo.logs.serialize_doc(
+        log), default=json_util.default) for log in logs]
 
-    return Response(json.dumps(logs, default=json_util.default))
+    return Response(logs)
 
 
 @api_view()
