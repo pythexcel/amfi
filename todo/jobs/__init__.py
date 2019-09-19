@@ -13,6 +13,9 @@ from amc.jobs.ter_process import start_process
 from apscheduler.triggers.combining import OrTrigger
 from apscheduler.triggers.cron import CronTrigger
 
+
+from amc.jobs.aum_process import start_process as aum_daily_process
+
 scheduler = BackgroundScheduler()
 
 
@@ -35,6 +38,10 @@ job = scheduler.add_job(process_bse_daily, 'interval', hours=12)
 
 
 job = scheduler.add_job(process_amc_portfolio_data, "interval", days=1)
+
+
+job = scheduler.add_job(aum_daily_process, "interval", days=1)
+
 
 trigger = OrTrigger([CronTrigger(hour=4, minute=0),
                      CronTrigger(hour=23, minute=0)])
