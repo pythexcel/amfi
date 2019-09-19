@@ -9,6 +9,7 @@ from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schem
 
 from rest_framework.routers import DefaultRouter
 
+import api.views.logs
 
 router = DefaultRouter()
 
@@ -37,8 +38,13 @@ urlpatterns = [
     url(r'^get_probable_list_for_mismatch/(?P<amc>[\w|\W]+)/$',
         get_probable_list_for_mismatch),
     url(r'^fix_name_mismatch/(?P<mismatch_id>\d+)/(?P<scheme_id>\d+)/$', fix_name_mismatch),
-    url(r'^recalculate_mismatch/', recalculate_mismatch)
+    url(r'^recalculate_mismatch/', recalculate_mismatch),
 
+
+    # api for error logs
+
+    url(r'^get_critical_logs/', api.views.logs.get_critical_logs),
+    url(r'^delete_log/(?P<log_id>[\w|\W]+)/$', api.views.logs.delete_log),
 
 
     # need to add code for full new amc itself.
