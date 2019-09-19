@@ -34,17 +34,18 @@ def process_aum_history():
     cats = Scheme.get_fund_categorization()
     Scheme_Name_Mismatch.objects.all().delete()
 
-    for key in cats:
-        for row in cats[key]:
-            for month in range(0, 24):
+    for month in range(0, 24):    
+        today = datetime.date.today() - datetime.timedelta(month=month)
+        print(today)
+        for key in cats:
+            for row in cats[key]:
                 print(row['Text'], "xxx", row['Value'])
-                today = datetime.date.today() - datetime.timedelta(month=month)
                 download_data(row["Value"], today, key, row["Text"])
 
 
 def start_process():
 
-    # fund = Scheme.find_fund_with_name("IDFC BOND FUND - MEDIUM TERM PLAN")
+    # fund = Scheme.find_fund_with_name("Tata India Pharma & Healthcare Fund")
     # print(fund)
     # return
     cats = Scheme.get_fund_categorization()

@@ -17,6 +17,7 @@ from amc.serializer import Scheme_Name_Mismatch_Serializer
 
 from todo.serializers import AMCSerializer, SchemeSerializer
 
+from amc.jobs.aum_process import start_process
 
 @api_view()
 def get_amcs(request):
@@ -134,3 +135,8 @@ def fix_name_mismatch(request, mismatch_id, scheme_id):
     mismatchObj.delete()
 
     return Response("")
+
+@api_view()
+def recalculate_mismatch():
+    start_process()
+    return Response()

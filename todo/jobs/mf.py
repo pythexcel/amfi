@@ -218,8 +218,8 @@ def fetch_or_save_scheme(fund_code, amc, scheme_category, scheme_type, scheme_su
         scheme = Scheme.objects.get(
             fund_code=fund_code)
 
-        if len(getattr(scheme, "line").strip()) == 0:
-            Scheme.objects.filter(pk=scheme.id).update(line=line)
+        # if len(getattr(scheme, "line").strip()) == 0:
+        Scheme.objects.filter(pk=scheme.id).update(line=line)
 
         if getattr(scheme, "fund_name") != fund_name:
             # this can be removed after sometime
@@ -429,7 +429,7 @@ def do_process_data(url, amc_no, log_id=False):
 
                 if "unclaimed" in line.lower():
                     continue
-                
+
                 if "growth" in line.lower():
                     fund_option = "Growth"
                     if "bonus" in line.lower():
