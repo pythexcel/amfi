@@ -32,6 +32,7 @@ from amc.models import Scheme_AUM
 
 def start_process():
     cats = Scheme.get_fund_categorization()
+    Scheme_Name_Mismatch.objects.all().delete()
 
     for key in cats:
         for row in cats[key]:
@@ -58,8 +59,6 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     fund_data = []
 
-    Scheme_Name_Mismatch.objects.all().delete()
-
     for row in data.findAll('tr'):
         col = row.findAll('td')
         if len(col) > 8:
@@ -76,9 +75,9 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 continue
 
             if inception_date == "NA":
-                 # this means plan doesn't existing for Direct investores
-                 # maybe use this info later
-                 continue
+                # this means plan doesn't existing for Direct investores
+                # maybe use this info later
+                continue
 
             fund_data.append([amc_name, scheme_name, benchmark,
                               inception_date, aum_direct, date])
@@ -87,8 +86,6 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                       'AMC', 'Scheme', "Benchmark", "Inception", "AUM", "Date"])
 
     print(df)
-
-    
 
     for row in df.itertuples():
         scheme_name = row.Scheme
