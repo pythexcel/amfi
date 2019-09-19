@@ -26,6 +26,7 @@ def clean_fund_string(name):
         name = ' '.join(name.split(' ')[:-1])
 
     name = name.strip()
+    name name.lower()
     return name
 
 
