@@ -12,11 +12,12 @@ import re
 def clean_fund_string(name):
     name = re.sub("[\(\[].*?[\)\]]", "", name)
     name = re.sub(' +', ' ', name)
-    name = name.replace("-", " ")
     name = name.replace("and", "&")
     name = name.replace(" Direct", "")
     name = name.replace(" Growth", "")
     name = name.replace(" - ", " ")
+    name = name.replace("-", " ")
+
     # add space because some fund name has plan in there name itself
     name = name.replace(" Plan ", "")
 
