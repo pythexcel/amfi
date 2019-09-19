@@ -35,7 +35,7 @@ def process_aum_history():
     Scheme_Name_Mismatch.objects.all().delete()
 
     for month in range(0, 24):    
-        today = datetime.date.today() - datetime.timedelta(month=month)
+        today = datetime.date.today() - datetime.timedelta(days=month*30)
         print(today)
         for key in cats:
             for row in cats[key]:
