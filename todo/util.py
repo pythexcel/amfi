@@ -1,10 +1,31 @@
 from math import ceil, floor
 import pandas as pd
 
+import re
+
 # this function expects a json data from db or any other source.
 # two main fields are required date, nav there can more fields as well
 
 # this will return a date frame with index as date and value is nav
+
+
+def clean_fund_string(name):
+    name = re.sub("[\(\[].*?[\)\]]", "", name)
+    name = re.sub(' +', ' ', name)
+    name = name.replace("and", "&")
+    name = name.replace(" Direct", "")
+    name = name.replace(" Growth", "")
+    name = name.replace(" - ", " ")
+    # add space because some fund name has plan in there name itself
+    name = name.replace(" Plan ", "")
+
+    # remove plan if its last word of scheme
+    if name.split()[-1] == "Plan":
+        # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
+        name = ' '.join(name.split(' ')[:-1])
+
+    name = name.strip()
+    return name
 
 
 def get_priceindex_data(input):
@@ -12,6 +33,7 @@ def get_priceindex_data(input):
     df['Datetime'] = pd.to_datetime(df["date"])
     df = df.set_index("Datetime")
     return df
+
 
 def get_date_index_data(input):
     df = pd.DataFrame(input, columns=["nav", "date"])

@@ -70,6 +70,9 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
             inception_date = col[4].string
             aum_direct = col[8].string
 
+            if "regular" in scheme_name.lower():
+                continue
+
             if inception_date == "NA":
                  # this means plan doesn't existing for Direct investores
                  # maybe use this info later
@@ -83,6 +86,8 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     print(df)
 
+    Scheme_Name_Mismatch.objects.all().delete()
+
     for row in df.itertuples():
         scheme_name = row.Scheme
         date = row.Date
@@ -91,7 +96,7 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
         benchmark = row.Benchmark
         inception = row.Inception
 
-        scheme = Scheme.objects.filter(fund_name=scheme_name).first()
+        scheme = Scheme.find_fund_with_name(scheme_name)
         if scheme:
 
             Scheme.objects.filter(pk=scheme.id).update(

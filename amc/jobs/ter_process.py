@@ -80,7 +80,7 @@ def download_data(cat_desc, month, year):
         date = row.Date
         ter = row.Ter
 
-        scheme = Scheme.objects.filter(fund_name=scheme_name).first()
+        scheme = scheme = Scheme.find_fund_with_name(scheme_name)
         if scheme:
             print("scheme found ", scheme_name)
             ters = Scheme_TER.objects.filter(

@@ -8,6 +8,6 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        print("health_check for data related to nav, indexes ")
+        print("doing health_check")
         amc_health_check()
         # health_check()

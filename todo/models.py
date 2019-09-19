@@ -218,7 +218,7 @@ class Scheme_Info(models.Model):
         "Scheme",
         on_delete=models.CASCADE
     )
-    benchmark  = models.CharField(max_length=255, null=False)
+    benchmark = models.CharField(max_length=255, null=False)
     inception = models.DateField(null=False)
 
 
@@ -243,28 +243,22 @@ class Scheme(models.Model):
     fund_active = models.BooleanField(default=True)
     # saving the orignal line from csv. required for debugging
     line = models.CharField(max_length=255)
+    clean_name = models.CharField(max_length=255)
 
     objects = SchemeManager()
 
     # def get_category_types(self):
     # return ["Equity", "Debt", "Hybrid", "Others", "Solution"]
 
+    @staticmethod
+    def find_fund_with_name(match_string):
+        match_string = todo.util.clean_fund_string(match_string)
+        return Scheme.objects.filter(clean_name=match_string).first()
+
+
     def get_clean_name(self):
         name = getattr(self, "fund_name")
-        name = re.sub("[\(\[].*?[\)\]]", "", name)
-        name = re.sub(' +', ' ', name)
-        name = name.replace(" Direct", "")
-        name = name.replace(" Growth", "")
-        # add space because some fund name has plan in there name itself
-        name = name.replace(" Plan ", "")
-
-        # remove plan if its last word of scheme
-        if name.split()[-1] == "Plan":
-            # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
-            name = ' '.join(name.split(' ')[:-1])
-
-        name = name.strip()
-        return name
+        return todo.util.clean_fund_string(name)
     # clean_name = property(get_clean_name)
 
     def is_closed_ended(self):

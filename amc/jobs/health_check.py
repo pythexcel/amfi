@@ -5,7 +5,17 @@ from django.db.models import Max
 
 from collections import Counter
 
+def update_scheme_clean_name():
+    all = Scheme.objects.all()
+    for scheme in all:
+        clean_name = scheme.get_clean_name()
+        Scheme.objects.filter(pk=scheme.id).update(clean_name=clean_name)
+        print("updating clean name for ", getattr(scheme, "fund_name"), " with " , clean_name)
+
 def health_check():
+
+    # update_scheme_clean_name()
+    # return
 
     # general health check for all cron jobs running and reporting
     ter_health_check()
@@ -36,12 +46,12 @@ def scheme_health_check():
     return items
 
     """
-    delete FROM `amc_scheme_ter` where scheme_id = 616;
-    delete from amc_scheme_portfolio_data where scheme_id = 616;
-    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 616;
-    delete FROM `stats_schemestats` WHERE `scheme_id` = 616;
-    delete FROM `todo_nav` where scheme_id = 616;
-    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 616;
+    delete FROM `amc_scheme_ter` where scheme_id = 741;
+    delete from amc_scheme_portfolio_data where scheme_id = 741;
+    delete FROM `amc_scheme_aum` WHERE `scheme_id` = 741;
+    delete FROM `stats_schemestats` WHERE `scheme_id` = 741;
+    delete FROM `todo_nav` where scheme_id = 741;
+    DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = 741;
 
     """
 
