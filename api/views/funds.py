@@ -105,18 +105,17 @@ def get_funds_schemes_type(request, amc, type):
 
 
 @api_view()
-def get_fund_subcategories(request, type):
+def get_fund_subcategories(request, stype):
     # ret = Scheme.objects.get_sub_category_types(type)
     # return Response(ret)
 
     cats = Scheme.get_fund_categorization()
 
-    types = []
     subtypes = []
     for key in cats:
-        types.append(key)
-        for row in cats[key]:
-            subtypes.append(row["Text"])
+        if key == stype:
+            for row in cats[key]:
+                subtypes.append(row["Text"])
 
     return Response(subtypes)
 
