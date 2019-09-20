@@ -19,6 +19,7 @@ from todo.serializers import AMCSerializer, SchemeSerializer
 
 from amc.jobs.aum_process import start_process
 
+
 @api_view()
 def get_amcs(request):
     ret = AMC.objects.all()
@@ -35,8 +36,18 @@ def get_schemes(request, amc_id):
 
 @api_view()
 def get_fund_categories(request):
-    ret = Scheme.objects.get_category_types()
-    return Response(ret)
+    cats = Scheme.get_fund_categorization()
+
+    types = []
+    subtypes = []
+    for key in cats:
+        types.append(key)
+        for row in cats[key]:
+            subtypes.append(row["Text"])
+    # ret = Scheme.objects.get_category_types()
+    # return Response(ret)
+
+    return Response(types)
 
 
 @api_view()
@@ -45,14 +56,15 @@ def get_funds(request, type, sub_type):
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
 
+
 @api_view()
-def get_funds_amc(request,type,sub_type):
+def get_funds_amc(request, type, sub_type):
     """
-    
+
     Returns the AMC based on schemes type and sub_type.
-    
+
     """
-    ret = Scheme.objects.get_funds(type=type,sub_type=sub_type)
+    ret = Scheme.objects.get_funds(type=type, sub_type=sub_type)
     ser = SchemeSerializer(ret, many=True)
     unique = []
     for data in ser.data:
@@ -60,41 +72,53 @@ def get_funds_amc(request,type,sub_type):
             unique.append(data['amc'])
         else:
             pass
-    response = []    
+    response = []
     for elem in unique:
         resp = AMC.objects.get(id=elem)
-        serial = AMCSerializer(resp,many=False)
+        serial = AMCSerializer(resp, many=False)
         response.append(serial.data)
     return Response(response)
 
+
 @api_view()
-def get_funds_schemes(request,amc,type,sub_type):
+def get_funds_schemes(request, amc, type, sub_type):
     """
-    
+
     Returns the Schemes based on schemes type and sub_type and amc.
-    
+
     """
-    ret = Scheme.objects.get_funds(amc=amc,type=type,sub_type=sub_type)
+    ret = Scheme.objects.get_funds(amc=amc, type=type, sub_type=sub_type)
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
 
 
 @api_view()
-def get_funds_schemes_type(request,amc,type):
+def get_funds_schemes_type(request, amc, type):
     """
-    
+
     Returns the schemes based on schemes amc and type.
-    
+
     """
-    ret = Scheme.objects.get_funds(amc=amc,type=type)
+    ret = Scheme.objects.get_funds(amc=amc, type=type)
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
 
 
 @api_view()
 def get_fund_subcategories(request, type):
-    ret = Scheme.objects.get_sub_category_types(type)
-    return Response(ret)
+    # ret = Scheme.objects.get_sub_category_types(type)
+    # return Response(ret)
+
+    cats = Scheme.get_fund_categorization()
+
+    types = []
+    subtypes = []
+    for key in cats:
+        types.append(key)
+        for row in cats[key]:
+            subtypes.append(row["Text"])
+
+    return Response(subtypes)
 
 
 class ListAmc(generics.ListAPIView):
@@ -136,7 +160,41 @@ def fix_name_mismatch(request, mismatch_id, scheme_id):
 
     return Response("")
 
+
 @api_view()
 def recalculate_mismatch():
     start_process()
     return Response()
+
+
+@api_view()
+def get_funds_without_category_or_sub_category(request):
+
+    cats = Scheme.get_fund_categorization()
+
+    types = []
+    subtypes = []
+    for key in cats:
+        types.append(key)
+        for row in cats[key]:
+            subtypes.append(row["Text"])
+            # print(row['Text'], "xxx", row['Value'])
+
+    ret = Scheme.objects.exclude(
+        Q(scheme_type__in=types) or Q(scheme_sub_type__in=subtypes))
+    ser = SchemeSerializer(ret, many=True)
+    return Response(ser.data)
+
+
+@api_view()
+def assign_fund_to_types(req, id, stype, value):
+    if stype == "scheme_type":
+        Scheme.objects.filter(pk=id).update(scheme_type=stype)
+        return Response()
+    
+    if stype == "scheme_sub_type":
+        Scheme.objects.filter(pk=id).update(scheme_sub_type=stype)
+        return Response()
+    
+    
+    return Response("Invalid type provide, scheme_type or scheme_sub_type nopy", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

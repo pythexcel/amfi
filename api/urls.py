@@ -11,6 +11,8 @@ from rest_framework.routers import DefaultRouter
 
 import api.views.logs
 
+import api.views.funds
+
 router = DefaultRouter()
 
 urlpatterns = [
@@ -41,8 +43,13 @@ urlpatterns = [
     url(r'^recalculate_mismatch/', recalculate_mismatch),
 
 
-    # api for error logs
+    url(r'^get_funds_without_category_or_sub_category', api.views.funds.get_funds_without_category_or_sub_category),
+    url(r'^assign_fund_to_types', api.views.funds.assign_fund_to_types),
 
+
+
+
+    # api for error logs
     url(r'^get_critical_logs/', api.views.logs.get_critical_logs),
     url(r'^delete_log/(?P<log_id>[\w|\W]+)/$', api.views.logs.delete_log),
 
