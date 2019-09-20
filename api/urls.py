@@ -7,7 +7,8 @@ schem_update_list,nav_ten,get_amcs)
 from rest_framework.routers import DefaultRouter
 
 
-router = DefaultRouter()
+# router = DefaultRouter()
+# router.register('ping',ping)
 
 urlpatterns = [
     url(r'^return/rolling/(?P<amfi>\d+)/$',
@@ -61,4 +62,4 @@ indexPageRoutes = [
 
 
 
-urlpatterns = urlpatterns + urlpatterns2 + router.urls
+urlpatterns = urlpatterns + urlpatterns2 
