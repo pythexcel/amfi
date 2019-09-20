@@ -157,7 +157,7 @@ def fix_name_mismatch(request, mismatch_id, scheme_id):
 
     mismatchObj.delete()
 
-    return Response("")
+    return Response()
 
 
 @api_view()
@@ -186,14 +186,6 @@ def get_funds_without_category_or_sub_category(request):
 
 
 @api_view()
-def assign_fund_to_types(req, id, stype, value):
-    if stype == "scheme_type":
-        Scheme.objects.filter(pk=id).update(scheme_type=stype)
-        return Response()
-    
-    if stype == "scheme_sub_type":
-        Scheme.objects.filter(pk=id).update(scheme_sub_type=stype)
-        return Response()
-    
-    
-    return Response("Invalid type provide, scheme_type or scheme_sub_type nopy", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def assign_fund_to_types(req, id, cat, subcat):
+    Scheme.objects.filter(pk=id).update(scheme_type=cat,scheme_sub_type=subcat)
+    return Response()
