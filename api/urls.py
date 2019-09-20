@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^funds/amc', ListAmc.as_view()),
     url(r'^funds/scheme/(?P<amc_id>\d+)/$', get_schemes),
     url(r'^funds/category', get_fund_categories),
-    url(r'^funds/subcategory/(?P<type>[\w|\W]+)/$', get_fund_subcategories),
+    url(r'^funds/subcategory/(?P<stype>[\w|\W]+)/$', get_fund_subcategories),
 
     url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds),
     url(r'^get_funds_scheme/amc/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_amc),
