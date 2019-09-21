@@ -206,5 +206,5 @@ def delete_fund(req, id):
     # Scheme.objects.raw(
     #     "DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = " + id)
 
-    Scheme.objects.filter(pk=id).update(is_active=False)
+    Scheme.objects.filter(pk=id).update(fund_active=False)
     return Response()
