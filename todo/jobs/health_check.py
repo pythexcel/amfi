@@ -112,6 +112,7 @@ def nav_check(nav_type=None):
                 max_date = getattr(nav, "max_date")
                 if max_date < date:
                     problem_funds.append({
+                        "id" : getattr(nav, "scheme_id"),
                         "fund_name": getattr(nav, "fund_name"),
                         "line": getattr(nav, "max_date"),
                         "scheme_id": getattr(nav, "scheme_id"),
