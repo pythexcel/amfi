@@ -44,7 +44,7 @@ urlpatterns = [
 
 
     url(r'^get_funds_without_category_or_sub_category', api.views.funds.get_funds_without_category_or_sub_category),
-    url(r'^assign_fund_to_types', api.views.funds.assign_fund_to_types),
+    url(r'^assign_fund_to_types/(?P<id>[\w|\W]+)/(?P<cat>[\w|\W]+)/(?P<subcat>[\w|\W]+)/$', api.views.funds.assign_fund_to_types),
 
 
 

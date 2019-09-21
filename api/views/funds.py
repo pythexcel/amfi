@@ -187,5 +187,6 @@ def get_funds_without_category_or_sub_category(request):
 
 @api_view()
 def assign_fund_to_types(req, id, cat, subcat):
-    Scheme.objects.filter(pk=id).update(scheme_type=cat,scheme_sub_type=subcat)
+    Scheme.objects.filter(pk=id).update(
+        scheme_type=cat, scheme_sub_type=subcat)
     return Response()
