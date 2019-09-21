@@ -190,3 +190,20 @@ def assign_fund_to_types(req, id, cat, subcat):
     Scheme.objects.filter(pk=id).update(
         scheme_type=cat, scheme_sub_type=subcat)
     return Response()
+
+
+@api_view()
+def delete_fund(req, id):
+
+    Scheme.objects.raw("delete FROM `amc_scheme_ter` where scheme_id = " + id)
+    Scheme.objects.raw(
+        "delete from amc_scheme_portfolio_data where scheme_id " + id)
+    Scheme.objects.raw(
+        "delete FROM `amc_scheme_aum` WHERE `scheme_id` = " + id)
+    Scheme.objects.raw(
+        "delete FROM `stats_schemestats` WHERE `scheme_id` = " + id)
+    Scheme.objects.raw("delete FROM `todo_nav` where scheme_id = " + id)
+    Scheme.objects.raw(
+        "DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = " + id)
+
+    return Response()

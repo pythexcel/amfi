@@ -30,7 +30,8 @@ urlpatterns = [
     url(r'^get_funds_scheme/amc/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_amc),
     url(
         r'^get_funds_schemes_type/(?P<amc>\d+)/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_schemes),
-    url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$', get_funds_schemes_type),
+    url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$',
+        get_funds_schemes_type),
 
 
 
@@ -39,12 +40,15 @@ urlpatterns = [
     url(r'^get_name_mismatch', NameMismatchList.as_view()),
     url(r'^get_probable_list_for_mismatch/(?P<amc>[\w|\W]+)/$',
         get_probable_list_for_mismatch),
-    url(r'^fix_name_mismatch/(?P<mismatch_id>\d+)/(?P<scheme_id>\d+)/$', fix_name_mismatch),
+    url(r'^fix_name_mismatch/(?P<mismatch_id>\d+)/(?P<scheme_id>\d+)/$',
+        fix_name_mismatch),
     url(r'^recalculate_mismatch/', recalculate_mismatch),
 
 
-    url(r'^get_funds_without_category_or_sub_category', api.views.funds.get_funds_without_category_or_sub_category),
-    url(r'^assign_fund_to_types/(?P<id>\d+)/(?P<cat>[\w|\W]+)/(?P<subcat>[\w|\W]+)/$', api.views.funds.assign_fund_to_types),
+    url(r'^get_funds_without_category_or_sub_category',
+        api.views.funds.get_funds_without_category_or_sub_category),
+    url(r'^assign_fund_to_types/(?P<id>\d+)/(?P<cat>[\w|\W]+)/(?P<subcat>[\w|\W]+)/$',
+        api.views.funds.assign_fund_to_types),
 
 
 
@@ -52,6 +56,9 @@ urlpatterns = [
     # api for error logs
     url(r'^get_critical_logs/', api.views.logs.get_critical_logs),
     url(r'^delete_log/(?P<log_id>[\w|\W]+)/$', api.views.logs.delete_log),
+
+    # api to delete fund
+    url(r'^delete_fund/(?P<id>\d+)/$', api.views.funds.delete_fund),
 
 
     # need to add code for full new amc itself.
