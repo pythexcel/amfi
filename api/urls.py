@@ -5,7 +5,7 @@ from api.views.ping import ping
 from api.views.dashboard import (nav_check, nav_run_script, get_process_logs, index_check, index_run_script, nav_last_update, schem_list,
                                  schem_update_list, nav_ten, get_amcs)
 
-from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schemes, get_funds_schemes_type, fix_name_mismatch, get_probable_list_for_mismatch, ListAmc, NameMismatchList, get_amcs, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
+from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schemes, get_funds_schemes_type, fix_name_mismatch, get_probable_list_for_mismatch, ListAmc, NameMismatchList, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
 
 from rest_framework.routers import DefaultRouter
 

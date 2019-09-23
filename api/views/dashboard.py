@@ -33,42 +33,21 @@ def get_amcs(request):
             schemes_id.append(data)
         else:
             pass
-    schemes = Scheme.objects.raw("SELECT a.id as amc_id, a.*, s.* FROM todo_amc as a left JOIN todo_scheme as s on a.id = s.amc_id")        
-    amc = Scheme.objects.raw("SELECT id  FROM todo_amc  group by id order by id")
+    schemes = Scheme.objects.raw("SELECT a.*, COUNT(*) as totalScheme FROM todo_amc as a left JOIN todo_scheme as s on a.id = s.amc_id group by a.id")        
+    # amc = Scheme.objects.raw("SELECT id  FROM todo_amc  group by id order by id")
     amc_data = []
-    result = []
-    for schem in amc: 
+    # result = []
+    for schem in schemes: 
         amc_data.append({
-            "id" : getattr(schem,"id")
+            "id" : getattr(schem,"id"),
+            'name' : getattr(schem,"name"),
+            'amc_no' : getattr(schem,'amc_no'),
+            'parsed' : getattr(schem,'parsed'),
+            'next_amc_no' : getattr(schem,'next_amc_no'),
+            'logo' : getattr(schem,'logo'),
+            'No of schemes' : getattr(schem,'totalScheme')
         })
-    for item in amc_data:
-        am_data = {
-            'amc_id' : item['id']
-        }
-        schemes_data = []
-        for sch in schemes:
-            amc_id = getattr(sch,"amc_id")
-            if (amc_id == item['id']):
-                schemes_data.append({
-                    "id":getattr(sch,"id"),
-                    "scheme_category":getattr(sch,"scheme_category"),
-                    "scheme_type":getattr(sch,"scheme_type"),
-                    "scheme_sub_type":getattr(sch,"scheme_sub_type"),
-                    "fund_code":getattr(sch,"fund_code"),
-                    "fund_name":getattr(sch,"fund_name"),
-                    "fund_option":getattr(sch,"fund_option"),
-                    "fund_type":getattr(sch,"fund_type"),
-                    "fund_active":getattr(sch,"fund_active"),
-                    "line":getattr(sch,"line")
-                })
-                am_data['name'] = getattr(sch,"name")
-                am_data['amc_no'] = getattr(sch,'amc_no')
-                am_data['parsed'] = getattr(sch,'parsed')
-                am_data['next_amc_no'] = getattr(sch,'next_amc_no')
-                am_data['logo'] = getattr(sch,'logo')
-        am_data["schemes"] = schemes_data
-        result.append(am_data)
-    return Response (result)
+    return Response (amc_data)
 
 
 @api_view()
@@ -116,10 +95,9 @@ def schem_list(request):
 def nav_last_update(request):
     """
     
-    Returns a list of all **NAV/SCHEMES** in the system with a last updated date.
     
     """
-    nav = nav_check_data(nav_type="latest_date") 
+    nav = get_logs(process_name="download_mf_historical_data")
     return Response(nav)
 
 @api_view()
@@ -141,7 +119,5 @@ def nav_ten(request):
     """
     details = nav_check_data(nav_type="un_updated")
     return Response(details)
-
-    
 
     
