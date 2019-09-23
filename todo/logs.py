@@ -36,7 +36,7 @@ def get_critical_logs():
 
 def serialize_doc(doc):
     doc["_id"] = str(doc["_id"])
-    if doc["log_id"]:
+    if "log_id" in doc:
         doc["log_id"] = str(doc["log_id"])
 
     doc["time"] = doc["time"].strftime("%d-%b-%Y")
@@ -73,4 +73,5 @@ def startLogs(process_name, detail={}):
 
 def get_logs(process_name):
     db = getDataSource()
-    return db.logs.find({"process": process_name}).sort("time")
+    ret = db.logs.find({"process_name": process_name})
+    return ret

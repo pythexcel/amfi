@@ -52,6 +52,12 @@ def get_fund_categories(request):
 
 @api_view()
 def get_funds(request, type, sub_type):
+    """
+
+    Returns the FUNDS/SCHEMES based on schemes type and sub_type.
+
+    """
+
     ret = Scheme.objects.get_funds(type=type, sub_type=sub_type)
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
@@ -105,18 +111,17 @@ def get_funds_schemes_type(request, amc, type):
 
 
 @api_view()
-def get_fund_subcategories(request, type):
+def get_fund_subcategories(request, stype):
     # ret = Scheme.objects.get_sub_category_types(type)
     # return Response(ret)
 
     cats = Scheme.get_fund_categorization()
 
-    types = []
     subtypes = []
     for key in cats:
-        types.append(key)
-        for row in cats[key]:
-            subtypes.append(row["Text"])
+        if key == stype:
+            for row in cats[key]:
+                subtypes.append(row["Text"])
 
     return Response(subtypes)
 
@@ -158,7 +163,7 @@ def fix_name_mismatch(request, mismatch_id, scheme_id):
 
     mismatchObj.delete()
 
-    return Response("")
+    return Response()
 
 
 @api_view()
@@ -187,14 +192,25 @@ def get_funds_without_category_or_sub_category(request):
 
 
 @api_view()
-def assign_fund_to_types(req, id, stype, value):
-    if stype == "scheme_type":
-        Scheme.objects.filter(pk=id).update(scheme_type=stype)
-        return Response()
-    
-    if stype == "scheme_sub_type":
-        Scheme.objects.filter(pk=id).update(scheme_sub_type=stype)
-        return Response()
-    
-    
-    return Response("Invalid type provide, scheme_type or scheme_sub_type nopy", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def assign_fund_to_types(req, id, cat, subcat):
+    Scheme.objects.filter(pk=id).update(
+        scheme_type=cat, scheme_sub_type=subcat)
+    return Response()
+
+
+@api_view()
+def delete_fund(req, id):
+
+    # Scheme.objects.raw("delete FROM `amc_scheme_ter` where scheme_id = " + id)
+    # Scheme.objects.raw(
+    #     "delete from amc_scheme_portfolio_data where scheme_id " + id)
+    # Scheme.objects.raw(
+    #     "delete FROM `amc_scheme_aum` WHERE `scheme_id` = " + id)
+    # Scheme.objects.raw(
+    #     "delete FROM `stats_schemestats` WHERE `scheme_id` = " + id)
+    # Scheme.objects.raw("delete FROM `todo_nav` where scheme_id = " + id)
+    # Scheme.objects.raw(
+    #     "DELETE FROM `todo_scheme` WHERE `todo_scheme`.`id` = " + id)
+
+    Scheme.objects.filter(pk=id).update(fund_active=False)
+    return Response()

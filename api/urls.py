@@ -5,7 +5,7 @@ from api.views.ping import ping
 from api.views.dashboard import (nav_check, nav_run_script, get_process_logs, index_check, index_run_script, nav_last_update, schem_list,
                                  schem_update_list, nav_ten, get_amcs)
 
-from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schemes, get_funds_schemes_type, fix_name_mismatch, get_probable_list_for_mismatch, ListAmc, NameMismatchList, get_amcs, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
+from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schemes, get_funds_schemes_type, fix_name_mismatch, get_probable_list_for_mismatch, ListAmc, NameMismatchList, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
 
 from rest_framework.routers import DefaultRouter
 
@@ -24,13 +24,12 @@ urlpatterns = [
     url(r'^funds/amc', ListAmc.as_view()),
     url(r'^funds/scheme/(?P<amc_id>\d+)/$', get_schemes),
     url(r'^funds/category', get_fund_categories),
-    url(r'^funds/subcategory/(?P<type>[\w|\W]+)/$', get_fund_subcategories),
+    url(r'^funds/subcategory/(?P<stype>[\w|\W]+)/$', get_fund_subcategories),
 
     url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds),
     url(r'^get_funds_scheme/amc/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_amc),
-    url(
-        r'^get_funds_schemes_type/(?P<amc>\d+)/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_schemes),
-    url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$', get_funds_schemes_type),
+    url(r'^get_funds_schemes_type/(?P<amc>\d+)/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_schemes),
+    url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$',get_funds_schemes_type),
 
 
 
@@ -39,12 +38,15 @@ urlpatterns = [
     url(r'^get_name_mismatch', NameMismatchList.as_view()),
     url(r'^get_probable_list_for_mismatch/(?P<amc>[\w|\W]+)/$',
         get_probable_list_for_mismatch),
-    url(r'^fix_name_mismatch/(?P<mismatch_id>\d+)/(?P<scheme_id>\d+)/$', fix_name_mismatch),
+    url(r'^fix_name_mismatch/(?P<mismatch_id>\d+)/(?P<scheme_id>\d+)/$',
+        fix_name_mismatch),
     url(r'^recalculate_mismatch/', recalculate_mismatch),
 
 
-    url(r'^get_funds_without_category_or_sub_category', api.views.funds.get_funds_without_category_or_sub_category),
-    url(r'^assign_fund_to_types', api.views.funds.assign_fund_to_types),
+    url(r'^get_funds_without_category_or_sub_category',
+        api.views.funds.get_funds_without_category_or_sub_category),
+    url(r'^assign_fund_to_types/(?P<id>\d+)/(?P<cat>[\w|\W]+)/(?P<subcat>[\w|\W]+)/$',
+        api.views.funds.assign_fund_to_types),
 
 
 
@@ -52,6 +54,9 @@ urlpatterns = [
     # api for error logs
     url(r'^get_critical_logs/', api.views.logs.get_critical_logs),
     url(r'^delete_log/(?P<log_id>[\w|\W]+)/$', api.views.logs.delete_log),
+
+    # api to delete fund
+    url(r'^delete_fund/(?P<id>\d+)/$', api.views.funds.delete_fund),
 
 
     # need to add code for full new amc itself.
