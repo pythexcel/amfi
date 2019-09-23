@@ -74,5 +74,4 @@ def startLogs(process_name, detail={}):
 def get_logs(process_name):
     db = getDataSource()
     ret = db.logs.find({"process_name": process_name})
-    ret = [serialize_doc(doc) for doc in ret]
     return ret
