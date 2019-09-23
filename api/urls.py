@@ -28,10 +28,9 @@ urlpatterns = [
 
     url(r'^get_funds/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds),
     url(r'^get_funds_scheme/amc/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_amc),
+
     url(r'^get_funds_schemes_type/(?P<amc>\d+)/(?P<type>[\w|\W]+)/(?P<sub_type>[\w|\W]+)/$', get_funds_schemes),
     url(r'^get_funds_schemes/(?P<amc>\d+)/(?P<type>[\w|\W]+)/$',get_funds_schemes_type),
-
-
 
     # scheme name mismatch related api's
 

@@ -45,8 +45,7 @@ def nav_check():
     count = Nav.count_navs_date(latest_date)
     print("total nav's found on date", count)
 
-    # find if for any scheme nav is not updated for a long time let's say 10days
-    
+    # find if for any scheme nav is not updated for a long time let's say 10days    
     days = 10
     date = datetime.date.today() - datetime.timedelta(days=days)
     print(date)
@@ -101,4 +100,3 @@ def nav_check():
         "latest_nav_date": latest_date,
         "count_navs_date": count
     }
-    
