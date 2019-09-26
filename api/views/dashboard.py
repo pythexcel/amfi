@@ -18,6 +18,7 @@ from django.core import serializers
 from django.http import JsonResponse
 
 
+
 @api_view()
 def get_amcs(request):
     """
@@ -46,7 +47,11 @@ def get_amcs(request):
             'logo' : getattr(schem,'logo'),
             'No of funds' : getattr(schem,'totalScheme')
         })
-    return Response (amc_data)
+    funds = Scheme.get_fund_categorization()
+    return Response ({
+        "amc_data": amc_data,
+        "funds": funds
+    })
 
 
 @api_view()
