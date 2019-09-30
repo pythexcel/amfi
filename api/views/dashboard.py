@@ -33,24 +33,27 @@ def get_amcs(request):
         if data not in schemes_id:
             schemes_id.append(data)
         else:
-            pass
-    schemes = Scheme.objects.raw("SELECT a.*, COUNT(*) as totalScheme FROM todo_amc as a left JOIN todo_scheme as s on a.id = s.amc_id group by a.id")        
-    # amc = Scheme.objects.raw("SELECT id  FROM todo_amc  group by id order by id")
+            pass   
+    schemes = Scheme.objects.raw("SELECT 'a' as id, scheme_type, amc_id, COUNT(*) as cnt FROM todo_scheme group by scheme_type,amc_id ORDER by amc_id")
+
+    print(schemes)
+
     amc_data = []
-    for schem in schemes: 
+    for schem in schemes:
         amc_data.append({
-            "id" : getattr(schem,"id"),
-            'name' : getattr(schem,"name"),
-            'amc_no' : getattr(schem,'amc_no'),
-            'parsed' : getattr(schem,'parsed'),
-            'next_amc_no' : getattr(schem,'next_amc_no'),
-            'logo' : getattr(schem,'logo'),
-            'No of funds' : getattr(schem,'totalScheme')
+            'Count' : getattr(schem,"cnt"),
+            'Amc_id' : getattr(schem,"amc_id"),
+            'Scheme_name' : getattr(schem,"scheme_type"),
         })
-    funds = Scheme.get_fund_categorization()
+
+    for elem in ser.data:
+        for data in amc_data:
+            if data['Amc_id'] == elem['id']:
+                elem[data['Scheme_name']] = data['Count']
+               
+
     return Response ({
-        "amc_data": amc_data,
-        "funds": funds
+        "amc_data": ser.data
     })
 
 
