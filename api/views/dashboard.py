@@ -38,6 +38,7 @@ def get_amcs(request):
 
     print(schemes)
 
+    schemes_ls = []
     amc_data = []
     for schem in schemes:
         amc_data.append({
@@ -45,12 +46,12 @@ def get_amcs(request):
             'Amc_id' : getattr(schem,"amc_id"),
             'Scheme_name' : getattr(schem,"scheme_type"),
         })
-
     for elem in ser.data:
         for data in amc_data:
             if data['Amc_id'] == elem['id']:
                 elem[data['Scheme_name']] = data['Count']
-               
+            if data['Scheme_name'] not in elem:
+                elem[data['Scheme_name']] = 0
 
     return Response ({
         "amc_data": ser.data
