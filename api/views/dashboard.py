@@ -10,7 +10,7 @@ from todo.jobs import schedule_daily_nav_download, process_nse_historial, proces
 from datetime import datetime,timedelta
 
 import sys
-
+from todo.models import fund_categorization
 from todo.logs import get_logs
 from todo.models import AMC,Nav,Scheme,NavSerializer
 from todo.serializers import AMCSerializer, SchemeSerializer
@@ -34,11 +34,7 @@ def get_amcs(request):
             schemes_id.append(data)
         else:
             pass   
-    schemes = Scheme.objects.raw("SELECT 'a' as id, scheme_type, amc_id, COUNT(*) as cnt FROM todo_scheme group by scheme_type,amc_id ORDER by amc_id")
-
-    print(schemes)
-
-    schemes_ls = []
+    schemes = Scheme.objects.raw("SELECT 'ID' as id, scheme_type, amc_id, COUNT(*) as cnt FROM todo_scheme group by scheme_type,amc_id ORDER by amc_id")
     amc_data = []
     for schem in schemes:
         amc_data.append({
@@ -46,17 +42,23 @@ def get_amcs(request):
             'Amc_id' : getattr(schem,"amc_id"),
             'Scheme_name' : getattr(schem,"scheme_type"),
         })
+        
     for elem in ser.data:
+        data_count = 0
+        elem['problem funds'] = 0
         for data in amc_data:
             if data['Amc_id'] == elem['id']:
-                elem[data['Scheme_name']] = data['Count']
-            if data['Scheme_name'] not in elem:
-                elem[data['Scheme_name']] = 0
-
+                if data['Scheme_name'] in fund_categorization:
+                    elem[data['Scheme_name']] = data['Count']
+                if data['Scheme_name'] not in fund_categorization:
+                    data_count = data_count + data['Count']
+                    elem['problem funds'] = data_count
+            if data['Scheme_name'] in fund_categorization:
+                if data['Scheme_name'] not in elem:
+                    elem[data['Scheme_name']] = 0                    
     return Response ({
         "amc_data": ser.data
     })
-
 
 @api_view()
 def nav_check(request):
