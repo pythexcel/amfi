@@ -42,7 +42,7 @@ def scheme_health_check():
     print(items)
 
     return items
-
+    
     """
     delete FROM `amc_scheme_ter` where scheme_id = 741;
     delete from amc_scheme_portfolio_data where scheme_id = 741;
