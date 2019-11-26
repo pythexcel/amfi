@@ -28,6 +28,18 @@ from subprocess import call
 
 # //https://www.amfiindia.com/ter-of-mf-schemes  explore this . this can highly simplify the code for TER
 
+def process_ter_history():
+    cats = Scheme.get_fund_categorization()
+
+    for month in range(0, 24):
+        today = datetime.date.today() - datetime.timedelta(days=month*30)
+        print(today)
+        for key in cats:
+            for row in cats[key]:
+                print(row['Text'], "xxx", row['Value'])
+                download_data(row["Value"], today.month, today.year)
+
+
 def start_process():
 
     cats = Scheme.get_fund_categorization()
