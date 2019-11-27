@@ -1,6 +1,5 @@
 from math import ceil, floor
 import pandas as pd
-
 import re
 
 # this function expects a json data from db or any other source.
