@@ -69,6 +69,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+.vscode/
 
 # Translations
 *.mo
