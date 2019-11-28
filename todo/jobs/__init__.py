@@ -6,7 +6,7 @@ from todo.jobs.bse import process_bse_historial, process_bse_daily
 from todo.jobs.mf import download_mf_historical_data, schedule_daily_nav_download
 
 from amc.jobs.portfolio_process import process_zip_file as process_amc_portfolio_data
-from stats.jobs.returns.abs import abs_return
+from stats.jobs.returns.abs import abs_return,index_abs_return
 
 from amc.jobs.ter_process import start_process
 
@@ -48,11 +48,16 @@ trigger = OrTrigger([CronTrigger(hour=4, minute=0),
 
 job = scheduler.add_job(abs_return, trigger)
 
+
+job = scheduler.add_job(index_abs_return, 'interval', seconds=40)
+
+
 trigger2 = OrTrigger([CronTrigger(day=7, hour=4, minute=0),
                       CronTrigger(day=15, hour=4, minute=0),
                       CronTrigger(day=21, hour=4, minute=0)])
 
 job = scheduler.add_job(start_process, trigger2)
+
 
 logging.basicConfig()
 logging.getLogger('apscheduler').setLevel(logging.DEBUG)

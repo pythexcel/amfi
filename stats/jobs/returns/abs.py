@@ -1,10 +1,14 @@
-from todo.models import Scheme, AMC, Nav
+from todo.models import Scheme, AMC, Nav,Index
 from stats.models import SchemeStats
 from django.db.models import Q
 import datetime
+from rest_framework import serializers
 import json
+from dateutil.relativedelta import relativedelta
+import datetime
+from datetime import datetime,timedelta
 from django.core.serializers.json import DjangoJSONEncoder
-
+from todo.models import Index_scheme_mapping
 
 # this will caculate 1yr return of all funds
 # problem is nav is daily calculated and 1yr return will change daily
@@ -40,7 +44,6 @@ def abs_return():
 
     for scheme in schemes:
         calc_stats_for_scheme(scheme)
-
     pass
 
 # this is data of yearly return e.g return between 2017-2018 etc
@@ -126,3 +129,41 @@ def calc_stats_for_scheme(scheme):
     )
     stats.save()
     pass
+
+
+
+
+def index_abs_return(index):
+    '''
+    ret = SchemeStats.objects.values_list(
+            'scheme', flat=True).distinct()    
+#    for rett in ret:
+    scheme_id = 12
+    #back = datetime.datetime.today() + relativedelta(months=-12)
+    #one_year_back = back.strftime('%Y-%m-%d')
+    one_year_ba = "2019-04-04"
+    one_year_back = datetime.strptime(one_year_ba, '%Y-%m-%d').date()
+    #today = datetime.datetime.today()
+    today = "2019-04-02"
+    #today_date = today.strftime('%Y-%m-%d')
+    start_date = datetime.strptime(today, '%Y-%m-%d').date()
+    abss =  Index_scheme_mapping(one_year_back,start_date,scheme_id)
+#    print(abss)         
+
+#    three_yrs_ago = datetime.now() - relativedelta(years=3)
+    '''
+def previous_yr_abs_today(self, years=1, offset_days=0):
+    # how many years to go back
+    # offset in days, if start from today or few days back
+    # abs weather absolute return or annulized return
+    end_date = datetime.date.today() - datetime.timedelta(days=offset_days)
+    start_date = end_date - datetime.timedelta(days=365*years)
+
+    ret = self.abs_return(start_date, end_date)
+
+    if years > 1:
+        cagr = todo.util.cagr(
+            ret["start_price"], ret["end_price"], years) * 100
+        ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
+    return ret
+
