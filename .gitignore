@@ -24,8 +24,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-
+.vscode/
+amfi_env/
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/

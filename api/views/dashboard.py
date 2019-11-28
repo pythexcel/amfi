@@ -10,12 +10,26 @@ from todo.jobs import schedule_daily_nav_download, process_nse_historial, proces
 from datetime import datetime,timedelta
 
 import sys
-
+from todo.models import Index_scheme_mapping
 from todo.logs import get_logs
 from todo.models import AMC,Nav,Scheme,NavSerializer
 from todo.serializers import AMCSerializer, SchemeSerializer
 from django.core import serializers
 from django.http import JsonResponse
+
+
+#Api for return scheme and index info// send payload in request
+
+@api_view(['POST'])
+def get_abs_value(request):
+    start_date = request.data.get("start_date")
+    end_date = request.data.get("end_date")
+    fund_code = request.data.get("fund_code")
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    fun_return = Index_scheme_mapping(start_date,end_date,fund_code)  
+    return Response(fun_return)
+
 
 
 @api_view()
