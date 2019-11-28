@@ -98,8 +98,8 @@ DATABASES = {
         'NAME': 'mf_dev_testing',
         'USER': 'root',
         'PASSWORD': 'java@123',
-       # 'HOST':'176.9.137.77',   # Or an IP Address that your DB is hosted on
-        'HOST':'127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST':'176.9.137.77',   # Or an IP Address that your DB is hosted on
+       # 'HOST':'127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
