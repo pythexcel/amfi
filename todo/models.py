@@ -6,7 +6,7 @@ from rest_framework import serializers
 import todo.util
 
 import pandas as pd
-
+from stats.models import SchemeStats
 import datetime
 import re
 from math import ceil
@@ -746,12 +746,7 @@ def benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id
     else:
         return "fund benchmark not available in index table, please update index table"
 '''
-
-
-
 def Index_scheme_mapping(start_date,end_date,scheme_id):
-    print("Index_scheme_mapping")
-    print(start_date,end_date,scheme_id)
     ret = Scheme_Info.objects.filter(scheme_id=scheme_id)
     scheme_seri = SchemeinfoSerializer(ret,many=True)
     scheme_name = scheme_seri.data
@@ -766,9 +761,7 @@ def Index_scheme_mapping(start_date,end_date,scheme_id):
         abs_details = benchmark_abs_details(start_date,end_date,fund_benchmark,scheme_id)
         return abs_details
     else:
-        return"No benchmark available for given fundcode"                        
-
-
+        return None
 
 #Function for return scheme and index details for given fundcode.
 
@@ -783,22 +776,11 @@ def benchmark_abs_details(start_date,end_date,fund_benchmark,scheme_id):
         end_nav = IndexData.get_price_for_date(index,end_date)
         pct = (end_nav - start_nav) / (start_nav)
         abs_ptc = todo.util.float_round(pct*100, 2, ceil)
-        
-
-
-
-"""
-        start_nav = Nav.get_nav_for_date(scheme_id,start_date)
-        end_nav = Nav.get_nav_for_date(scheme_id,end_date)
-        pct = (end_nav - start_nav) / (start_nav)
-        scheme_abs_details ={
-            "start_nav": start_nav,
-            "start_date": start_date,
-            "end_nav": end_nav,
-            "end_date": end_date,
-            "pct": todo.util.float_round(pct*100, 2, ceil)
-        }
-        return {"scheme_abs_details":scheme_abs_details,"Index_abs_details":Index_abs_details}
+        return abs_ptc
     else:
-        return "fund benchmark not available in index table, please update index table"
-"""
+        return None
+
+
+
+
+

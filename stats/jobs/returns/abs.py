@@ -1,14 +1,16 @@
 from todo.models import Scheme, AMC, Nav,Index
 from stats.models import SchemeStats
 from django.db.models import Q
-import datetime
+#import datetime
 from rest_framework import serializers
 import json
-from dateutil.relativedelta import relativedelta
-import datetime
-from datetime import datetime,timedelta
+#from dateutil.relativedelta import relativedelta
+#from datetime import datetime,timedelta
 from django.core.serializers.json import DjangoJSONEncoder
 from todo.models import Index_scheme_mapping
+import datetime
+from dateutil.relativedelta import relativedelta
+
 
 # this will caculate 1yr return of all funds
 # problem is nav is daily calculated and 1yr return will change daily
@@ -29,7 +31,7 @@ def abs_return():
         # scheme_stat = query.first()
         for scheme_stat in query:
             schemes.append(Scheme.objects.get(
-                pk=getattr(scheme_stat, "scheme")))
+                pk=getattr(str(scheme_stat), "scheme")))
     else:
          # see if any new schemes are added
         schemestat_ids = SchemeStats.objects.values_list(
@@ -47,7 +49,7 @@ def abs_return():
     pass
 
 # this is data of yearly return e.g return between 2017-2018 etc
-# this doesn't change with time as such unless full year changes
+# this doesn't change with time aimports such unless full year changes
 
 
 def calc_stats_for_scheme(scheme):
@@ -133,37 +135,37 @@ def calc_stats_for_scheme(scheme):
 
 
 
-def index_abs_return(index):
-    '''
+def index_abs_return():
     ret = SchemeStats.objects.values_list(
             'scheme', flat=True).distinct()    
-#    for rett in ret:
-    scheme_id = 12
-    #back = datetime.datetime.today() + relativedelta(months=-12)
-    #one_year_back = back.strftime('%Y-%m-%d')
-    one_year_ba = "2019-04-04"
-    one_year_back = datetime.strptime(one_year_ba, '%Y-%m-%d').date()
-    #today = datetime.datetime.today()
-    today = "2019-04-02"
-    #today_date = today.strftime('%Y-%m-%d')
-    start_date = datetime.strptime(today, '%Y-%m-%d').date()
-    abss =  Index_scheme_mapping(one_year_back,start_date,scheme_id)
+    for rett in ret:
+        scheme_id = rett
+        calc_stats_for_index(scheme_id)
+
+
+def calc_stats_for_index(scheme_id):
+    one_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
+    one_year_start_date = one_year_end_date - datetime.timedelta(days=365*1)
+    one_year_index_abs_rett =  Index_scheme_mapping(one_year_start_date,one_year_end_date,scheme_id)
+    
+    three_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
+    three_year_start_date = one_year_end_date - datetime.timedelta(days=365*3)
+    three_year_index_abs_rett =  Index_scheme_mapping(three_year_start_date,three_year_end_date,scheme_id)
+
+    if one_year_index_abs_rett is None:
+        one_year_index_abs_rett = -1
+
+    if three_year_index_abs_rett is None:
+        three_year_index_abs_rett = -1
+
+    storing = SchemeStats.objects.get(scheme=scheme_id)   
+    storing.one_year_index_abs_ret = one_year_index_abs_rett
+    storing.three_year_index_abs_ret = three_year_index_abs_rett
+    storing.save()
+    print("updated")
+
+
+
+
 #    print(abss)         
-
 #    three_yrs_ago = datetime.now() - relativedelta(years=3)
-    '''
-def previous_yr_abs_today(self, years=1, offset_days=0):
-    # how many years to go back
-    # offset in days, if start from today or few days back
-    # abs weather absolute return or annulized return
-    end_date = datetime.date.today() - datetime.timedelta(days=offset_days)
-    start_date = end_date - datetime.timedelta(days=365*years)
-
-    ret = self.abs_return(start_date, end_date)
-
-    if years > 1:
-        cagr = todo.util.cagr(
-            ret["start_price"], ret["end_price"], years) * 100
-        ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
-    return ret
-

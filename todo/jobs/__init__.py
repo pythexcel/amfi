@@ -49,7 +49,7 @@ trigger = OrTrigger([CronTrigger(hour=4, minute=0),
 job = scheduler.add_job(abs_return, trigger)
 
 
-job = scheduler.add_job(index_abs_return, 'interval', seconds=40)
+job = scheduler.add_job(index_abs_return, 'interval', seconds=30)
 
 
 trigger2 = OrTrigger([CronTrigger(day=7, hour=4, minute=0),
