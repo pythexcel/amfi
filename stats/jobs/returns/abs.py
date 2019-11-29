@@ -7,7 +7,7 @@ import json
 #from dateutil.relativedelta import relativedelta
 #from datetime import datetime,timedelta
 from django.core.serializers.json import DjangoJSONEncoder
-from todo.models import Index_scheme_mapping
+from todo.tests import Index_scheme_mapping
 import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -167,5 +167,3 @@ def calc_stats_for_index(scheme_id):
 
 
 
-#    print(abss)         
-#    three_yrs_ago = datetime.now() - relativedelta(years=3)
