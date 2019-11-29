@@ -4,6 +4,9 @@ from django.db.models import Q
 import datetime
 import json
 from django.core.serializers.json import DjangoJSONEncoder
+from rest_framework import serializers
+from todo.tests import Index_scheme_mapping
+from dateutil.relativedelta import relativedelta
 
 
 # this will caculate 1yr return of all funds
@@ -126,3 +129,33 @@ def calc_stats_for_scheme(scheme):
     )
     stats.save()
     pass
+
+
+def index_abs_return():
+    ret = SchemeStats.objects.values_list(
+            'scheme', flat=True).distinct()    
+    for rett in ret:
+        scheme_id = rett
+        calc_stats_for_index(scheme_id)
+
+
+def calc_stats_for_index(scheme_id):
+    one_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
+    one_year_start_date = one_year_end_date - datetime.timedelta(days=365*1)
+    one_year_index_abs_rett =  Index_scheme_mapping(one_year_start_date,one_year_end_date,scheme_id)
+    
+    three_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
+    three_year_start_date = one_year_end_date - datetime.timedelta(days=365*3)
+    three_year_index_abs_rett =  Index_scheme_mapping(three_year_start_date,three_year_end_date,scheme_id)
+
+    if one_year_index_abs_rett is None:
+        one_year_index_abs_rett = -1
+
+    if three_year_index_abs_rett is None:
+        three_year_index_abs_rett = -1
+
+    storing = SchemeStats.objects.get(scheme=scheme_id)   
+    storing.one_year_index_abs_ret = one_year_index_abs_rett
+    storing.three_year_index_abs_ret = three_year_index_abs_rett
+    storing.save()
+    print("updated")

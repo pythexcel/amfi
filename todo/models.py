@@ -657,3 +657,21 @@ class IndexDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = IndexData
         fields = '__all__'
+
+
+class IndexSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Index
+        fields = '__all__'
+
+
+class SchemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scheme
+        fields = '__all__'
+
+
+class SchemeinfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scheme_Info
+        fields = '__all__'
