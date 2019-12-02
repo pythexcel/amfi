@@ -33,9 +33,21 @@ nifty_indexes = [
     "NIFTY NEXT 50",
     "NIFTY 50",
     "NIFTY SMLCAP 100",
-    "NIFTY MIDCAP 100"
-    "NIFTY 100"
-    "NIFTY LARGEMIDCAP 250"
+    "NIFTY MIDCAP 100",
+    "NIFTY 100",
+    "NIFTY LARGEMIDCAP 250",
+    "NIFTY 200",
+    "NIFTY 500",
+    "NIFTY MIDCAP 150",
+    "NIFTY FMCG",
+    "NIFTY MNC",
+    "NIFTY INFRA",
+    "NIFTY MIDCAP 50",
+    "NIFTY FULL MIDCAP 100",
+    "NIFTY SMLCAP 250",
+    "NIFTY SMLCAP 50",
+    "NIFTY FULL SMLCAP 100",
+    "NIFTY MIDSMLCAP 400"
 ]
 
 
@@ -73,7 +85,7 @@ def process_nse_historial():
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
-            name=name,
+            name=urllib.parse.unquote(name),
             start_date=start_date,
             end_date=end_date,
             type="NSE"
@@ -85,7 +97,7 @@ def process_nse_historial():
     print(end_date)
 
     res = process_data(name, start_date, end_date, latest_index, False)
-
+    
     if res:
         Index.objects.filter(pk=latest_index.id).update(
             start_date=start_date, end_date=end_date)
@@ -238,12 +250,25 @@ def process_data(name, start_date, end_date, latest_index, log_id):
                     pb=index_data[date]['pb'] if 'pb' in index_data[date] else 0,
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
                 )
-                index_data_obj.save()
-                if log_id is not False:
-                    addLogs({
-                        "type": "log",
-                        "message": "saving data : " + json.dumps(index_data)
-                    }, log_id)
+                if index_data[date]['open'] != "-":
+    
+                    if index_data[date]['close'] != "-":
+
+                        if index_data[date]['high'] != "-":
+
+                            if index_data[date]['low'] != "-":
+
+                                index_data_obj.save()                
+
+                                if log_id is not False:
+
+                                    addLogs({
+
+                                        "type": "log",
+
+                                        "message": "saving data : " + json.dumps(index_data)
+
+                                    }, log_id)
 
         return True
     else:
