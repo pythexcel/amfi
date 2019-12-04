@@ -676,3 +676,70 @@ class SchemeinfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scheme_Info
         fields = '__all__'
+
+
+
+
+#Function for fetch sufficient details form DB like benchmark,scheme_id,fundname,index_id.
+
+def Index_scheme_mapping(start_date,end_date,fund_code):
+    ret = Scheme.objects.filter(fund_code=fund_code)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    if scheme_data:
+        scheme_data = scheme_data[0]
+        fund_name = scheme_data['fund_name']
+        scheme_id = scheme_data['id']
+        ret = Scheme_Info.objects.filter(scheme_id=scheme_id)
+        scheme_seri = SchemeinfoSerializer(ret,many=True)
+        scheme_name = scheme_seri.data
+        if scheme_name:
+            scheme_name = scheme_name[0]
+            benchmark = scheme_name['benchmark']
+            stopwords = ['Total','Return','Index','TRI']
+            querywords = benchmark.split()
+            resultwords  = [word for word in querywords if word not in stopwords]
+            result = ' '.join(resultwords)
+            fund_benchmark = result
+            abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
+            return abs_details
+        else:
+            return"No benchmark available for given fundcode"                        
+    else:
+        return "No info available for given fund code"
+
+#Function for return scheme and index details for given fundcode.
+
+def benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name):
+    ret = Index.objects.filter(name=fund_benchmark)
+    seri = IndexSerializer(ret,many=True)
+    Index_details = seri.data
+    if Index_details:
+        Index_details = Index_details[0]
+        index = Index_details['id']
+        start_nav = IndexData.get_price_for_date(index,start_date)
+        end_nav = IndexData.get_price_for_date(index,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        Index_abs_details =  {
+            "index_name":fund_benchmark,
+            "start_price": start_nav,
+            "start_date": start_date,
+            "end_price": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+
+        start_nav = Nav.get_nav_for_date(scheme_id,start_date)
+        end_nav = Nav.get_nav_for_date(scheme_id,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        scheme_abs_details ={
+            "fund_name":fund_name,
+            "start_nav": start_nav,
+            "start_date": start_date,
+            "end_nav": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+        return {"scheme_abs_details":scheme_abs_details,"Index_abs_details":Index_abs_details}
+    else:
+        return "fund benchmark not available in index table, please update index table"

@@ -31,7 +31,7 @@ job_mf_historical = scheduler.add_job(
 #process_bse_historial = scheduler.add_job(process_bse_historial, OrTrigger(
 #    [CronTrigger(hour=3, minute=15), CronTrigger(hour=15, minute=15)]))
 job = scheduler.add_job(process_nse_historial, "interval", seconds=2000000)
-job = scheduler.add_job(process_bse_historial, "interval", seconds=10)
+job = scheduler.add_job(process_bse_historial, "interval", seconds=10000000)
 
 
 schedule_daily_nav_download = scheduler.add_job(
