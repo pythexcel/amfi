@@ -138,7 +138,6 @@ def index_abs_return():
         scheme_id = rett
         calc_stats_for_index(scheme_id)
 
-
 def calc_stats_for_index(scheme_id):
     one_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
     one_year_start_date = one_year_end_date - datetime.timedelta(days=365*1)
@@ -147,15 +146,19 @@ def calc_stats_for_index(scheme_id):
     three_year_end_date = datetime.date.today() - datetime.timedelta(days=0)
     three_year_start_date = one_year_end_date - datetime.timedelta(days=365*3)
     three_year_index_abs_rett =  Index_scheme_mapping(three_year_start_date,three_year_end_date,scheme_id)
-
+    print(one_year_index_abs_rett)
     if one_year_index_abs_rett is None:
         one_year_index_abs_rett = -1
 
     if three_year_index_abs_rett is None:
         three_year_index_abs_rett = -1
-
+    
     storing = SchemeStats.objects.get(scheme=scheme_id)   
+    print("one_year_index_abs_rett",one_year_index_abs_rett)
+    print("three_year_index_abs_rett",three_year_index_abs_rett)
     storing.one_year_index_abs_ret = one_year_index_abs_rett
     storing.three_year_index_abs_ret = three_year_index_abs_rett
     storing.save()
+    print("scheme",scheme_id)
     print("updated")
+    

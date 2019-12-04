@@ -29,13 +29,13 @@ from todo.models import Index, IndexData
 
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-04-2018&toDate=01-07-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-Apr-2018&toDate=01-Jul-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
+
 nifty_indexes = [
     "NIFTY NEXT 50",
     "NIFTY 50",
     "NIFTY SMLCAP 100",
     "NIFTY MIDCAP 100",
     "NIFTY 100",
-    "NIFTY LARGEMIDCAP 250",
     "NIFTY 200",
     "NIFTY 500",
     "NIFTY MIDCAP 150",
@@ -43,13 +43,13 @@ nifty_indexes = [
     "NIFTY MNC",
     "NIFTY INFRA",
     "NIFTY MIDCAP 50",
-    "NIFTY FULL MIDCAP 100",
     "NIFTY SMLCAP 250",
     "NIFTY SMLCAP 50",
+    "NIFTY LARGEMIDCAP 250",
+    "NIFTY FULL MIDCAP 100",
+    "NIFTY MIDSMLCAP 400",
     "NIFTY FULL SMLCAP 100",
-    "NIFTY MIDSMLCAP 400"
 ]
-
 
 def process_nse_daily():
     log = startLogs("process_bse_daily", {})

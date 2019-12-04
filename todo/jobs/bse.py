@@ -30,12 +30,32 @@ from todo.models import Index, IndexData
 
 
 bse_indexes = [
-    "SENSEX"
+    "SENSEX",
+    "SPB15MIP",
+    "SPBSAIP",
+    "SPBSEVIP",
+    "SIBTEC",
+    "BSE500",
+    "BSE200",
+    "BSE100",
+    "BSESML",
+    "SI0800",
+    "SI1000",
+    "SIBANK",
+    "SPBSE5S",
+    "INFRA",
+    "BSEMID",
+    "SPB25XIP",
+    "SPBSS5IP",
+    "SPB25SIP",
+    "SIBPSU"
 ]
 
+        
 # https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
 # https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
-
+#https://www.bseindia.com/markets/keystatics/Keystat_index.aspx
+#https://www.bseindia.com/indices/IndexArchiveData.html
 
 def process_bse_daily():
     log = startLogs("process_bse_daily", {})
@@ -55,9 +75,7 @@ def process_bse_historial():
         # latest_index = Index.objects.filter(
         #     parsed=False).all().order_by("-end_date").first()
         name = latest_index.name
-
         start_date = getattr(latest_index, "end_date")
-        print(start_date)
         end_date = start_date - datetime.timedelta(days=days)
     except Index.DoesNotExist:
         index = Index.objects.filter(type="BSE").all().count()
@@ -69,7 +87,7 @@ def process_bse_historial():
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
-            name=name,
+            name=urllib.parse.unquote(name),
             start_date=start_date,
             end_date=end_date,
             type="BSE"
@@ -100,7 +118,6 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     url = "https://api.bseindia.com/BseIndiaAPI/api/IndexArchDaily/w"
 
     print(url)
-
     if log_id is not False:
         addLogs({
             "type": "log",
@@ -110,7 +127,6 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     response = requests.get(url, params=params)
 
     data = response.json()
-
     index_data = {}
 
     for row in data["Table"]:
@@ -133,8 +149,6 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     if bool(index_data):
         for date in index_data:
             try:
-                print(date)
-
                 IndexData.objects.get(index=latest_index, date=datetime.datetime.strptime(
                     date, '%Y-%m-%dT%H:%M:%S'))
                 # data exists nothing to do
@@ -160,6 +174,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
 
         return True
     else:
+        print("error in code")
         if log_id is not False:
             addLogs({
                 "type": "error",

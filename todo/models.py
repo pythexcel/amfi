@@ -646,7 +646,7 @@ class IndexData(models.Model):
                 df = todo.util.fill_date_frame_data(df, start_date, end_date)
                 # print(df)
                 start_nav = df.loc[date.strftime("%Y-%m-%d")]["close"]
-            else:
+            else:                
                 raise ValueError(
                     "unable to get nav value at all, check your date", date)
 
