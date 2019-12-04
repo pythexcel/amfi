@@ -80,7 +80,6 @@ def Index_scheme_mapping(start_date,end_date,scheme_id):
         return None
 
 # Create your tests here.
-
 def benchmark_abs_details(start_date,end_date,fund_benchmark,scheme_id):
     ret = Index.objects.filter(name=fund_benchmark)
     seri = IndexSerializer(ret,many=True)

@@ -47,7 +47,6 @@ nifty_indexes = [
     "NIFTY SMLCAP 50",
     "NIFTY LARGEMIDCAP 250",
     "NIFTY FULL MIDCAP 100",
-    "NIFTY MIDSMLCAP 400",
     "NIFTY FULL SMLCAP 100",
 ]
 

@@ -37,7 +37,7 @@ bse_indexes = [
     "SIBTEC",
     "BSE500",
     "BSE200",
-    "BSE100",
+    #"BSE100",
     "BSESML",
     "SI0800",
     "SI1000",

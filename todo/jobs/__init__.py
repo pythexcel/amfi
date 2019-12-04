@@ -26,12 +26,12 @@ scheduler = BackgroundScheduler()
 job_mf_historical = scheduler.add_job(
     download_mf_historical_data, 'interval', days=1)
 
-process_nse_historial = scheduler.add_job(process_nse_historial, OrTrigger(
-    [CronTrigger(hour=3, minute=0), CronTrigger(hour=15, minute=0)]))
-process_bse_historial = scheduler.add_job(process_bse_historial, OrTrigger(
-    [CronTrigger(hour=3, minute=15), CronTrigger(hour=15, minute=15)]))
-#job = scheduler.add_job(process_nse_historial, "interval", seconds=2000000)
-#job = scheduler.add_job(process_bse_historial, "interval", seconds=100000000)
+#process_nse_historial = scheduler.add_job(process_nse_historial, OrTrigger(
+#    [CronTrigger(hour=3, minute=0), CronTrigger(hour=15, minute=0)]))
+#process_bse_historial = scheduler.add_job(process_bse_historial, OrTrigger(
+#    [CronTrigger(hour=3, minute=15), CronTrigger(hour=15, minute=15)]))
+job = scheduler.add_job(process_nse_historial, "interval", seconds=2000000)
+job = scheduler.add_job(process_bse_historial, "interval", seconds=10)
 
 
 schedule_daily_nav_download = scheduler.add_job(
@@ -45,12 +45,12 @@ job = scheduler.add_job(process_amc_portfolio_data, "interval", days=1)
 
 job = scheduler.add_job(aum_daily_process, "interval", days=1)
 
-triggerrr = OrTrigger([CronTrigger(hour=15, minute=1),
+triggerrr = OrTrigger([CronTrigger(hour=15, minute=00),
                      CronTrigger(hour=23, minute=0)])
 
 job = scheduler.add_job(index_abs_return,triggerrr)
 
-trigger = OrTrigger([CronTrigger(hour=4, minute=0),
+trigger = OrTrigger([CronTrigger(hour=18, minute=14),
                      CronTrigger(hour=23, minute=0)])
 
 job = scheduler.add_job(abs_return, trigger)
