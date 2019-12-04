@@ -30,8 +30,8 @@ from todo.models import Index, IndexData
 
 
 bse_indexes = [
-    "SENSEX",
-    "SPB15MIP",
+    "SENSEX",   
+    "SPB15MIP", 
     "SPBSAIP",
     "SPBSEVIP",
     "SIBTEC",

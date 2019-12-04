@@ -2,9 +2,9 @@ from django.db import models
 from django.db.models import Q
 
 from rest_framework import serializers
-
+from stats.models import SchemeStats
 import todo.util
-
+import numpy as np
 import pandas as pd
 
 import datetime
@@ -677,6 +677,10 @@ class SchemeinfoSerializer(serializers.ModelSerializer):
         model = Scheme_Info
         fields = '__all__'
 
+class SchemeStatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SchemeStats
+        fields = '__all__'
 
 
 
@@ -690,6 +694,7 @@ def Index_scheme_mapping(start_date,end_date,fund_code):
         scheme_data = scheme_data[0]
         fund_name = scheme_data['fund_name']
         scheme_id = scheme_data['id']
+        scheme_sub_type = scheme_data['scheme_sub_type']
         ret = Scheme_Info.objects.filter(scheme_id=scheme_id)
         scheme_seri = SchemeinfoSerializer(ret,many=True)
         scheme_name = scheme_seri.data
@@ -702,11 +707,38 @@ def Index_scheme_mapping(start_date,end_date,fund_code):
             result = ' '.join(resultwords)
             fund_benchmark = result
             abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
+            scheme_sub_cat_avg_return = same_scheme_return_avg(scheme_sub_type)
+            abs_details['years_abs_return_avgs'] = scheme_sub_cat_avg_return
             return abs_details
         else:
             return"No benchmark available for given fundcode"                        
     else:
         return "No info available for given fund code"
+
+
+
+def same_scheme_return_avg(scheme_sub_type):
+    ret = Scheme.objects.filter(scheme_sub_type=scheme_sub_type)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    one_year_abs_avg = []
+    three_year_abs_avg = []
+    five_year_abs_ret_avg = []
+    for record in scheme_data:
+        scheme_id = record['id']
+        ret = SchemeStats.objects.filter(scheme_id=scheme_id)
+        serial = SchemeStatsSerializer(ret,many=True)
+        abs_records = serial.data
+        for retrun_data in abs_records:
+            one_year_abs_avg.append(retrun_data['one_year_abs_ret'])
+            three_year_abs_avg.append(retrun_data['three_year_abs_ret'])
+            five_year_abs_ret_avg.append(retrun_data['five_year_abs_ret'])
+    abs_avarage = {
+        "one_year_abs_avg":np.average(one_year_abs_avg),
+        "three_year_abs_avg":np.average(three_year_abs_avg),
+        "five_year_abs_ret_avg":np.average(five_year_abs_ret_avg)
+    }
+    return abs_avarage
 
 #Function for return scheme and index details for given fundcode.
 
