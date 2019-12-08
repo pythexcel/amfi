@@ -6,7 +6,7 @@ from stats.models import SchemeStats
 import todo.util
 import numpy as np
 import pandas as pd
-
+from todo.util import maping_dict
 import datetime
 import re
 from math import ceil
@@ -642,14 +642,14 @@ class IndexData(models.Model):
 
                 start_date = date_delta_end
                 end_date = date_delta_start
-
+                
                 df = todo.util.fill_date_frame_data(df, start_date, end_date)
-                # print(df)
                 start_nav = df.loc[date.strftime("%Y-%m-%d")]["close"]
             else:
-                start_nav = 1
-                #raise ValueError(
-                #    "unable to get nav value at all, check your date", date)
+                print("defaultttttttttttttttttttttttttttttttttttttttttttttttttttttttaaaaaaaaa 111111111")
+                #start_nav = 1
+                raise ValueError(
+                    "unable to get nav value at all, check your date", date)
 
         return start_nav
 
@@ -701,15 +701,21 @@ def Index_scheme_mapping(start_date,end_date,fund_code):
         if scheme_name:
             scheme_name = scheme_name[0]
             benchmark = scheme_name['benchmark']
-            stopwords = ['Total','Return','Index','TRI']
+            stopwords = ['Total','Return','Index','TRI','(',')','-','Net']
             querywords = benchmark.split()
             resultwords  = [word for word in querywords if word not in stopwords]
             result = ' '.join(resultwords)
-            fund_benchmark = result
-            abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
-            scheme_sub_cat_avg_return = same_scheme_return_avg(scheme_sub_type)
-            abs_details['years_abs_return_avgs'] = scheme_sub_cat_avg_return
-            return abs_details
+            for record in maping_dict:
+                benchmark_name = record['benchmark_name']
+                benchmark = record['benchmark']
+                if benchmark_name == result:
+                    fund_benchmark = benchmark
+                    abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
+                    scheme_sub_cat_avg_return = same_scheme_return_avg(scheme_sub_type)
+                    abs_details['years_abs_return_avgs'] = scheme_sub_cat_avg_return
+                    return abs_details
+                else:
+                    pass
         else:
             return"No benchmark available for given fundcode"                        
     else:

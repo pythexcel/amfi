@@ -47,8 +47,17 @@ nifty_indexes = [
     "NIFTY SMLCAP 50",
     "NIFTY LARGEMIDCAP 250",
     "NIFTY FULL MIDCAP 100",
+    "NIFTY DIVIDEND OPPORTUNITIES 50",
+    "NIFTY INDIA CONSUMPTION",
+    "NIFTY COMMODITIES",
+    "NIFTY MIDSMALLCAP 400",
     "NIFTY FULL SMLCAP 100",
+    "NIFTY FINANCIAL SERVICES"
 ]
+#NIFTY DIVIDEND OPPORTUNITIES 50
+#NIFTY 500
+#NIFTY INDIA CONSUMPTION
+#NIFTY FINANCIAL SERVICES
 
 def process_nse_daily():
     log = startLogs("process_bse_daily", {})
@@ -136,6 +145,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     index_data = {}
 
     if csvContentDiv is not None:
+        print("iffffffffffffffffffffffffffffffffffffffffffffffs")
         contents = csvContentDiv.contents
         for row in contents[0].split(":"):
             row = row.replace('"', "")
@@ -155,7 +165,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
                 }
 
     else:
-
+        print("elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         table_body = soup.find("table")
         rows = table_body.find_all('tr')
 
