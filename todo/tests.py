@@ -67,7 +67,7 @@ def yearly_amc_return(start_date,end_date,fund_code):
         scheme_id = scheme_data['id']
         filter_data = Q(date__gte=start_date) & Q(
                 date__lte=end_date) & Q(scheme_id=scheme_id)
-        output = Scheme_AUM.objects.filter(filter_data)
+        output = Scheme_AUM.objects.filter(filter_data).order_by('-date')
         if output.count() > 0:
             scheme_seri = Scheme_AUM_Serializer(output,many=True)
             scheme_name = scheme_seri.data
