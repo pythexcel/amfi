@@ -712,7 +712,7 @@ def Index_scheme_mapping(start_date,end_date,fund_code):
                     fund_benchmark = benchmark
                     abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
                     scheme_sub_cat_avg_return = same_scheme_return_avg(scheme_sub_type)
-                    abs_details['years_abs_return_avgs'] = scheme_sub_cat_avg_return
+                    abs_details['category_avg'] = scheme_sub_cat_avg_return
                     return abs_details
                 else:
                     pass
@@ -739,6 +739,9 @@ def same_scheme_return_avg(scheme_sub_type):
             one_year_abs_avg.append(retrun_data['one_year_abs_ret'])
             three_year_abs_avg.append(retrun_data['three_year_abs_ret'])
             five_year_abs_ret_avg.append(retrun_data['five_year_abs_ret'])
+    print(len(one_year_abs_avg))
+    print(len(three_year_abs_avg))
+    print(len(five_year_abs_ret_avg))
     abs_avarage = {
         "one_year_abs_avg":np.average(one_year_abs_avg),
         "three_year_abs_avg":np.average(three_year_abs_avg),

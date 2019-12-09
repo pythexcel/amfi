@@ -1,9 +1,12 @@
 from django.test import TestCase
-from todo.models import Scheme_Info,SchemeinfoSerializer,Index,IndexSerializer,IndexData
+from todo.models import Scheme_Info,SchemeinfoSerializer,Index,IndexSerializer,IndexData,Scheme,SchemeSerializer
 import todo.util
 from math import ceil
 import numpy as np
 from todo.util import maping_dict
+from django.db.models import Q
+from amc.models import Scheme_AUM
+from amc.serializer import Scheme_AUM_Serializer
 
 
 def Index_scheme_mapping(start_date,end_date,scheme_id):
@@ -51,3 +54,25 @@ def benchmark_abs_details(start_date,end_date,fund_benchmark,scheme_id):
     else:
         print("benchmark not in index")
         return None
+
+
+        
+def yearly_amc_return(start_date,end_date,fund_code):
+    ret = Scheme.objects.filter(fund_code=fund_code)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    if scheme_data:
+        scheme_data = scheme_data[0]
+        fund_name = scheme_data['fund_name']
+        scheme_id = scheme_data['id']
+        filter_data = Q(date__gte=start_date) & Q(
+                date__lte=end_date) & Q(scheme_id=scheme_id)
+        output = Scheme_AUM.objects.filter(filter_data)
+        if output.count() > 0:
+            scheme_seri = Scheme_AUM_Serializer(output,many=True)
+            scheme_name = scheme_seri.data
+            return scheme_name
+        else:
+            return "No data available for given data"
+    else:
+        return "No scheme available for given fundcode"
