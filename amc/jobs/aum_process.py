@@ -126,7 +126,8 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 scheme=scheme,
                 date__year=date.year, date__month=date.month)
             ters.delete()
-
+    
+            '''
             first = date.replace(day=1)
             lastMonth = first - datetime.timedelta(days=1)
             month_end_date = lastMonth.strftime("%Y-%m-%d")
@@ -148,6 +149,7 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                     pass
             else:
                 pass
+            '''
 
             tr_db = Scheme_AUM(
                 scheme=scheme,
@@ -181,6 +183,44 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 aum=aum
             )
             info.save()
+
+
+
+def flagging():
+    schemestat_ids = Scheme_AUM.objects.values_list(
+            'scheme_id', flat=True).distinct()
+    for scheme_id in schemestat_ids:
+        info = Scheme_AUM.objects.filter(scheme_id=scheme_id)
+        schemes_data = Scheme_AUM_Serializer(info,many=True)
+        amc_details = schemes_data.data
+        for amc_detail in amc_details:
+            print(amc_detail)
+            #amc_details = amc_details[0]
+    '''
+    first = date.replace(day=1)
+    lastMonth = first - datetime.timedelta(days=1)
+    month_end_date = lastMonth.strftime("%Y-%m-%d")
+    start_date = datetime.datetime.strptime(month_end_date, '%Y-%m-%d').date()
+    month_start_date=start_date.replace(day=1)
+    
+    filter_data = Q(date__gte=month_start_date) & Q(
+        date__lte=month_end_date) & Q(scheme_id=scheme)
+    output = Scheme_AUM.objects.filter(filter_data).order_by('-date')
+    if output.count() > 0:
+        scheme_seri = Scheme_AUM_Serializer(output,many=True)
+        amc_details = scheme_seri.data
+        amc_details = amc_details[0]
+        last_month_aum = amc_details['aum']
+        difference = ((float(aum) - float(last_month_aum)) / float(last_month_aum)) * 100.0
+        if difference >= 5 or difference <= -5:
+            print(difference)
+        else:
+            pass
+    else:
+        pass
+    '''
+
+
 
 
 """

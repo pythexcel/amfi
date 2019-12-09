@@ -749,6 +749,8 @@ def same_scheme_return_avg(scheme_sub_type):
     }
     return abs_avarage
 
+
+
 #Function for return scheme and index details for given fundcode.
 
 def benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name):
