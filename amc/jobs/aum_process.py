@@ -11,6 +11,9 @@ import datefinder
 
 from subprocess import call
 from bs4 import BeautifulSoup
+from django.db.models import Q
+from amc.models import Scheme_AUM
+from amc.serializer import Scheme_AUM_Serializer
 
 
 import re
@@ -123,6 +126,30 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 scheme=scheme,
                 date__year=date.year, date__month=date.month)
             ters.delete()
+    
+            '''
+            first = date.replace(day=1)
+            lastMonth = first - datetime.timedelta(days=1)
+            month_end_date = lastMonth.strftime("%Y-%m-%d")
+            start_date = datetime.datetime.strptime(month_end_date, '%Y-%m-%d').date()
+            month_start_date=start_date.replace(day=1)
+            
+            filter_data = Q(date__gte=month_start_date) & Q(
+                date__lte=month_end_date) & Q(scheme_id=scheme)
+            output = Scheme_AUM.objects.filter(filter_data).order_by('-date')
+            if output.count() > 0:
+                scheme_seri = Scheme_AUM_Serializer(output,many=True)
+                amc_details = scheme_seri.data
+                amc_details = amc_details[0]
+                last_month_aum = amc_details['aum']
+                difference = ((float(aum) - float(last_month_aum)) / float(last_month_aum)) * 100.0
+                if difference >= 5 or difference <= -5:
+                    print(difference)
+                else:
+                    pass
+            else:
+                pass
+            '''
 
             tr_db = Scheme_AUM(
                 scheme=scheme,
@@ -156,6 +183,73 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 aum=aum
             )
             info.save()
+
+
+
+def flagging():
+    schemestat_ids = Scheme_AUM.objects.values_list(
+            'scheme_id', flat=True).distinct()
+    suspects_data = []
+    for scheme_id in schemestat_ids:
+        print(scheme_id)
+        info = Scheme_AUM.objects.filter(scheme_id=scheme_id)
+        schemes_data = Scheme_AUM_Serializer(info,many=True)
+        amc_details = schemes_data.data
+        for amc_detail in amc_details:
+            scheme = amc_detail['scheme']
+            aum = amc_detail['aum']
+            scheme_date = amc_detail['date']
+            datee = datetime.datetime.strptime(scheme_date, '%Y-%m-%d').date()
+            first = datee.replace(day=1)
+            lastMonth = first - datetime.timedelta(days=1)
+            month_end_date = lastMonth.strftime("%Y-%m-%d")
+            start_date = datetime.datetime.strptime(month_end_date, '%Y-%m-%d').date()
+            month_start_date=start_date.replace(day=1)
+            
+            filter_data = Q(date__gte=month_start_date) & Q(
+                date__lte=month_end_date) & Q(scheme_id=scheme)
+            output = Scheme_AUM.objects.filter(filter_data).order_by('-date')
+            if output.count() > 0:
+                scheme_seri = Scheme_AUM_Serializer(output,many=True)
+                amc_details = scheme_seri.data
+                amc_details = amc_details[0]
+                last_month_aum = amc_details['aum']
+                scheem_id = amc_details['scheme']
+                scheme_datee = amc_details['date']
+                if last_month_aum != 0 and aum != 0:
+                    difference = ((float(aum) - float(last_month_aum)) / float(last_month_aum)) * 100.0
+                    if difference >= 10 or difference <= -10:
+                        susp = {
+                            "difference":difference,
+                            "scheme1":scheme,
+                            "aum1":aum,
+                            "date1":scheme_date,
+                            "scheme2":scheme_id,
+                            "aum2":last_month_aum,
+                            "date2":scheme_datee
+                        }
+                        suspects_data.append(susp)
+                    else:
+                        pass
+                else:
+                    pass
+                    '''
+                    print("================================================>")
+                    print("==========Difference==========",difference)
+                    print("scheme1",scheme, "<=========>" , "scheme2",scheme_id)
+                    print("aum",aum, "<===========>", "aum",last_month_aum)
+                    print("date",scheme_date, "<===========>","date",scheme_datee)
+                    logging.basicConfig(filename='suspects.log',level=logging.DEBUG)
+                    logging.debug(''"scheme1:"+ str(scheme) + "aum:"+ str(aum) + "scheme_date:"+str(scheme_date)+ "scheme2:"+str(scheem_id)+ "last_month_aum:"+str(last_month_aum)+ "scheme_datee:"+str(scheme_datee)+'') 
+                    '''
+            else:
+                pass
+    newlist=sorted(suspects_data, key = lambda k:k['difference'])
+    print(newlist)
+    with open("suspects.txt", "w") as txt_file:
+        for line in newlist:
+            txt_file.write(" "+str(line)+ "\n")    
+
 
 
 """

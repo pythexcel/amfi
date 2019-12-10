@@ -7,15 +7,53 @@ from rest_framework import generics
 from todo.jobs.health_check import nav_check as nav_check_data, index_check as index_check_data
 from todo.jobs import schedule_daily_nav_download, process_nse_historial, process_bse_historial
 
-from datetime import datetime,timedelta
-
+#from datetime import datetime,timedelta
+from dateutil.relativedelta import relativedelta
 import sys
-
+import datetime
 from todo.logs import get_logs
 from todo.models import AMC,Nav,Scheme,NavSerializer
+from todo.models import Index_scheme_mapping
 from todo.serializers import AMCSerializer, SchemeSerializer
 from django.core import serializers
 from django.http import JsonResponse
+from todo.tests import yearly_amc_return,yearly_ter_return
+
+
+#Api for return scheme and index info// send payload in request
+
+@api_view(['POST'])
+def get_abs_value(request):
+    start_date = request.data.get("start_date")
+    end_date = request.data.get("end_date")
+    fund_code = request.data.get("fund_code")
+    start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d').date()
+    fun_return = Index_scheme_mapping(start_date,end_date,fund_code)  
+    return Response(fun_return)
+
+
+
+@api_view(['POST'])
+def get_yearly_amc_amount(request):
+    start_date = request.data.get("start_date")
+    fund_code = request.data.get("fund_code")
+    start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = start_date + datetime.timedelta(days=365*1)
+    fun_return = yearly_amc_return(start_date,end_date,fund_code)  
+    return Response(fun_return)
+
+
+@api_view(['POST'])
+def get_yearly_ter(request):
+    start_date = request.data.get("start_date")
+    fund_code = request.data.get("fund_code")
+    start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = start_date + datetime.timedelta(days=365*1)
+    fun_return = yearly_ter_return(start_date,end_date,fund_code)  
+    return Response(fun_return)
+
+
 
 
 @api_view()

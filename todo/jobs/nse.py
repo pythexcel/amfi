@@ -29,15 +29,35 @@ from todo.models import Index, IndexData
 
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-04-2018&toDate=01-07-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
 # https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=NIFTY%20NEXT%2050&fromDate=02-Apr-2018&toDate=01-Jul-2018&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all
+
 nifty_indexes = [
     "NIFTY NEXT 50",
     "NIFTY 50",
     "NIFTY SMLCAP 100",
-    "NIFTY MIDCAP 100"
-    "NIFTY 100"
-    "NIFTY LARGEMIDCAP 250"
+    "NIFTY MIDCAP 100",
+    "NIFTY 100",
+    "NIFTY 200",
+    "NIFTY 500",
+    "NIFTY MIDCAP 150",
+    "NIFTY FMCG",
+    "NIFTY MNC",
+    "NIFTY INFRA",
+    "NIFTY MIDCAP 50",
+    "NIFTY SMLCAP 250",
+    "NIFTY SMLCAP 50",
+    "NIFTY LARGEMIDCAP 250",
+    "NIFTY FULL MIDCAP 100",
+    "NIFTY DIVIDEND OPPORTUNITIES 50",
+    "NIFTY INDIA CONSUMPTION",
+    "NIFTY COMMODITIES",
+    "NIFTY MIDSMALLCAP 400",
+    "NIFTY FULL SMLCAP 100",
+    "NIFTY FINANCIAL SERVICES"
 ]
-
+#NIFTY DIVIDEND OPPORTUNITIES 50
+#NIFTY 500
+#NIFTY INDIA CONSUMPTION
+#NIFTY FINANCIAL SERVICES
 
 def process_nse_daily():
     log = startLogs("process_bse_daily", {})
@@ -73,7 +93,7 @@ def process_nse_historial():
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
-            name=name,
+            name=urllib.parse.unquote(name),
             start_date=start_date,
             end_date=end_date,
             type="NSE"
@@ -85,7 +105,7 @@ def process_nse_historial():
     print(end_date)
 
     res = process_data(name, start_date, end_date, latest_index, False)
-
+    
     if res:
         Index.objects.filter(pk=latest_index.id).update(
             start_date=start_date, end_date=end_date)
@@ -125,6 +145,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     index_data = {}
 
     if csvContentDiv is not None:
+        print("iffffffffffffffffffffffffffffffffffffffffffffffs")
         contents = csvContentDiv.contents
         for row in contents[0].split(":"):
             row = row.replace('"', "")
@@ -144,7 +165,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
                 }
 
     else:
-
+        print("elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         table_body = soup.find("table")
         rows = table_body.find_all('tr')
 
@@ -238,12 +259,25 @@ def process_data(name, start_date, end_date, latest_index, log_id):
                     pb=index_data[date]['pb'] if 'pb' in index_data[date] else 0,
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
                 )
-                index_data_obj.save()
-                if log_id is not False:
-                    addLogs({
-                        "type": "log",
-                        "message": "saving data : " + json.dumps(index_data)
-                    }, log_id)
+                if index_data[date]['open'] != "-":
+    
+                    if index_data[date]['close'] != "-":
+
+                        if index_data[date]['high'] != "-":
+
+                            if index_data[date]['low'] != "-":
+
+                                index_data_obj.save()                
+
+                                if log_id is not False:
+
+                                    addLogs({
+
+                                        "type": "log",
+
+                                        "message": "saving data : " + json.dumps(index_data)
+
+                                    }, log_id)
 
         return True
     else:

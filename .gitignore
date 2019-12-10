@@ -6,6 +6,8 @@ mf_portfolio_download/
 .DS_Store
 .AppleDouble
 .LSOverride
+.vscode/
+amfi_env/
 
 # Icon must end with two \r
 Icon

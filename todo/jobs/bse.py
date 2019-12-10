@@ -29,13 +29,32 @@ from todo.models import Index, IndexData
 # requests_log.propagate = True
 
 
+
 bse_indexes = [
-    "SENSEX"
+    "SENSEX",  #S&P BSE SENSEX
+    "SPB15MIP",  #S&P BSE 150 MidCap Index
+    "SPBSAIP", #S&P BSE AllCap
+    "SPBSEVIP", #BSE S&P BSE Enhanced Value
+    "SIBTEC", #S&P BSE TECK
+    "BSE500",  #S&P BSE 500
+    "BSE200",  #S&P BSE 200
+    "BSE100",  #S&P BSE 100
+    "SI0800",  #S&P BSE HC
+    "SI1000",  #S&P BSE Information technology
+    "SIBANK",   #S&P BSE BANKEX
+    "SPBSE5S",  #S&P BSE 500 Shariah
+    "INFRA",    #S&P BSE India Infrastructure
+    "SPB25XIP", #S&P BSE 250 Largemidcap
+    "SPBSS5IP", #S&P BSE SENSEX 50
+    "SPB25SIP", #S&P BSE 250 SmallCap
+    "BSESML"  #S&P BSE SMALL CAP
 ]
 
+        
 # https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
 # https://api.bseindia.com/BseIndiaAPI/api/ProduceCSVForDate/w?strIndex=SENSEX&dtFromDate=01/07/2019&dtToDate=02/04/2019
-
+#https://www.bseindia.com/markets/keystatics/Keystat_index.aspx
+#https://www.bseindia.com/indices/IndexArchiveData.html
 
 def process_bse_daily():
     log = startLogs("process_bse_daily", {})
@@ -55,9 +74,7 @@ def process_bse_historial():
         # latest_index = Index.objects.filter(
         #     parsed=False).all().order_by("-end_date").first()
         name = latest_index.name
-
         start_date = getattr(latest_index, "end_date")
-        print(start_date)
         end_date = start_date - datetime.timedelta(days=days)
     except Index.DoesNotExist:
         index = Index.objects.filter(type="BSE").all().count()
@@ -65,11 +82,12 @@ def process_bse_historial():
             print("bse completed")
             return
         else:
+            print("elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
             name = urllib.parse.quote(bse_indexes[index])
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
-            name=name,
+            name=urllib.parse.unquote(name),
             start_date=start_date,
             end_date=end_date,
             type="BSE"
@@ -79,7 +97,7 @@ def process_bse_historial():
     print(name)
     print(start_date)
     print(end_date)
-
+    print(latest_index)
     res = process_data(name, start_date, end_date, latest_index, False)
 
     if res:
@@ -98,7 +116,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
         "todt": start_date.strftime("%d/%m/%Y")
     }
     url = "https://api.bseindia.com/BseIndiaAPI/api/IndexArchDaily/w"
-
+    print("params",params)
     print(url)
 
     if log_id is not False:
@@ -110,7 +128,6 @@ def process_data(name, start_date, end_date, latest_index, log_id):
     response = requests.get(url, params=params)
 
     data = response.json()
-
     index_data = {}
 
     for row in data["Table"]:
@@ -129,24 +146,24 @@ def process_data(name, start_date, end_date, latest_index, log_id):
             "pe": row["I_pb"],
             "div": row["I_yl"]
         }
-
+    #print("index data",index_data)
     if bool(index_data):
         for date in index_data:
             try:
-                print(date)
-
                 IndexData.objects.get(index=latest_index, date=datetime.datetime.strptime(
                     date, '%Y-%m-%dT%H:%M:%S'))
                 # data exists nothing to do
             except IndexData.DoesNotExist:
+                print("excepetttttttttttttt")
+
                 index_data_obj = IndexData(
                     index=latest_index,
                     date=datetime.datetime.strptime(
                         date, '%Y-%m-%dT%H:%M:%S'),
-                    open=index_data[date]['open'],
+                    open=index_data[date]['open'] if index_data[date]['open'] is not None else 0.0,
                     close=index_data[date]['close'],
-                    high=index_data[date]['high'],
-                    low=index_data[date]['low'],
+                    high=index_data[date]['high'] if index_data[date]['high'] is not None else 0.0,
+                    low=index_data[date]['low'] if index_data[date]['low'] is not None else 0.0,
                     pe=index_data[date]['pe'] if 'pe' in index_data[date] else 0,
                     pb=index_data[date]['pb'] if 'pb' in index_data[date] else 0,
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
@@ -160,6 +177,7 @@ def process_data(name, start_date, end_date, latest_index, log_id):
 
         return True
     else:
+        print("error in code")
         if log_id is not False:
             addLogs({
                 "type": "error",

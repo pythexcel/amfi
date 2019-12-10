@@ -2,11 +2,11 @@ from django.db import models
 from django.db.models import Q
 
 from rest_framework import serializers
-
+from stats.models import SchemeStats
 import todo.util
-
+import numpy as np
 import pandas as pd
-
+from todo.util import maping_dict
 import datetime
 import re
 from math import ceil
@@ -642,11 +642,12 @@ class IndexData(models.Model):
 
                 start_date = date_delta_end
                 end_date = date_delta_start
-
+                
                 df = todo.util.fill_date_frame_data(df, start_date, end_date)
-                # print(df)
                 start_nav = df.loc[date.strftime("%Y-%m-%d")]["close"]
             else:
+                print("defaultttttttttttttttttttttttttttttttttttttttttttttttttttttttaaaaaaaaa 111111111")
+                #start_nav = 1
                 raise ValueError(
                     "unable to get nav value at all, check your date", date)
 
@@ -657,3 +658,131 @@ class IndexDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = IndexData
         fields = '__all__'
+
+
+class IndexSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Index
+        fields = '__all__'
+
+
+class SchemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scheme
+        fields = '__all__'
+
+
+class SchemeinfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scheme_Info
+        fields = '__all__'
+
+class SchemeStatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SchemeStats
+        fields = '__all__'
+
+
+
+#Function for fetch sufficient details form DB like benchmark,scheme_id,fundname,index_id.
+
+def Index_scheme_mapping(start_date,end_date,fund_code):
+    ret = Scheme.objects.filter(fund_code=fund_code)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    if scheme_data:
+        scheme_data = scheme_data[0]
+        fund_name = scheme_data['fund_name']
+        scheme_id = scheme_data['id']
+        scheme_sub_type = scheme_data['scheme_sub_type']
+        ret = Scheme_Info.objects.filter(scheme_id=scheme_id)
+        scheme_seri = SchemeinfoSerializer(ret,many=True)
+        scheme_name = scheme_seri.data
+        if scheme_name:
+            scheme_name = scheme_name[0]
+            benchmark = scheme_name['benchmark']
+            stopwords = ['Total','Return','Index','TRI','(',')','-','Net']
+            querywords = benchmark.split()
+            resultwords  = [word for word in querywords if word not in stopwords]
+            result = ' '.join(resultwords)
+            for record in maping_dict:
+                benchmark_name = record['benchmark_name']
+                benchmark = record['benchmark']
+                if benchmark_name == result:
+                    fund_benchmark = benchmark
+                    abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
+                    scheme_sub_cat_avg_return = same_scheme_return_avg(scheme_sub_type)
+                    abs_details['category_avg'] = scheme_sub_cat_avg_return
+                    return abs_details
+                else:
+                    pass
+        else:
+            return"No benchmark available for given fundcode"                        
+    else:
+        return "No info available for given fund code"
+
+
+
+def same_scheme_return_avg(scheme_sub_type):
+    ret = Scheme.objects.filter(scheme_sub_type=scheme_sub_type)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    one_year_abs_avg = []
+    three_year_abs_avg = []
+    five_year_abs_ret_avg = []
+    for record in scheme_data:
+        scheme_id = record['id']
+        ret = SchemeStats.objects.filter(scheme_id=scheme_id)
+        serial = SchemeStatsSerializer(ret,many=True)
+        abs_records = serial.data
+        for retrun_data in abs_records:
+            one_year_abs_avg.append(retrun_data['one_year_abs_ret'])
+            three_year_abs_avg.append(retrun_data['three_year_abs_ret'])
+            five_year_abs_ret_avg.append(retrun_data['five_year_abs_ret'])
+    print(len(one_year_abs_avg))
+    print(len(three_year_abs_avg))
+    print(len(five_year_abs_ret_avg))
+    abs_avarage = {
+        "one_year_abs_avg":np.average(one_year_abs_avg),
+        "three_year_abs_avg":np.average(three_year_abs_avg),
+        "five_year_abs_ret_avg":np.average(five_year_abs_ret_avg)
+    }
+    return abs_avarage
+
+
+
+#Function for return scheme and index details for given fundcode.
+
+def benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name):
+    ret = Index.objects.filter(name=fund_benchmark)
+    seri = IndexSerializer(ret,many=True)
+    Index_details = seri.data
+    if Index_details:
+        Index_details = Index_details[0]
+        index = Index_details['id']
+        start_nav = IndexData.get_price_for_date(index,start_date)
+        end_nav = IndexData.get_price_for_date(index,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        Index_abs_details =  {
+            "index_name":fund_benchmark,
+            "start_price": start_nav,
+            "start_date": start_date,
+            "end_price": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+
+        start_nav = Nav.get_nav_for_date(scheme_id,start_date)
+        end_nav = Nav.get_nav_for_date(scheme_id,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        scheme_abs_details ={
+            "fund_name":fund_name,
+            "start_nav": start_nav,
+            "start_date": start_date,
+            "end_nav": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+        return {"scheme_abs_details":scheme_abs_details,"Index_abs_details":Index_abs_details}
+    else:
+        return "fund benchmark not available in index table, please update index table"
