@@ -3,7 +3,7 @@ from api.views.returns import rolling_return, abs_return
 from api.views.ping import ping
 #from api.views.funds import ListAmc, get_schemes, get_fund_categories, get_fund_subcategories, get_funds,get_funds_amc,get_funds_schemes,get_funds_schemes_type
 from api.views.dashboard import (nav_check, nav_run_script, get_process_logs, index_check, index_run_script, nav_last_update, schem_list,
-                                 schem_update_list, nav_ten, get_amcs,get_abs_value,get_yearly_amc_amount)
+                                 schem_update_list, nav_ten, get_amcs,get_abs_value,get_yearly_amc_amount,get_yearly_ter)
 
 from api.views.funds import recalculate_mismatch, get_funds_amc, get_funds_schemes, get_funds_schemes_type, fix_name_mismatch, get_probable_list_for_mismatch, ListAmc, NameMismatchList, get_amcs, get_schemes, get_fund_categories, get_fund_subcategories, get_funds
 
@@ -75,6 +75,7 @@ urlpatterns2 = [
 
     url(r'^dashboard/get_abs_value', get_abs_value),
     url(r'^dashboard/get_yearly_amc_amount', get_yearly_amc_amount),
+    url(r'^dashboard/get_yearly_ter', get_yearly_ter),
     url(r'^dashboard/summary/dailyindex', index_check),
     url(r'^dashboard/summary/dailyindex/runscript', index_run_script),
 

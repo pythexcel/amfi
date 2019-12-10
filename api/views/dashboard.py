@@ -17,7 +17,7 @@ from todo.models import Index_scheme_mapping
 from todo.serializers import AMCSerializer, SchemeSerializer
 from django.core import serializers
 from django.http import JsonResponse
-from todo.tests import yearly_amc_return
+from todo.tests import yearly_amc_return,yearly_ter_return
 
 
 #Api for return scheme and index info// send payload in request
@@ -42,6 +42,17 @@ def get_yearly_amc_amount(request):
     end_date = start_date + datetime.timedelta(days=365*1)
     fun_return = yearly_amc_return(start_date,end_date,fund_code)  
     return Response(fun_return)
+
+
+@api_view(['POST'])
+def get_yearly_ter(request):
+    start_date = request.data.get("start_date")
+    fund_code = request.data.get("fund_code")
+    start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = start_date + datetime.timedelta(days=365*1)
+    fun_return = yearly_ter_return(start_date,end_date,fund_code)  
+    return Response(fun_return)
+
 
 
 
