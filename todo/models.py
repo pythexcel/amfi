@@ -6,11 +6,29 @@ from rest_framework import serializers
 import todo.util
 
 import pandas as pd
-
 import datetime
 import re
 from math import ceil
 from dateutil.relativedelta import relativedelta
+
+mapping_dict = [
+    {"fund_title":"Aditya Birla Sun Life Equity Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Frontline Equity Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Frontline Equity Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Midcap Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Small Cap Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Dividend Yield Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Pure Value Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Focused Equity Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Digital India Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life India Gennext Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Infrastructure Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life MNC Fund","fund_mark":"NIFTY 50"},
+    {"fund_title":"Aditya Birla Sun Life Tax Relief '96","fund_mark":"NIFTY 50"},    
+    {"fund_title":"BARODA MULTI CAP FUND","fund_mark":"NIFTY 100"}
+]
+
+
 
 
 class MFDownload(models.Model):
@@ -573,7 +591,6 @@ class Index(models.Model):
                 ret["start_price"], ret["end_price"], difference_in_years) * 100
             ret["cagr"] = todo.util.float_round(cagr, 2, ceil)
             ret["year_since_begin"] = difference_in_years
-
         return ret
 
     def abs_return(self, start_date, end_date):
@@ -657,3 +674,75 @@ class IndexDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = IndexData
         fields = '__all__'
+
+
+class IndexSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Index
+        fields = '__all__'
+
+class SchemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scheme
+        fields = '__all__'
+
+
+def Index_scheme_mapping(start_date,end_date,fund_code):
+    ret = Scheme.objects.filter(fund_code=fund_code)
+    serial = SchemeSerializer(ret,many=True)
+    scheme_data = serial.data
+    if scheme_data:
+        scheme_data = scheme_data[0]
+        if "fund_name" in scheme_data:
+            fund_name = scheme_data['fund_name']
+            scheme_id = scheme_data['id']
+            for fund_details in mapping_dict:
+                fund_name_check = fund_details['fund_title']
+                fund_benchmark = None
+                if fund_name_check == fund_name:
+                    fund_benchmark = fund_details['fund_mark']
+                    if fund_benchmark is not None:
+                        abs_details = benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name)
+                        return abs_details
+                    else:
+                        pass
+        else:
+            return "fund_name not available"
+    else:
+        return "No info available for this fund code"
+
+
+
+def benchmark_abs_details(start_date,end_date,fund_code,fund_benchmark,scheme_id,fund_name):
+    ret = Index.objects.filter(name=fund_benchmark)
+    seri = IndexSerializer(ret,many=True)
+    Index_details = seri.data
+    if Index_details:
+        Index_details = Index_details[0]
+        index = Index_details['id']
+        start_nav = IndexData.get_price_for_date(index,start_date)
+        end_nav = IndexData.get_price_for_date(index,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        Index_abs_details =  {
+            "index_name":fund_benchmark,
+            "start_price": start_nav,
+            "start_date": start_date,
+            "end_price": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+
+        start_nav = Nav.get_nav_for_date(scheme_id,start_date)
+        end_nav = Nav.get_nav_for_date(scheme_id,end_date)
+        pct = (end_nav - start_nav) / (start_nav)
+        scheme_abs_details ={
+            "fund_name":fund_name,
+            "start_nav": start_nav,
+            "start_date": start_date,
+            "end_nav": end_nav,
+            "end_date": end_date,
+            "pct": todo.util.float_round(pct*100, 2, ceil)
+        }
+        return {"scheme_abs_details":scheme_abs_details,"Index_abs_details":Index_abs_details}
+    else:
+        return "fund benchmark not available in db"

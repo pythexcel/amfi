@@ -7,8 +7,6 @@ import urllib.parse
 import json
 
 from todo.logs import startLogs, addLogs
-
-
 from todo.models import Index, IndexData
 
 # # These two lines enable debugging at httplib level (requests->urllib3->http.client)

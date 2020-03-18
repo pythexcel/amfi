@@ -29,6 +29,7 @@ Temporary Items
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
+amfi_env/
 *.py[cod]
 
 # C extensions
@@ -68,6 +69,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+.vscode/
 
 # Translations
 *.mo
