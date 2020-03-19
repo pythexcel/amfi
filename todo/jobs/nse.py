@@ -98,17 +98,26 @@ def process_data(name, start_date, end_date, latest_index, log_id):
         name+"&fromDate=" + \
         end_date.strftime("%d-%m-%Y")+"&toDate=" + \
         start_date.strftime("%d-%m-%Y")
+
+    #Api was working before without browser user agent.but currently they added user-agent required in apis.
+    #I have added User-Agent for the fixes.
+    #-------------------------------------------------------------------
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
     print(url)
     r = requests.get(url,headers=headers)
-
+    #-------------------------------------------------------------------
     print(r)
 
+
+    #Api was working before without browser user agent.but currently they added user-agent required in apis.
+    #I have added User-Agent for the fixes.
+    #-------------------------------------------------------------------
     url2 = "https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=" + name+"&fromDate="+end_date.strftime("%d-%m-%Y")+"&toDate="+start_date.strftime(
         "%d-%m-%Y")+"&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all"
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
 
     r2 = requests.get(url2,headers=headers)
+    #-------------------------------------------------------------------
 
     print(url2)
 
