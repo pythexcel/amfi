@@ -73,7 +73,7 @@ def process_nse_historial():
         start_date = datetime.datetime.today()
         end_date = datetime.datetime.today() - datetime.timedelta(days=days)
         latest_index = Index(
-            name=name,
+            name=urllib.parse.unquote(name),
             start_date=start_date,
             end_date=end_date,
             type="NSE"
@@ -94,20 +94,30 @@ def process_nse_historial():
 
 
 def process_data(name, start_date, end_date, latest_index, log_id):
-
-    url = "https://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=" + \
+    url = "https://www1.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=" + \
         name+"&fromDate=" + \
         end_date.strftime("%d-%m-%Y")+"&toDate=" + \
         start_date.strftime("%d-%m-%Y")
 
-    r = requests.get(url)
-
+    #Api was working before without browser user agent.but currently they added user-agent required in apis.
+    #I have added User-Agent for the fixes.
+    #-------------------------------------------------------------------
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
     print(url)
+    r = requests.get(url,headers=headers)
+    #-------------------------------------------------------------------
+    print(r)
 
+
+    #Api was working before without browser user agent.but currently they added user-agent required in apis.
+    #I have added User-Agent for the fixes.
+    #-------------------------------------------------------------------
     url2 = "https://www.nseindia.com/products/dynaContent/equities/indices/historical_pepb.jsp?indexName=" + name+"&fromDate="+end_date.strftime("%d-%m-%Y")+"&toDate="+start_date.strftime(
         "%d-%m-%Y")+"&yield1=undefined&yield2=undefined&yield3=undefined&yield4=all"
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
 
-    r2 = requests.get(url2)
+    r2 = requests.get(url2,headers=headers)
+    #-------------------------------------------------------------------
 
     print(url2)
 
@@ -238,13 +248,21 @@ def process_data(name, start_date, end_date, latest_index, log_id):
                     pb=index_data[date]['pb'] if 'pb' in index_data[date] else 0,
                     div=index_data[date]['div'] if 'div' in index_data[date] else 0
                 )
-                index_data_obj.save()
-                if log_id is not False:
-                    addLogs({
-                        "type": "log",
-                        "message": "saving data : " + json.dumps(index_data)
-                    }, log_id)
+                if index_data[date]['open'] is not None:
 
+                    if index_data[date]['open'] != "-":
+        
+                        if index_data[date]['close'] != "-":
+
+                            if index_data[date]['high'] != "-":
+
+                                if index_data[date]['low'] != "-":
+                                    index_data_obj.save()
+                                    if log_id is not False:
+                                        addLogs({
+                                            "type": "log",
+                                            "message": "saving data : " + json.dumps(index_data)
+                                        }, log_id)
         return True
     else:
 
