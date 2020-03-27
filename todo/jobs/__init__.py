@@ -14,7 +14,7 @@ from apscheduler.triggers.combining import OrTrigger
 from apscheduler.triggers.cron import CronTrigger
 
 
-from amc.jobs.aum_process import start_process as aum_daily_process
+#from amc.jobs.aum_process import start_process as aum_daily_process
 from amc.jobs.aum_process import new_start_process as new_aum_daily_process
 
 scheduler = BackgroundScheduler()
