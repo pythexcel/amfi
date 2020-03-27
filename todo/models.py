@@ -147,7 +147,7 @@ class SchemeManager(models.Manager):
 #     "Short Duration Fund",
 #     "Ultra Short Duration Fund"
 # ]
-
+"""
 debt_fund = [
     {"Text": "Overnight Fund", "Value": "25"},
     {"Text": "Liquid Fund", "Value": "26"},
@@ -210,6 +210,69 @@ fund_categorization = {
     "Hybrid Scheme": hybrid_fund,
     "Other Scheme": other_fund,
     "Solution Oriented Scheme": solution_fund
+}
+"""
+
+SDT = [
+    {"Text": "Overnight Fund", "Value": "SDT_OVNT"},
+    {"Text": "Liquid Fund", "Value": "SDT_LIQ"},
+    {"Text": "Ultra Short Duration Fund", "Value": "SDT_USD"},
+    {"Text": "Low Duration Fund", "Value": "SDT_LWD"},
+    {"Text": "Money Market Fund", "Value": "SDT_MM"},
+    {"Text": "Short Duration Fund", "Value": "SDT_SD"},
+    {"Text": "Medium Duration Fund", "Value": "SDT_MD"},
+    {"Text": "Medium to Long Duration Fund", "Value": "SDT_MLD"},
+    {"Text": "Long Duration Fund", "Value": "SDT_LND"},
+    {"Text": "Dynamic Bond", "Value": "SDT_DB"},
+    {"Text": "Corporate Bond Fund", "Value": "SDT_CB"},
+    {"Text": "Credit Risk Fund", "Value": "SDT_CR"},
+    {"Text": "Banking and PSU Fund", "Value": "SDT_BPSU"},
+    {"Text": "Gilt Fund", "Value": "SDT_GL"},
+    {"Text": "Gilt Fund with 10 year constant duration", "Value": "SDT_GL10CD"},
+    {"Text": "Floater Fund", "Value": "SDT_FL"}
+]
+
+
+SSO = [
+    {"Text": "Retirement Fund", "Value": "SSO_RETR"},
+    {"Text": "Children’s Fund", "Value": "SSO_CHILD"}
+]
+
+SEQ = [
+    {"Text": "Multi Cap Fund", "Value": "SEQ_MLC"},
+    {"Text": "Large Cap Fund", "Value": "SEQ_LC"},
+    {"Text": "Large & Mid Cap Fund", "Value": "SEQ_LMC"},
+    {"Text": "Mid Cap Fund", "Value": "SEQ_MC"},
+    {"Text": "Small Cap Fund", "Value": "SEQ_SC"},
+    {"Text": "Dividend Yield Fund", "Value": "SEQ_DIVY"},
+    {"Text": "Value Fund", "Value": "SEQ_VAL"},
+    {"Text": "Contra Fund", "Value": "SEQ_CONT"},
+    {"Text": "Focussed Fund", "Value": "SEQ_FOC"},
+    {"Text": "Sectoral/ Thematic", "Value": "SEQ_SCTH"},
+    {"Text": "ELSS", "Value": "SEQ_ELSS"}]
+
+SHY = [
+    {"Text": "Conservative Hybrid Fund", "Value": "SHY_CH"},
+    {"Text": "Balanced Hybrid Fund", "Value": "SHY_BH"},
+    {"Text": "Aggressive Hybrid Fund", "Value": "SHY_AH"},
+    {"Text": "Dynamic Asset Allocation or Balanced Advantage", "Value": "SHY_DAABA"},
+    {"Text": "Multi Asset Allocation", "Value": "SHY_MAA"},
+    {"Text": "Arbitrage Fund", "Value": "SHY_AR"},
+    {"Text": "Equity Savings", "Value": "SHY_EQS"}
+]
+
+SOTH = [
+    {"Text": "Index Funds", "Value": "SOTH_IXETF"},
+    {"Text": "FoF Overseas", "Value": "SOTH_FOFS"},
+    {"Text": "FoF Domestic", "Value": "SOTH_FOFS"}
+]
+
+fund_categorization = {
+    "SDT": SDT,
+    "SEQ": SEQ,
+    "SHY": SHY,
+    "SOTH": SOTH,
+    "SSO": SSO
 }
 
 

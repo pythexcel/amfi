@@ -19,7 +19,7 @@ def clean_fund_string(name):
     name = name.replace(" - ", " ")
     name = name.replace("-", " ")
     name = name.replace(".", "")
-
+    name = name.replace("#","")
     # add space because some fund name has plan in there name itself
     name = name.replace(" Plan ", "")
 
