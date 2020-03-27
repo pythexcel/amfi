@@ -157,7 +157,7 @@ def new_download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
 
 #Old amfiindia scraper cron
-"""
+
 def start_process():
 
     # fund = Scheme.find_fund_with_name("Tata India Pharma & Healthcare Fund")
@@ -174,11 +174,11 @@ def start_process():
             download_data(row["Value"], today, key, row["Text"])
             #print("start downloading data")
             # break
-"""
+
 
 
 #old data scraper function
-"""
+
 def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
     #print(date.strftime("%d-%b-%Y"))
@@ -282,7 +282,7 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 aum=aum
             )
             info.save()
-"""
+
 """
 
 # entire code and effort below is waste!!!!
