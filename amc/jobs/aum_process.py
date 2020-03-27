@@ -75,21 +75,14 @@ def new_download_data(cat_desc, date, scheme_category, scheme_sub_category):
     for row in data.findAll('tr'):
         col = row.findAll('td')
         if len(col) > 8:
-            # there is an issue here, the current data which we get back
-            # has data for multiple date of same month. which is not needed.
-            # we just need to one data point for a month which is the latest
             amc_name = "NA"
             scheme_name = col[0].text
             benchmark = col[1].string
             inception_date = datetime.date.today() - datetime.timedelta(days=1)
-            aum_direct = col[8].string
+            aum_direct = col[22].string
             if "regular" in scheme_name.lower():
                 continue
 
-            #if inception_date == "NA":
-                # this means plan doesn't existing for Direct investores
-                # maybe use this info later
-            #    continue
 
             fund_data.append([amc_name, scheme_name, benchmark,
                               inception_date, aum_direct, date])
