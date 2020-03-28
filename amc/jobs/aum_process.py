@@ -42,6 +42,114 @@ def process_aum_history():
                 print(row['Text'], "xxx", row['Value'])
                 download_data(row["Value"], today, key, row["Text"])
 
+def new_start_process():
+    print("running")
+    # fund = Scheme.find_fund_with_name("Tata India Pharma & Healthcare Fund")
+    # print(fund)
+    # return
+    cats = Scheme.get_fund_categorization()
+    Scheme_Name_Mismatch.objects.all().delete()
+
+    for key in cats:
+        for row in cats[key]:
+            #print(row['Text'], "xxx", row['Value'])
+            #print(row)
+            today = datetime.date.today() - datetime.timedelta(days=1)
+            #print(row["Value"], today, key, row["Text"])
+            new_download_data(row["Value"], today, key, row["Text"])
+            print("start downloading data")
+            # break
+
+
+def new_download_data(cat_desc, date, scheme_category, scheme_sub_category):
+    #print(date.strftime("%d-%b-%Y"))
+    date_det = date.strftime("%d-%b-%Y")
+    url = "https://www.valueresearchonline.com/amfi/fund-performance-data/?end-type=1&primary-category="+str(scheme_category)+"&category="+str(cat_desc)+"&amc=ALL&nav-date="+str(date_det)+""
+    response = requests.get(url=url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    data = soup.find("table")
+
+    fund_data = []
+    
+    for row in data.findAll('tr'):
+        col = row.findAll('td')
+        if len(col) > 8:
+            amc_name = "NA"
+            scheme_name = col[0].text
+            benchmark = col[1].string
+            inception_date = datetime.date.today() - datetime.timedelta(days=1)
+            aum_direct = col[22].string
+            if "regular" in scheme_name.lower():
+                continue
+
+
+            fund_data.append([amc_name, scheme_name, benchmark,
+                              inception_date, aum_direct, date])
+
+    df = pd.DataFrame(fund_data, columns=[
+                      'AMC', 'Scheme', "Benchmark", "Inception", "AUM", "Date"])
+
+    #print(df)
+    for row in df.itertuples():
+        scheme_name = row.Scheme
+        date = row.Date
+        aum = row.AUM
+        amc = row.AMC
+        benchmark = row.Benchmark
+        inception = row.Inception
+        scheme = Scheme.find_fund_with_name(scheme_name)
+        if aum != "NA":
+            if scheme:
+                Scheme.objects.filter(pk=scheme.id).update(
+                    scheme_type=scheme_category, scheme_sub_type=scheme_sub_category)
+
+                #print("scheme found ", scheme_name)
+                ters = Scheme_AUM.objects.filter(
+                    scheme=scheme,
+                    date__year=date.year, date__month=date.month)
+                ters.delete()
+                tr_db = Scheme_AUM(
+                    scheme=scheme,
+                    date=date,
+                    aum=aum
+                )
+                #print("saving scheme",scheme)
+                tr_db.save()
+
+                info = Scheme_Info.objects.filter(scheme=scheme)
+                info.delete()
+
+                info = Scheme_Info(
+                    scheme=scheme,
+                    benchmark=benchmark,
+                    inception=inception
+                )
+                info.save()
+                info = Scheme_Name_Mismatch.objects.filter(name=scheme_name)
+                info.delete()
+
+            else:
+                print(Fore.RED + "scheme not found with name ", scheme_name)
+
+                info = Scheme_Name_Mismatch.objects.filter(name=scheme_name)
+                info.delete()
+
+                info = Scheme_Name_Mismatch(
+                    amc=amc,
+                    name=scheme_name,
+                    category=scheme_category,
+                    subcategory=scheme_sub_category,
+                    inception=inception,
+                    aum=aum
+                )
+                info.save()
+        else:
+            print(Fore.RED + "Aum not found with name ", scheme_name)
+
+
+
+#Old amfiindia scraper cron
 
 def start_process():
 
@@ -53,23 +161,34 @@ def start_process():
 
     for key in cats:
         for row in cats[key]:
-            print(row['Text'], "xxx", row['Value'])
+            #print(row['Text'], "xxx", row['Value'])
             today = datetime.date.today() - datetime.timedelta(days=1)
+            #print(row["Value"], today, key, row["Text"])
             download_data(row["Value"], today, key, row["Text"])
-
+            #print("start downloading data")
             # break
 
 
+
+#old data scraper function
+
 def download_data(cat_desc, date, scheme_category, scheme_sub_category):
 
-    print(date.strftime("%d-%b-%Y"))
+    #print(date.strftime("%d-%b-%Y"))
+    print({
+        "SchemeMonth": date.strftime("%d-%b-%Y"),
+        "MF_ID": "-1",
+        "NAV_ID": "1",
+        "SchemeCat_Desc": cat_desc
+    })
     response = requests.post("https://www.amfiindia.com/modules/LoadMFPerformaceData", data={
         "SchemeMonth": date.strftime("%d-%b-%Y"),
         "MF_ID": "-1",
         "NAV_ID": "1",
         "SchemeCat_Desc": cat_desc
     })
-
+    #print(response.url)
+    
     soup = BeautifulSoup(response.text, 'html.parser')
 
     data = soup.find("table")
@@ -102,7 +221,7 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
     df = pd.DataFrame(fund_data, columns=[
                       'AMC', 'Scheme', "Benchmark", "Inception", "AUM", "Date"])
 
-    print(df)
+    #print(df)
 
     for row in df.itertuples():
         scheme_name = row.Scheme
@@ -111,24 +230,24 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
         amc = row.AMC
         benchmark = row.Benchmark
         inception = row.Inception
-
         scheme = Scheme.find_fund_with_name(scheme_name)
         if scheme:
 
             Scheme.objects.filter(pk=scheme.id).update(
                 scheme_type=scheme_category, scheme_sub_type=scheme_sub_category)
 
-            print("scheme found ", scheme_name)
+            #print("scheme found ", scheme_name)
             ters = Scheme_AUM.objects.filter(
                 scheme=scheme,
                 date__year=date.year, date__month=date.month)
             ters.delete()
-
+            #print("scheme data",scheme,date,aum)
             tr_db = Scheme_AUM(
                 scheme=scheme,
                 date=date,
                 aum=aum
             )
+            print("saving scheme",scheme)
             tr_db.save()
 
             info = Scheme_Info.objects.filter(scheme=scheme)
@@ -156,7 +275,6 @@ def download_data(cat_desc, date, scheme_category, scheme_sub_category):
                 aum=aum
             )
             info.save()
-
 
 """
 

@@ -15,9 +15,13 @@ from apscheduler.triggers.cron import CronTrigger
 
 
 from amc.jobs.aum_process import start_process as aum_daily_process
+from amc.jobs.aum_process import new_start_process as new_aum_daily_process
 
 scheduler = BackgroundScheduler()
 
+#job = scheduler.add_job(aum_daily_process,trigger='cron', day_of_week='mon-sat', hour=10, minute=8)
+
+job = scheduler.add_job(new_aum_daily_process,trigger='cron', day_of_week='mon-sat', hour=7, minute=31)
 
 # trigger2 = OrTrigger([CronTrigger(hour=4, minute=0),CronTrigger(hour=16, minute=0)])
 
@@ -40,7 +44,6 @@ job = scheduler.add_job(process_bse_daily, 'interval', hours=12)
 job = scheduler.add_job(process_amc_portfolio_data, "interval", days=1)
 
 
-job = scheduler.add_job(aum_daily_process, "interval", days=1)
 
 
 trigger = OrTrigger([CronTrigger(hour=4, minute=0),
