@@ -147,7 +147,7 @@ class SchemeManager(models.Manager):
 #     "Short Duration Fund",
 #     "Ultra Short Duration Fund"
 # ]
-"""
+
 debt_fund = [
     {"Text": "Overnight Fund", "Value": "25"},
     {"Text": "Liquid Fund", "Value": "26"},
@@ -211,7 +211,7 @@ fund_categorization = {
     "Other Scheme": other_fund,
     "Solution Oriented Scheme": solution_fund
 }
-"""
+
 
 SDT = [
     {"Text": "Overnight Fund", "Value": "SDT_OVNT"},
@@ -267,7 +267,7 @@ SOTH = [
     {"Text": "FoF Domestic", "Value": "SOTH_FOFS"}
 ]
 
-fund_categorization = {
+new_fund_categorization = {
     "SDT": SDT,
     "SEQ": SEQ,
     "SHY": SHY,
@@ -315,7 +315,7 @@ class Scheme(models.Model):
 
     @staticmethod
     def find_fund_with_name(match_string):
-        match_string = todo.util.clean_fund_string(match_string)
+        match_string = todo.util.new_clean_fund_string(match_string)
         print(match_string)
         return Scheme.objects.filter(clean_name=match_string).first()
 
@@ -487,10 +487,13 @@ class Scheme(models.Model):
 
     class Meta:
         unique_together = ("amc", "fund_code")
-
     @staticmethod
     def get_fund_categorization():
         return fund_categorization
+
+    @staticmethod
+    def new_get_fund_categorization():
+        return new_fund_categorization
 
 
 class Nav(models.Model):

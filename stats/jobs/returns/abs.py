@@ -83,17 +83,6 @@ def calc_stats_for_scheme(scheme):
         pass
 
     try:
-        ret = scheme.previous_yr_abs_today(10)
-        ten_year_abs_ret = ret["pct"]
-        ten_year_cagr_ret = ret["cagr"]
-        print(ret)
-        json_dump += json.dumps(ret, cls=DjangoJSONEncoder)
-    except:
-        ten_year_abs_ret = -1
-        ten_year_cagr_ret = -1
-        pass
-
-    try:
         ret = scheme.since_start()
         since_begin_abs_ret = ret["pct"]
         since_begin_cagr_ret = ret["cagr"]
@@ -119,8 +108,6 @@ def calc_stats_for_scheme(scheme):
         three_year_cagr_ret=three_year_cagr_ret,
         five_year_abs_ret=five_year_abs_ret,
         five_year_cagr_ret=five_year_cagr_ret,
-        ten_year_abs_ret=ten_year_abs_ret,
-        ten_year_cagr_ret=ten_year_cagr_ret,
         since_begin_abs_ret=since_begin_abs_ret,
         since_begin_cagr_ret=since_begin_cagr_ret
     )

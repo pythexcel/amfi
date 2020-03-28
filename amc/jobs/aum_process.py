@@ -47,7 +47,7 @@ def new_start_process():
     # fund = Scheme.find_fund_with_name("Tata India Pharma & Healthcare Fund")
     # print(fund)
     # return
-    cats = Scheme.get_fund_categorization()
+    cats = Scheme.new_get_fund_categorization()
     Scheme_Name_Mismatch.objects.all().delete()
 
     for key in cats:

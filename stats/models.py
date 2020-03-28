@@ -15,8 +15,6 @@ class SchemeStats(models.Model):
     three_year_cagr_ret = models.FloatField()
     five_year_abs_ret = models.FloatField()
     five_year_cagr_ret = models.FloatField()
-    ten_year_abs_ret = models.FloatField()
-    ten_year_cagr_ret = models.FloatField()
     since_begin_abs_ret = models.FloatField()
     since_begin_cagr_ret = models.FloatField()
 

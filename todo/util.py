@@ -9,7 +9,7 @@ import re
 # this will return a date frame with index as date and value is nav
 
 
-def clean_fund_string(name):
+def new_clean_fund_string(name):
     name = re.sub("[\(\[].*?[\)\]]", "", name)
     name = re.sub(' +', ' ', name)
     name = name.replace("and", "&")
@@ -36,6 +36,28 @@ def clean_fund_string(name):
         # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
         name = ' '.join(name.split(' ')[:-1])
     return name
+
+def clean_fund_string(name):
+    name = re.sub("[\(\[].*?[\)\]]", "", name)
+    name = re.sub(' +', ' ', name)
+    name = name.replace("and", "&")
+    name = name.replace("And", "&")
+    name = name.replace(" Direct", "")
+    name = name.replace(" Growth", "")
+    name = name.replace(" - ", " ")
+    name = name.replace("-", " ")
+    name = name.replace(".", "")
+    # add space because some fund name has plan in there name itself
+    name = name.replace(" Plan ", "")
+    name = name.strip()
+    name = name.lower()
+
+    # remove plan if its last word of scheme
+    if name.split()[-1] == "plan":
+        # this issue came with Mahindra Mutual Fund Kar Bachat Yojana Direct Plan
+        name = ' '.join(name.split(' ')[:-1])
+    return name
+
 
 
 def get_priceindex_data(input):
