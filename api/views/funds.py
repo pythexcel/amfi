@@ -52,6 +52,12 @@ def get_fund_categories(request):
 
 @api_view()
 def get_funds(request, type, sub_type):
+    """
+
+    Returns the FUNDS/SCHEMES based on schemes type and sub_type.
+
+    """
+
     ret = Scheme.objects.get_funds(type=type, sub_type=sub_type)
     ser = SchemeSerializer(ret, many=True)
     return Response(ser.data)
