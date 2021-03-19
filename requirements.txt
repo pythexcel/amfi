@@ -12,7 +12,7 @@ datefinder==0.7.0
 dj-static==0.0.6
 Django==2.2.2
 django-filter==2.1.0
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 docx2txt==0.6
 EbookLib==0.15
 fuzzywuzzy==0.17.0
