@@ -14,7 +14,7 @@ Django==2.2.2
 django-filter==2.1.0
 djangorestframework==3.9.4
 docx2txt==0.6
-EbookLib==0.15
+#EbookLib==0.15
 fuzzywuzzy==0.17.0
 html5lib==1.0.1
 idna==2.8

@@ -19,6 +19,9 @@ class SchemeStats(models.Model):
     ten_year_cagr_ret = models.FloatField()
     since_begin_abs_ret = models.FloatField()
     since_begin_cagr_ret = models.FloatField()
+    one_year_index_abs_ret = models.FloatField(default=0.0)
+    three_year_index_abs_ret = models.FloatField(default=0.0)
+
 
 class SchemeRolling(models.Model):
     scheme = models.OneToOneField(
