@@ -2,7 +2,7 @@ APScheduler==3.6.0
 argcomplete==1.8.2
 asn1crypto==0.24.0
 beautifulsoup4==4.5.3
-certifi==2019.6.16
+certifi==2022.12.7
 cffi==1.12.3
 chardet==3.0.4
 cloudinary==1.16.0
